@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.less"],"names":[],"mappings":"AAAA,UACE,WAAY,CACZ,YAAa,CACb,wBACF","file":"3.d8a50570.chunk.css","sourcesContent":[".homepage {\n  width: 100vw;\n  height: 100vh;\n  background-color: lightblue;\n}\n"]}
