@@ -9,7 +9,7 @@ export default class EarthRouter extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/" render={() => (<Home />)} />
+                    <Route path={["/","gojs-1"]} render={() => (<Home />)} />
                 </Switch>
             </Router>
         );
