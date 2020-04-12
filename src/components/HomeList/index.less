@@ -1,0 +1,126 @@
+.home-list {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .box {
+        font-family: 'Merriweather Sans', sans-serif;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        transition: all .5s;
+        width: 272px;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .list-item:hover .box {
+        box-shadow: 3px 3px 5px #999;
+    }
+
+    .box:before,
+    .box:after {
+        content: "";
+        background: radial-gradient(circle at 23% 70%, rgba(255, 255, 255, 0.8), #fff 30%);
+        width: 150%;
+        height: 150%;
+        opacity: 0;
+        transform: rotate(45deg);
+        position: absolute;
+        top: -3%;
+        right: -150%;
+        z-index: 1;
+        transition: all 0.35s ease;
+    }
+
+    .box:after {
+        background: rgba(255, 255, 255, 0.5);
+        width: 65%;
+        height: 65%;
+        left: -9%;
+        top: -20%;
+    }
+
+    .list-item:hover .box:before {
+        opacity: 1;
+        right: -95%;
+    }
+
+    .list-item:hover .box:after {
+        opacity: 1;
+        top: -45%;
+    }
+
+    .box img {
+        width: 100%;
+        height: auto;
+        transition: all 0.5s ease;
+    }
+
+    .list-item:hover .box img {
+        transform: scale(1.2);
+    }
+
+    .box .box-content {
+        text-align: right;
+        transform: translateY(-50%);
+        position: absolute;
+        top: 45%;
+        right: -100%;
+        z-index: 2;
+        transition: all .5s;
+    }
+
+    .list-item:hover .box .box-content {
+        right: 12%;
+    }
+
+    .box .title {
+        color: #679ec3;
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: 0 0 3px 0;
+    }
+
+    .footer {
+        margin-top: 60px;
+
+        .othersites {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+
+            a {
+                margin: 0 15px;
+                font-size: 32px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .author {
+            display: flex;
+            align-items: flex-end;
+
+            .author-content {
+                width: calc(100% + 48px);
+                text-align: center;
+                padding: 24px 0;
+                margin: 0 -24px;
+                background: #94db9a;
+                color: #fff;
+
+                a {
+                    font-size: 24px;
+                    color: #000;
+                }
+            }
+        }
+    }
+}
