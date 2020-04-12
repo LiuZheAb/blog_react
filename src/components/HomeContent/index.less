@@ -1,18 +1,15 @@
-.content {
-    width: 1280px;
-    margin: 0 auto;
+.content-layout {
+    margin-left: 24px;
+    max-width: 1176px;
 
-    .personal {
-        width: 100%;
-        height: 200px;
+    .ant-layout-content {
+        padding-bottom: 0 !important;
+    }
+}
 
-        img {
-            width: 100%;
-            height: 100%;
-        }
+@media screen and (max-width: 1024px) {
+    .content-layout {
+        padding-left: 0;
     }
 
-    .site-layout-background {
-        background: #fff;
-    }
 }
