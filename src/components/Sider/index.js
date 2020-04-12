@@ -1,53 +1,51 @@
+//侧边栏sider
 import React, { Component } from 'react'
-import { Layout, Menu, } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-// // eslint-disable-next-line
-import { Link } from "react-router-dom";
+import { Layout } from 'antd';
+import Menu from "../Menu";
+import IconFont from "../IconFont";
 import "./index.less";
 
-const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 export default class index extends Component {
+    componentDidMount() {
+        //页面向上滚动时将sider固定
+        let Div = document.getElementById("sider-content"),
+            H = 0,
+            Y = Div;
+        while (Y) {
+            H += Y.offsetTop;
+            Y = Y.offsetParent;
+        }
+        window.addEventListener('scroll', function (e) {
+            var s = document.body.scrollTop || document.documentElement.scrollTop;
+            if (s > H) {
+                Div.style = "position:fixed;top:0;";
+            } else {
+                Div.style = "";
+            }
+        })
+    }
     render() {
         return (
-            <Sider width={200} className="site-layout-background">
-                <div className="personal">
-                    <img src={require("../../assets/images/avatar.jpg")} alt="??" />
+            <Sider width={240} className="site-layout-background" id="sider">
+                <div id="sider-content">
+                    <div className="personal">
+                        <div className="block">
+                            <img src={require("../../assets/images/avatar.jpg")} alt="avatar" />
+                        </div>
+                        <p className="author">LiuZheAb</p>
+                        <div>FED</div>
+                        <a className="email" href="mailto:liu748951@163.com">liu748951@163.com</a>
+                        <div className="othersites">
+                            <a target="_blank" rel="noopener noreferrer" href="https://music.163.com/#/playlist?id=117824494" title="网易云音乐"><IconFont type="iconwyy" /></a>
+                            <a target="_blank" style={{ fontSize: "34px", color: "#000" }} rel="noopener noreferrer" href="https://github.com/LiuZheAb/" title="Github"><IconFont type="icongithub"/></a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.yuque.com/liuzheab" title="语雀"><IconFont type="iconyuquemianlogo" /></a>
+                        </div>
+                        <div>爱编程。爱音乐</div>
+                    </div>
+                    <Menu mode="vertical"/>
                 </div>
-                <Menu
-                    mode="inline"
-                    style={{ height: '100%', borderRight: 0 }}
-                    defaultOpenKeys={['gojs']}
-                >
-                    <SubMenu
-                        key="gojs"
-                        title={<span><UserOutlined />Go JS</span>}
-                    >
-                        <Menu.Item key="1"><Link to="/gojs-intro">介绍</Link></Menu.Item>
-                        <Menu.Item key="2"><Link to="/gojs-1">第一节</Link></Menu.Item>
-                        <Menu.Item key="3">option3</Menu.Item>
-                        <Menu.Item key="4">option4</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                        key="sub2"
-                        title={<span><LaptopOutlined />subnav 2</span>}
-                    >
-                        <Menu.Item key="5">option5</Menu.Item>
-                        <Menu.Item key="6">option6</Menu.Item>
-                        <Menu.Item key="7">option7</Menu.Item>
-                        <Menu.Item key="8">option8</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                        key="sub3"
-                        title={<span><NotificationOutlined />subnav 3</span>}
-                    >
-                        <Menu.Item key="9">option9</Menu.Item>
-                        <Menu.Item key="10">option10</Menu.Item>
-                        <Menu.Item key="11">option11</Menu.Item>
-                        <Menu.Item key="12">option12</Menu.Item>
-                    </SubMenu>
-                </Menu>
             </Sider>
         )
     }
