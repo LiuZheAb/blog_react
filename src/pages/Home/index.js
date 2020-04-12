@@ -1,3 +1,4 @@
+//首页
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import Header from "../../components/Header";
@@ -10,7 +11,7 @@ export default class index extends Component {
         return (
             <Layout style={{ minHeight: "100vh" }}>
                 <Header />
-                <Layout className="content">
+                <Layout className="main">
                     <Sider />
                     <HomeContent />
                 </Layout>
