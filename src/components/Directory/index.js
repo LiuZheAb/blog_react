@@ -29,26 +29,24 @@ export default class index extends Component {
             //s为当前滚动距离加offsetTop加directory高度,即directory底端距顶部的距离
             s = s + (offsetTop + directory.offsetHeight);
             //当s超出H时,directory向上收起
-            if (s > H) {
-                directory.style = `position:fixed;top:${offsetTop - s + H - header.offsetHeight}px;transition:none`;
+            if (s > H + header.offsetHeight) {
+                directory.style = `position:fixed;top:${offsetTop - s + H}px;transition:none`;
             } else {
                 // 在s<=H时,若向下滚动时,滚动距离超过header高度将header收起;向上滚动则将header显示,并且directory随header平移
                 let after = window.scrollY;
-                if (directory) {
-                    if (after > header.offsetHeight) {
-                        if (before < after) {
-                            header.className = "ant-layout-header header header-affixed";
-                            directory.className = "directory-list directory-affixed"
-                            before = after;
-                        };
-                        if (before > after) {
-                            header.className = "ant-layout-header header header-visible";
-                            directory.className = "directory-list"
-                            before = after;
-                        };
-                    }
-                    directory.style = "";
+                if (after > header.offsetHeight) {
+                    if (before < after) {
+                        header.className = "ant-layout-header header header-affixed";
+                        directory.className = "directory-list directory-affixed"
+                        before = after;
+                    };
+                    if (before > after) {
+                        header.className = "ant-layout-header header header-visible";
+                        directory.className = "directory-list"
+                        before = after;
+                    };
                 }
+                directory.style = "";
             }
         }
     }
@@ -109,7 +107,7 @@ export default class index extends Component {
             <ul className="directory-list">
                 {articleTree.map((key, index) => {
                     return (
-                        <li key={index} id={`tree-num-${index}`} className="tree-num" title={key.name} style={{ paddingLeft: key.tag === "H2" ? "10px" : "22px" }} onClick={() => { this.scrollToAnchor(`${key.name}`) }}>{key.name}</li>
+                        <li key={index} id={`tree-num-${index}`} className="tree-num" title={key.name} style={{ paddingLeft: key.tag === "H2" ? 10 : 22 }} onClick={() => { this.scrollToAnchor(`${key.name}`) }}>{key.name}</li>
                     )
                 })}
             </ul>
