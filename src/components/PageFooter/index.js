@@ -73,60 +73,64 @@ class index extends Component {
         let nextHref = baseHref + (pageNum + 1);
         return (
             <div className="page-footer">
-                <div className="share">
-                    <div>
-                        <div className="wx-icon" style={{ position: "relative" }}>
-                            <IconFont type="iconweixin" />
-                            <div className="qrcode" >
-                                <div className="arrow"></div>
-                                <div className="inner">微信扫码阅读文档<QRCode value={window.location.href} /></div>
+                <div>
+                    <div className="share">
+                        <div>
+                            <div className="wx-icon" style={{ position: "relative" }}>
+                                <IconFont type="iconweixin" />
+                                <div className="qrcode" >
+                                    <div className="arrow"></div>
+                                    <div className="inner">微信扫码阅读文档<QRCode value={window.location.href} /></div>
+                                </div>
                             </div>
+                            <WeiboShareButton style={{ marginLeft: 24 }} url={window.location.href} title={dataSource.title + "——" + nameMap[this.props.location.pathname]} ><IconFont type="iconweibo" style={{ fontSize: 40 }} /></WeiboShareButton>
                         </div>
-                        <WeiboShareButton url={window.location.href} title={dataSource.title + "——" + nameMap[this.props.location.pathname]} ><IconFont type="iconweibo" style={{ fontSize: "40px" }} /></WeiboShareButton>
-                    </div>
                     如果觉得这篇文章有帮助的话,就分享一下吧,谢谢~
                 </div>
-                {!isNaN(pageNum) ?
-                    <div className="content">
-                        <div className="prev">
-                            {nameMap[prevHref] ?
-                                <Link to={prevHref} className="pager">
-                                    <div className="label">上一篇</div>
-                                    <span className="title">{check(pageNum - 1, dataSource.section)}{nameMap[prevHref]}</span>
-                                </Link>
-                                : null}
-                        </div>
-                        <div className="next">
-                            {nameMap[nextHref] ?
-                                <Link to={nextHref} className="pager">
-                                    <div className="label">下一篇</div>
-                                    <span className="title">{check(pageNum + 1, dataSource.section)}{nameMap[nextHref]}</span>
-                                </Link>
-                                : null}
-                        </div>
-
-                    </div>
-                    : null
-                }
-                <div className="connect">
-                    <div className="book">
-                        <span className="from">本文来自</span>
-                        <div className="icon"><IconFont type="iconbook" style={{ fontSize: "40px" }} /></div>
-                        <div className="name"><h4><Link to={dataSource.baseHref}>{dataSource.title}</Link></h4></div>
-                    </div>
-                    {getRandomArrayElements(recommandData, 2).map((item, index) => {
-                        return (
-                            <div className="book" key={index}>
-                                <span className="from">精品推荐</span>
-                                <div className="icon"><IconFont type="iconbook" style={{ fontSize: "40px" }} /></div>
-                                <div className="name"><h4><Link to={item.baseHref}>{item.title}</Link></h4></div>
+                    {!isNaN(pageNum) ?
+                        <div className="content">
+                            <div className="prev">
+                                {nameMap[prevHref] ?
+                                    <Link to={prevHref} className="pager">
+                                        <div className="label">上一篇</div>
+                                        <span className="title">{check(pageNum - 1, dataSource.section)}{nameMap[prevHref]}</span>
+                                    </Link>
+                                    : null}
                             </div>
-                        )
-                    })}
+                            <div className="next">
+                                {nameMap[nextHref] ?
+                                    <Link to={nextHref} className="pager">
+                                        <div className="label">下一篇</div>
+                                        <span className="title">{check(pageNum + 1, dataSource.section)}{nameMap[nextHref]}</span>
+                                    </Link>
+                                    : null}
+                            </div>
+
+                        </div>
+                        : null
+                    }
+                    <div className="books">
+                        <div className="book">
+                            <span className="from">本文来自</span>
+                            <div className="icon"><IconFont type="iconbook" style={{ fontSize: 40 }} /></div>
+                            <div className="name"><h4><Link to={dataSource.baseHref}>{dataSource.title}</Link></h4></div>
+                        </div>
+                        {getRandomArrayElements(recommandData, 2).map((item, index) => {
+                            return (
+                                <div className="book" key={index}>
+                                    <span className="from">精品推荐</span>
+                                    <div className="icon"><IconFont type="iconbook" style={{ fontSize: 40 }} /></div>
+                                    <div className="name"><h4><Link to={item.baseHref}>{item.title}</Link></h4></div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className="connect">
                     <div className="othersites">
                         <span>我的站点：</span>
                         <a target="_blank" rel="noopener noreferrer" href="https://music.163.com/#/playlist?id=117824494" title="网易云音乐"><IconFont type="iconwyy" /></a>
-                        <a target="_blank" style={{ fontSize: "34px", color: "#000" }} rel="noopener noreferrer" href="https://github.com/LiuZheAb/" title="Github"><IconFont type="icongithub" /></a>
+                        <a target="_blank" style={{ fontSize: 34, color: "#000" }} rel="noopener noreferrer" href="https://github.com/LiuZheAb/" title="Github"><IconFont type="icongithub" /></a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.yuque.com/liuzheab" title="语雀"><IconFont type="iconyuquemianlogo" /></a>
                     </div>
                     <div className="author">
