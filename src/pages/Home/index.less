@@ -18,6 +18,7 @@
 
     .content-layout {
         margin: 0;
+        padding-left: 0;
     }
 
     .header {
@@ -33,7 +34,7 @@
     }
 
     .main {
-        .page-footer .othersites {
+        .page-footer .connect .othersites {
             display: flex;
         }
 
@@ -43,11 +44,19 @@
     }
 }
 
-@media (max-width: 768px) {}
-
 @media (max-width: 576px) {
     .header .header-content .othersites {
         display: none;
+    }
+
+    .main .page-content {
+        .article {
+            width: 100%;
+        }
+
+        .directory {
+            display: none;
+        }
     }
 }
 
