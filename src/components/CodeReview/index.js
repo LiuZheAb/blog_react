@@ -3,7 +3,6 @@ import React, { Component, Suspense, lazy } from 'react';
 import { Link, HashRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import Loder from '../Loder';
 import { codeReview } from "../../assets/data";
-import "./index.less";
 
 // 所有章节
 const CodeReview00 = lazy(() => import('./Chapters/00'));

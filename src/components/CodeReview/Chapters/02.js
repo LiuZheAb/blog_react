@@ -75,7 +75,7 @@ export default class index extends Component {
                         <p className="indent-2">如果您在CL中看到一些不错的内容，请告诉开发人员，特别是当他们以一种很好的方式处理您的一条注释时。代码评审通常只关注错误，但是它们也应该为好的实践提供鼓励和赞赏。有时候，在指导方面，告诉开发人员他们做对了什么比告诉他们他们做错了什么更有价值。</p>
                         <h2>总结</h2>
                         <p className="indent-2" style={{ margin: 0 }}>在进行程式码检讨时，你应确保:</p>
-                        <ul className="indent-2" style={{ marginBottom: "8px" }}>
+                        <ul className="indent-2" style={{ marginBottom: 8 }}>
                             <li>代码设计得很好。</li>
                             <li>该功能对代码的用户很好。</li>
                             <li>任何UI更改都是合理的，看起来也不错。</li>
