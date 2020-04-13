@@ -22,7 +22,6 @@ export default class index extends Component {
                 <Content
                     style={{
                         padding: 24,
-                        margin: 0,
                         minHeight: 280,
                         background: "#fff"
                     }}
