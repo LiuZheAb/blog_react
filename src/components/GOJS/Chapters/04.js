@@ -135,7 +135,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第三节 使用GoJS构建Parts(Parts 和 Panels)";
+        document.title = "GoJS教程——第三节 使用GoJS构建Parts(Parts 和 Panels)";
         this.diagramRender1();
         this.diagramRender2();
         this.diagramRender3();
@@ -403,7 +403,7 @@ export default class index extends Component {
                         <div className="text-center">
                             <img src={require("../../../assets/images/1585146820036-10d71ce5-2edd-4573-9b5a-132548554409.png")} alt="" />
                         </div>
-                        <h2 style={{position:"relative",top:"-1px"}}>Position Panels</h2>
+                        <h2>Position Panels</h2>
                         <ul>
                             <li>Position Panels中的元素：</li>
                         </ul>

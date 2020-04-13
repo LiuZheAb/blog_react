@@ -29,7 +29,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第二节 概述";
+        document.title = "GoJS教程——第二节 概述";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -296,9 +296,9 @@ export default class index extends Component {
                             <li>ToolManager根据InputEvent(即MouseDown，MouseMove…)来决定使用哪个工具来创建currentTool</li>
                         </ul>
                         <p>鼠标事件类型如下所示:</p>
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "700px", height: "400px", border: "none" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 700, height: 400, border: "none" }}></div>
                         <p>ToolManager处理InputEvent的流程如下所示:</p>
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", maxWidth: "700px", height: "1000px", border: "none" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 700, height: 1000, border: "none" }}></div>
                         <ul>
                             <li>isActive:Tool是启动还是已经在工作了</li>
                             <li>isEnabled:判断是否可以通过鼠标事件启动Tool</li>

@@ -116,7 +116,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第四节 力导向布局(ForceDirectedLayout)";
+        document.title = "GoJS教程——第四节 力导向布局(ForceDirectedLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -358,7 +358,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", height: "500px", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>简介</h2>
                         <p>力导向布局算法是一类绘图算法，它仅仅基于图的结构本身来绘图，而不依赖于上下文信息。</p>
                         <p>GoJS ForceDirected Layout有三种</p>
@@ -391,7 +391,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", height: "500px", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>引力</h2>
                         <h3>defaultGravitationalMass </h3>
                         <ul>
@@ -412,7 +412,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", height: "500px", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h3>defaultSpringStiffness</h3>
                         <ul>
                             <li>决定Node间弹簧的刚度</li>
@@ -426,7 +426,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", height: "500px", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>isFixed</h2>
                         <ul>
                             <li>为true时Node不会被Layout影响，但仍然对附近和连接的Node有影响。即Node自身被固定</li>
@@ -439,7 +439,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", height: "500px", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <p><br /></p>
                         <p><br /></p>
                         <p>相关代码：</p>

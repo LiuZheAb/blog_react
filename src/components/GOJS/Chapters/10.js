@@ -138,7 +138,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第三节 树形布局(TreeLayout)";
+        document.title = "GoJS教程——第三节 树形布局(TreeLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -598,7 +598,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>angle</h2>
                         <ul>
                             <li>决定Tree展开的方向</li>
@@ -613,7 +613,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", height: "400px", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ height: 400, maxWidth: 600 }}></div>
                         <h2>layerSpacing</h2>
                         <ul>
                             <li>决定父/子Node间的距离</li>
@@ -627,7 +627,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>nodeSpacing</h2>
                         <ul>
                             <li>决定兄弟Node间的距离</li>
@@ -641,7 +641,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
                         <ul>
                             <li>决定父Node相对于其子Node的默认对齐方式</li>
@@ -656,7 +656,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p>TreeLayout.AlignmentStart将父Node定位在第一个子Node附近</p>
                         <h2>sorting</h2>
                         <ul>
@@ -672,7 +672,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv6" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>treeStyle</h2>
                         <ul>
                             <li>决定哪些子Tree受默认属性影响</li>
@@ -687,7 +687,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv7" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alternateAngle</h2>
                         <ul>
                             <li>alternate{`<Style>`}决定哪些子Tree受alternate属性影响</li>
@@ -704,7 +704,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv8" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p><br /></p>
                         <p><br /></p>
                         <p>相关代码：</p>

@@ -147,7 +147,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第三节 刻度面板(Graduated Panel)";
+        document.title = "GoJS教程——第三节 刻度面板(Graduated Panel)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -311,7 +311,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "400px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h2>Graduated Panel Properties</h2>
                         <h3>graduatedMin、graduatedMax</h3>
                         <ul>
@@ -335,7 +335,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", maxWidth: "400px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>segmentOffset</h3>
                         <ul>
                             <li>segmentOffset决定了刻度的偏移量</li>
@@ -348,7 +348,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", maxWidth: "400px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>graduatedTickBase</h3>
                         <ul>
                             <li>graduatedTickBase决定了标记的起始值</li>
@@ -361,7 +361,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", maxWidth: "400px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>interval</h3>
                         <ul>
                             <li>interval属性决定了刻度或标签出现的频率</li>
@@ -374,7 +374,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", maxWidth: "400px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>两组标签</h3>
                         <p>添加第二组标签</p>
                         <CodeMirror
@@ -385,7 +385,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv6" className="diagram" style={{ width: "100%", maxWidth: "400px" }}></div>
+                        <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 400 }}></div>
                         <p><br /></p>
                         <p><br /></p>
                         <p>相关代码：</p>

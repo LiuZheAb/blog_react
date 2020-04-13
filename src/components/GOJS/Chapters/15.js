@@ -110,7 +110,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第二节 网格面板(Grid Panel)";
+        document.title = "GoJS教程——第二节 网格面板(Grid Panel)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -319,7 +319,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "400px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>设置网格样式</h2>
                         <CodeMirror
                             value={code2}
@@ -329,7 +329,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "400px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>Shape.Interval</h2>
                         <ul>
                             <li>指定在网格中绘制Shape的频率(以gridCellSize的倍数计算)</li>
@@ -344,7 +344,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "400px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h3>设置为条带状</h3>
                         <CodeMirror
                             value={code4}
@@ -354,7 +354,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "400px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h3>支持透明度属性</h3>
                         <CodeMirror
                             value={code5}
@@ -364,7 +364,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "400px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <p><br /></p>
                         <p><br /></p>
                         <p>相关代码：</p>

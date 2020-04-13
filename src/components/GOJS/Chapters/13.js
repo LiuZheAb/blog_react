@@ -123,7 +123,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第六节 环状布局(CircularLayout)";
+        document.title = "GoJS教程——第六节 环状布局(CircularLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -602,7 +602,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>spacing</h2>
                         <ul>
                             <li>决定Node间的距离</li>
@@ -617,7 +617,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>radius</h2>
                         <ul>
                             <li>确定布局的椭圆的水平半径</li>
@@ -632,7 +632,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407213951.png")} alt="" />
                         </div>
@@ -654,7 +654,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407215235.png")} alt="" />
                         </div>
@@ -673,7 +673,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "500px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 500 }}></div>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407220047.png")} alt="" />
                         </div>
@@ -690,7 +690,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv6" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>direction</h2>
                         <ul>
                             <li>决定Node是顺时针还是逆时针排列</li>
@@ -704,7 +704,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv7" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>sorting</h2>
                         <ul>
                             <li>确定如何对CircularLayout中的Node排序</li>
@@ -725,7 +725,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv8" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>设置为Forwards后,可以看到,Node按照Alpha、Beta、Gamma、Delta、Epsilon、Zeta(希腊字母顺序)的顺序排列</p>
                         <p><br /></p>
                         <p><br /></p>

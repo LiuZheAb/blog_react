@@ -564,7 +564,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>wrappingColumn</h2>
                         <CodeMirror
                             value={code2}
@@ -574,7 +574,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>wrappingWidth</h2>
                         <p>确定GridLayout的宽度，若使适合wrappingwidth的最大列数小于wrappingColumn, 则wrappingWidth优先</p>
                         <CodeMirror
@@ -585,7 +585,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>cellSize</h2>
                         <p>确定每个Part在网格中所占位置的最小Part大小</p>
                         <p>默认值::NaN x NaN(使用最大的部件作为cellSize)</p>
@@ -597,7 +597,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>spacing</h2>
                         <p>确定Node之间的空间</p>
                         <p>默认值:10x10</p>
@@ -609,7 +609,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
                         <p>决定使用Part.location还是Part.position来安排每个part</p>
                         <p><em>默认的排列基准是Node的左上角,Node的locationSpot决定此属性</em></p>
@@ -621,7 +621,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv6" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>sorting</h2>
                         <ul>
                             <li>决定Part的顺序</li>
@@ -641,7 +641,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv7" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p>改变Node数据的顺序</p>
                         <CodeMirror
                             value={code8}
@@ -652,7 +652,7 @@ export default class index extends Component {
                             }}
                         />
                         <p>设置layout的sorting属性为: go.GridLayout.Ascending</p>
-                        <div id="myDiagramDiv8" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p>设置layout的comparer属性为</p>
                         <CodeMirror
                             value={code9}
@@ -662,7 +662,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv9" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv9" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>arrangement</h2>
                         <p>决定Node排序的方式</p>
                         <CodeMirror
@@ -673,7 +673,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv10" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv10" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p><br /></p>
                         <p><br /></p>
                         <p>相关代码：</p>

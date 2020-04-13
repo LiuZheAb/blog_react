@@ -104,7 +104,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第五节 层次布局(LayeredDigraphLayout)";
+        document.title = "GoJS教程——第五节 层次布局(LayeredDigraphLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -457,7 +457,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv1" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>direction</h2>
                         <ul>
                             <li>决定展开的方向</li>
@@ -472,7 +472,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv2" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>layerSpacing</h2>
                         <ul>
                             <li>决定层间距</li>
@@ -491,7 +491,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv3" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "400px" }}></div>
+                        <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>layingOption</h2>
                         <ul>
                             <li>决定布局中的Node如何分配到不同的layer中</li>
@@ -512,7 +512,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv4" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>其中，Epsilon和Gamma为sink</p>
                         <h3>LaverLongestPathSource</h3>
                         <p>source = 没有Link进入的Node</p>
@@ -524,7 +524,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv5" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>其中，Alpha和Zeta为source</p>
                         <h3>LayerOptimalLinkLength</h3>
                         <ul>
@@ -539,7 +539,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv6" className="diagram" style={{ width: "100%", maxWidth: "600px", height: "350px" }}></div>
+                        <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>其中,由下向上,Episilon为第一层,Delta和Zeta为第二层,Beta和Gamma为第三层,Alpha为第四层</p>
                         <p>共有5条Link,每条Link的linkLength均为1,共计5,是最小方案</p>
                         <p><br /></p>

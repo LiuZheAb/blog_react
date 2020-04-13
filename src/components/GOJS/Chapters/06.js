@@ -676,7 +676,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv6" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h3>添加Link</h3>
                         <CodeMirror
                             value={code7}
@@ -686,7 +686,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv7" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h3>绑定key到text、color到fill</h3>
                         <CodeMirror
                             value={code8}
@@ -696,7 +696,7 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <div id="myDiagramDiv8" className="diagram" style={{ width: "100%", maxWidth: "600px" }}></div>
+                        <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
                         <br />
                         <br />
                         <p>相关代码：</p>
