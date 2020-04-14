@@ -9,7 +9,7 @@ import "./index.less";
 export default class index extends Component {
     render() {
         return (
-            <Layout style={{ minHeight: "100vh" }}>
+            <Layout>
                 <Header />
                 <Layout className="main">
                     <Sider />
