@@ -66,13 +66,12 @@ class index extends Component {
                 if (num >= obj[key][0] && num <= obj[key][1] && obj[key][0] !== obj[key][1]) return key + "——";
             }
         }
-
         let pageNum = Number(pathSnippets[1]), baseHref = "/" + pathSnippets[0] + "/";
         //上一页/下一页路由
         let prevHref = baseHref + (pageNum - 1);
         let nextHref = baseHref + (pageNum + 1);
         return (
-            <div className="page-footer">
+            <div className="page-footer" style={!isNaN(pageNum) ? { minHeight: "100vh" } : {}}>
                 <div>
                     <div className="share">
                         <div>
