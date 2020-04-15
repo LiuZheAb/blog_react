@@ -98,7 +98,7 @@ export let gojsData = {
 };
 
 export let codeReview = {
-    name: "codeReview",
+    name: "codereview",
     title: "Code Review",
     baseHref: "/codereview",
     description: "Code Review(代码评审)简介",
@@ -143,3 +143,27 @@ export let codeReview = {
         "代码开发者指南": [7, 9],
     }
 };
+
+export let freeCodeCamp = {
+    name: "freecodecamp",
+    title: "FreeCodeCamp",
+    baseHref: "/freecodecamp",
+    description: "FreeCodeCamp学习笔记",
+    img: "freecodecamp.png",
+    content: "Github上stars最多的项目，免费编码学习社区。",
+    catalog: [
+        {
+            href: "/freecodecamp/0",
+            title: "简介"
+        }, {
+            href: "/freecodecamp/1",
+            title: "css 第一节"
+        },
+    ],
+    section: {
+        "简介": [0, 0],
+        "css篇": [1, 1],
+    }
+};
+
+export let totalData = [myblogData, gojsData, codeReview, freeCodeCamp];

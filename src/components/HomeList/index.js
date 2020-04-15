@@ -2,22 +2,21 @@
 import React, { Component } from 'react';
 import { List } from 'antd';
 import { Link } from "react-router-dom";
-import { myblogData, gojsData, codeReview } from "../../assets/data";
+import { totalData } from "../../assets/data";
 import IconFont from "../IconFont"
 import "./index.less";
 
 export default class index extends Component {
     render() {
-        let dataArray = [myblogData, gojsData, codeReview];
         let dataSource = [];
-        for (let i = 0; i < dataArray.length; i++) {
+        for (let i = 0; i < totalData.length; i++) {
             dataSource.push({
-                href: dataArray[i].baseHref,
-                className: dataArray[i].name,
-                title: dataArray[i].title,
-                description: dataArray[i].description,
-                img: dataArray[i].img,
-                content: dataArray[i].content,
+                href: totalData[i].baseHref,
+                className: totalData[i].name,
+                title: totalData[i].title,
+                description: totalData[i].description,
+                img: totalData[i].img,
+                content: totalData[i].content,
             })
         }
         return (

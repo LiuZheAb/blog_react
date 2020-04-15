@@ -2,15 +2,20 @@
 import React, { Component } from 'react'
 import { Menu, } from 'antd';
 import { Link, withRouter } from "react-router-dom";
-import { myblogData, gojsData, codeReview } from "../../assets/data";
+import { totalData } from "../../assets/data";
 import IconFont from "../IconFont";
-import setKeyMap from "../../utils/keymap";
 import "./index.less";
 
 const { SubMenu } = Menu;
 
 //将data文件中所有href:title映射到一个对象中,用于检索当前路由对应的title
-let selectedKeyMap = setKeyMap([myblogData, gojsData, codeReview]);
+let keyMapObj = {}
+for (let i = 0; i < totalData.length; i++) {
+    keyMapObj[totalData[i].baseHref] = totalData[i].title;
+    for (let j = 0; j < totalData[i].catalog.length; j++) {
+        keyMapObj[totalData[i].catalog[j].href] = totalData[i].title + totalData[i].catalog[j].title
+    }
+}
 
 //封装分级菜单
 const SubMenuTemplate = (dataSource, path, mode) => {
@@ -19,7 +24,7 @@ const SubMenuTemplate = (dataSource, path, mode) => {
             key={dataSource.title}
             title={<span>{dataSource.title}</span>}
             // onTitleClick={() => { window.location.href = "#" + dataSource.baseHref }}
-            style={selectedKeyMap[path] === dataSource.title ? mode === "vertical" ? { background: "#e6f7ff", color: "#1890ff" } : {
+            style={keyMapObj[path] === dataSource.title ? mode === "vertical" ? { background: "#e6f7ff", color: "#1890ff" } : {
                 borderBottom: "2px solid #1890ff", color: "#1890ff"
             } : null}
         >
@@ -29,7 +34,7 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                     return (
                         catalog.length > 1 ?
                             <SubMenu
-                                key={item}
+                                key={dataSource.title + item}
                                 title={<span>{item}</span>}
                             >
                                 {catalog.map((item2, index2) => {
@@ -39,7 +44,7 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                                 })}
                             </SubMenu>
                             :
-                            <Menu.Item key={catalog[0].title}><Link to={catalog[0].href}>{catalog[0].title}</Link></Menu.Item>
+                            <Menu.Item key={dataSource.title + catalog[0].title}><Link to={catalog[0].href}>{catalog[0].title}</Link></Menu.Item>
                     )
                 })
             }
@@ -57,7 +62,7 @@ class index extends Component {
                 mode={mode}
                 theme="light"
                 id="menu"
-                selectedKeys={selectedKeyMap[path]}
+                selectedKeys={keyMapObj[path]}
             >
                 {
                     mode === "horizontal" ?
@@ -66,11 +71,12 @@ class index extends Component {
                         </Menu.Item>
                         : null
                 }
-                <Menu.Item key={myblogData.title}>
-                    <Link to={myblogData.baseHref}>{myblogData.title}</Link>
+                <Menu.Item key={totalData[0].title}>
+                    <Link to={totalData[0].baseHref}>{totalData[0].title}</Link>
                 </Menu.Item>
-                {SubMenuTemplate(gojsData, path, mode)}
-                {SubMenuTemplate(codeReview, path, mode)}
+                {SubMenuTemplate(totalData[1], path, mode)}
+                {SubMenuTemplate(totalData[2], path, mode)}
+                {SubMenuTemplate(totalData[3], path, mode)}
             </Menu>
         )
     }

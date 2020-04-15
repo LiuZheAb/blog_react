@@ -1,11 +1,11 @@
 //文档底部footer
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import IconFont from "../IconFont";
 import { WeiboShareButton } from "react-share";
 import QRCode from "qrcode.react";
 import setKeyMap from "../../utils/keymap";
-import { myblogData, gojsData, codeReview } from "../../assets/data"
+import { totalData } from "../../assets/data";
 import "./index.less";
 
 class index extends Component {
@@ -13,40 +13,20 @@ class index extends Component {
         let path = this.props.location.pathname;
         //将path以"/"分割,并保存到数组中
         const pathSnippets = path.split('/').filter(i => i);
-        let dataSource, recommandData;
-        switch (pathSnippets[0]) {
-            case "myblog":
-                dataSource = myblogData;
-                recommandData = [{
-                    title: "GoJS 教程",
-                    baseHref: "/gojs",
-                }, {
-                    title: "Code Review",
-                    baseHref: "/codereview",
-                }];
-                break;
-            case "gojs":
-                dataSource = gojsData;
-                recommandData = [{
-                    title: "本站介绍",
-                    baseHref: "/myblog",
-                }, {
-                    title: "Code Review",
-                    baseHref: "/codereview",
-                }];
-                break;
-            case "codereview":
-                dataSource = codeReview;
-                recommandData = [{
-                    title: "本站介绍",
-                    baseHref: "/myblog",
-                }, {
-                    title: "GoJS 教程",
-                    baseHref: "/gojs",
-                }];
-                break;
-            default:
-                break;
+        //获取当前文档
+        let dataSource = [], recommandData = [];
+        for (let i = 0; i < totalData.length; i++) {
+            if (pathSnippets[0] === totalData[i].baseHref.substr(1)) {
+                dataSource = totalData[i];
+                for (let j = 0; j < totalData.length; j++) {
+                    if (j !== i) {
+                        recommandData.push({
+                            title: totalData[j].title,
+                            baseHref: totalData[j].baseHref,
+                        })
+                    }
+                }
+            }
         }
         //获取数组中count个随机值
         function getRandomArrayElements(arr, count) {
@@ -76,13 +56,13 @@ class index extends Component {
                     <div className="share">
                         <div>
                             <div className="wx-icon" style={{ position: "relative" }}>
-                                <IconFont type="iconweixin" />
+                                <IconFont type="iconweixin1" title="微信" style={{ fontSize: 32, cursor: "pointer" }} />
                                 <div className="qrcode" >
                                     <div className="arrow"></div>
                                     <div className="inner">微信扫码阅读文档<QRCode value={window.location.href} /></div>
                                 </div>
                             </div>
-                            <WeiboShareButton style={{ marginLeft: 24 }} url={window.location.href} title={dataSource.title + "——" + nameMap[this.props.location.pathname]} ><IconFont type="iconweibo" style={{ fontSize: 40 }} /></WeiboShareButton>
+                            <WeiboShareButton style={{ marginLeft: 24, outline: "none" }} url={window.location.href} title={dataSource.title + "——" + nameMap[this.props.location.pathname]} ><IconFont type="iconweibo1" title="微博" style={{ fontSize: 32 }} /></WeiboShareButton>
                         </div>
                     如果觉得这篇文章有帮助的话,就分享一下吧,谢谢~
                 </div>

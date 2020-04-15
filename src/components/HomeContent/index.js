@@ -10,6 +10,7 @@ const { Content } = Layout;
 const GoJS = lazy(() => import('../GOJS'));
 const MyBlog = lazy(() => import('../MyBlog'));
 const CodeReview = lazy(() => import('../CodeReview'));
+const FreeCodeCamp = lazy(() => import('../FreeCodeCamp'));
 const PageFooter = lazy(() => import('../PageFooter'));
 
 export default class index extends Component {
@@ -32,7 +33,8 @@ export default class index extends Component {
                             <Route path="/gojs" render={() => { document.title = "GoJS 入门教程"; return <GoJS /> }} />
                             <Route path="/myblog" render={() => { document.title = "本站介绍"; return <MyBlog /> }} />
                             <Route path="/codereview" render={() => { document.title = "Code Review"; return <CodeReview /> }} />
-                            <Route path={["/myblog", "/gojs", "/codereview"]} render={() => (<PageFooter />)} />
+                            <Route path="/freecodecamp" render={() => { document.title = "FreeCodeCamp"; return <FreeCodeCamp /> }} />
+                            <Route path={["/myblog", "/gojs", "/codereview", "/freecodecamp"]} render={() => (<PageFooter />)} />
                         </Suspense>
                     </Router>
                 </Content>
