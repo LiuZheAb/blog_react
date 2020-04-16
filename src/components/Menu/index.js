@@ -73,11 +73,12 @@ class index extends Component {
                 }
                 {totalData.map((item, index) => {
                     return (
-
-                        item.catalog.length > 0 ? SubMenuTemplate(item, path, mode) : <Menu.Item key={item.title}>
-                            <Link to={item.baseHref}>{item.title}</Link>
-                        </Menu.Item>
-
+                        item.catalog.length > 0 ?
+                            SubMenuTemplate(item, path, mode)
+                            :
+                            <Menu.Item key={item.title}>
+                                <Link to={item.baseHref}>{item.title}</Link>
+                            </Menu.Item>
                     )
                 })}
             </Menu>

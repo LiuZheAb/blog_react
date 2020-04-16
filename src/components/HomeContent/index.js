@@ -7,11 +7,11 @@ import HomeList from "../HomeList";
 import "./index.less";
 
 const { Content } = Layout;
-const GoJS = lazy(() => import('../GOJS'));
-const MyBlog = lazy(() => import('../MyBlog'));
-const CodeReview = lazy(() => import('../CodeReview'));
-const FreeCodeCamp = lazy(() => import('../FreeCodeCamp'));
-const Problem = lazy(() => import('../Problem'));
+const GoJS = lazy(() => import('../Documents/GOJS'));
+const MyBlog = lazy(() => import('../Documents/MyBlog'));
+const CodeReview = lazy(() => import('../Documents/CodeReview'));
+const FreeCodeCamp = lazy(() => import('../Documents/FreeCodeCamp'));
+const Problem = lazy(() => import('../Documents/Problem'));
 const PageFooter = lazy(() => import('../PageFooter'));
 
 export default class index extends Component {
