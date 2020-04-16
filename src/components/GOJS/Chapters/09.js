@@ -145,7 +145,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第二节 网格布局(GridLayout)";
+        document.title = "GoJS教程——第二节 网格布局(GridLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -612,7 +612,11 @@ export default class index extends Component {
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
                         <p>决定使用Part.location还是Part.position来安排每个part</p>
-                        <p><em>默认的排列基准是Node的左上角,Node的locationSpot决定此属性</em></p>
+                        <div className="tip">
+                            <div className="tip-content">
+                                <em>默认的排列基准是Node的左上角,Node的locationSpot决定此属性</em>
+                            </div>
+                        </div>
                         <CodeMirror
                             value={code6}
                             options={{

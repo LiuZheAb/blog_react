@@ -80,7 +80,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第二节 GoJS应用中有什么";
+        document.title = "GoJS教程——第二节 GoJS应用中有什么";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -203,9 +203,13 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv2" className="diagram"></div>
-                        <p><em>Tool和CommandHandler默认可用，例如：你可以使用delete键删除元素，Ctrl-C、Ctrl-V复制粘贴元素</em></p>
-                        <p><em>在触摸设备上,长按元素将弹出command菜单</em></p>
-                        <p><em>更多详情请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
+                        <div className="tip">
+                            <div className="tip-content">
+                                <p><em>Tool和CommandHandler默认可用，例如：你可以使用delete键删除元素，Ctrl-C、Ctrl-V复制粘贴元素</em></p>
+                                <p><em>在触摸设备上,长按元素将弹出command菜单</em></p>
+                                <p><em>更多详情请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
+                            </div>
+                        </div>
                         <h2>Model的种类</h2>
                         <ul>
                             <li>GoJS Model有3种类型</li>

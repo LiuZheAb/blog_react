@@ -557,9 +557,13 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <div className="text-center"><button onClick={this.save} style={{ marginRight: 20 }}>Save</button><button onClick={this.load} style={{ marginRight: 20 }}>Load</button><button onClick={this.check}>下载查看JSON数据</button></div>
-                        <p><em>选中节点后，按delete键可删除组件</em></p>
+                        <div className="tip">
+                            <div className="tip-content">
+                            <p><em>选中节点后，按delete键可删除组件</em></p>
                         <p><em>在触摸设备上,长按元素将弹出command菜单</em></p>
                         <p><em>更多交互命令请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
+                            </div>
+                        </div>
                         <br />
                         <br />
                         <p>相关代码：</p>

@@ -165,7 +165,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第一节 简单的GoJS demo";
+        document.title = "GoJS教程——第一节 简单的GoJS demo";
         this.diagramRender1();
         this.diagramRender2();
         this.diagramRender3();
@@ -355,9 +355,11 @@ export default class index extends Component {
                             <li>向nodeDataArray中的节点添加颜色数据属性；</li>
                             <li>添加节点数据绑定。</li>
                         </ol>
-                        <p>
-                            <em>go.Binding()实现了属性和数据的绑定，例如new go.Binding("fill", "color"))，绑定了go.Shape的fill属性和nodeDataArray中的color。</em>
-                        </p>
+                        <div className="tip">
+                            <div className="tip-content">
+                                <em>go.Binding()实现了属性和数据的绑定，例如new go.Binding("fill", "color"))，绑定了go.Shape的fill属性和nodeDataArray中的color。</em>
+                            </div>
+                        </div>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror
                             value={code3}

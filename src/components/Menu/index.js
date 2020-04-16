@@ -39,7 +39,7 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                             >
                                 {catalog.map((item2, index2) => {
                                     return (
-                                        <Menu.Item key={item2.title}><Link to={item2.href}>{item2.title}</Link></Menu.Item>
+                                        <Menu.Item key={dataSource.title+item2.title}><Link to={item2.href}>{item2.title}</Link></Menu.Item>
                                     )
                                 })}
                             </SubMenu>

@@ -25,12 +25,10 @@ class index extends Component {
         });
         return (
             <Breadcrumb>
-                {<>
-                    <Breadcrumb.Item key="home">
-                        <Link to="/">首页</Link>
-                    </Breadcrumb.Item>
-                    {extraBreadcrumbItems}
-                </>}
+                <Breadcrumb.Item key="home">
+                    <Link to="/">首页</Link>
+                </Breadcrumb.Item>
+                {extraBreadcrumbItems}
             </Breadcrumb>
         )
     }

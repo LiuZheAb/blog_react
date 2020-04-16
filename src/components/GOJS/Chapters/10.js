@@ -695,7 +695,11 @@ export default class index extends Component {
                             <li>默认值:TreeLayout.StyleLayered</li>
                             <li>更多可选值请参考<a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-alternateAngle</a></li>
                         </ul>
-                        <p><em>上面的treeStyle设置为TreeLayout.StyleRootOnly,则"alternate"子树为除root节点外的子树</em></p>
+                        <div className="tip">
+                            <div className="tip-content">
+                                <em>上面的treeStyle设置为TreeLayout.StyleRootOnly,则"alternate"子树为除root节点外的子树</em>
+                            </div>
+                        </div>
                         <CodeMirror
                             value={code8}
                             options={{
