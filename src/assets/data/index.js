@@ -157,12 +157,15 @@ export let freeCodeCamp = {
             title: "简介"
         }, {
             href: "/freecodecamp/1",
-            title: "css 第一节"
+            title: "var()"
+        },{
+            href: "/freecodecamp/2",
+            title: "linear-gradient()"
         },
     ],
     section: {
         "简介": [0, 0],
-        "css篇": [1, 1],
+        "css篇": [1, 2],
     }
 };
 
