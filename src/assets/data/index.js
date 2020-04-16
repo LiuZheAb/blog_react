@@ -6,7 +6,8 @@ export let myblogData = {
     description: "建站经历",
     img: "myblog.png",
     content: "建站过程中的随笔。",
-    catalog: []
+    catalog: [],
+    section: {}
 };
 
 export let gojsData = {
@@ -158,7 +159,7 @@ export let freeCodeCamp = {
         }, {
             href: "/freecodecamp/1",
             title: "var()"
-        },{
+        }, {
             href: "/freecodecamp/2",
             title: "linear-gradient()"
         },
@@ -169,4 +170,24 @@ export let freeCodeCamp = {
     }
 };
 
-export let totalData = [myblogData, gojsData, codeReview, freeCodeCamp];
+export let proplemData = {
+    name: "proplem",
+    title: "问题汇总",
+    baseHref: "/problem",
+    description: "开发中遇到的问题",
+    img: "problem.jpg",
+    content: "用来记录开发中遇到的各种问题。",
+    catalog: [
+        {
+            href: "/problem/0",
+            title: "无法设置对象属性"
+        }, {
+            href: "/problem/1",
+            title: "问题2"
+        }
+    ],
+    section: {
+        "JS篇": [0, 1],
+    }
+};
+export let totalData = [myblogData, gojsData, codeReview, freeCodeCamp, proplemData];

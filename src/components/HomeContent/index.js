@@ -11,6 +11,7 @@ const GoJS = lazy(() => import('../GOJS'));
 const MyBlog = lazy(() => import('../MyBlog'));
 const CodeReview = lazy(() => import('../CodeReview'));
 const FreeCodeCamp = lazy(() => import('../FreeCodeCamp'));
+const Problem = lazy(() => import('../Problem'));
 const PageFooter = lazy(() => import('../PageFooter'));
 
 export default class index extends Component {
@@ -34,7 +35,8 @@ export default class index extends Component {
                             <Route path="/myblog" render={() => { document.title = "本站介绍"; return <MyBlog /> }} />
                             <Route path="/codereview" render={() => { document.title = "Code Review"; return <CodeReview /> }} />
                             <Route path="/freecodecamp" render={() => { document.title = "FreeCodeCamp"; return <FreeCodeCamp /> }} />
-                            <Route path={["/myblog", "/gojs", "/codereview", "/freecodecamp"]} render={() => (<PageFooter />)} />
+                            <Route path="/problem" render={() => { document.title = "问题汇总"; return <Problem /> }} />
+                            <Route path={["/myblog", "/gojs", "/codereview", "/freecodecamp", "/problem"]} render={() => (<PageFooter />)} />
                         </Suspense>
                     </Router>
                 </Content>

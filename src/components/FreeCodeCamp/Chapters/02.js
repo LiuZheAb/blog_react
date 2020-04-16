@@ -82,7 +82,6 @@ export default class index extends Component {
         }
     }
     render() {
-        console.log(this.state.divStyle);
         return (
             <div className="page-content">
                 <div className="article">

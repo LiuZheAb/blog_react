@@ -39,7 +39,7 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                             >
                                 {catalog.map((item2, index2) => {
                                     return (
-                                        <Menu.Item key={dataSource.title+item2.title}><Link to={item2.href}>{item2.title}</Link></Menu.Item>
+                                        <Menu.Item key={dataSource.title + item2.title}><Link to={item2.href}>{item2.title}</Link></Menu.Item>
                                     )
                                 })}
                             </SubMenu>
@@ -71,12 +71,15 @@ class index extends Component {
                         </Menu.Item>
                         : null
                 }
-                <Menu.Item key={totalData[0].title}>
-                    <Link to={totalData[0].baseHref}>{totalData[0].title}</Link>
-                </Menu.Item>
-                {SubMenuTemplate(totalData[1], path, mode)}
-                {SubMenuTemplate(totalData[2], path, mode)}
-                {SubMenuTemplate(totalData[3], path, mode)}
+                {totalData.map((item, index) => {
+                    return (
+
+                        item.catalog.length > 0 ? SubMenuTemplate(item, path, mode) : <Menu.Item key={item.title}>
+                            <Link to={item.baseHref}>{item.title}</Link>
+                        </Menu.Item>
+
+                    )
+                })}
             </Menu>
         )
     }
