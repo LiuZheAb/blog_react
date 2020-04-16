@@ -7,6 +7,7 @@ import { freeCodeCamp } from "../../assets/data";
 // 所有章节
 const FreeCodeCamp00 = lazy(() => import('./Chapters/00'));
 const FreeCodeCamp01 = lazy(() => import('./Chapters/01'));
+const FreeCodeCamp02 = lazy(() => import('./Chapters/02'));
 
 class index extends Component {
     componentDidMount() {
@@ -23,6 +24,7 @@ class index extends Component {
                     <Switch>
                         <Route exact path={freeCodeCamp.catalog[0].href} render={() => { document.title = freeCodeCamp.title + "——" + freeCodeCamp.catalog[0].title; return <FreeCodeCamp00 /> }} />
                         <Route exact path={freeCodeCamp.catalog[1].href} render={() => { document.title = freeCodeCamp.title + "——" + freeCodeCamp.catalog[1].title; return <FreeCodeCamp01 /> }} />
+                        <Route exact path={freeCodeCamp.catalog[2].href} render={() => { document.title = freeCodeCamp.title + "——" + freeCodeCamp.catalog[2].title; return <FreeCodeCamp02 /> }} />
                         {/* 文档首页目录 */}
                         <Route exact path={freeCodeCamp.baseHref} render={() => {
                             document.title = freeCodeCamp.title;
