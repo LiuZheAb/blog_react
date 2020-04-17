@@ -11,7 +11,7 @@
     z-index: 10;
     transition: top 0.2s ease 0.2s;
     will-change: top;
-    margin:0;
+    margin: 0;
     max-width: 224px;
 
     .tree-num {
@@ -20,7 +20,12 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        transition: all 0.2s;
         cursor: pointer;
+    }
+
+    .tree-num:hover {
+        color: #25b864;
     }
 
     .directory-item-active {
