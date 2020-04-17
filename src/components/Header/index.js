@@ -1,10 +1,7 @@
 //头部Header组件
 import React, { Component } from 'react'
 import { Layout, } from 'antd';
-import {
-    Link, withRouter,
-    // Route 
-} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Menu from "../Menu";
 import Breadcrumb from "../Breadcrumb";
 import IconFont from "../IconFont";
@@ -33,7 +30,7 @@ class index extends Component {
                         </Link>
                     </div>
                     <Breadcrumb />
-                        <Menu className="menu-horiz" mode="horizontal" />
+                    <Menu className="menu-horiz" mode="horizontal" />
 
                     {/* <Route path="/gojs/:id" render={() => (
                         <div className="back-to-top">
