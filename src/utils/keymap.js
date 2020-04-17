@@ -3,8 +3,8 @@ export default dataArray => {
     let keyMapObj = {}
     for (let i = 0; i < dataArray.length; i++) {
         keyMapObj[dataArray[i].baseHref] = dataArray[i].title;
-        for (let j = 0; j < dataArray[i].catalog.length; j++) {
-            keyMapObj[dataArray[i].catalog[j].href] = dataArray[i].catalog[j].title;
+        for (let j = 0; j < dataArray[i].section.length; j++) {
+            keyMapObj[dataArray[i].baseHref + "/" + j] = dataArray[i].section[j];
         }
     }
     return keyMapObj;

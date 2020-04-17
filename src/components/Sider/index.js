@@ -39,14 +39,14 @@ export default class index extends Component {
                         <a className="email" href="mailto:liu748951@163.com">liu748951@163.com</a>
                         <div className="othersites">
                             <a target="_blank" rel="noopener noreferrer" href="https://music.163.com/#/playlist?id=117824494" title="网易云音乐"><IconFont type="iconwyy" /></a>
-                            <a target="_blank" style={{ fontSize: 34, color: "#000" }} rel="noopener noreferrer" href="https://github.com/LiuZheAb/" title="Github"><IconFont type="icongithub"/></a>
+                            <a target="_blank" style={{ fontSize: 34, color: "#000" }} rel="noopener noreferrer" href="https://github.com/LiuZheAb/" title="Github"><IconFont type="icongithub" /></a>
                             <a target="_blank" rel="noopener noreferrer" href="https://www.yuque.com/liuzheab" title="语雀"><IconFont type="iconyuquemianlogo" /></a>
                         </div>
                         <div>爱编程。爱音乐</div>
                     </div>
-                    <Menu mode="vertical"/>
+                    <Menu mode="vertical" />
                 </div>
-            </Sider>
+            </Sider >
         )
     }
 }
