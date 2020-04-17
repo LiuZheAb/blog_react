@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Directory from "../../Directory";
+import Directory from "../../../Directory";
 import { Link } from "react-router-dom";
 
 export default class index extends Component {
@@ -26,6 +26,7 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
+        document.title = "Code Review——代码评审的速度";
         this.getArticleTree();
     }
     render() {
