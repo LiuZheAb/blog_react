@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 
 export default class index extends Component {
     constructor(props) {
@@ -25,7 +25,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "Code Review——如何编写代码评审的评论";
         this.getArticleTree();
     }
     render() {
