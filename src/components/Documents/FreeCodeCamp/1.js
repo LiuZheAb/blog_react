@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Directory from "../../../Directory";
-import IconFont from "../../../IconFont";
+import Directory from "../../Directory";
+import IconFont from "../../IconFont";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/3024-day.css';
 
@@ -50,7 +50,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "FreeCodeCamp——css篇 var()";
         this.getArticleTree();
     }
     render() {
@@ -74,11 +73,11 @@ export default class index extends Component {
                         <h2>语法</h2>
                         <p className="indent-2">方法的第一个参数是要替换的自定义属性的名称。函数的可选第二个参数用作回退值。如果第一个参数引用的自定义属性无效，则该函数将使用第二个值。</p>
                         <p className="indent-2"><code>{`var( <custom-property-name> , <declaration-value>? )`}</code></p>
-                        <ul className="indent-2">
+                        <ul>
                             <li>{`<custom-property-name> 自定义属性名`}</li>
-                            <p className="indent-2">在实际应用中它被定义为以两个破折号开始的任何有效标识符。 自定义属性仅供作者和用户使用; CSS 将永远不会给他们超出这里表达的意义。</p>
+                            <p>在实际应用中它被定义为以两个破折号开始的任何有效标识符。 自定义属性仅供作者和用户使用; CSS 将永远不会给他们超出这里表达的意义。</p>
                             <li>{`<declaration-value> 声明值（后备值）`}</li>
-                            <p className="indent-2">回退值被用来在自定义属性值无效的情况下保证函数有值。回退值可以包含任何字符，但是部分有特殊含义的字符除外，例如换行符、不匹配的右括号（如)、]或}）、感叹号以及顶层分号（不被任何非var()的括号包裹的分号，例如var(--bg-color, --bs;color)是不合法的，而var(--bg-color, --value(bs;color))是合法的）。</p>
+                            <p>回退值被用来在自定义属性值无效的情况下保证函数有值。回退值可以包含任何字符，但是部分有特殊含义的字符除外，例如换行符、不匹配的右括号（如)、]或}）、感叹号以及顶层分号（不被任何非var()的括号包裹的分号，例如var(--bg-color, --bs;color)是不合法的，而var(--bg-color, --value(bs;color))是合法的）。</p>
                         </ul>
                         <h2>示例</h2>
                         <CodeMirror
@@ -87,7 +86,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <br />
@@ -97,7 +95,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
 

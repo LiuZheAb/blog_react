@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/3024-day.css';
 
@@ -34,6 +34,11 @@ let code10 = `linear-gradient(
     and <linear-color-stop> = <color> [ <color-stop-length> ]?
     and <color-stop-length> = [ <percentage> | <length> ]{1,2}
     and <color-hint> = [ <percentage> | <length> ]`;
+let code11 = `background-color: #F07575; /* 不支持渐变的浏览器回退方案 */
+background-image: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #bada55); /* 支持 Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+background-image:    -moz-linear-gradient(top, hsl(0, 80%, 70%), #bada55); /* 支持 Firefox (3.6 to 15) */
+background-image:      -o-linear-gradient(top, hsl(0, 80%, 70%), #bada55); /* 支持旧 Opera (11.1 to 12.0) */ 
+background-image:         linear-gradient(to bottom, hsl(0, 80%, 70%), #bada55); /* 标准语法; 需要最新版本 */`;
 export default class index extends Component {
     constructor(props) {
         super(props);
@@ -59,7 +64,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "FreeCodeCamp——css篇 linear-gradient()";
         this.getArticleTree();
     }
     selectCode(index) {
@@ -97,7 +101,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <h2>示例</h2>
@@ -110,7 +113,6 @@ export default class index extends Component {
                                         theme: '3024-day',
                                         mode: 'CSS',
                                         readOnly: true,
-                                        lineNumbers: true,
                                     }}
                                 />
                             </div>
@@ -121,7 +123,6 @@ export default class index extends Component {
                                         theme: '3024-day',
                                         mode: 'CSS',
                                         readOnly: true,
-                                        lineNumbers: true,
                                     }}
                                 />
                             </div>
@@ -132,7 +133,6 @@ export default class index extends Component {
                                         theme: '3024-day',
                                         mode: 'CSS',
                                         readOnly: true,
-                                        lineNumbers: true,
                                     }}
                                 />
                             </div>
@@ -143,7 +143,6 @@ export default class index extends Component {
                                         theme: '3024-day',
                                         mode: 'CSS',
                                         readOnly: true,
-                                        lineNumbers: true,
                                     }}
                                 />
                             </div>
@@ -156,7 +155,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <div style={{ margin: "10px 0", background: "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)", width: "100%", height: "20px" }}></div>
@@ -167,7 +165,7 @@ export default class index extends Component {
                         </div>
                         <h2>线形渐变的构成</h2>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/linear-gradient.png")} alt="" style={{ width: 300 }} />
+                            <img src={require("../../../assets/images/linear-gradient.png")} alt="" style={{ width: 300 }} />
                         </div>
                         <p className="indent-2">线性渐变由一个轴 (梯度线) 定义，其上的每个点具有两种或多种的颜色，且轴上的每个点都具有独立的颜色。为了构建出平滑的渐变，linear-gradient() 函数构建一系列垂直于渐变线的着色线，每一条着色线的颜色则取决于与之垂直相交的渐变线上的色点</p>
                         <p className="indent-2">渐变线由包含渐变图形的容器的中心点和一个角度来定义的。渐变线上的颜色值是由不同的点来定义，包括起始点，终点，以及两者之间的可选的中间点（中间点可以有多个）。</p>
@@ -182,7 +180,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <p className="indent-2">默认情况下，从一个颜色的终止点平滑的过渡到另一个颜色的终止点，颜色之间的中点是两个颜色颜色转换的中点。你可以将中点移动到这两个颜色之间的任意位置，方法是在两个颜色之间添加未标记的 %，以指示颜色的中转位置。下面的示例是从起始点到10%的位置标记红色，从90%到结束标记蓝色。在10%到90%之间，颜色从红色过渡到蓝色，然而过渡的中点是在30%的标记上，而不是在没有30%中转点的情况下会默认为50%。</p>
@@ -192,7 +189,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <p className="indent-2">如果两个或多个颜色终止在同一位置，则在该位置声明的第一个颜色和最后一个颜色之间的过渡将是一条生硬线。</p>
@@ -203,7 +199,6 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <p className="indent-2">允许颜色多个颜色终止位置。通过在CSS声明中包含两个位置，可以将一个颜色声明为两个相邻的颜色终止。以下三个梯度是相等的:</p>
@@ -213,12 +208,11 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
                         <p className="indent-2">默认情况下，如果不带0%终止的颜色，则在该点声明的第一个颜色。类似地，最后一种颜色将持续到100%标记，或者如果在最后一个没有声明长度，则在100%标记处。</p>
                         <h2>语法</h2>
-                        <ul className="indent-2">
+                        <ul>
                             <li>{`<side-or-corner>`}</li>
                             <p>描述渐变线的起始点位置。它包含to和两个关键词：第一个指出水平位置left or right，第二个指出垂直位置top or bottom。关键词的先后顺序无影响，且都是可选的。</p>
                             <p>to top, to bottom, to left 和 to right这些值会被转换成角度0度、180度、270度和90度。其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。渐变线的结束点与其起点中心对称。</p>
@@ -236,9 +230,29 @@ export default class index extends Component {
                                 theme: '3024-day',
                                 mode: 'CSS',
                                 readOnly: true,
-                                lineNumbers: true,
                             }}
                         />
+                        <h2>使用透明度</h2>
+                        <CodeMirror
+                            value={`background: linear-gradient(to bottom right, red, rgba(0,0,0,0));`}
+                            options={{
+                                theme: '3024-day',
+                                mode: 'CSS',
+                                readOnly: true,
+                            }}
+                        />
+                        <div style={{ margin: "10px 0", background: "linear-gradient(to bottom right, red, rgba(0,0,0,0))", width: "100%", height: "20px" }}></div>
+                        <h2>跨浏览器兼容性</h2>
+                        <p className="indent-2"></p>
+                        <CodeMirror
+                            value={code11}
+                            options={{
+                                theme: '3024-day',
+                                mode: 'CSS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">-moz-前缀的规则用于兼容Fx 3.6 to Fx 15的火狐浏览器。 -webkit-前缀的规则用于兼容在Android 4.3以前版本、iOS 6.1以前版本、Safari 6。当使用带前缀的规则时，不要加“to”关键字。</p>
                     </div>
                 </div>
                 <div className="directory">
