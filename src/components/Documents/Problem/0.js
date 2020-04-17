@@ -59,7 +59,7 @@ export default class index extends Component {
                         <p className="indent-2">就是需要通过函数返回而不是对象。所以要写成函数的形式。</p>
                         <p className="indent-2">写法如下</p>
                         <CodeMirror
-                            value={`<Route exact path={gojsData.baseHref} render={() => <Catalog dataSource={gojsData} />} />`}
+                            value={`<Route exact path={gojsData.baseHref} compontent={() => <Catalog dataSource={gojsData} />} />`}
                             options={{
                                 theme: 'monokai',
                                 mode: 'JSX',
