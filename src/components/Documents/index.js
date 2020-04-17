@@ -19,14 +19,19 @@ class index extends Component {
             <Router>
                 <Suspense fallback={<Loder />}>
                     <Switch>
-                        {/* 文档首页目录 */}
-                        <Route exact path={dataSource.baseHref} render={() => <Catalog dataSource={dataSource} />} />
-                        {/*文档章节*/}
-                        {dataSource.section.map((item, index) => {
-                            return (
-                                <Route key={index} exact path={dataSource.baseHref + "/" + index} component={lazy(() => import(`./${dataSource.component}/${index}`))} />
-                            )
-                        })}
+                        {dataSource.section.length > 0
+                            ?
+                            <>
+                                < Route exact path={dataSource.baseHref} render={() => <Catalog dataSource={dataSource} />} />
+                                {dataSource.section.map((item, index) => {
+                                    return (
+                                        <Route key={index} exact path={dataSource.baseHref + "/" + index} component={lazy(() => import(`./${dataSource.component}/${index}`))} />
+                                    )
+                                })}
+                            </>
+                            :
+                            <Route path={dataSource.baseHref} component={lazy(() => import(`../Documents/${dataSource.component}`))} />
+                        }
                     </Switch>
                 </Suspense>
             </Router>

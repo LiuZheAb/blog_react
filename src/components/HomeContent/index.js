@@ -41,10 +41,7 @@ class index extends Component {
                             <Route exact path="/" render={() => { return <HomeList /> }} />
                             {hrefArray.map((item, index) => {
                                 return (
-                                    totalData[index].section.length > 0
-                                        ?
-                                        <Route key={index} path={item} component={() => <Documents dataSource={totalData[index]} />} />
-                                        : <Route key={index} path={item} component={lazy(() => import(`../Documents/${totalData[index].component}`))} />
+                                    <Route key={index} path={item} component={() => <Documents dataSource={totalData[index]} />} />
                                 )
                             })}
                             <Route path={hrefArray} render={() => (<PageFooter />)} />
