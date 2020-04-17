@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import { Link } from "react-router-dom";
 import go from "gojs";
 
@@ -80,7 +80,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——第二节 GoJS应用中有什么";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -165,7 +164,7 @@ export default class index extends Component {
                         </ul>
                         <p>如图所示：</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/1585126990498-9287a82e-b7bd-4a6c-85e0-8805577ef2ce.png")} style={{ width: 300 }} alt="" />
+                            <img src={require("../../../assets/images/1585126990498-9287a82e-b7bd-4a6c-85e0-8805577ef2ce.png")} style={{ width: 300 }} alt="" />
                         </div>
                         <p>数据双向绑定的例子请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/samples/updateDemo.html">GoJS_updateDemo</a></p>
                         <h2>构建一个Diagram</h2>

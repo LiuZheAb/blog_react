@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import go from "gojs";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 
 let $ = go.GraphObject.make;
 
@@ -165,7 +165,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——第一节 简单的GoJS demo";
         this.diagramRender1();
         this.diagramRender2();
         this.diagramRender3();

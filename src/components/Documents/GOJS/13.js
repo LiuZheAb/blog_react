@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
@@ -123,7 +123,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——第六节 环状布局(CircularLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -634,11 +633,11 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200407213951.png")} alt="" />
+                            <img src={require("../../../assets/images/20200407213951.png")} alt="" />
                         </div>
                         <p>radius:150,spacing:50(但实际的spacing更大,因为要适应更大的radius)</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200407214315.png")} alt="" />
+                            <img src={require("../../../assets/images/20200407214315.png")} alt="" />
                         </div>
                         <p>radius:50(但实际的radius更大,因为要适应的spacing),spacing:50</p>
                         <h2>startAngle</h2>
@@ -656,7 +655,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200407215235.png")} alt="" />
+                            <img src={require("../../../assets/images/20200407215235.png")} alt="" />
                         </div>
                         <p>如图所示,Zeta从0顺时针旋转90°到90的位置</p>
                         <h2>sweepAngle</h2>
@@ -675,7 +674,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 500 }}></div>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200407220047.png")} alt="" />
+                            <img src={require("../../../assets/images/20200407220047.png")} alt="" />
                         </div>
                         <h2>aspectRatio</h2>
                         <ul>

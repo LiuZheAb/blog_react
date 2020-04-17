@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
@@ -92,7 +92,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第六节 GoJS GraphObject属性";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -211,7 +210,7 @@ export default class index extends Component {
                         stroke: "purple",
                         strokeWidth: 10
                     }),
-                    $(go.Picture, require("../../../../assets/images/avatar.jpg"),
+                    $(go.Picture, require("../../../assets/images/avatar.jpg"),
                         {
                             desiredSize: new go.Size(150, 100),
                             margin: new go.Margin(25, 0, 0, 0)
@@ -248,7 +247,7 @@ export default class index extends Component {
                         stroke: "purple",
                         strokeWidth: 10
                     }),
-                    $(go.Picture, require("../../../../assets/images/avatar.jpg"),
+                    $(go.Picture, require("../../../assets/images/avatar.jpg"),
                         {
                             desiredSize: new go.Size(150, 100),
                             margin: new go.Margin(25, 0, 0, 0)
@@ -289,7 +288,7 @@ export default class index extends Component {
                         stroke: "purple",
                         strokeWidth: 10
                     }),
-                    $(go.Picture, require("../../../../assets/images/avatar.jpg"), {
+                    $(go.Picture, require("../../../assets/images/avatar.jpg"), {
                         desiredSize: new go.Size(150, 100),
                         margin: new go.Margin(25, 0, 0, 0)
                     })
@@ -318,7 +317,7 @@ export default class index extends Component {
                         <h3>TextBlock的属性</h3>
                         <p>代码及效果如下：</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200405211225.png")} alt="" />
+                            <img src={require("../../../assets/images/20200405211225.png")} alt="" />
                         </div>
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <ul>
@@ -347,7 +346,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>Shape的属性</h3>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200405213635.png")} alt="" />
+                            <img src={require("../../../assets/images/20200405213635.png")} alt="" />
                         </div>
                         <CodeMirror
                             value={code2}

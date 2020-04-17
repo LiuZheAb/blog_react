@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import go from "gojs";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 
 let $ = go.GraphObject.make;
 let code1 = `let myDiagram = $(go.Diagram, "myDiagramDiv");
@@ -135,7 +135,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——第三节 使用GoJS构建Parts(Parts 和 Panels)";
         this.diagramRender1();
         this.diagramRender2();
         this.diagramRender3();
@@ -378,7 +377,7 @@ export default class index extends Component {
                         </ul>
                         <p>如下图所示：</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/1585146074836-5d244c42-8534-4c61-8bc9-be81702110b7.png")} alt="" />
+                            <img src={require("../../../assets/images/1585146074836-5d244c42-8534-4c61-8bc9-be81702110b7.png")} alt="" />
                         </div>
                         <h2>GraphObject是什么</h2>
                         <ul>
@@ -401,7 +400,7 @@ export default class index extends Component {
                             <li>Auto</li>
                         </ul>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/1585146820036-10d71ce5-2edd-4573-9b5a-132548554409.png")} alt="" />
+                            <img src={require("../../../assets/images/1585146820036-10d71ce5-2edd-4573-9b5a-132548554409.png")} alt="" />
                         </div>
                         <h2>Position Panels</h2>
                         <ul>
@@ -531,7 +530,7 @@ export default class index extends Component {
                         </ul>
                         <p>如图所示：</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/1585187909595-5fb53263-9973-41c6-a159-703293b91af0.png")} alt="" />
+                            <img src={require("../../../assets/images/1585187909595-5fb53263-9973-41c6-a159-703293b91af0.png")} alt="" />
                         </div>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror
@@ -596,7 +595,7 @@ export default class index extends Component {
                         <h2>任意复杂Parts</h2>
                         <p>Panels可以组合创建复杂Parts</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200408093848.png")} alt="" />
+                            <img src={require("../../../assets/images/20200408093848.png")} alt="" />
                         </div>
                         <br />
                         <br />

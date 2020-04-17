@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import { List, Card } from 'antd';
 import go from "gojs";
 const { Meta } = Card;
@@ -80,7 +80,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——写在前面";
         this.getArticleTree();
         this.diagramRender();
     }
@@ -122,7 +121,7 @@ export default class index extends Component {
                                     <a href={"https://gojs.net/latest/samples/" + item.url} target="_blank" rel="noopener noreferrer">
                                         <Card
                                             hoverable
-                                            cover={<img src={require("../../../../assets/images/" + item.overview)} alt="" />}
+                                            cover={<img src={require("../../../assets/images/" + item.overview)} alt="" />}
                                         >
                                             <Meta title={item.name} />
                                         </Card>

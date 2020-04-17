@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
@@ -116,7 +116,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——第四节 力导向布局(ForceDirectedLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -370,7 +369,7 @@ export default class index extends Component {
                         <h2>电场斥力</h2>
                         <p>把每个Node看做一个电荷,电荷与电荷之间存在斥力,也就是库仑力,根据库仑定律(Coulomb's law),电荷之间的斥力可以这么计算:</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/coulomb.png")} alt="" />
+                            <img src={require("../../../assets/images/coulomb.png")} alt="" />
                         </div>
                         <p className="text-center">Coulomb's law</p>
                         <ul>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
@@ -104,7 +104,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "GoJS教程——第五节 层次布局(LayeredDigraphLayout)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();

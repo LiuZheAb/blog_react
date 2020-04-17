@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
@@ -235,7 +235,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title="GoJS教程——第五节 使用GoJS构建Parts(Templates)";
         this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
@@ -595,7 +594,7 @@ export default class index extends Component {
                         </ul>
                         <p>如下图所示</p>
                         <div className="text-center">
-                            <img src={require("../../../../assets/images/20200405140043.png")} alt="" />
+                            <img src={require("../../../assets/images/20200405140043.png")} alt="" />
                         </div>
                         <h2>数据绑定</h2>
                         <CodeMirror
