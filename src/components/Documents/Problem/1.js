@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Directory from "../../../Directory";
+import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/3024-day.css';
 
@@ -33,7 +33,6 @@ export default class index extends Component {
         this.setState({ articleTree });
     }
     componentDidMount() {
-        document.title = "问题汇总——无法设置对象属性";
         this.getArticleTree();
     }
     render() {
@@ -41,9 +40,11 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>Cannot add property x, object is not extensible</h1>
+                        <h1>无法设置对象属性</h1>
                     </div>
                     <div className="article-content">
+                        <h2>问题</h2>
+                        <p className="indent-2" style={{ color: "#ce1126", fontSize: "18px", fontWeight: 600 }}>Cannot add property x, object is not extensible</p>
                         <h2>问题背景</h2>
                         <p className="indent-2">2020-04-16晚</p>
                         <p className="indent-2">在整理FreeCodeCamp——css篇linear-gradient()时遇到此问题</p>
@@ -62,7 +63,6 @@ export default class index extends Component {
                                 lineNumbers: true,
                             }}
                         />
-
                     </div>
                 </div>
                 <div className="directory">
