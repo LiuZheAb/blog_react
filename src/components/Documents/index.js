@@ -22,7 +22,7 @@ class index extends Component {
                         {dataSource.section.length > 0
                             ?
                             <>
-                                < Route exact path={dataSource.baseHref} render={() => <Catalog dataSource={dataSource} />} />
+                                < Route exact path={dataSource.baseHref} component={() => <Catalog dataSource={dataSource} />} />
                                 {dataSource.section.map((item, index) => {
                                     return (
                                         <Route key={index} exact path={dataSource.baseHref + "/" + index} component={lazy(() => import(`./${dataSource.component}/${index}`))} />
