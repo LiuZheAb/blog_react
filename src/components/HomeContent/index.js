@@ -1,8 +1,7 @@
 //内容组件
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component, lazy } from 'react';
 import { Layout } from 'antd';
-import { HashRouter as Router, Route, withRouter } from "react-router-dom";
-import Loder from '../Loder';
+import { Route, withRouter } from "react-router-dom";
 import HomeList from "../HomeList";
 import { totalData } from "../../assets/data";
 import setKeyMap from "../../utils/keymap";
@@ -36,17 +35,13 @@ class index extends Component {
                         background: "#fff"
                     }}
                 >
-                    <Router>
-                        <Suspense fallback={<Loder />}>
-                            <Route exact path="/" render={() => { return <HomeList /> }} />
-                            {hrefArray.map((item, index) => {
-                                return (
-                                    <Route key={index} path={item} component={() => <Documents dataSource={totalData[index]} />} />
-                                )
-                            })}
-                            <Route path={hrefArray} render={() => (<PageFooter />)} />
-                        </Suspense>
-                    </Router>
+                    <Route exact path="/" render={() => { return <HomeList /> }} />
+                    {hrefArray.map((item, index) => {
+                        return (
+                            <Route key={index} path={item} component={() => <Documents dataSource={totalData[index]} />} />
+                        )
+                    })}
+                    <Route path={hrefArray} render={() => (<PageFooter />)} />
                 </Content>
             </Layout>
         )
