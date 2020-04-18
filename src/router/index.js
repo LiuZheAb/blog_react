@@ -10,7 +10,7 @@ export default class EarthRouter extends React.Component {
             <Router>
                 <Suspense fallback={<Loder />}>
                     <Switch>
-                        <Route path={["/"]} render={() => (<Home />)} />
+                        <Route path="/" render={() => <Home />} />
                     </Switch>
                 </Suspense>
             </Router>
