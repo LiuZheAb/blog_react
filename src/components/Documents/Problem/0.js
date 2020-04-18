@@ -13,7 +13,7 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>问题</h2>
-                        <p className="indent-2" style={{ color: "#ce1126", fontSize: "18px", fontWeight: 600 }}>Warning: Failed prop type: Invalid prop 'component' supplied to 'Route': the prop is not a valid React component</p>
+                        <p className="indent-2" style={{ color: "#ce1126", fontSize: 18, fontWeight: 600 }}>Warning: Failed prop type: Invalid prop 'component' supplied to 'Route': the prop is not a valid React component</p>
                         <h2>问题背景</h2>
                         <p className="indent-2">2020-04-17晚</p>
                         <p className="indent-2">将文档入口文件的路由配置改为map遍历后,引入文档目录组件遇到此问题</p>

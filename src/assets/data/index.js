@@ -95,11 +95,11 @@ export let freeCodeCamp = {
         "var()",
         "linear-gradient()",
         "scale()",
-        "scale()",
+        "skew()",
     ],
     chapter: {
         "简介": [0, 0],
-        "css篇": [1, 3],
+        "css篇": [1, 4],
     }
 };
 //问题汇总

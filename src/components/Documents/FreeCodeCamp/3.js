@@ -3,6 +3,20 @@ import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/3024-day.css';
 
+let code1 = `<p>foo</p>
+<p class="transformed">bar</p>`;
+let code2 = `p { 
+    width: 50px;
+    height: 50px;
+    background-color: teal;
+}
+
+.transformed {
+    /* 等同于变换: scaleX(2) scaleY(2);*/
+    transform: scale(2);
+    background-color: blue;
+}`;
+
 export default class index extends Component {
     render() {
         return (
@@ -54,8 +68,7 @@ export default class index extends Component {
                         <h2>示例</h2>
                         <p>HTML</p>
                         <CodeMirror
-                            value={`<p>foo</p>
-<p class="transformed">bar</p>`}
+                            value={code1}
                             options={{
                                 theme: '3024-day',
                                 mode: 'HTML',
@@ -64,17 +77,7 @@ export default class index extends Component {
                         />
                         <p>CSS</p>
                         <CodeMirror
-                            value={`p { 
-    width: 50px;
-    height: 50px;
-    background-color: teal;
-}
-
-.transformed {
-    /* 等同于变换: scaleX(2) scaleY(2);*/
-    transform: scale(2);
-    background-color: blue;
-}`}
+                            value={code2}
                             options={{
                                 theme: '3024-day',
                                 mode: 'CSS',
@@ -83,8 +86,8 @@ export default class index extends Component {
                         />
                         <p>结果</p>
                         <div style={{ paddingLeft: 24 }}>
-                            <p style={{ width: "50px", height: "50px", backgroundColor: "#CCFFFF" }}>foo</p>
-                            <p style={{ width: "50px", height: "50px", transform: "scale(2)", backgroundColor: "#FFCCCC" }}>bar</p>
+                            <p style={{ width: 50, height: 50, backgroundColor: "#CCFFFF" }}>foo</p>
+                            <p style={{ width: 50, height: 50, transform: "scale(2)", backgroundColor: "#FFCCCC" }}>bar</p>
                         </div>
                     </div>
                 </div>

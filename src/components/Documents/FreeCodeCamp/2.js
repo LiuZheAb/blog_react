@@ -44,16 +44,16 @@ export default class index extends Component {
         super(props);
         this.state = {
             articleTree: [],
-            divStyle: { width: "100%", height: "300px", maxWidth: "300px", margin: "0 auto 8px", background: "linear-gradient(#e66465, #9198e5)" }
+            divStyle: { width: "100%", height: 300, maxWidth: 300, margin: "0 auto 8px", background: "linear-gradient(#e66465, #9198e5)" }
         };
     }
     selectCode(index) {
         let divStyle = { ...this.state.divStyle };
-        index === 0 ? divStyle.background = "linear-gradient(#e66465, #9198e5)"
-            : index === 1 ? divStyle.background = "linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)"
-                : index === 2 ? divStyle.background = "linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%)"
-                    : index === 3 ? divStyle.background = "linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%)"
-                        : divStyle.background = "";
+        divStyle.background = index === 0 ? "linear-gradient(#e66465, #9198e5)"
+            : index === 1 ? "linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)"
+                : index === 2 ? "linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%)"
+                    : index === 3 ? "linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%)"
+                        : "";
         this.setState({
             divStyle
         });
@@ -86,7 +86,7 @@ export default class index extends Component {
                         />
                         <h2>示例</h2>
                         <p>点击下面的代码块查看预览</p>
-                        <div style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}>
+                        <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
                             <div className="code-box code-box-active" onClick={this.selectCode.bind(this, 0)}>
                                 <CodeMirror
                                     value={code2}
@@ -138,7 +138,7 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <div style={{ margin: "10px 0", background: "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)", width: "100%", height: "20px" }}></div>
+                        <div style={{ margin: "10px 0", background: "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)", width: "100%", height: 20 }}></div>
                         <div className="tip">
                             <div className="tip-content">
                                 <p><em>{`由于<gradient>数据类型系<image>的子数据类型，<gradient>只能被用于<image>可以使用的地方。因此，linear-gradient() 并不适用于background-color以及类似的使用 <color>数据类型的属性中。`}</em></p>
@@ -222,7 +222,7 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <div style={{ margin: "10px 0", background: "linear-gradient(to bottom right, red, rgba(0,0,0,0))", width: "100%", height: "20px" }}></div>
+                        <div style={{ margin: "10px 0", background: "linear-gradient(to bottom right, red, rgba(0,0,0,0))", width: "100%", height: 20 }}></div>
                         <h2>跨浏览器兼容性</h2>
                         <p className="indent-2"></p>
                         <CodeMirror
