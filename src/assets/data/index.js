@@ -121,4 +121,5 @@ export let proplemData = {
         "JS篇": [1, 2],
     }
 };
+
 export let totalData = [myblogData, gojsData, codeReview, freeCodeCamp, proplemData];
