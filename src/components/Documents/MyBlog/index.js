@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
 import { createFromIconfontCN } from '@ant-design/icons';
+import IconFont from "../../IconFont";
 
 const Emoji = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_1764079_wbj57wahdm.js',
@@ -51,13 +52,13 @@ export default class index extends Component {
                             <em>写于2020-4-18下午</em>
                         </div>
                         <h2>用到了哪些</h2>
-                        <ul className="indent-2">
-                            <li><a href="https://react.docschina.org/" target="_blank" rel="noopener noreferrer">React</a></li>
-                            <li><a href="https://ant.design/" target="_blank" rel="noopener noreferrer">AntDesign</a></li>
-                            <li><a href="http://lesscss.cn/" target="_blank" rel="noopener noreferrer">Less</a></li>
-                            <li><a href="https://gojs.net/latest/index.html" target="_blank" rel="noopener noreferrer">GoJS</a></li>
-                            <li><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer">IconFont</a></li>
-                            <li><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></li>
+                        <ul className="indent-2 dependencies">
+                            <li><a href="https://react.docschina.org/" target="_blank" rel="noopener noreferrer"><IconFont type="iconReact" />React</a></li>
+                            <li><a href="https://ant.design/" target="_blank" rel="noopener noreferrer"><img src={require("../../../assets/images/antd-icon.png")} alt="AntDesign" />AntDesign</a></li>
+                            <li><a href="http://lesscss.cn/" target="_blank" rel="noopener noreferrer"><img src={require("../../../assets/images/less-icon.png")} alt="Less" />Less</a></li>
+                            <li><a href="https://gojs.net/latest/index.html" target="_blank" rel="noopener noreferrer"><img src={require("../../../assets/images/gojs-icon.png")} alt="GoJS" />GoJS</a></li>
+                            <li><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer"><IconFont type="iconiconfont" />IconFont</a></li>
+                            <li><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer"><IconFont type="iconGithub-2" />GitHub Pages</a></li>
                         </ul>
                         <br />
                         <p className="indent-2">UI部分参考了语雀</p>

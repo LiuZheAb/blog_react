@@ -7,110 +7,7 @@
     .article {
         width: calc(100% - 200px);
 
-        h1 {
-            font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
-            font-size: 36px;
-            line-height: 1.389;
-            font-weight: 700;
-            color: #262626;
-            display: inline;
-        }
 
-        h2 {
-            font-size: 28px;
-            line-height: 36px;
-            margin: 26px 0 10px 0;
-            white-space: normal;
-            word-spacing: 1px;
-            color: #262626;
-            font-weight: bold;
-            padding: 0;
-        }
-
-        h3 {
-            font-size: 24px;
-            line-height: 32px;
-            margin: 21px 0 5px 0;
-            white-space: normal;
-            word-spacing: 1px;
-            color: #262626;
-            font-weight: bold;
-            padding: 0;
-        }
-
-        .tip {
-            width: 100%;
-            border-left: 5px solid #94db9a;
-            background-color: rgb(220, 248, 220), ;
-            /*background: linear-gradient(217deg, #FFFFCC, rgba(255, 255, 0, 0) 70.71%),
-                linear-gradient(127deg, #CCFFFF, rgba(0, 0, 255, 0) 70.71%),
-                linear-gradient(336deg, #FFCCCC, rgba(255, 0, 0, 0) 70.71%);*/
-            padding: 10px 0;
-
-            .tip-icon {
-                margin: 0 15px 0 5px;
-            }
-
-            .tip-title {
-                font-weight: 600;
-                color: #000;
-            }
-
-            .tip-content {
-                padding-left: 20px;
-
-                em {
-                    color: #595959;
-                }
-            }
-        }
-
-        .code-box {
-            margin-bottom: 10px;
-            border: 5px solid #ddd;
-            transition: border 0.2s;
-        }
-
-        .code-box:hover {
-            border-color: #999;
-        }
-
-        .code-box-active {
-            border-color: #94db9a;
-        }
-
-        .code-box-active:hover {
-            border-color: #94db9a;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .indent-2 {
-            text-indent: 2em;
-        }
-
-        .anticon {
-            text-indent: 0;
-            font-size: 32px;
-        }
-
-        em {
-            color: #8c8c8c;
-        }
-
-        .diagram {
-            width: 100%;
-            max-width: 300px;
-            height: 300px;
-            border: 1px solid #666;
-            margin: 20px auto;
-        }
 
         .article-title {
             margin-bottom: 32px;
@@ -122,6 +19,41 @@
             font-size: 16px;
             color: #404040;
             letter-spacing: 0.008em;
+
+            h1 {
+                font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+                font-size: 36px;
+                line-height: 1.389;
+                font-weight: 700;
+                color: #262626;
+                display: inline;
+            }
+
+            h2 {
+                font-size: 28px;
+                line-height: 36px;
+                margin: 26px 0 10px 0;
+                white-space: normal;
+                word-spacing: 1px;
+                color: #262626;
+                font-weight: bold;
+                padding: 0;
+            }
+
+            h3 {
+                font-size: 24px;
+                line-height: 32px;
+                margin: 21px 0 5px 0;
+                white-space: normal;
+                word-spacing: 1px;
+                color: #262626;
+                font-weight: bold;
+                padding: 0;
+            }
+
+            em {
+                color: #8c8c8c;
+            }
 
             p {
                 white-space: normal;
@@ -176,6 +108,76 @@
                 touch-action: manipulation;
             }
 
+            .text-center {
+                text-align: center;
+            }
+
+            .text-right {
+                text-align: right;
+            }
+
+            .indent-2 {
+                text-indent: 2em;
+            }
+
+            .tip {
+                width: 100%;
+                border-left: 5px solid #94db9a;
+                background-color: rgb(220, 248, 220), ;
+                /*background: linear-gradient(217deg, #FFFFCC, rgba(255, 255, 0, 0) 70.71%),
+                    linear-gradient(127deg, #CCFFFF, rgba(0, 0, 255, 0) 70.71%),
+                    linear-gradient(336deg, #FFCCCC, rgba(255, 0, 0, 0) 70.71%);*/
+                padding: 10px 0;
+
+                .tip-icon {
+                    margin: 0 15px 0 5px;
+                }
+
+                .tip-title {
+                    font-weight: 600;
+                    color: #000;
+                }
+
+                .tip-content {
+                    padding-left: 20px;
+
+                    em {
+                        color: #595959;
+                    }
+                }
+            }
+
+            .diagram {
+                width: 100%;
+                max-width: 300px;
+                height: 300px;
+                border: 1px solid #666;
+                margin: 20px auto;
+            }
+
+            .code-box {
+                margin-bottom: 10px;
+                border: 5px solid #ddd;
+                transition: border 0.2s;
+            }
+
+            .code-box:hover {
+                border-color: #999;
+            }
+
+            .code-box-active {
+                border-color: #94db9a;
+            }
+
+            .code-box-active:hover {
+                border-color: #94db9a;
+            }
+
+            .anticon {
+                text-indent: 0;
+                font-size: 32px;
+            }
+
             .CodeMirror {
                 max-width: 800px;
                 margin: 0 auto;
@@ -206,7 +208,27 @@
                 }
             }
 
+            .dependencies {
+                line-height: 48px;
 
+                img {
+                    height: 48px;
+                    margin: 0 20px 0 0;
+                    border-radius: 50%;
+                }
+
+                li {
+                    margin: 5px 0;
+                    list-style: none;
+                }
+
+                .anticon {
+                    font-size: 48px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 20px 0 0;
+                }
+            }
         }
     }
 }
