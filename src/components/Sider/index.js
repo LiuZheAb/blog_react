@@ -1,5 +1,5 @@
 //侧边栏sider
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Layout } from 'antd';
 import Menu from "../Menu";
 import IconFont from "../IconFont";

@@ -1,5 +1,5 @@
 //头部Header组件
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Layout, } from 'antd';
 import { Link, withRouter } from "react-router-dom";
 import Menu from "../Menu";

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 import Directory from "../../Directory";

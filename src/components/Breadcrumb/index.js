@@ -1,5 +1,5 @@
 //header面包屑组件
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Breadcrumb } from 'antd';
 import { Link, withRouter } from "react-router-dom";
 import { totalData } from "../../assets/data";

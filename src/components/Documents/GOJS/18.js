@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import 'codemirror/theme/monokai.css';
 import Directory from "../../Directory";
 import go from "gojs";
