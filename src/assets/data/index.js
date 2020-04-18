@@ -2,7 +2,7 @@
 //本站介绍
 export let myblogData = {
     name: "myblog",
-    title: "本站介绍",
+    title: "关于本站",
     baseHref: "/myblog",
     component:"MyBlog",
     description: "建站经历",
