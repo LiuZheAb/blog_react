@@ -6,11 +6,29 @@ export default class index extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            articleTree: this.props.articleTree,
+            articleTree: [],
             scrollTop: null
         }
+        this.getArticleTree = this.getArticleTree.bind(this);
+    }
+    getArticleTree() {
+        let childrens = document.getElementsByClassName("article-content")[0].children;
+        let articleTree = [];
+        for (let i = 0; i < childrens.length - 1; i++) {
+            let nodeName = childrens[i].nodeName;
+            if (nodeName === "H2" || nodeName === "H3") {
+                childrens[i].id = childrens[i].innerText;
+                articleTree.push({
+                    name: childrens[i].innerText,
+                    tag: childrens[i].nodeName
+                });
+            }
+        }
+        this.setState({ articleTree });
     }
     componentDidMount() {
+        //获取文档标题树
+        this.getArticleTree();
         //页面滚动到文档末尾时，将directory逐渐向上隐藏
         let header = document.getElementById("header");
         let before = window.scrollY;
@@ -72,17 +90,6 @@ export default class index extends Component {
             }
         }
     }
-    //当props发生变化时改变articleTree
-    static getDerivedStateFromProps(nextProps, prevState) {
-        const { articleTree } = nextProps;
-        if (articleTree !== prevState.articleTree) {
-            return {
-                articleTree,
-            };
-        }
-        return null;
-    }
-
     render() {
         let { articleTree, scrollTop } = this.state;
         let length = articleTree.length;
@@ -104,13 +111,15 @@ export default class index extends Component {
             }
         }
         return (
-            <ul className="directory-list">
-                {articleTree.map((key, index) => {
-                    return (
-                        <li key={index} id={`tree-num-${index}`} className="tree-num" title={key.name} style={{ paddingLeft: key.tag === "H2" ? 10 : 22 }} onClick={() => { this.scrollToAnchor(`${key.name}`) }}>{key.name}</li>
-                    )
-                })}
-            </ul>
+            <div className="directory">
+                <ul className="directory-list">
+                    {articleTree.map((key, index) => {
+                        return (
+                            <li key={index} id={`tree-num-${index}`} className="tree-num" title={key.name} style={{ paddingLeft: key.tag === "H2" ? 10 : 22 }} onClick={() => { this.scrollToAnchor(`${key.name}`) }}>{key.name}</li>
+                        )
+                    })}
+                </ul>
+            </div>
         )
     }
 }

@@ -157,33 +157,10 @@ $(go.TextBlock, {
     margin: 8
 }, new go.Binding("text", "key"))
 );`;
-let code10=`myDiagram.toolManager.rotatingTool.snapAngleEpsilon=45;`;
+let code10 = `myDiagram.toolManager.rotatingTool.snapAngleEpsilon=45;`;
 
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            articleTree: []
-        };
-        this.getArticleTree = this.getArticleTree.bind(this);
-    }
-    getArticleTree() {
-        let childrens = document.getElementsByClassName("article-content")[0].children;
-        let articleTree = [];
-        for (let i = 0; i < childrens.length - 1; i++) {
-            let nodeName = childrens[i].nodeName;
-            if (nodeName === "H2" || nodeName === "H3") {
-                childrens[i].id = childrens[i].innerText;
-                articleTree.push({
-                    name: childrens[i].innerText,
-                    tag: childrens[i].nodeName
-                });
-            }
-        }
-        this.setState({ articleTree });
-    }
     componentDidMount() {
-        this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
         this.diagramRender3();
@@ -460,7 +437,7 @@ export default class index extends Component {
                 margin: 8
             }, new go.Binding("text", "key"))
         );
-        myDiagram.toolManager.rotatingTool.snapAngleEpsilon=45;
+        myDiagram.toolManager.rotatingTool.snapAngleEpsilon = 45;
         myDiagram.model = $(go.GraphLinksModel, {
             nodeDataArray: [{
                 key: "Alpha"
@@ -617,9 +594,7 @@ export default class index extends Component {
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/16toolsResizingRotating.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/16toolsResizingRotating.html</a></p>
                     </div>
                 </div >
-                <div className="directory">
-                    <Directory articleTree={this.state.articleTree}></Directory>
-                </div>
+                <Directory />
             </div >
         )
     }

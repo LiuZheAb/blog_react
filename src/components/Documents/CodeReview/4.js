@@ -3,31 +3,6 @@ import Directory from "../../Directory";
 import { Link } from "react-router-dom";
 
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            articleTree: []
-        };
-        this.getArticleTree = this.getArticleTree.bind(this);
-    }
-    getArticleTree() {
-        let childrens = document.getElementsByClassName("article-content")[0].children;
-        let articleTree = [];
-        for (let i = 0; i < childrens.length - 1; i++) {
-            let nodeName = childrens[i].nodeName;
-            if (nodeName === "H2" || nodeName === "H3") {
-                childrens[i].id = childrens[i].innerText;
-                articleTree.push({
-                    name: childrens[i].innerText,
-                    tag: childrens[i].nodeName
-                });
-            }
-        }
-        this.setState({ articleTree });
-    }
-    componentDidMount() {
-        this.getArticleTree();
-    }
     render() {
         return (
             <div className="page-content">
@@ -75,9 +50,7 @@ export default class index extends Component {
                         <p className="indent-2">在一些<a href="https://github.com/google/eng-practices/blob/master/review/emergencies.md" target="_blank" rel="noopener noreferrer">紧急情况</a>下，CL必须非常快速地通过整个评审过程，并且质量指南将被放松。但是，请看看什么是紧急情况?用于描述哪些情况实际上符合紧急情况，哪些不符合紧急情况。</p>
                     </div>
                 </div>
-                <div className="directory">
-                    <Directory articleTree={this.state.articleTree}></Directory>
-                </div>
+                <Directory />
             </div>
         )
     }

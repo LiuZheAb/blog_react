@@ -127,30 +127,7 @@ function load() {
 }`;
 let myDiagram7, file;
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            articleTree: []
-        };
-        this.getArticleTree = this.getArticleTree.bind(this);
-    }
-    getArticleTree() {
-        let childrens = document.getElementsByClassName("article-content")[0].children;
-        let articleTree = [];
-        for (let i = 0; i < childrens.length - 1; i++) {
-            let nodeName = childrens[i].nodeName;
-            if (nodeName === "H2" || nodeName === "H3") {
-                childrens[i].id = childrens[i].innerText;
-                articleTree.push({
-                    name: childrens[i].innerText,
-                    tag: childrens[i].nodeName
-                });
-            }
-        }
-        this.setState({ articleTree });
-    }
     componentDidMount() {
-        this.getArticleTree();
         this.diagramRender1();
         this.diagramRender2();
         this.diagramRender3();
@@ -405,7 +382,7 @@ export default class index extends Component {
         document.body.removeChild(elementA);
     }
     load() {
-        if(file){myDiagram7.model = go.Model.fromJson(file)}else{
+        if (file) { myDiagram7.model = go.Model.fromJson(file) } else {
             alert("你还没有保存数据,请先Save")
         }
     }
@@ -558,9 +535,9 @@ export default class index extends Component {
                         <div className="text-center"><button onClick={this.save} style={{ marginRight: 20 }}>Save</button><button onClick={this.load} style={{ marginRight: 20 }}>Load</button><button onClick={this.check}>下载查看JSON数据</button></div>
                         <div className="tip">
                             <div className="tip-content">
-                            <p><em>选中节点后，按delete键可删除组件</em></p>
-                        <p><em>在触摸设备上,长按元素将弹出command菜单</em></p>
-                        <p><em>更多交互命令请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
+                                <p><em>选中节点后，按delete键可删除组件</em></p>
+                                <p><em>在触摸设备上,长按元素将弹出command菜单</em></p>
+                                <p><em>更多交互命令请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
                             </div>
                         </div>
                         <br />
@@ -569,9 +546,7 @@ export default class index extends Component {
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/04diagramModel.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/04diagramModel.html</a></p>
                     </div>
                 </div>
-                <div className="directory">
-                    <Directory articleTree={this.state.articleTree}></Directory>
-                </div>
+                <Directory />
             </div>
         )
     }

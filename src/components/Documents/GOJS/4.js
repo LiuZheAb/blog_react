@@ -112,28 +112,6 @@ myDiagram.add(
 )`
 
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            articleTree: []
-        };
-        this.getArticleTree = this.getArticleTree.bind(this);
-    }
-    getArticleTree() {
-        let childrens = document.getElementsByClassName("article-content")[0].children;
-        let articleTree = [];
-        for (let i = 0; i < childrens.length - 1; i++) {
-            let nodeName = childrens[i].nodeName;
-            if (nodeName === "H2" || nodeName === "H3") {
-                childrens[i].id = childrens[i].innerText;
-                articleTree.push({
-                    name: childrens[i].innerText,
-                    tag: childrens[i].nodeName
-                });
-            }
-        }
-        this.setState({ articleTree });
-    }
     componentDidMount() {
         this.diagramRender1();
         this.diagramRender2();
@@ -149,7 +127,6 @@ export default class index extends Component {
         this.diagramRender12();
         this.diagramRender13();
         this.diagramRender14();
-        this.getArticleTree();
     }
     diagramRender1() {
         let myDiagram = $(go.Diagram, "myDiagramDiv1");
@@ -603,9 +580,7 @@ export default class index extends Component {
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/03buildingParts.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/03buildingParts.html</a></p>
                     </div>
                 </div>
-                <div className="directory">
-                    <Directory articleTree={this.state.articleTree}></Directory>
-                </div>
+                <Directory />
             </div>
         )
     }

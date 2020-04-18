@@ -46,25 +46,6 @@ export default class index extends Component {
             articleTree: [],
             divStyle: { width: "100%", height: "300px", maxWidth: "300px", margin: "0 auto 8px", background: "linear-gradient(#e66465, #9198e5)" }
         };
-        this.getArticleTree = this.getArticleTree.bind(this);
-    }
-    getArticleTree() {
-        let childrens = document.getElementsByClassName("article-content")[0].children;
-        let articleTree = [];
-        for (let i = 0; i < childrens.length - 1; i++) {
-            let nodeName = childrens[i].nodeName;
-            if (nodeName === "H2" || nodeName === "H3") {
-                childrens[i].id = childrens[i].innerText;
-                articleTree.push({
-                    name: childrens[i].innerText,
-                    tag: childrens[i].nodeName
-                });
-            }
-        }
-        this.setState({ articleTree });
-    }
-    componentDidMount() {
-        this.getArticleTree();
     }
     selectCode(index) {
         let divStyle = { ...this.state.divStyle };
@@ -255,9 +236,7 @@ export default class index extends Component {
                         <p className="indent-2">-moz-前缀的规则用于兼容Fx 3.6 to Fx 15的火狐浏览器。 -webkit-前缀的规则用于兼容在Android 4.3以前版本、iOS 6.1以前版本、Safari 6。当使用带前缀的规则时，不要加“to”关键字。</p>
                     </div>
                 </div>
-                <div className="directory">
-                    <Directory articleTree={this.state.articleTree}></Directory>
-                </div>
+                <Directory />
             </div>
         )
     }
