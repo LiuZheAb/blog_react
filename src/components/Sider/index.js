@@ -9,21 +9,17 @@ const { Sider } = Layout;
 
 export default class index extends Component {
     componentDidMount() {
-        //页面向上滚动时将sider固定
-        let Div = document.getElementById("sider-content"),
+        let sider = document.getElementById("sider-content"),
             H = 0,
-            Y = Div;
-        while (Y) {
-            H += Y.offsetTop;
-            Y = Y.offsetParent;
-        }
+            Y = sider;
         window.addEventListener('scroll', function (e) {
-            var s = document.body.scrollTop || document.documentElement.scrollTop;
-            if (s > H) {
-                Div.style = "position:fixed;top:0;";
-            } else {
-                Div.style = "";
+            while (Y) {
+                H += Y.offsetTop;
+                Y = Y.offsetParent;
             }
+            //页面向上滚动时将sider固定
+            var s = document.body.scrollTop || document.documentElement.scrollTop;
+            sider.style = s > H ? "position:fixed;top:0;" : "";
         })
     }
     render() {
