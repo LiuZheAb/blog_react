@@ -1,6 +1,7 @@
 //文档目录
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import "./index.less";
 
 export default class index extends Component {
     render() {
