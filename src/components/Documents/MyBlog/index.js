@@ -34,7 +34,7 @@ export default class index extends Component {
                         <br />
                         <div className="text-right">
                             <em>写于2020-4-6凌晨</em>
-                        </div>
+                        </div>                                  ``
                         <hr />
                         <h2>略有小感</h2>
                         <p className="indent-2">坚持写博客已经有二十多天了，今天写点最近写博客以来的感受。</p>

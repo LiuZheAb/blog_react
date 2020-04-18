@@ -72,7 +72,7 @@ class index extends Component {
                                 {nameMap[prevHref] ?
                                     <Link to={prevHref} className="pager">
                                         <div className="label">上一篇</div>
-                                        <span className="title">{check(pageNum - 1, dataSource.section)}{nameMap[prevHref]}</span>
+                                        <span className="title">{check(pageNum - 1, dataSource.chapter)}{nameMap[prevHref]}</span>
                                     </Link>
                                     : null}
                             </div>
@@ -80,7 +80,7 @@ class index extends Component {
                                 {nameMap[nextHref] ?
                                     <Link to={nextHref} className="pager">
                                         <div className="label">下一篇</div>
-                                        <span className="title">{check(pageNum + 1, dataSource.section)}{nameMap[nextHref]}</span>
+                                        <span className="title">{check(pageNum + 1, dataSource.chapter)}{nameMap[nextHref]}</span>
                                     </Link>
                                     : null}
                             </div>
