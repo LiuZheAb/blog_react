@@ -93,7 +93,7 @@ export default class index extends Component {
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: true,
+                                        readOnly: "nocursor",
                                     }}
                                 />
                             </div>
@@ -103,7 +103,7 @@ export default class index extends Component {
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: true,
+                                        readOnly: "nocursor",
                                     }}
                                 />
                             </div>
@@ -113,7 +113,7 @@ export default class index extends Component {
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: true,
+                                        readOnly: "nocursor",
                                     }}
                                 />
                             </div>
@@ -123,7 +123,7 @@ export default class index extends Component {
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: true,
+                                        readOnly: "nocursor",
                                     }}
                                 />
                             </div>
