@@ -96,10 +96,11 @@ export let freeCodeCamp = {
         "linear-gradient()",
         "scale()",
         "skew()",
+        "@keyframes",
     ],
     chapter: {
         "简介": [0, 0],
-        "css篇": [1, 4],
+        "css篇": [1, 5],
     }
 };
 //问题汇总
