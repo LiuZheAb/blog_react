@@ -160,13 +160,16 @@
                 border: 5px solid #ddd;
                 transition: border 0.2s;
                 cursor: pointer;
+                position: relative;
 
-                .CodeMirror {
-                    cursor: pointer;
-
-                    .CodeMirror-lines {
-                        cursor: pointer;
-                    }
+                .mask {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background: transparent;
+                    z-index: 9;
                 }
             }
 

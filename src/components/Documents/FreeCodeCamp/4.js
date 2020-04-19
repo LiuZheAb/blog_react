@@ -32,12 +32,8 @@ let code8 = `div {
     background-color: pink;
 }`;
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            articleTree: [],
-            style: { maxWidth: 300, transition: "transform 0.3s", transform: "skew(15deg, 15deg)" }
-        };
+    state = {
+        style: { maxWidth: 300, transition: "transform 0.3s", transform: "skew(15deg, 15deg)" }
     }
     selectCode(index) {
         let style = { ...this.state.style };
@@ -71,43 +67,47 @@ export default class index extends Component {
                         <h2>示例</h2>
                         <p>点击下面的代码块查看预览</p>
                         <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
-                            <div className="code-box" onClick={this.selectCode.bind(this, 0)}>
+                            <div className="code-box">
+                                <div className="mask" onClick={this.selectCode.bind(this, 0)}></div>
                                 <CodeMirror
                                     value={code1}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
-                            <div className="code-box code-box-active" onClick={this.selectCode.bind(this, 1)}>
+                            <div className="code-box code-box-active">
+                                <div className="mask" onClick={this.selectCode.bind(this, 1)}></div>
                                 <CodeMirror
                                     value={code2}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
-                            <div className="code-box" onClick={this.selectCode.bind(this, 2)}>
+                            <div className="code-box">
+                                <div className="mask" onClick={this.selectCode.bind(this, 2)}></div>
                                 <CodeMirror
                                     value={code3}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
-                            <div className="code-box" onClick={this.selectCode.bind(this, 3)}>
+                            <div className="code-box">
+                                <div className="mask" onClick={this.selectCode.bind(this, 3)}></div>
                                 <CodeMirror
                                     value={code4}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>

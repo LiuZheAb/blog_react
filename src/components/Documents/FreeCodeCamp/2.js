@@ -40,12 +40,8 @@ background-image:    -moz-linear-gradient(top, hsl(0, 80%, 70%), #bada55); /* �
 background-image:      -o-linear-gradient(top, hsl(0, 80%, 70%), #bada55); /* 支持旧 Opera (11.1 to 12.0) */ 
 background-image:         linear-gradient(to bottom, hsl(0, 80%, 70%), #bada55); /* 标准语法; 需要最新版本 */`;
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            articleTree: [],
-            divStyle: { width: "100%", height: 300, maxWidth: 300, margin: "0 auto 8px", background: "linear-gradient(#e66465, #9198e5)" }
-        };
+    state = {
+        divStyle: { width: "100%", height: 300, maxWidth: 300, margin: "0 auto 8px", background: "linear-gradient(#e66465, #9198e5)" }
     }
     selectCode(index) {
         let divStyle = { ...this.state.divStyle };
@@ -87,43 +83,47 @@ export default class index extends Component {
                         <h2>示例</h2>
                         <p>点击下面的代码块查看预览</p>
                         <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
-                            <div className="code-box code-box-active" onClick={this.selectCode.bind(this, 0)}>
+                            <div className="code-box code-box-active">
+                                <div className="mask" onClick={this.selectCode.bind(this, 0)}></div>
                                 <CodeMirror
                                     value={code2}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
-                            <div className="code-box" onClick={this.selectCode.bind(this, 1)}>
+                            <div className="code-box">
+                                <div className="mask" onClick={this.selectCode.bind(this, 1)}></div>
                                 <CodeMirror
                                     value={code3}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
-                            <div className="code-box" onClick={this.selectCode.bind(this, 2)}>
+                            <div className="code-box">
+                                <div className="mask" onClick={this.selectCode.bind(this, 2)}></div>
                                 <CodeMirror
                                     value={code4}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
-                            <div className="code-box" onClick={this.selectCode.bind(this, 3)}>
+                            <div className="code-box">
+                                <div className="mask" onClick={this.selectCode.bind(this, 3)}></div>
                                 <CodeMirror
                                     value={code5}
                                     options={{
                                         theme: '3024-day',
                                         mode: 'CSS',
-                                        readOnly: "nocursor",
+                                        readOnly: true,
                                     }}
                                 />
                             </div>
