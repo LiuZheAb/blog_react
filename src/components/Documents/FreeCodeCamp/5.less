@@ -1,7 +1,78 @@
-@keyframes slidein {
+@keyframes slidein1 {
     from {
         margin-left: 100%;
         width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@keyframes slidein2 {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    75% {
+        font-size: 300%;
+        margin-left: 25%;
+        width: 150%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.slidein {
+    -moz-animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -moz-animation-name: slidein3;
+    -webkit-animation-name: slidein3;
+    animation-name: slidein3;
+    -moz-animation-iteration-count: 10;
+    -webkit-animation-iteration-count: 10;
+    animation-iteration-count: 10;
+    -moz-animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+@-moz-keyframes slidein3 {
+    from {
+        margin-left: 100%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes slidein3 {
+    from {
+        margin-left: 100%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@keyframes slidein3 {
+    from {
+        margin-left: 100%;
+        width: 300%
     }
 
     to {

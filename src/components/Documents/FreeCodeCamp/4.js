@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/3024-day.css';
+import 'codemirror/theme/monokai.css';
 
 let code1 = `transform: skew(0);`;
 let code2 = `transform: skew(15deg, 15deg);`;
@@ -72,7 +72,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code1}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -83,7 +83,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code2}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -94,7 +94,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code3}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -105,7 +105,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code4}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -135,7 +135,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code5}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
                             }}
@@ -144,7 +144,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code6}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -159,7 +159,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code7}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
                             }}
@@ -168,7 +168,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code8}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/3024-day.css';
+import 'codemirror/theme/monokai.css';
 
 let code1 = `function test(a){
     let b={...a};
@@ -32,7 +32,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code1}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'JS',
                                 readOnly: true,
                                 lineNumbers: true,

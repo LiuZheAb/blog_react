@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/3024-day.css';
+import 'codemirror/theme/monokai.css';
 
 let code1 = `/* 渐变轴为45度，从蓝色渐变到红色 */
 linear-gradient(45deg, blue, red);
@@ -75,7 +75,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code1}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -88,7 +88,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code2}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -99,7 +99,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code3}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -110,7 +110,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code4}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -121,7 +121,7 @@ export default class index extends Component {
                                 <CodeMirror
                                     value={code5}
                                     options={{
-                                        theme: '3024-day',
+                                        theme: 'monokai',
                                         mode: 'CSS',
                                         readOnly: true,
                                     }}
@@ -133,7 +133,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={`background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);`}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -158,7 +158,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code6}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -167,7 +167,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code7}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -177,7 +177,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code8}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -186,7 +186,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code9}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -208,7 +208,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code10}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -217,7 +217,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={`background: linear-gradient(to bottom right, red, rgba(0,0,0,0));`}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -228,7 +228,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code11}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}

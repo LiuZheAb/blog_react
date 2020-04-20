@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/3024-day.css';
+import 'codemirror/theme/monokai.css';
 
 let code1 = `<p>foo</p>
 <p class="transformed">bar</p>`;
@@ -43,7 +43,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={`scale(sx)`}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -53,7 +53,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={`scale(sx, sy)`}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
@@ -70,7 +70,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code1}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
                             }}
@@ -79,7 +79,7 @@ export default class index extends Component {
                         <CodeMirror
                             value={code2}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}

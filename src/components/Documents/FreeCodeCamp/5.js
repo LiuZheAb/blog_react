@@ -1,174 +1,319 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
+import IconFont from "../../IconFont";
 import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/3024-day.css';
+import 'codemirror/theme/monokai.css';
 import './5.less';
 
-let code1 = `@keyframes slidein {
+let code1 = `p {
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+  
+@keyframes slidein {
     from {
-      margin-left: 100%;
-      width: 300%;
+        margin-left: 100%;
+        width: 300%; 
     }
   
     to {
-      margin-left: 0%;
-      width: 100%;
+        margin-left: 0%;
+        width: 100%;
     }
 }`;
-let code2 = `@keyframes identifier {
-    0% { top: 0; left: 0; }
-    30% { top: 50px; }
-    68%, 72% { left: 50px; }
-    100% { top: 100px; left: 100%; }
+let code2 = `75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
 }`;
-let code3 = `@keyframes identifier {
-    0% { top: 0; left: 0px}
-    50% { top: 30px; left: 20px; }
-    50% { top: 10px; }
-    100% { top: 0; left: 30px;}
+let code3 = `p {
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
 }`;
-let code4 = `@keyframes important1 {
-    from { margin-top: 50px; }
-    50%  { margin-top: 150px !important; } /* 忽略 */
-    to   { margin-top: 100px; }
-}
-  
-@keyframes important2 {
-    from { margin-top: 50px;
-           margin-bottom: 100px; }
-    to   { margin-top: 150px !important; /* 忽略 */
-           margin-bottom: 50px; }
-}`;
-let code5 = `@keyframes <keyframes-name> {
-    <keyframe-block-list>
-}
-where 
-<keyframes-name> = <custom-ident> | <string>
-<keyframe-block-list> = <keyframe-block>+
-
-where 
-<keyframe-block> = <keyframe-selector># {
-    <declaration-list>
-}
-
-where 
-<keyframe-selector> = from | to | <percentage>`;
-let code6 = `p {
+let code4 = `p {
     animation-duration: 3s;
     animation-name: slidein;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}`
+let code5 = `.slidein {
+    -moz-animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -moz-animation-name: slidein;
+    -webkit-animation-name: slidein;
+    animation-name: slidein;
+    -moz-animation-iteration-count: 3;
+    -webkit-animation-iteration-count: 3;
+    animation-iteration-count: 3;
+    -moz-animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
 }
-
-
+      
+@-moz-keyframes slidein {
+    from {
+        margin-left:100%;
+        width:300%
+    }
+        
+    to {
+        margin-left:0%;
+        width:100%;
+    }
+}
+  
+@-webkit-keyframes slidein {
+    from {
+        margin-left:100%;
+        width:300%
+    }
+    
+    to {
+        margin-left:0%;
+        width:100%;
+    }
+}
+  
 @keyframes slidein {
     from {
-      margin-left: 100%;
-      width: 300%; 
+      margin-left:100%;
+      width:300%
     }
-  
+    
     to {
-      margin-left: 0%;
-      width: 100%;
-    }
+     margin-left:0%;
+     width:100%;
+   }
 }`;
+let code6 = `var e = document.getElementById("watchme");
+e.addEventListener("animationstart", listener, false);
+e.addEventListener("animationend", listener, false);
+e.addEventListener("animationiteration", listener, false);
+
+e.className = "slidein";`;
+let code7 = `function listener(e) {
+    var l = document.createElement("li");
+    switch(e.type) {
+      case "animationstart":
+        l.innerHTML = "Started: elapsed time is " + e.elapsedTime;
+        break;
+      case "animationend":
+        l.innerHTML = "Ended: elapsed time is " + e.elapsedTime;
+        break;
+      case "animationiteration":
+        l.innerHTML = "New loop started at time " + e.elapsedTime;
+        break;
+    }
+    document.getElementById("output").appendChild(l);
+}`;
+let code8 = `<body>
+    <h1 id="watchme">Watch me move</h1>
+    <p>This example shows how to use CSS animations to make <code>h1</code> elements
+    move across the page.</p>
+    <p>In addition, we output some text each time an animation event fires, so you can see them in action.</p>
+    <ul id="output">
+    </ul>
+</body>`;
+function listener(e) {
+    var l = document.createElement("li");
+    switch (e.type) {
+        case "animationstart":
+            l.innerHTML = "Started: elapsed time is " + e.elapsedTime;
+            break;
+        case "animationend":
+            l.innerHTML = "Ended: elapsed time is " + e.elapsedTime;
+            break;
+        case "animationiteration":
+            l.innerHTML = "New loop started at time " + e.elapsedTime;
+            break;
+        default:
+            break;
+    }
+    document.getElementById("output").appendChild(l);
+}
 export default class index extends Component {
+    componentDidMount() {
+        let e = document.getElementById("watchme");
+        e.addEventListener("animationstart", listener, false);
+        e.addEventListener("animationend", listener, false);
+        e.addEventListener("animationiteration", listener, false);
+
+        e.className = "slidein";
+    }
+
     render() {
         return (
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>@keyframes</h1>
+                        <h1>animation</h1>
                     </div>
                     <div className="article-content">
+                        <div className="tip">
+                            <p className="tip-title">
+                                <IconFont type="iconshiyan" className="tip-icon" />这是一个实验中的功能
+                            </p>
+                            <div className="tip-content">
+                                此功能某些浏览器尚在开发中，请参考<a href="https://developer.mozilla.org/en-US/docs/Web/API/Animation#Browser_compatibility" target="_blank" rel="noopener noreferrer">浏览器兼容性表格</a>以得到在不同浏览器中适合使用的前缀。由于该功能对应的标准文档可能被重新修订，所以在未来版本的浏览器中该功能的语法和行为可能随之改变。
+                            </div>
+                        </div>
                         <h2>概述</h2>
-                        <p className="indent-2">@keyframes 规则通过在动画序列中定义关键帧（或waypoints）的样式来控制CSS动画序列中的中间步骤。这比转换更能控制动画序列的中间步骤。</p>
+                        <p className="indent-2"><b>CSS animations</b> 使得可以将从一个CSS样式配置转换到另一个CSS样式配置。动画包括两个部分:描述动画的样式规则和用于指定动画开始、结束以及中间点样式的关键帧。</p>
+                        <p className="indent-2">相较于传统的脚本实现动画技术，使用CSS动画有三个主要优点：</p>
+                        <ol>
+                            <li>能够非常容易地创建简单动画，你甚至不需要了解JavaScript就能创建动画。</li>
+                            <li>动画运行效果良好，甚至在低性能的系统上。渲染引擎会使用跳帧或者其他技术以保证动画表现尽可能的流畅。而使用JavaScript实现的动画通常表现不佳（除非经过很好的设计）。</li>
+                            <li>让浏览器控制动画序列，允许浏览器优化性能和效果，如降低位于隐藏选项卡中的动画更新频率。</li>
+                        </ol>
+                        <h2>配置动画</h2>
+                        <p className="indent-2">创建动画序列，需要使用animation属性或其子属性，该属性允许配置动画时间、时长以及其他动画细节，但该属性不能配置动画的实际表现，动画的实际表现是由 @keyframes规则实现，具体情况参见使用keyframes定义动画序列小节部分。</p>
+                        <p className="indent-2">animation的子属性有:</p>
+                        <ul style={{ listStyle: "none" }}>
+                            <li><b>animation-delay</b></li>
+                            <p className="indent-2">设置延时，即从元素加载完成之后到动画序列开始执行的这段时间。</p>
+                            <li><b>animation-direction</b></li>
+                            <p className="indent-2">设置动画在每次运行完后是反向运行还是重新回到开始位置重复运行。</p>
+                            <li><b>animation-duration</b></li>
+                            <p className="indent-2">设置动画一个周期的时长。</p>
+                            <li><b>animation-iteration-count</b></li>
+                            <p className="indent-2">设置动画重复次数， 可以指定infinite无限次重复动画</p>
+                            <li><b>animation-name</b></li>
+                            <p className="indent-2">指定由@keyframes描述的关键帧名称。</p>
+                            <li><b>animation-play-state</b></li>
+                            <p className="indent-2">允许暂停和恢复动画。</p>
+                            <li><b>animation-timing-function</b></li>
+                            <p className="indent-2">设置动画速度， 即通过建立加速度曲线，设置动画在关键帧之间是如何变化。</p>
+                            <li><b>animation-fill-mode</b></li>
+                            <p className="indent-2">指定动画执行前后如何为目标元素应用样式。</p>
+                        </ul>
+                        <h2>使用keyframes定义动画序列</h2>
+                        <p className="indent-2">一旦完成动画的时间设置， 接下来就需要定义动画的表现。通过使用@keyframes建立两个或两个以上关键帧来实现。每一个关键帧都描述了动画元素在给定的时间点上应该如何渲染。</p>
+                        <p className="indent-2">因为动画的时间设置是通过CSS样式定义的，关键帧使用percentage来指定动画发生的时间点。0%表示动画的第一时刻，100%表示动画的最终时刻。因为这两个时间点十分重要，所以还有特殊的别名：from和to。这两个都是可选的，若from/0%或to/100%未指定，则浏览器使用计算值开始或结束动画。</p>
+                        <p className="indent-2">也可包含额外可选的关键帧，描述动画开始和结束之间的状态。</p>
+                        <h2>示例</h2>
+                        <div className="tip">
+                            <div className="tip-content">
+                                注意: 这里的示例没有在CSS动画属性上使用任何前缀，Webkit内核浏览器或者早期版本浏览器可能需要前缀，下面的实例包含了-webkit-前缀。
+                            </div>
+                        </div>
+                        <h3>文本滑过浏览器窗口</h3>
+                        <p className="indent-2">{`该例中<p> 元素由浏览器窗口右边滑至左边`}</p>
                         <CodeMirror
                             value={code1}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">JavaScript 可以通过 CSS对象模型接口CSSKeyframesRule来访问 @keyframes </p>
-                        <p className="indent-2">要使用关键帧, 先创建一个带名称的@keyframes规则，以便后续使用 animation-name 这个属性来将一个动画同其关键帧声明匹配。每个@keyframes 规则包含多个关键帧，也就是一段样式块语句，每个关键帧有一个百分比值作为名称，代表在动画进行中，在哪个阶段触发这个帧所包含的样式。</p>
-                        <p className="indent-2">您可以按任意顺序列出关键帧百分比；他们将按照其应该发生的顺序来处理。</p>
-                        <h3>让关键帧序列生效</h3>
-                        <p className="indent-2">如果一个关键帧规则没有指定动画的开始或结束状态（也就是，0%/from 和100%/to，浏览器将使用元素的现有样式作为起始/结束状态。这可以用来从初始状态开始元素动画，最终返回初始状态。</p>
-                        <p className="indent-2">如果在关键帧的样式中使用了不能用作动画的属性，那么这些属性会被忽略掉，支持动画的属性仍然是有效的，不受波及。</p>
-                        <h3>重复定义（Duplicate resolution）</h3>
-                        <p className="indent-2">如果多个关键帧使用同一个名称，以最后一次定义的为准。 @keyframes 不存在层叠样式(cascade)的情况，所以动画在一个时刻（阶段）只会使用一个的关键帧的数据。</p>
-                        <p className="indent-2">如果一个@keyframes 里的关键帧的百分比存在重复的情况，以最后一次定义的关键帧为准。 因为@keyframes 的规则不存在层叠样式(cascade)的情况，即使多个关键帧设置相同的百分值也不会全部执行。</p>
-                        <h3>属性个数不定</h3>
-                        <p className="indent-2">如果一个关键帧中没有出现其他关键帧中的属性，那么这个属性将使用插值(不能使用插值的属性除外, 这些属性会被忽略掉)。例如：</p>
+                        <p className="indent-2">{`animation-duration属性指定 <p> 上的动画从开始到结束耗费3秒，@keyframes 指定使用名字为"slidein"的关键帧。`}</p>
+                        <p className="indent-2">如果希望在不支持CSS动画的浏览器中使用自定义样式，应该将其写在这里;然而，在该例中，我们不需要除动画效果以外的任何自定义样式。</p>
+                        <p className="indent-2">关键帧是用@keyframes定义的。该例中，我们只使用了两个关键帧。第一个出现在0%(此例中使用了别名from)处，此处元素的左边距为100%(即位于容器的右边界)，宽为300%(即容器宽度的3倍)，使得在动画的第一帧中标题位于浏览器窗口右边界之外。</p>
+                        <p className="indent-2">第二帧出现在100%(此例中使用了别名to)。元素的左边距设为0%，宽设为100%，使得动画结束时元素与窗口左边界对齐。</p>
+                        <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
+                            <p style={{ animationDuration: "3s", animationName: "slidein1" }}>
+                                The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
+                            </p>
+                        </div>
+                        <h3>增加关键帧</h3>
+                        <p className="indent-2">让我们给上面的示例中添加一个关键帧，比如标题的字号先变大然后恢复正常，添加这个关键帧十分简单：</p>
                         <CodeMirror
                             value={code2}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">例子中，"top"属性分别出现在 0%, 30%和100% 的关键帧中，"left"属性分别出现在0%, 68%和100% 关键帧中.</p>
-                        <h3>当关键帧被重复定义</h3>
-                        <p className="indent-2">如果某一个关键帧出现了重复的定义，且重复的关键帧中的css属性值不同，以最后一次定义的属性为准。例如：</p>
+                        <p className="indent-2">在动画序列执行到75%的时候，标题元素的左边距为25%，宽度为150%。</p>
+                        <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
+                            <p style={{ animationDuration: "3s", animationName: "slidein2" }}>
+                                The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
+                            </p>
+                        </div>
+                        <h3>重复动画</h3>
+                        <p className="indent-2">animation-iteration-count用以指定动画重复的次数，仅仅使用该属性就能使动画重复播放。在该例中，设该属性为infinite以使动画无限重复</p>
                         <CodeMirror
                             value={code3}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">上面这个例子中，50% 关键帧中设置的属性top: 10px是有效的，但是其他的属性会被忽略</p>
-                        <h3>关键帧中的 !important 关键词</h3>
-                        <p className="indent-2">关键帧中出现的 !important 关键词将会被忽略</p>
+                        <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
+                            <p style={{ animationDuration: "3s", animationName: "slidein1", animationIterationCount: "infinite" }}>
+                                The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
+                            </p>
+                        </div>
+                        <h3>来回运动</h3>
+                        <p className="indent-2">上面实现了动画的重复播放，但是每次动画开始时总跳回开始位置显得很怪异。我们真正想要的是标题来回滑动，这时只需要设置animation-direction属性为alternate。</p>
                         <CodeMirror
                             value={code4}
                             options={{
-                                theme: '3024-day',
+                                theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }}
                         />
-                        <h2>语法</h2>
-                        <h3>取值</h3>
-                        <ul>
-                            <li>{`<identifier>`}</li>
-                            <p>帧列表的名称。 名称必须符合 CSS 语法中对标识符的定义。</p>
-                            <li>from</li>
-                            <p>等效于 0%.</p>
-                            <li>to</li>
-                            <p>等效于 100%.</p>
-                            <li>{`<percentage>`}</li>
-                            <p>动画序列中，触发关键帧的时间点，使用百分值来表示。</p>
-                        </ul>
-                        <h3>语法格式</h3>
+                        <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
+                            <p style={{ animationDuration: "3s", animationName: "slidein1", animationIterationCount: "infinite", animationDirection: "alternate" }}>
+                                The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
+                            </p>
+                        </div>
+                        <h3>使用动画事件</h3>
+                        <p className="indent-2">利用动画事件可以更好的控制动画和信息。这些事件由 AnimationEvent对象表示，可探测动画何时开始结束和开始新的循环。每个事件包括动画发生的时间和触发事件的动画名称。</p>
+                        <p className="indent-2">我们将修改滑动文本示例，输出每个动画事件出现时的信息。</p>
                         <CodeMirror
                             value={code5}
                             options={{
-                                theme: '3024-day',
-                                mode: 'default',
+                                theme: 'monokai',
+                                mode: 'CSS',
                                 readOnly: true,
                             }}
                         />
-                        <h2>示例</h2>
-                        <p className="indent-2">CSS</p>
+                        <p className="indent-2"><b>添加动画事件监听器</b></p>
+                        <p className="indent-2">我们使用JavaScript代码监听所有三种可能的动画事件，setup()方法设置事件监听器，当文档第一次加载完成时执行该方法。</p>
                         <CodeMirror
                             value={code6}
                             options={{
-                                theme: '3024-day',
-                                mode: 'CSS',
+                                theme: 'monokai',
+                                mode: 'JS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">以上是非常标准的代码写法，setup()最后设置动画元素的class为slidein，启动动画。</p>
+                        <p className="indent-2">为什么这样做?因为animationstart事件在动画一开始时就被触发，在我们的示例中，该事件在我们的代码执行前就被触发，所以我们自己通过设置元素的的class来启动动画。</p>
+                        <p className="indent-2"><b>接收事件</b></p>
+                        <p className="indent-2">事件传递给listener()函数，代码如下所示</p>
+                        <CodeMirror
+                            value={code7}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'JS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">{`这段代码同样非常简单，简单地通过event.type来判断发生的是何种事件，然后添加对应的注解到<ul>中。`}</p>
+                        <p className="indent-2">注意以上时间非常接近预期时间，但不是完全相等。也要注意在最后一个周期完成后，不会触发animationiteration事件，而触发animationend事件。</p>
+                        <h3>HTML代码</h3>
+                        <p className="indent-2">下面是示例中的用到的HTML代码:</p>
+                        <CodeMirror
+                            value={code8}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'HTML',
                                 readOnly: true,
                             }}
                         />
                         <p className="indent-2">结果</p>
-                        <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
-                            <p style={{ animationDuration: "3s", animationName: "slidein", animationIterationCount: "infinite", animationDirection: "alternate" }}>
-                                The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
-                                </p>
+                        <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 100, margin: "0 auto", overflow: "auto" }}>
+                            <p id="watchme" className="slidein">Watch me move</p>
                         </div>
+                        <p className="indent-2">输出结果如下所示:</p>
+                        <ul id="output"></ul>
                     </div>
                 </div>
                 <Directory />

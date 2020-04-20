@@ -17,7 +17,7 @@ export default class index extends Component {
                         <ul>
                             <li><a href="https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/create-a-graphic-using-css" target="_blank" rel="noopener noreferrer">月牙形状</a></li>
                             <li><a href="https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/create-a-more-complex-shape-using-css-and-html" target="_blank" rel="noopener noreferrer">心形</a></li>
-                        
+                            <li><a href="https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/make-a-css-heartbeat-using-an-infinite-animation-count" target="_blank" rel="noopener noreferrer">心跳</a></li>
                         </ul>
                     </div>
                 </div>

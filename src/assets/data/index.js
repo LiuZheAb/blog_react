@@ -96,11 +96,13 @@ export let freeCodeCamp = {
         "linear-gradient()",
         "scale()",
         "skew()",
+        "animation",
         "@keyframes",
+        
     ],
     chapter: {
         "简介": [0, 0],
-        "css篇": [1, 5],
+        "css篇": [1, 6],
     }
 };
 //问题汇总
@@ -115,11 +117,10 @@ export let proplemData = {
     section: [
         "react-router问题",
         "无法设置对象属性",
-        "问题2",
     ],
     chapter: {
         "React篇":[0,0],
-        "JS篇": [1, 2],
+        "JS篇": [1, 1],
     }
 };
 
