@@ -139,7 +139,6 @@ export default class index extends Component {
         e.addEventListener("animationstart", listener, false);
         e.addEventListener("animationend", listener, false);
         e.addEventListener("animationiteration", listener, false);
-
         e.className = "slidein";
     }
 
@@ -310,7 +309,7 @@ export default class index extends Component {
                         />
                         <p className="indent-2">结果</p>
                         <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 100, margin: "0 auto", overflow: "auto" }}>
-                            <p id="watchme" className="slidein">Watch me move</p>
+                            <p id="watchme">Watch me move</p>
                         </div>
                         <p className="indent-2">输出结果如下所示:</p>
                         <ul id="output"></ul>
