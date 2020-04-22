@@ -98,13 +98,16 @@ export let freeCodeCamp = {
         "skew()",
         "animation",
         "@keyframes",
-        "html 的可访问性(一)",
-        "html 的可访问性(二)",
+        "html 的可访问性",
+        "css 的可访问性",
+        "链接的可访问性",
+        "使用tabindex",
     ],
     chapter: {
         "简介": [0],
-        "CSS 篇": [1, 2, 3, 4, 5, 6],
-        "HTML 篇": [7, 8]
+        "CSS 篇": [1, 2, 3, 4, 5, 6,],
+        "HTML 篇": [],
+        "可访问性": [7, 8, 9, 10]
     }
 };
 //问题汇总
