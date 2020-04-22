@@ -13,7 +13,7 @@ class index extends Component {
         let path = this.props.location.pathname;
         //将path以"/"分割,并保存到数组中
         const pathSnippets = path.split('/').filter(i => i);
-        //获取当前文档
+        //获取当前文档及推荐文档数据
         let dataSource = [], recommandData = [];
         for (let i = 0; i < totalData.length; i++) {
             if (pathSnippets[0] === totalData[i].baseHref.substr(1)) {
@@ -41,15 +41,22 @@ class index extends Component {
         }
         const nameMap = setKeyMap([dataSource]);
         //查找当前文档所处section
-        let check = (num, obj) => {
-            for (let key in obj) {
-                if (num >= obj[key][0] && num <= obj[key][1] && obj[key][0] !== obj[key][1]) return key + "——";
-            }
+        let pageArray = [];
+        for (let key in dataSource.chapter) {
+            pageArray = pageArray.concat(dataSource.chapter[key])
         }
         let pageNum = Number(pathSnippets[1]), baseHref = "/" + pathSnippets[0] + "/";
+        let currentIndex = pageArray.indexOf(pageNum), prevIndex = currentIndex - 1, nextIndex = currentIndex + 1;
         //上一页/下一页路由
-        let prevHref = baseHref + (pageNum - 1);
-        let nextHref = baseHref + (pageNum + 1);
+        let prevHref = baseHref + pageArray[prevIndex];
+        let nextHref = baseHref + pageArray[nextIndex];
+        let check = (num, obj) => {
+            for (let key in obj) {
+                if (obj[key].indexOf(num) > -1 && obj[key].length > 1) {
+                    return key + "——"
+                }
+            }
+        }
         return (
             <div className="page-footer" style={!isNaN(pageNum) ? { minHeight: "100vh" } : {}}>
                 <div>
@@ -72,7 +79,7 @@ class index extends Component {
                                 {nameMap[prevHref] ?
                                     <Link to={prevHref} className="pager">
                                         <div className="label">上一篇</div>
-                                        <span className="title">{check(pageNum - 1, dataSource.chapter)}{nameMap[prevHref]}</span>
+                                        <span className="title">{check(prevIndex, dataSource.chapter)}{nameMap[prevHref]}</span>
                                     </Link>
                                     : null}
                             </div>
@@ -80,7 +87,7 @@ class index extends Component {
                                 {nameMap[nextHref] ?
                                     <Link to={nextHref} className="pager">
                                         <div className="label">下一篇</div>
-                                        <span className="title">{check(pageNum + 1, dataSource.chapter)}{nameMap[nextHref]}</span>
+                                        <span className="title">{check(nextIndex, dataSource.chapter)}{nameMap[nextHref]}</span>
                                     </Link>
                                     : null}
                             </div>

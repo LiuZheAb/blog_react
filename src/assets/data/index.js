@@ -4,7 +4,7 @@ export let myblogData = {
     name: "myblog",
     title: "关于本站",
     baseHref: "/myblog",
-    component:"MyBlog",
+    component: "MyBlog",
     description: "建站经历",
     img: "myblog.png",
     content: "建站过程中的随笔。",
@@ -16,7 +16,7 @@ export let gojsData = {
     name: "gojs",
     title: "GoJS 教程",
     baseHref: "/gojs",
-    component:"GOJS",
+    component: "GOJS",
     description: "GoJS 简介",
     img: "gojs.png",
     content: "GoJS是一个用于构建交互式图表和图形的JavaScript和TypeScript库。GoJS允许你建立各种各样的图表和图形，从简单的流程图和组织图到非常具体的工业图，SCADA和BPMN图，医学图，如基因图和疫情建模图等。GoJS使用可定制的模板和布局使构建复杂节点、链接和组的JavaScript关系图变得更容易。",
@@ -45,14 +45,14 @@ export let gojsData = {
         "GoJS Item Arrays",
     ],
     chapter: {
-        "写在前面": [0, 0],
-        "GoJS 介绍": [1, 1],
-        "GoJS 入门教程": [2, 7],
-        "GoJS 布局(Layout)": [8, 13],
-        "GoJS 面板(Panel)": [14, 16],
-        "GoJS 工具(Tool)": [17, 19],
-        "GoJS 端口(Port)": [20, 20],
-        "GoJS Item Arrays": [21, 21],
+        "写在前面": [0],
+        "GoJS 介绍": [1],
+        "GoJS 入门教程": [2, 3, 4, 5, 6, 7],
+        "GoJS 布局(Layout)": [8, 9, 10, 11, 12, 13],
+        "GoJS 面板(Panel)": [14, 15, 16],
+        "GoJS 工具(Tool)": [17, 18, 19],
+        "GoJS 端口(Port)": [20],
+        "GoJS Item Arrays": [21],
     }
 };
 //Code Review
@@ -60,7 +60,7 @@ export let codeReview = {
     name: "codereview",
     title: "Code Review",
     baseHref: "/codereview",
-    component:"CodeReview",
+    component: "CodeReview",
     description: "Code Review(代码评审)简介",
     img: "codeReview.png",
     content: "该部分译自谷歌工程实践文档(Google Engineering Practices Documentation)。代码评审也称代码复查，是指通过阅读代码来检查源代码与编码标准的符合性以及代码质量的活动。",
@@ -76,9 +76,9 @@ export let codeReview = {
         "如何处理评审人员的评论",
     ],
     chapter: {
-        "简介": [0, 0],
-        "代码评审者指南": [1, 6],
-        "代码开发者指南": [7, 9],
+        "简介": [0],
+        "代码评审者指南": [1, 2, 3, 4, 5, 6],
+        "代码开发者指南": [7, 8, 9],
     }
 };
 //FreeCodeCamp
@@ -86,7 +86,7 @@ export let freeCodeCamp = {
     name: "freecodecamp",
     title: "FreeCodeCamp",
     baseHref: "/freecodecamp",
-    component:"FreeCodeCamp",
+    component: "FreeCodeCamp",
     description: "FreeCodeCamp学习笔记",
     img: "freecodecamp.png",
     content: "Github上stars最多的项目，免费编码学习社区。",
@@ -98,11 +98,12 @@ export let freeCodeCamp = {
         "skew()",
         "animation",
         "@keyframes",
-        
+        "html",
     ],
     chapter: {
-        "简介": [0, 0],
-        "css篇": [1, 6],
+        "简介": [0],
+        "css篇": [1, 2, 3, 4, 5, 6],
+        "html篇": [7]
     }
 };
 //问题汇总
@@ -110,7 +111,7 @@ export let proplemData = {
     name: "proplem",
     title: "问题汇总",
     baseHref: "/problem",
-    component:"Problem",
+    component: "Problem",
     description: "开发中遇到的问题",
     img: "problem.jpg",
     content: "用来记录开发中遇到的各种问题。",
@@ -119,8 +120,8 @@ export let proplemData = {
         "无法设置对象属性",
     ],
     chapter: {
-        "React篇":[0,0],
-        "JS篇": [1, 1],
+        "React篇": [0],
+        "JS篇": [1],
     }
 };
 

@@ -13,7 +13,7 @@ let keyMapObj = {}
 for (let i = 0; i < totalData.length; i++) {
     keyMapObj[totalData[i].baseHref] = totalData[i].title;
     for (let j = 0; j < totalData[i].section.length; j++) {
-        keyMapObj[totalData[i].baseHref+"/"+j] = totalData[i].title + totalData[i].section[j]
+        keyMapObj[totalData[i].baseHref + "/" + j] = totalData[i].title + totalData[i].section[j]
     }
 }
 //封装分级菜单
@@ -28,22 +28,22 @@ const SubMenuTemplate = (dataSource, path, mode) => {
             } : null}
         >
             {
-                Object.keys(dataSource.chapter).map((item, index) => {
-                    let section = dataSource.section.slice(dataSource.chapter[item][0], dataSource.chapter[item][1] + 1)
+                Object.keys(dataSource.chapter).map((chapterName, chapterIndex) => {
+                    let section = dataSource.chapter[chapterName];
                     return (
-                        section.length > 1 ?
+                        section.length > 1 || chapterName !== dataSource.section[section[0]] ?
                             <SubMenu
-                                key={dataSource.title + item}
-                                title={<span>{item}</span>}
+                                key={dataSource.title + chapterName}
+                                title={<span>{chapterName}</span>}
                             >
-                                {section.map((item2, index2) => {
+                                {section.map((sectionIndex, index) => {
                                     return (
-                                        <Menu.Item key={dataSource.title + item2}><Link to={dataSource.baseHref + "/" + (dataSource.chapter[item][0] + index2)}>{item2}</Link></Menu.Item>
+                                        <Menu.Item key={dataSource.title + sectionIndex}><Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link></Menu.Item>
                                     )
                                 })}
                             </SubMenu>
                             :
-                            <Menu.Item key={dataSource.title + section[0]}><Link to={dataSource.baseHref + "/" + dataSource.chapter[item][0]}>{section[0]}</Link></Menu.Item>
+                            <Menu.Item key={dataSource.title + section[0]}><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></Menu.Item>
                     )
                 })
             }
