@@ -1,8 +1,10 @@
 //文档右侧标题导航
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
+import { totalData } from "../../assets/data";
 import "./index.less";
 
-export default class index extends Component {
+class index extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -26,9 +28,21 @@ export default class index extends Component {
         }
         this.setState({ articleTree });
     }
+    setTitle() {
+        let path = this.props.location.pathname;
+        const pathSnippets = path.split('/').filter(i => i);
+        let title = [];
+        for (let i = 0; i < totalData.length; i++) {
+            if (pathSnippets[0] === totalData[i].name) {
+                title = totalData[i].section[pathSnippets[1]]
+            }
+        }
+        if (document.getElementsByTagName("h1")[0]) document.getElementsByTagName("h1")[0].innerHTML = title;
+    }
     componentDidMount() {
         //获取文档标题树
         this.getArticleTree();
+        this.setTitle();
         //页面滚动到文档末尾时，将directory逐渐向上隐藏
         let header = document.getElementById("header");
         let before = window.scrollY;
@@ -91,6 +105,7 @@ export default class index extends Component {
         }
     }
     render() {
+
         let { articleTree, scrollTop } = this.state;
         let length = articleTree.length;
         if (document.getElementById(`tree-num-0`) && length > 0) {
@@ -123,3 +138,5 @@ export default class index extends Component {
         )
     }
 }
+
+export default withRouter(index);
