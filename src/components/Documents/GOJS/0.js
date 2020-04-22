@@ -75,12 +75,12 @@ export default class index extends Component {
                     <div id="myDiagramDiv" className="diagram" style={{ height: 150 }}></div>
                     <div className="article-content">
                         <h2>教程简介</h2>
-                        <p className="indent-2">本教程仅供GoJS初学者观看使用。</p>
-                        <p className="indent-2">本教程是参考官方文档、教程等资料进行归纳整理,由于资料均为英文,理解可能出现偏差,以官方为准。</p>
-                        <p className="indent-2">教程只是将GoJS中常用的功能API做简要概述,更详细的内容还需查看官方的<a href="https://gojs.net/latest/api/index.html" target="_blank" rel="noopener noreferrer">API文档</a>。</p>
-                        <h2>GoJS绘图组件介绍</h2>
-                        <p className="indent-2">详情请看<a href="https://gojs.net/latest/intro/index.html" target="_blank" rel="noopener noreferrer">GoJS Intro</a></p>
-                        <h2>GoJS样例</h2>
+                        <p>本教程仅供 GoJS 初学者观看使用。</p>
+                        <p>本教程是参考官方文档、教程等资料进行归纳整理,由于资料均为英文,理解可能出现偏差,以官方为准。</p>
+                        <p>教程只是将 GoJS 中常用的功能 API 做简要概述,更详细的内容还需查看官方的 <a href="https://gojs.net/latest/api/index.html" target="_blank" rel="noopener noreferrer">API 文档</a>。</p>
+                        <h2>GoJS 绘图组件介绍</h2>
+                        <p>详情请看 <a href="https://gojs.net/latest/intro/index.html" target="_blank" rel="noopener noreferrer">GoJS Intro</a></p>
+                        <h2>GoJS 样例</h2>
                         <p>以下是一些典型样例</p>
                         <List
                             grid={{
@@ -106,7 +106,7 @@ export default class index extends Component {
                                 </List.Item>
                             )}
                         />
-                        <p className="indent-2">更多样例请查看<a href="https://gojs.net/latest/samples/index.html" target="_blank" rel="noopener noreferrer">GoJS Samples</a></p>
+                        <p>更多样例请查看 <a href="https://gojs.net/latest/samples/index.html" target="_blank" rel="noopener noreferrer">GoJS Samples</a></p>
                     </div>
                 </div>
                 <Directory />

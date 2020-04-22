@@ -562,7 +562,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS布局——第三节 树形布局(TreeLayout)</h1>
+                        <h1>GoJS 布局——第三节 树形布局(TreeLayout)</h1>
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
@@ -577,7 +577,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>angle</h2>
                         <ul>
-                            <li>决定Tree展开的方向</li>
+                            <li>决定 Tree 展开的方向</li>
                             <li>默认值:0</li>
                             <li>允许值:0 | 90 | 180 | 270</li>
                         </ul>
@@ -592,7 +592,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram" style={{ height: 400, maxWidth: 600 }}></div>
                         <h2>layerSpacing</h2>
                         <ul>
-                            <li>决定父/子Node间的距离</li>
+                            <li>决定父/子 Node 间的距离</li>
                             <li>默认值:50</li>
                         </ul>
                         <CodeMirror
@@ -606,7 +606,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>nodeSpacing</h2>
                         <ul>
-                            <li>决定兄弟Node间的距离</li>
+                            <li>决定兄弟 Node 间的距离</li>
                             <li>默认值:20</li>
                         </ul>
                         <CodeMirror
@@ -620,9 +620,9 @@ export default class index extends Component {
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
                         <ul>
-                            <li>决定父Node相对于其子Node的默认对齐方式</li>
+                            <li>决定父 Node 相对于其子 Node 的默认对齐方式</li>
                             <li>默认值:TreeLayout.AlinmentCenterChildrer</li>
-                            <li>更多可选值请参考<a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-alignment</a></li>
+                            <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-alignment</a></li>
                         </ul>
                         <CodeMirror
                             value={code5}
@@ -633,12 +633,12 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <p>TreeLayout.AlignmentStart将父Node定位在第一个子Node附近</p>
+                        <p>TreeLayout.AlignmentStart 将父 Node 定位在第一个子 Node 附近</p>
                         <h2>sorting</h2>
                         <ul>
-                            <li>决定子Node的排序顺序</li>
+                            <li>决定子 Node 的排序顺序</li>
                             <li>默认值:TreeLayout.SortingForwards</li>
-                            <li>更多可选值请参考<a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-sorting</a></li>
+                            <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-sorting</a></li>
                         </ul>
                         <CodeMirror
                             value={code6}
@@ -651,9 +651,9 @@ export default class index extends Component {
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>treeStyle</h2>
                         <ul>
-                            <li>决定哪些子Tree受默认属性影响</li>
+                            <li>决定哪些子 Tree 受默认属性影响</li>
                             <li>默认值:TreeLayout.StyleLayered</li>
-                            <li>更多可选值请参考<a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-treeStyle</a></li>
+                            <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-treeStyle</a></li>
                         </ul>
                         <CodeMirror
                             value={code7}
@@ -666,14 +666,14 @@ export default class index extends Component {
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alternateAngle</h2>
                         <ul>
-                            <li>alternate{`<Style>`}决定哪些子Tree受alternate属性影响</li>
-                            <li>alternateAngle决定除treeStyle规定外的子Tree的展开方向</li>
+                            <li>alternate{`<Style>`}决定哪些子 Tree 受 alternate 属性影响</li>
+                            <li>alternateAngle 决定除 treeStyle 规定外的子 Tree 的展开方向</li>
                             <li>默认值:TreeLayout.StyleLayered</li>
-                            <li>更多可选值请参考<a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-alternateAngle</a></li>
+                            <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-alternateAngle</a></li>
                         </ul>
                         <div className="tip">
                             <div className="tip-content">
-                                <em>上面的treeStyle设置为TreeLayout.StyleRootOnly,则"alternate"子树为除root节点外的子树</em>
+                                <em>上面的 treeStyle 设置为 TreeLayout.StyleRootOnly,则"alternate"子树为除 root 节点外的子树</em>
                             </div>
                         </div>
                         <CodeMirror
@@ -685,8 +685,8 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <p><br /></p>
-                        <p><br /></p>
+                        <br />
+                        <br />
                         <p>相关代码：</p>
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/09treeLayout.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/09treeLayout.html</a></p>
                     </div>

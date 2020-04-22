@@ -521,15 +521,15 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS工具——第三节 重新链接,链接重塑,零件</h1>
+                        <h1>GoJS 工具——第三节 重新链接,链接重塑,零件</h1>
                     </div>
                     <div className="article-content">
                         <h2>Relinking Tool</h2>
                         <h3>示例</h3>
                         <ul>
-                            <li>用于重新分配Link连接的"to"和"from"Node</li>
-                            <li>仅用于"toRelinkable"和或"fromRelinkable"属性为true的Link</li>
-                            <li>自动更新Diagram和Model中的关系</li>
+                            <li>用于重新分配 Link 连接的"to"和"from"Node</li>
+                            <li>仅用于"toRelinkable"和或"fromRelinkable"属性为 true 的 Link</li>
+                            <li>自动更新 Diagram 和 Model 中的关系</li>
                         </ul>
                         <p>代码及效果如下:</p>
                         <CodeMirror
@@ -551,14 +551,14 @@ export default class index extends Component {
                             }}
                         />
                         <ul>
-                            <li>segmentIndex决定了定义内容在Link上的位置</li>
-                            <li>默认值:-infinity,位于Link中间</li>
-                            <li>0:位于Link的from端</li>
-                            <li>-1:位于Link的to端</li>
+                            <li>segmentIndex 决定了定义内容在 Link 上的位置</li>
+                            <li>默认值:-infinity,位于 Link 中间</li>
+                            <li>0:位于 Link 的 from端</li>
+                            <li>-1:位于 Link 的 to端</li>
                         </ul>
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>linkValidation</h3>
-                        <p>自定义Link重新链接条件</p>
+                        <p>自定义 Link 重新链接条件</p>
                         <CodeMirror
                             value={code3}
                             options={{
@@ -570,8 +570,8 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h2>LinkReshaping Tool</h2>
                         <ul>
-                            <li>用来改变Link的路径</li>
-                            <li>仅用于"reshapable"属性值为true的Link</li>
+                            <li>用来改变 Link 的路径</li>
+                            <li>仅用于"reshapable"属性值为 true 的 Link</li>
                         </ul>
                         <CodeMirror
                             value={code4}
@@ -582,9 +582,9 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv4" className="diagram"></div>
-                        <p>上下移动Node后点击Link,滑动方块查看效果</p>
+                        <p>上下移动 Node 后点击 Link,滑动方块查看效果</p>
                         <h3>resegmentable</h3>
-                        <p>决定Link是否可重新分割</p>
+                        <p>决定 Link 是否可重新分割</p>
                         <CodeMirror
                             value={code5}
                             options={{
@@ -594,14 +594,14 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv5" className="diagram"></div>
-                        <p>上下移动Node后点击Link,滑动菱形块查看效果</p>
+                        <p>上下移动 Node 后点击 Link,滑动菱形块查看效果</p>
                         <h2>Tool Parts</h2>
                         <ul>
-                            <li>用来在操作过程中反馈的特殊的Part工具</li>
+                            <li>用来在操作过程中反馈的特殊的 Part 工具</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>在Diagram长按并滑动鼠标可用来选中Part</li>
-                            <li>toolManager.dragSelectingTool.box决定选择框的样式</li>
+                            <li>在 Diagram 长按并滑动鼠标可用来选中 Part</li>
+                            <li>toolManager.dragSelectingTool.box 决定选择框的样式</li>
                         </ul>
                         <CodeMirror
                             value={code6}
@@ -613,8 +613,8 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <ul data-lake-indent="1">
-                            <li>在Node边框长按并滑动鼠标可重新链接,此时会显示当前拖拽的Link</li>
-                            <li>toolManager.linkingTool.temporaryLink决定此样式</li>
+                            <li>在 Node 边框长按并滑动鼠标可重新链接,此时会显示当前拖拽的 Link</li>
+                            <li>toolManager.linkingTool.temporaryLink 决定此样式</li>
                         </ul>
                         <CodeMirror
                             value={code7}

@@ -528,7 +528,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS布局——第二节 网格布局(GridLayout)</h1>
+                        <h1>GoJS 布局——第二节 网格布局(GridLayout)</h1>
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
@@ -552,7 +552,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>wrappingWidth</h2>
-                        <p>确定GridLayout的宽度，若使适合wrappingwidth的最大列数小于wrappingColumn, 则wrappingWidth优先</p>
+                        <p>确定 GridLayout 的宽度，若使适合 wrappingwidth 的最大列数小于 wrappingColumn, 则 wrappingWidth 优先</p>
                         <CodeMirror
                             value={code3}
                             options={{
@@ -563,8 +563,8 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>cellSize</h2>
-                        <p>确定每个Part在网格中所占位置的最小Part大小</p>
-                        <p>默认值::NaN x NaN(使用最大的部件作为cellSize)</p>
+                        <p>确定每个 Part 在网格中所占位置的最小 Part 大小</p>
+                        <p>默认值::NaN x NaN(使用最大的部件作为 cellSize)</p>
                         <CodeMirror
                             value={code4}
                             options={{
@@ -575,7 +575,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>spacing</h2>
-                        <p>确定Node之间的空间</p>
+                        <p>确定 Node 之间的空间</p>
                         <p>默认值:10x10</p>
                         <CodeMirror
                             value={code5}
@@ -587,10 +587,10 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
-                        <p>决定使用Part.location还是Part.position来安排每个part</p>
+                        <p>决定使用 Part.location 还是 Part.position 来安排每个 part</p>
                         <div className="tip">
                             <div className="tip-content">
-                                <em>默认的排列基准是Node的左上角,Node的locationSpot决定此属性</em>
+                                <em>默认的排列基准是 Node 的左上角,Node 的 locationSpot 决定此属性</em>
                             </div>
                         </div>
                         <CodeMirror
@@ -604,14 +604,14 @@ export default class index extends Component {
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>sorting</h2>
                         <ul>
-                            <li>决定Part的顺序</li>
+                            <li>决定 Part 的顺序</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>可以是Forward(正向),Reverse(反向),Ascending(升序)或Descending(降序)</li>
+                            <li>可以是 Forward(正向),Reverse(反向),Ascending(升序)或Descending(降序)</li>
                         </ul>
                         <ul>
-                            <li>Forward / Reverse取决于元素数据被检索的顺序</li>
-                            <li>Ascending / Descending取决于"comparer"属性函数</li>
+                            <li>Forward / Reverse 取决于元素数据被检索的顺序</li>
+                            <li>Ascending / Descending 取决于"comparer"属性函数</li>
                         </ul>
                         <CodeMirror
                             value={code7}
@@ -622,7 +622,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <p>改变Node数据的顺序</p>
+                        <p>改变 Node 数据的顺序</p>
                         <CodeMirror
                             value={code8}
                             options={{
@@ -631,9 +631,9 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <p>设置layout的sorting属性为: go.GridLayout.Ascending</p>
+                        <p>设置 layout 的 sorting 属性为: go.GridLayout.Ascending</p>
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <p>设置layout的comparer属性为</p>
+                        <p>设置 layout 的 comparer 属性为</p>
                         <CodeMirror
                             value={code9}
                             options={{
@@ -644,7 +644,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv9" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>arrangement</h2>
-                        <p>决定Node排序的方式</p>
+                        <p>决定 Node 排序的方式</p>
                         <CodeMirror
                             value={code10}
                             options={{
@@ -654,8 +654,8 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv10" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <p><br /></p>
-                        <p><br /></p>
+                        <br />
+                        <br />
                         <p>相关代码：</p>
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/08gridLayout.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/08gridLayout.html</a></p>
                     </div>

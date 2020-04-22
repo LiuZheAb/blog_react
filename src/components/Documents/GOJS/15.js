@@ -276,15 +276,15 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS面板——第二节 网格面板(Grid Panel)</h1>
+                        <h1>GoJS 面板——第二节 网格面板(Grid Panel)</h1>
                     </div>
                     <div className="article-content">
                         <h2>Grid Panels</h2>
                         <ul>
                             <li>显示按一定间隔绘制的线条网格</li>
-                            <li>Diagram.grid是一个Grid Panel</li>
-                            <li>设置了Diagram.grid后,Part可以根据网格对齐或调整大小</li>
-                            <li>Grid Panel中的元素必须是Shape</li>
+                            <li>Diagram.grid 是一个 Grid Panel</li>
+                            <li>设置了 Diagram.grid 后,Part 可以根据网格对齐或调整大小</li>
+                            <li>Grid Panel 中的元素必须是 Shape</li>
                         </ul>
                         <p>代码及效果如下:</p>
                         <CodeMirror
@@ -308,7 +308,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>Shape.Interval</h2>
                         <ul>
-                            <li>指定在网格中绘制Shape的频率(以gridCellSize的倍数计算)</li>
+                            <li>指定在网格中绘制 Shape 的频率(以 gridCellSize 的倍数计算)</li>
                             <li>默认值:1</li>
                             <li>允许值:正整数</li>
                         </ul>

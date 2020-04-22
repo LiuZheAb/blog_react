@@ -7,11 +7,11 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS介绍</h1>
+                        <h1>GoJS 介绍</h1>
                     </div>
                     <div className="article-content">
-                        <h2>GoJS是什么</h2>
-                        <h3>纯JavaScript库</h3>
+                        <h2>GoJS 是什么</h2>
+                        <h3>纯 JavaScript 库</h3>
                         <ul>
                             <li>实现自定义交互式关系图和复杂的数据可视化</li>
                             <li>复杂部件的模板化</li>
@@ -28,26 +28,26 @@ export default class index extends Component {
                             <li>预先加载了几十个常见的功能(复制/粘贴/撤消/重做等)</li>
                             <li>自动处理平台/浏览器差异</li>
                         </ul>
-                        <h2>GoJS特性</h2>
+                        <h2>GoJS 特性</h2>
                         <ul>
-                            <li>基本的HTML</li>
-                            <li>原生JavaScript</li>
+                            <li>基本的 HTML</li>
+                            <li>原生 JavaScript</li>
                             <li>直观的拖放和复制粘贴</li>
-                            <li>无限制的Undo和Redo</li>
+                            <li>无限制的 Undo 和 Redo</li>
                             <li>有可定制的工具支持鼠标和触摸</li>
                             <li>正交和贝塞尔连线——可“躲避”和“越过”节点</li>
                             <li>图形自动排版</li>
                             <li>缩略图</li>
                         </ul>
-                        <h2>如何获得GoJS</h2>
+                        <h2>如何获得 GoJS</h2>
                         <ul>
                             <li>gojs.net</li>
                         </ul>
                         <ul data-lake-indent="1">
                             <li>数以百计的样品</li>
                             <li>几十个介绍页面</li>
-                            <li>完整的API文档</li>
-                            <li>免费注册试用并获得支持30天免费支持</li>
+                            <li>完整的 API 文档</li>
+                            <li>免费注册试用并获得支持 30 天免费支持</li>
                         </ul>
                         <ul>
                             <li>npm/NuGet/GitHub</li>

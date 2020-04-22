@@ -81,7 +81,7 @@ export default class index extends Component {
                             }}
                         />
                         <h2>示例</h2>
-                        <p>点击下面的代码块查看预览</p>
+                        <p className="indent-2">点击下面的代码块查看预览</p>
                         <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
                             <div className="code-box code-box-active">
                                 <div className="mask" onClick={this.selectCode.bind(this, 0)}></div>
@@ -129,7 +129,7 @@ export default class index extends Component {
                             </div>
                         </div>
                         <div style={this.state.divStyle}></div>
-                        <p>具有多个颜色停止的渐变</p>
+                        <p className="indent-2">具有多个颜色停止的渐变</p>
                         <CodeMirror
                             value={`background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);`}
                             options={{
@@ -141,7 +141,7 @@ export default class index extends Component {
                         <div style={{ margin: "10px 0", background: "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)", width: "100%", height: 20 }}></div>
                         <div className="tip">
                             <div className="tip-content">
-                                <p><em>{`由于<gradient>数据类型系<image>的子数据类型，<gradient>只能被用于<image>可以使用的地方。因此，linear-gradient() 并不适用于background-color以及类似的使用 <color>数据类型的属性中。`}</em></p>
+                                <p className="indent-2"><em>{`由于<gradient>数据类型系<image>的子数据类型，<gradient>只能被用于<image>可以使用的地方。因此，linear-gradient() 并不适用于background-color以及类似的使用 <color>数据类型的属性中。`}</em></p>
                             </div>
                         </div>
                         <h2>线形渐变的构成</h2>
@@ -163,7 +163,7 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">默认情况下，从一个颜色的终止点平滑的过渡到另一个颜色的终止点，颜色之间的中点是两个颜色颜色转换的中点。你可以将中点移动到这两个颜色之间的任意位置，方法是在两个颜色之间添加未标记的 %，以指示颜色的中转位置。下面的示例是从起始点到10%的位置标记红色，从90%到结束标记蓝色。在10%到90%之间，颜色从红色过渡到蓝色，然而过渡的中点是在30%的标记上，而不是在没有30%中转点的情况下会默认为50%。</p>
+                        <p className="indent-2">默认情况下，从一个颜色的终止点平滑的过渡到另一个颜色的终止点，颜色之间的中点是两个颜色颜色转换的中点。你可以将中点移动到这两个颜色之间的任意位置，方法是在两个颜色之间添加未标记的 %，以指示颜色的中转位置。下面的示例是从起始点到 10% 的位置标记红色，从90%到结束标记蓝色。在 10% 到 90% 之间，颜色从红色过渡到蓝色，然而过渡的中点是在 30% 的标记上，而不是在没有 30% 中转点的情况下会默认为 50%。</p>
                         <CodeMirror
                             value={code7}
                             options={{
@@ -173,7 +173,7 @@ export default class index extends Component {
                             }}
                         />
                         <p className="indent-2">如果两个或多个颜色终止在同一位置，则在该位置声明的第一个颜色和最后一个颜色之间的过渡将是一条生硬线。</p>
-                        <p className="indent-2">颜色终止列表中颜色的终止点应该是依次递增的。如果后面的颜色终止点小于前面颜色的终止点则后面的会被覆盖，从而创建一个硬转换。下面的变化是从红色到黄色在40%的位置，然后过渡从黄色到蓝色终止于65%的位置处。</p>
+                        <p className="indent-2">颜色终止列表中颜色的终止点应该是依次递增的。如果后面的颜色终止点小于前面颜色的终止点则后面的会被覆盖，从而创建一个硬转换。下面的变化是从红色到黄色在 40% 的位置，然后过渡从黄色到蓝色终止于 65% 的位置处。</p>
                         <CodeMirror
                             value={code8}
                             options={{
@@ -182,7 +182,7 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">允许颜色多个颜色终止位置。通过在CSS声明中包含两个位置，可以将一个颜色声明为两个相邻的颜色终止。以下三个梯度是相等的:</p>
+                        <p className="indent-2">允许颜色多个颜色终止位置。通过在 CSS 声明中包含两个位置，可以将一个颜色声明为两个相邻的颜色终止。以下三个梯度是相等的:</p>
                         <CodeMirror
                             value={code9}
                             options={{
@@ -191,18 +191,18 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">默认情况下，如果不带0%终止的颜色，则在该点声明的第一个颜色。类似地，最后一种颜色将持续到100%标记，或者如果在最后一个没有声明长度，则在100%标记处。</p>
+                        <p className="indent-2">默认情况下，如果不带 0% 终止的颜色，则在该点声明的第一个颜色。类似地，最后一种颜色将持续到 100% 标记，或者如果在最后一个没有声明长度，则在 100% 标记处。</p>
                         <h2>语法</h2>
                         <ul>
                             <li>{`<side-or-corner>`}</li>
-                            <p>描述渐变线的起始点位置。它包含to和两个关键词：第一个指出水平位置left or right，第二个指出垂直位置top or bottom。关键词的先后顺序无影响，且都是可选的。</p>
-                            <p>to top, to bottom, to left 和 to right这些值会被转换成角度0度、180度、270度和90度。其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。渐变线的结束点与其起点中心对称。</p>
+                            <p className="indent-2">描述渐变线的起始点位置。它包含 to 和两个关键词：第一个指出水平位置 left or right，第二个指出垂直位置 top or bottom。关键词的先后顺序无影响，且都是可选的。</p>
+                            <p className="indent-2">to top, to bottom, to left 和 to right 这些值会被转换成角度 0 度、180 度、270 度和 90 度。其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。渐变线的结束点与其起点中心对称。</p>
                             <li>{`<angle>`}</li>
-                            <p>用角度值指定渐变的方向（或角度）。角度顺时针增加。 </p>
+                            <p className="indent-2">用角度值指定渐变的方向（或角度）。角度顺时针增加。 </p>
                             <li>{`<linear-color-stop>`}</li>
-                            <p>{`由一个<color>值组成，并且跟随着一个可选的终点位置（可以是一个百分比值或者是沿着渐变轴的<length>）。CSS渐变的颜色渲染采取了与SVG相同的规则。`}</p>
+                            <p className="indent-2">{`由一个<color>值组成，并且跟随着一个可选的终点位置（可以是一个百分比值或者是沿着渐变轴的<length>）。CSS 渐变的颜色渲染采取了与 SVG 相同的规则。`}</p>
                             <li>{`<color-hint>`}</li>
-                            <p>颜色中转点是一个插值提示，它定义了在相邻颜色之间渐变如何进行。长度定义了在两种颜色之间的哪个点停止渐变颜色应该达到颜色过渡的中点。如果省略，颜色转换的中点是两个颜色停止之间的中点。 </p>
+                            <p className="indent-2">颜色中转点是一个插值提示，它定义了在相邻颜色之间渐变如何进行。长度定义了在两种颜色之间的哪个点停止渐变颜色应该达到颜色过渡的中点。如果省略，颜色转换的中点是两个颜色停止之间的中点。 </p>
                         </ul>
                         <h3>正式语法</h3>
                         <CodeMirror
@@ -233,7 +233,7 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2">-moz-前缀的规则用于兼容Fx 3.6 to Fx 15的火狐浏览器。 -webkit-前缀的规则用于兼容在Android 4.3以前版本、iOS 6.1以前版本、Safari 6。当使用带前缀的规则时，不要加“to”关键字。</p>
+                        <p className="indent-2">-moz-前缀的规则用于兼容 Fx 3.6 to Fx 15 的火狐浏览器。 -webkit-前缀的规则用于兼容在 Android 4.3 以前版本、iOS 6.1 以前版本、Safari 6。当使用带前缀的规则时，不要加“ to ”关键字。</p>
                     </div>
                 </div>
                 <Directory />

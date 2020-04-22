@@ -322,7 +322,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS布局——第四节 力导向布局(ForceDirectedLayout)</h1>
+                        <h1>GoJS 布局——第四节 力导向布局(ForceDirectedLayout)</h1>
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
@@ -337,26 +337,26 @@ export default class index extends Component {
                         <div id="myDiagramDiv1" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>简介</h2>
                         <p>力导向布局算法是一类绘图算法，它仅仅基于图的结构本身来绘图，而不依赖于上下文信息。</p>
-                        <p>GoJS ForceDirected Layout有三种</p>
+                        <p>GoJS ForceDirected Layout 有三种</p>
                         <ul>
                             <li>电场斥力</li>
                             <li>引力</li>
                             <li>弹簧力</li>
                         </ul>
                         <h2>电场斥力</h2>
-                        <p>把每个Node看做一个电荷,电荷与电荷之间存在斥力,也就是库仑力,根据库仑定律(Coulomb's law),电荷之间的斥力可以这么计算:</p>
+                        <p>把每个 Node 看做一个电荷,电荷与电荷之间存在斥力,也就是库仑力,根据库仑定律(Coulomb's law),电荷之间的斥力可以这么计算:</p>
                         <div className="text-center">
                             <img src={require("../../../assets/images/coulomb.png")} alt="" />
                         </div>
                         <p className="text-center">Coulomb's law</p>
                         <ul>
-                            <li>k为库仑常数(静电力常量)</li>
-                            <li>q为电荷带电量</li>
-                            <li>r为电荷间距</li>
+                            <li>k 为库仑常数(静电力常量)</li>
+                            <li>q 为电荷带电量</li>
+                            <li>r 为电荷间距</li>
                         </ul>
                         <h3>defaultElectricalCharge</h3>
                         <ul>
-                            <li>决定Node间的距离，即r</li>
+                            <li>决定 Node 间的距离，即 r</li>
                             <li>默认值：150</li>
                         </ul>
                         <CodeMirror
@@ -371,13 +371,13 @@ export default class index extends Component {
                         <h2>引力</h2>
                         <h3>defaultGravitationalMass </h3>
                         <ul>
-                            <li>决定Node间的引力系数</li>
+                            <li>决定 Node 间的引力系数</li>
                             <li>默认值：0</li>
                         </ul>
                         <h2>弹簧力</h2>
                         <h3>defaultSpringLength</h3>
                         <ul>
-                            <li>决定Node间弹簧的长度</li>
+                            <li>决定 Node 间弹簧的长度</li>
                             <li>默认值：50</li>
                         </ul>
                         <CodeMirror
@@ -391,7 +391,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h3>defaultSpringStiffness</h3>
                         <ul>
-                            <li>决定Node间弹簧的刚度</li>
+                            <li>决定 Node 间弹簧的刚度</li>
                             <li>默认值：0.05</li>
                         </ul>
                         <CodeMirror
@@ -405,7 +405,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv4" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>isFixed</h2>
                         <ul>
-                            <li>为true时Node不会被Layout影响，但仍然对附近和连接的Node有影响。即Node自身被固定</li>
+                            <li>为 true 时 Node 不会被 Layout 影响，但仍然对附近和连接的 Node 有影响。即 Node 自身被固定</li>
                         </ul>
                         <CodeMirror
                             value={code5}
@@ -416,8 +416,8 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv5" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
-                        <p><br /></p>
-                        <p><br /></p>
+                        <br />
+                        <br />
                         <p>相关代码：</p>
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/10forceDirectedLayout.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/10forceDirectedLayout.html</a></p>
                     </div>

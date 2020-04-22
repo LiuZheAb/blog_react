@@ -383,7 +383,7 @@ export default class index extends Component {
     }
     load() {
         if (file) { myDiagram7.model = go.Model.fromJson(file) } else {
-            alert("你还没有保存数据,请先Save")
+            alert("你还没有保存数据,请先 Save")
         }
     }
     render() {
@@ -405,45 +405,45 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv1" className="diagram"></div>
-                        <h2>为什么要用Diagram Model？</h2>
+                        <h2>为什么要用 Diagram Model？</h2>
                         <ul>
-                            <li>清晰地分离Part数据与Part外观</li>
+                            <li>清晰地分离 Part 数据与 Part 外观</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>Diagram Model管理Part数据(JavaScript Obiects)</li>
-                            <li>Diagram templates管理Part样式</li>
+                            <li>Diagram Model 管理 Part 数据(JavaScript Obiects)</li>
+                            <li>Diagram templates 管理 Part 样式</li>
                         </ul>
                         <ul>
-                            <li>便于保存/加载/更新Diagram components</li>
-                            <li>便于Node/Link的序列化</li>
+                            <li>便于保存/加载/更新 Diagram components</li>
+                            <li>便于 Node/Link 的序列化</li>
                         </ul>
-                        <h2>建立一个Diagram Model</h2>
+                        <h2>建立一个 Diagram Model</h2>
                         <ul>
-                            <li>方法1</li>
+                            <li>方法 1</li>
                         </ul>
                         <ul data-lake-indent="1">
                             <li>{`myDiagram.model=$(go.Model,{<key/value pairs for Model properties>})`}</li>
                         </ul>
                         <ul>
-                            <li>方法2</li>
+                            <li>方法 2</li>
                         </ul>
                         <ul data-lake-indent="1">
                             <li>{`myDiagram.model=new go.Model(<nodeDataArray>,<linkDataArray(if GraphLinksModel)>)`}</li>
                         </ul>
                         <h2>Model</h2>
                         <ul>
-                            <li>在nodeDataArray中管理Node数据</li>
-                            <li>不支持Link数据</li>
-                            <li>Node数据有两个默认属性："key"和"category"</li>
+                            <li>在 nodeDataArray 中管理 Node 数据</li>
+                            <li>不支持 Link 数据</li>
+                            <li>Node 数据有两个默认属性："key"和"category"</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>所有Model类都是如此</li>
-                            <li>如果“key”为空，则会自动生成一个唯一的key</li>
-                            <li>如果“category”留空，GoJS使用以下中的一种</li>
+                            <li>所有 Model 类都是如此</li>
+                            <li>如果“key”为空，则会自动生成一个唯一的 key</li>
+                            <li>如果“category”留空，GoJS 使用以下中的一种</li>
                         </ul>
                         <ol data-lake-indent="2">
-                            <li>nodeTemplateMap值在key为""时(与nodeTemplateMap相同)</li>
-                            <li>默认节点模板(使用TextBlock作为key)</li>
+                            <li>nodeTemplateMap 值在 key 为""时(与 nodeTemplateMap 相同)</li>
+                            <li>默认节点模板(使用 TextBlock 作为 key)</li>
                         </ol>
                         <CodeMirror
                             value={code2}
@@ -456,9 +456,9 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h2>GraphLinksModel</h2>
                         <ul>
-                            <li>支持使用nodeDataArray / linkDataArray管理Node和Link数据</li>
+                            <li>支持使用 nodeDataArray / linkDataArray 管理 Node 和 Link 数据</li>
                             <li>链接数据有预定义的属性。"to","from"和"category"</li>
-                            <li>支持Ports-使用Links连接obiects</li>
+                            <li>支持 Ports 使用 Links 连接 obiects</li>
                         </ul>
                         <CodeMirror
                             value={code3}
@@ -471,13 +471,13 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h2>TreeModel</h2>
                         <ul>
-                            <li>在nodeDataArray中管理Node数据</li>
-                            <li>不支持Link数据</li>
-                            <li>支持Node数据的"parent"属性</li>
+                            <li>在 nodeDataArray 中管理 Node 数据</li>
+                            <li>不支持 Link 数据</li>
+                            <li>支持 Node 数据的"parent"属性</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>parent值必须设置为Node数据的key</li>
-                            <li>生成从指定key的父节点画出指向此节点的链接</li>
+                            <li>parent 值必须设置为 Node 数据的 key</li>
+                            <li>生成从指定 key 的父节点画出指向此节点的链接</li>
                         </ul>
                         <CodeMirror
                             value={code4}
@@ -488,7 +488,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv4" className="diagram"></div>
-                        <h2>修改Model</h2>
+                        <h2>修改 Model</h2>
                         <ul>
                             <li>{`添加Node数据:Model.addNodeData(<node data object>)`}</li>
                             <li>{`删除Node数据:Model.removeNodeData(<node data object>)`}</li>
@@ -503,7 +503,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <ul>
-                            <li>{`查找Node数据对象:Model.findNodeDataForKey(<key>)`}</li>
+                            <li>{`查找 Node 数据对象:Model.findNodeDataForKey(<key>)`}</li>
                             <li>{`设置数据属性:Model.set(<data obiect>,<target property>,<property value>)`}</li>
                         </ul>
                         <ul data-lake-indent="1">
@@ -518,10 +518,10 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv6" className="diagram"></div>
-                        <h2>保存/加载Model</h2>
+                        <h2>保存/加载 Model</h2>
                         <ul>
-                            <li>{`获取模型JSON: model.toJson()`}</li>
-                            <li>{`从JSON加载模型:Model.fromJson(<有效的JSON Model字符串>)`}</li>
+                            <li>{`获取模型 JSON: model.toJson()`}</li>
+                            <li>{`从 JSON 加载模型:Model.fromJson(<有效的 JSON Model 字符串>)`}</li>
                         </ul>
                         <CodeMirror
                             value={code7}
@@ -532,12 +532,12 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv7" className="diagram"></div>
-                        <div className="text-center"><button onClick={this.save} style={{ marginRight: 20 }}>Save</button><button onClick={this.load} style={{ marginRight: 20 }}>Load</button><button onClick={this.check}>下载查看JSON数据</button></div>
+                        <div className="text-center"><button onClick={this.save} style={{ marginRight: 20 }}>Save</button><button onClick={this.load} style={{ marginRight: 20 }}>Load</button><button onClick={this.check}>下载查看 JSON 数据</button></div>
                         <div className="tip">
                             <div className="tip-content">
-                                <p><em>选中节点后，按delete键可删除组件</em></p>
-                                <p><em>在触摸设备上,长按元素将弹出command菜单</em></p>
-                                <p><em>更多交互命令请看<a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
+                                <p><em>选中节点后，按 delete 键可删除组件</em></p>
+                                <p><em>在触摸设备上,长按元素将弹出 command 菜单</em></p>
+                                <p><em>更多交互命令请看 <a target="_blank" rel="noopener noreferrer" href="https://gojs.net/latest/intro/commands.html">GoJS_Intro_Commands</a></em></p>
                             </div>
                         </div>
                         <br />

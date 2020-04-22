@@ -328,35 +328,35 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS入门教程——第三节 使用GoJS构建Parts(Parts 和 Panels)</h1>
+                        <h1>GoJS 入门教程——第三节 使用 GoJS 构建 Parts(Parts 和 Panels)</h1>
                     </div>
                     <div className="article-content">
-                        <h2>Part是什么</h2>
+                        <h2>Part 是什么</h2>
                         <ul>
-                            <li>Part是GraphObject的一个子类</li>
+                            <li>Part 是 GraphObject 的一个子类</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>第1个Panel（也是GraphObject的一个子类）</li>
+                            <li>第 1 个 Panel（也是 GraphObject 的一个子类）</li>
                         </ul>
                         <ul data-lake-indent="2">
-                            <li>第1个GraphObject</li>
-                            <li>第2个GraphObject</li>
+                            <li>第 1 个 GraphObject</li>
+                            <li>第 2 个 GraphObject</li>
                             <li>...</li>
-                            <li>第n个GraphObject</li>
+                            <li>第 n 个 GraphObject</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>第2个Panel</li>
+                            <li>第 2 个 Panel</li>
                             <li>...</li>
-                            <li>第n个Panel</li>
+                            <li>第 n 个 Panel</li>
                         </ul>
                         <ul>
-                            <li>Node,Link,Group和Adornment都是GoJS Part</li>
+                            <li>Node,Link,Group 和 Adornment 都是 GoJS Part</li>
                         </ul>
                         <p>如下图所示：</p>
                         <div className="text-center">
                             <img src={require("../../../assets/images/1585146074836-5d244c42-8534-4c61-8bc9-be81702110b7.png")} alt="" />
                         </div>
-                        <h2>GraphObject是什么</h2>
+                        <h2>GraphObject 是什么</h2>
                         <ul>
                             <li>{`$(go.<GraphObject Type>),`}</li>
                         </ul>
@@ -364,11 +364,11 @@ export default class index extends Component {
                             <li>{`"<optional type-specific property>" 可以是特定类型属性`}</li>
                             <li>{"{<optional key/value parirs for properties>} 也可以是几组属性键值对"}</li>
                         </ul>
-                        <h2>Panel是什么</h2>
+                        <h2>Panel 是什么</h2>
                         <ul>
-                            <li>Panel保存或组织GraphObject(它的元素)</li>
-                            <li>Part(Node、Link、Group、Adornment)是Panel的子类</li>
-                            <li>Panel类型决定其元素的组织方式。常见类型:</li>
+                            <li>Panel 保存或组织 GraphObject(它的元素)</li>
+                            <li>Part(Node、Link、Group、Adornment)是 Panel 的子类</li>
+                            <li>Panel 类型决定其元素的组织方式。常见类型:</li>
                         </ul>
                         <ul data-lake-indent="1">
                             <li>Position</li>
@@ -381,11 +381,11 @@ export default class index extends Component {
                         </div>
                         <h2>Position Panels</h2>
                         <ul>
-                            <li>Position Panels中的元素：</li>
+                            <li>Position Panels 中的元素：</li>
                         </ul>
                         <ul data-lake-indent="1">
                             <li>根据指定的“position”属性定位</li>
-                            <li>默认将position设为(0,0)</li>
+                            <li>默认将 position 设为(0,0)</li>
                             <li>定位在面板坐标系中</li>
                             <li>定位可能为负值-如(-20,50)</li>
                         </ul>
@@ -400,11 +400,11 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>Veitical Panels</h2>
-                        <p>Vertical Panels中的元素：</p>
+                        <p>Vertical Panels 中的元素：</p>
                         <ul>
                             <li>从上到下垂直排列</li>
                             <li>给定它们的标准高度/宽度，除非设置了它们的“stretch”属性</li>
-                            <li>如果它们的宽度不等于Panel的宽度，则根据“alignment”属性对齐</li>
+                            <li>如果它们的宽度不等于 Panel 的宽度，则根据“alignment”属性对齐</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror
@@ -416,7 +416,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv2" className="diagram"></div>
-                        <p>TextBlock在Shape下方，且默认水平居中对齐。这一属性由alignment控制。</p>
+                        <p>TextBlock 在 Shape 下方，且默认水平居中对齐。这一属性由 alignment 控制。</p>
                         <CodeMirror
                             value={code3}
                             options={{
@@ -426,7 +426,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv3" className="diagram"></div>
-                        <p>默认情况下，Vertical Panel中的元素只占用它们需要的空间。这一属性由stretch控制。</p>
+                        <p>默认情况下，Vertical Panel 中的元素只占用它们需要的空间。这一属性由 stretch 控制。</p>
                         <CodeMirror
                             value={code4}
                             options={{
@@ -436,7 +436,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv4" className="diagram"></div>
-                        <p>元素的alignment属性只有在元素的宽度不等于Panel的宽度时才有效，对于TextBlocks，可以通过设置textAlign属性来修复。</p>
+                        <p>元素的 alignment 属性只有在元素的宽度不等于 Panel 的宽度时才有效，对于 TextBlocks，可以通过设置 textAlign 属性来修复。</p>
                         <CodeMirror
                             value={code5}
                             options={{
@@ -447,10 +447,10 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h2>Horizontal Panels</h2>
-                        <p>Horizontal Panels中的元素:</p>
+                        <p>Horizontal Panels 中的元素:</p>
                         <ul>
                             <li>从左到右水平排列</li>
-                            <li>垂直拉伸以适应Panel的高度与“stretch”属性</li>
+                            <li>垂直拉伸以适应 Panel 的高度与“stretch”属性</li>
                         </ul>
                         <p>代码及效果如图所示：</p>
                         <CodeMirror
@@ -462,7 +462,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv6" className="diagram"></div>
-                        <p>同样的，alignment属性控制对齐方式。</p>
+                        <p>同样的，alignment 属性控制对齐方式。</p>
                         <CodeMirror
                             value={code7}
                             options={{
@@ -472,7 +472,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv7" className="diagram"></div>
-                        <p>stretch属性控制元素所占空间。</p>
+                        <p>stretch 属性控制元素所占空间。</p>
                         <CodeMirror
                             value={code8}
                             options={{
@@ -482,7 +482,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv8" className="diagram"></div>
-                        <p>为Horizontal Panels中的元素设置stretch属性会“覆盖”alignment，此时，修改TextBlock的对齐方式要用verticalAlignment属性。</p>
+                        <p>为 Horizontal Panels 中的元素设置 stretch 属性会“覆盖”alignment，此时，修改 TextBlock 的对齐方式要用 verticalAlignment 属性。</p>
                         <CodeMirror
                             value={code9}
                             options={{
@@ -494,16 +494,16 @@ export default class index extends Component {
                         <div id="myDiagramDiv9" className="diagram"></div>
                         <h2>Spot/Auto Panels</h2>
                         <ul>
-                            <li>默认情况下，Panel中的第一个元素是主元素“main element”</li>
-                            <li>将“isPanelMain”属性设置为true，可以指定一个元素作为主元素</li>
-                            <li>Panel中所有其他元素围绕主元素排列</li>
+                            <li>默认情况下，Panel 中的第一个元素是主元素“main element”</li>
+                            <li>将“isPanelMain”属性设置为 true，可以指定一个元素作为主元素</li>
+                            <li>Panel 中所有其他元素围绕主元素排列</li>
                         </ul>
                         <h3>Spots</h3>
                         <ul>
-                            <li>Spots包含从0到1的X/Y值</li>
+                            <li>Spots 包含从 0 到 1 的 X/Y 值</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>表示从矩形左上角到X/Y轴的分数距离</li>
+                            <li>表示从矩形左上角到 X/Y 轴的分数距离</li>
                         </ul>
                         <p>如图所示：</p>
                         <div className="text-center">
@@ -520,8 +520,8 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv10" className="diagram"></div>
                         <p>new go.Spot(x,y,xOffset,yOffset)</p>
-                        <p>x,y为0~1的小数，</p>
-                        <p>xOffset，yOffset为在(x,y)位置的基础上在横纵坐标的偏移量，例如：</p>
+                        <p>x,y 为 0~1 的小数，</p>
+                        <p>xOffset，yOffset 为在(x,y)位置的基础上在横纵坐标的偏移量，例如：</p>
                         <CodeMirror
                             value={code11}
                             options={{
@@ -531,9 +531,9 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv11" className="diagram"></div>
-                        <p>alignmentFocus属性默认使用go.Spot.Center来定位元素。</p>
-                        <p>例如，在上面的例子中，是以TextBlock的中心为基准来定位TextBlock的</p>
-                        <p>设置alignmentFocus属性可修改定位基准</p>
+                        <p>alignmentFocus 属性默认使用 go.Spot.Center 来定位元素。</p>
+                        <p>例如，在上面的例子中，是以 TextBlock 的中心为基准来定位 TextBlock 的</p>
+                        <p>设置 alignmentFocus 属性可修改定位基准</p>
                         <CodeMirror
                             value={code12}
                             options={{
@@ -545,8 +545,8 @@ export default class index extends Component {
                         <div id="myDiagramDiv12" className="diagram"></div>
                         <h3>Auto Panels</h3>
                         <ul>
-                            <li>将主要元素适应周围的所有其他Panel元素</li>
-                            <li>从本质上讲，Auto Panels是实现围绕某些对象的边框的方式</li>
+                            <li>将主要元素适应周围的所有其他 Panel 元素</li>
+                            <li>从本质上讲，Auto Panels 是实现围绕某些对象的边框的方式</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror
@@ -559,7 +559,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv13" className="diagram"></div>
                         <p>主元素(Shape)的大小适应其他非主元素(TextBlock)。</p>
-                        <p>desiredSize属性控制主元素的默认大小。</p>
+                        <p>desiredSize 属性控制主元素的默认大小。</p>
                         <CodeMirror
                             value={code14}
                             options={{
@@ -569,8 +569,8 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv14" className="diagram"></div>
-                        <h2>任意复杂Parts</h2>
-                        <p>Panels可以组合创建复杂Parts</p>
+                        <h2>任意复杂 Parts</h2>
+                        <p>Panels 可以组合创建复杂 Parts</p>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200408093848.png")} alt="" />
                         </div>

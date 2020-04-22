@@ -270,14 +270,14 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS面板——第三节 刻度面板(Graduated Panel)</h1>
+                        <h1>GoJS 面板——第三节 刻度面板(Graduated Panel)</h1>
                     </div>
                     <div className="article-content">
                         <h2>Graduated Panels</h2>
                         <ul>
-                            <li>用于沿着主要Shape的边绘制规则的标记或文本标签</li>
-                            <li>必须有2个意思元素</li>
-                            <li>默认情况下，主Shape元素是第一个元素——可以更改</li>
+                            <li>用于沿着主要 Shape 的边绘制规则的标记或文本标签</li>
+                            <li>必须有 2 个意思元素</li>
+                            <li>默认情况下，主 Shape 元素是第一个元素——可以更改</li>
                         </ul>
                         <CodeMirror
                             value={code1}
@@ -291,17 +291,17 @@ export default class index extends Component {
                         <h2>Graduated Panel Properties</h2>
                         <h3>graduatedMin、graduatedMax</h3>
                         <ul>
-                            <li>Graduated Panel范围包括其"graduatedMin"和"graduatedMax"之间的值</li>
+                            <li>Graduated Panel 范围包括其"graduatedMin"和"graduatedMax"之间的值</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>默认情况下，它们分别是O和100</li>
+                            <li>默认情况下，它们分别是 O 和 100</li>
                         </ul>
                         <h3>graduatedTickUnit</h3>
                         <ul>
                             <li>"graduatedTickUnit"——生成标记的频率</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>默认值是10——每10个单位，生成一个标记</li>
+                            <li>默认值是 10——每 10 个单位，生成一个标记</li>
                         </ul>
                         <CodeMirror
                             value={code2}
@@ -314,7 +314,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>segmentOffset</h3>
                         <ul>
-                            <li>segmentOffset决定了刻度的偏移量</li>
+                            <li>segmentOffset 决定了刻度的偏移量</li>
                         </ul>
                         <CodeMirror
                             value={code3}
@@ -327,7 +327,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>graduatedTickBase</h3>
                         <ul>
-                            <li>graduatedTickBase决定了标记的起始值</li>
+                            <li>graduatedTickBase 决定了标记的起始值</li>
                         </ul>
                         <CodeMirror
                             value={code4}
@@ -340,7 +340,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>interval</h3>
                         <ul>
-                            <li>interval属性决定了刻度或标签出现的频率</li>
+                            <li>interval 属性决定了刻度或标签出现的频率</li>
                         </ul>
                         <CodeMirror
                             value={code5}

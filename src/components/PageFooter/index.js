@@ -9,6 +9,25 @@ import { totalData } from "../../assets/data";
 import "./index.less";
 
 class index extends Component {
+    //获取数组中count个随机值
+    getRandomArrayElements = (arr, count) => {
+        var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+        while (i-- > min) {
+            index = Math.floor((i + 1) * Math.random());
+            temp = shuffled[index];
+            shuffled[index] = shuffled[i];
+            shuffled[i] = temp;
+        }
+        return shuffled.slice(min);
+    }
+    //查看当前文档在哪个chapter，返回“chapter名”+“——”
+    check = (num, obj) => {
+        for (let key in obj) {
+            if (obj[key].indexOf(num) > -1 && obj[key].length > 1) {
+                return key + "——"
+            }
+        }
+    }
     render() {
         let path = this.props.location.pathname;
         //将path以"/"分割,并保存到数组中
@@ -28,17 +47,6 @@ class index extends Component {
                 }
             }
         }
-        //获取数组中count个随机值
-        function getRandomArrayElements(arr, count) {
-            var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
-            while (i-- > min) {
-                index = Math.floor((i + 1) * Math.random());
-                temp = shuffled[index];
-                shuffled[index] = shuffled[i];
-                shuffled[i] = temp;
-            }
-            return shuffled.slice(min);
-        }
         const nameMap = setKeyMap([dataSource]);
         //查找当前文档所处section
         let pageArray = [];
@@ -50,13 +58,6 @@ class index extends Component {
         //上一页/下一页路由
         let prevHref = baseHref + pageArray[prevIndex];
         let nextHref = baseHref + pageArray[nextIndex];
-        let check = (num, obj) => {
-            for (let key in obj) {
-                if (obj[key].indexOf(num) > -1 && obj[key].length > 1) {
-                    return key + "——"
-                }
-            }
-        }
         return (
             <div className="page-footer" style={!isNaN(pageNum) ? { minHeight: "100vh" } : {}}>
                 <div>
@@ -79,7 +80,7 @@ class index extends Component {
                                 {nameMap[prevHref] ?
                                     <Link to={prevHref} className="pager">
                                         <div className="label">上一篇</div>
-                                        <span className="title">{check(prevIndex, dataSource.chapter)}{nameMap[prevHref]}</span>
+                                        <span className="title">{this.check(prevIndex, dataSource.chapter)}{nameMap[prevHref]}</span>
                                     </Link>
                                     : null}
                             </div>
@@ -87,7 +88,7 @@ class index extends Component {
                                 {nameMap[nextHref] ?
                                     <Link to={nextHref} className="pager">
                                         <div className="label">下一篇</div>
-                                        <span className="title">{check(nextIndex, dataSource.chapter)}{nameMap[nextHref]}</span>
+                                        <span className="title">{this.check(nextIndex, dataSource.chapter)}{nameMap[nextHref]}</span>
                                     </Link>
                                     : null}
                             </div>
@@ -101,7 +102,7 @@ class index extends Component {
                             <div className="icon"><IconFont type="iconbook" style={{ fontSize: 40 }} /></div>
                             <div className="name"><h4><Link to={dataSource.baseHref}>{dataSource.title}</Link></h4></div>
                         </div>
-                        {getRandomArrayElements(recommandData, 2).map((item, index) => {
+                        {this.getRandomArrayElements(recommandData, 2).map((item, index) => {
                             return (
                                 <div className="book" key={index}>
                                     <span className="from">精品推荐</span>

@@ -3,7 +3,7 @@ import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 
-let code1 = `<p>foo</p>
+let code1 = `<p className="indent-2">foo</p>
 <p class="transformed">bar</p>`;
 let code2 = `p { 
     width: 50px;
@@ -38,7 +38,6 @@ export default class index extends Component {
                                 scale() 仅适用于在欧几里德平面（二维平面）上的变换。如果需要进行空间中的缩放，必须使用 scale3D() 。
                             </div>
                         </div>
-
                         <h2>语法</h2>
                         <CodeMirror
                             value={`scale(sx)`}
@@ -48,7 +47,6 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-
                         <p>或</p>
                         <CodeMirror
                             value={`scale(sx, sy)`}
@@ -61,9 +59,9 @@ export default class index extends Component {
                         <h2>值</h2>
                         <ul>
                             <li>sx</li>
-                            <p>{`<number>，表示缩放向量的横坐标。`}</p>
+                            <p className="indent-2">{`<number>，表示缩放向量的横坐标。`}</p>
                             <li>sy</li>
-                            <p>{`<number> ，表示缩放向量的纵坐标。如果未设置，则他的默认值被设置为 sx。 从而使得元素在保持原有形状下均等缩放`}</p>
+                            <p className="indent-2">{`<number> ，表示缩放向量的纵坐标。如果未设置，则他的默认值被设置为 sx。 从而使得元素在保持原有形状下均等缩放`}</p>
                         </ul>
                         <h2>示例</h2>
                         <p>HTML</p>
@@ -86,8 +84,8 @@ export default class index extends Component {
                         />
                         <p>结果</p>
                         <div style={{ paddingLeft: 24 }}>
-                            <p style={{ width: 50, height: 50, backgroundColor: "#CCFFFF" }}>foo</p>
-                            <p style={{ width: 50, height: 50, transform: "scale(2)", backgroundColor: "#FFCCCC" }}>bar</p>
+                            <p className="indent-0" style={{ width: 50, height: 50, backgroundColor: "#CCFFFF" }}>foo</p>
+                            <p className="indent-0" style={{ width: 50, height: 50, transform: "scale(2)", backgroundColor: "#FFCCCC" }}>bar</p>
                         </div>
                     </div>
                 </div>

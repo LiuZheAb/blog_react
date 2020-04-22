@@ -395,13 +395,13 @@ export default class index extends Component {
                         <h1>GoJS Ports</h1>
                     </div>
                     <div className="article-content">
-                        <h2>GoJS Ports概述</h2>
+                        <h2>GoJS Ports 概述</h2>
                         <ul>
-                            <li>在Node上提供Link连接的特定图形位置</li>
-                            <li>可以是任意数量的port/Node</li>
-                            <li>默认情况下，整个Node是唯一的端口</li>
-                            <li>要在nodeTemplate中的GraphObject生成一个端口，设置“portId”属性</li>
-                            <li>port只能存在于Node/Group上</li>
+                            <li>在 Node 上提供 Link 连接的特定图形位置</li>
+                            <li>可以是任意数量的 port/Node</li>
+                            <li>默认情况下，整个 Node 是唯一的端口</li>
+                            <li>要在 nodeTemplate 中的 GraphObject 生成一个端口，设置“portId”属性</li>
+                            <li>port 只能存在于 Node/Group 上</li>
                         </ul>
                         <p>先看一个设置端口的例子:</p>
                         <CodeMirror
@@ -413,10 +413,10 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv1" className="diagram"></div>
-                        <p>Link在Node上链接的位置是固定的</p>
+                        <p>Link 在 Node 上链接的位置是固定的</p>
                         <h3>GraphObject.portld</h3>
                         <ul>
-                            <li>定义以GraphObject为端口</li>
+                            <li>定义以 GraphObject 为端口</li>
                         </ul>
                         <CodeMirror
                             value={code2}
@@ -429,11 +429,11 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h2>Multiple Ports</h2>
                         <ul>
-                            <li>有多个端口时，Link数据需要一种方法来知道它来自或将要访问哪个端口</li>
+                            <li>有多个端口时，Link 数据需要一种方法来知道它来自或将要访问哪个端口</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>设置GraphLinksModel.linkToPortldProperty / GraphLinksModel.linkFromPortldProperty为任何非空字符串值</li>
-                            <li>然后，在Link数据上设置这些属性</li>
+                            <li>设置 GraphLinksModel.linkToPortldProperty / GraphLinksModel.linkFromPortldProperty 为任何非空字符串值</li>
+                            <li>然后，在 Link 数据上设置这些属性</li>
                         </ul>
                         <CodeMirror
                             value={code3}
@@ -455,9 +455,9 @@ export default class index extends Component {
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h3>fromLinkableDuplicates / toLinkableDuplicates</h3>
                         <ul>
-                            <li>一个port是否可能有多个Link到它或从它来</li>
+                            <li>一个 port 是否可能有多个 Link 到它或从它来</li>
                         </ul>
-                        <p>同时将fromLinkableSelfNode/toLinkableSelfNode设置为true,Node即可链接自身</p>
+                        <p>同时将 fromLinkableSelfNode/toLinkableSelfNode 设置为 true,Node 即可链接自身</p>
                         <CodeMirror
                             value={code5}
                             options={{

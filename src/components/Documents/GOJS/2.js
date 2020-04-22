@@ -279,15 +279,15 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS入门教程——第一节 简单的GoJS demo</h1>
+                        <h1>GoJS 入门教程——第一节 简单的 GoJS demo</h1>
                     </div>
                     <div className="article-content">
                         <h2>准备环境</h2>
                         <ol>
-                            <li>创建一个新的HTML页；</li>
-                            <li>引用GoJS脚本文件；</li>
-                            <li>为GoJS Diagram创建一个div元素；</li>
-                            <li>定义body onload函数。</li>
+                            <li>创建一个新的 HTML 文件；</li>
+                            <li>引用 GoJS 脚本文件；</li>
+                            <li>为 GoJS Diagram 创建一个 div 元素；</li>
+                            <li>定义 body onload 函数。</li>
                         </ol>
                         <p>代码如下所示：</p>
                         <CodeMirror
@@ -298,13 +298,13 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <h2>创建Diagram、Model和Model Data</h2>
+                        <h2>创建 Diagram、Model 和 Model Data</h2>
                         <ol>
-                            <li>将go.GraphObject.make定义为简单变量(例如$)；</li>
-                            <li>定义一个新的Diagram；</li>
-                            <li>给Diagram设置height，width和border；</li>
-                            <li>创建nodeDataArray和linkDataArray；</li>
-                            <li>设置Diagram.model。</li>
+                            <li>将 go.GraphObject.make 定义为简单变量(例如$)；</li>
+                            <li>定义一个新的 Diagram；</li>
+                            <li>给 Diagram 设置 height，width和border；</li>
+                            <li>创建 nodeDataArray 和 linkDataArray；</li>
+                            <li>设置 Diagram.model。</li>
                         </ol>
                         <p>代码如下所示：</p>
                         <CodeMirror
@@ -318,22 +318,22 @@ export default class index extends Component {
                         <p>如果没有错误的话，你会在浏览器看到</p>
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>修改样式</h2>
-                        <p>现在，node和link都可以看到了，接下来就要思考如何修改它们的样式了。</p>
-                        <p>GoJS是这样做的：使用模板改变Diagram组件的样式。</p>
+                        <p>现在，node 和 link 都可以看到了，接下来就要思考如何修改它们的样式了。</p>
+                        <p>GoJS 是这样做的：使用模板改变 Diagram 组件的样式。</p>
                         <ul>
-                            <li>使用nodeTemplate修改node的样式；<div className=""></div></li>
-                            <li>使用linkTemplate修改link的样式。</li>
+                            <li>使用 nodeTemplate 修改 node 的样式；<div className=""></div></li>
+                            <li>使用 linkTemplate 修改 link 的样式。</li>
                         </ul>
                         <h3>节点模板</h3>
                         <ol>
                             <li>将节点模板定义为单个“Auto”面板；</li>
                             <li>定义节点模板元素(Shape和TextBlock)；</li>
-                            <li>向nodeDataArray中的节点添加颜色数据属性；</li>
+                            <li>向 nodeDataArray 中的节点添加颜色数据属性；</li>
                             <li>添加节点数据绑定。</li>
                         </ol>
                         <div className="tip">
                             <div className="tip-content">
-                                <em>go.Binding()实现了属性和数据的绑定，例如new go.Binding("fill", "color"))，绑定了go.Shape的fill属性和nodeDataArray中的color。</em>
+                                <em>go.Binding()实现了属性和数据的绑定，例如 new go.Binding("fill", "color"))，绑定了 go.Shape 的 fill 属性和 nodeDataArray 中的 color。</em>
                             </div>
                         </div>
                         <p>代码及效果如下所示：</p>
@@ -353,8 +353,8 @@ export default class index extends Component {
                         </ul>
                         <h3>编辑节点/链接属性</h3>
                         <ul>
-                            <li>在nodeTemplate的TextBlock元素上设置margin属性</li>
-                            <li>为linkTemplate的第一个Shape元素设置strokeWidth属性</li>
+                            <li>在 nodeTemplate 的 TextBlock 元素上设置 margin 属性</li>
+                            <li>为 linkTemplate 的第一个 Shape 元素设置 strokeWidth 属性</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror
@@ -368,9 +368,9 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h3>创建组</h3>
                         <ul>
-                            <li>在nodeDataArray中添加组数据</li>
-                            <li>在nodeDataArray中添加新节点，并设置group属性</li>
-                            <li>在linkDataArray中添加链接到组</li>
+                            <li>在 nodeDataArray 中添加组数据</li>
+                            <li>在 nodeDataArray 中添加新节点，并设置 group 属性</li>
+                            <li>在 linkDataArray 中添加链接到组</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror

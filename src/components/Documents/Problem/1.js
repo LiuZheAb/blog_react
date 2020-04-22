@@ -21,8 +21,8 @@ export default class index extends Component {
                         <h2>问题</h2>
                         <p className="indent-2" style={{ color: "#ce1126", fontSize: 18, fontWeight: 600 }}>Cannot add property x, object is not extensible</p>
                         <h2>问题背景</h2>
-                        <p className="indent-2">2020-04-16晚</p>
-                        <p className="indent-2">在整理FreeCodeCamp——css篇linear-gradient()时遇到此问题</p>
+                        <p className="indent-2">2020-04-16 晚</p>
+                        <p className="indent-2">在整理 FreeCodeCamp——css 篇 linear-gradient()时遇到此问题</p>
                         <h2>问题描述</h2>
                         <p className="indent-2">无法设置或修改对象的属性</p>
                         <h2>解决方案</h2>

@@ -449,12 +449,12 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS工具——第一节 调整大小,旋转,装饰</h1>
+                        <h1>GoJS 工具——第一节 调整大小,旋转,装饰</h1>
                     </div>
                     <div className="article-content">
                         <h2>resizable</h2>
                         <ul>
-                            <li>设置Part是否可调整大小</li>
+                            <li>设置 Part 是否可调整大小</li>
                             <li>默认值:false</li>
                         </ul>
                         <CodeMirror
@@ -468,7 +468,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h3>resizeObjectName</h3>
                         <ul>
-                            <li>将想要调整大小的Part设置name,并在Node的resizeObjectName属性中指向该Part即可调整特定Part的大小</li>
+                            <li>将想要调整大小的 Part 设置 name,并在 Node 的 resizeObjectName 属性中指向该 Part 即可调整特定 Part 的大小</li>
                         </ul>
                         <CodeMirror
                             value={code2}
@@ -481,7 +481,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>maxSize、minSize</h3>
                         <ul>
-                            <li>设置Part最大最小值</li>
+                            <li>设置 Part 最大最小值</li>
                         </ul>
                         <CodeMirror
                             value={code3}
@@ -518,7 +518,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h3>selectionAdorned</h3>
                         <ul>
-                            <li>决定Part被选中时是否有装饰</li>
+                            <li>决定 Part 被选中时是否有装饰</li>
                             <li>默认值:false</li>
                         </ul>
                         <CodeMirror
@@ -532,7 +532,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <h2>rotatable</h2>
                         <ul>
-                            <li>设置Part是否可旋转</li>
+                            <li>设置 Part 是否可旋转</li>
                         </ul>
                         <CodeMirror
                             value={code7}
@@ -545,7 +545,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <h3>locationSpot</h3>
                         <ul>
-                            <li>设置Part旋转中心</li>
+                            <li>设置 Part 旋转中心</li>
                             <li>默认值:go.Spot.TopLeft</li>
                         </ul>
                         <CodeMirror
@@ -559,7 +559,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv8" className="diagram"></div>
                         <h3>rotateObjectName</h3>
                         <ul>
-                            <li>与resize类似,将想要选转的Part设置name,并在Node的rotateObjectName属性中指向该Part即可旋转特定Part</li>
+                            <li>与 resize 类似,将想要选转的 Part 设置 name,并在 Node 的 rotateObjectName 属性中指向该 Part 即可旋转特定 Part</li>
                         </ul>
                         <CodeMirror
                             value={code9}

@@ -434,13 +434,13 @@ export default class index extends Component {
                         <h1>GoJS Item Arrays</h1>
                     </div>
                     <div className="article-content">
-                        <h2>Item Arrays概述</h2>
+                        <h2>Item Arrays 概述</h2>
                         <ul>
-                            <li>允许在一个Node中显示可变数量的元素</li>
-                            <li>通过设置Panel.itemArray实现，通常通过数据绑定</li>
+                            <li>允许在一个 Node 中显示可变数量的元素</li>
+                            <li>通过设置 Panel.itemArray 实现，通常通过数据绑定</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>Panel将包含与绑定Array中的值相同多的元素</li>
+                            <li>Panel 将包含与绑定 Array 中的值相同多的元素</li>
                         </ul>
                         <CodeMirror
                             value={code1}
@@ -451,13 +451,13 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv1" className="diagram"></div>
-                        <h2>Item模板</h2>
+                        <h2>Item 模板</h2>
                         <ul>
-                            <li>用于定义项item array中每个item的外观</li>
-                            <li>必须是一个Panel</li>
+                            <li>用于定义项 item array 中每个 item 的外观</li>
+                            <li>必须是一个 Panel</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>Panel.data将是此元素item array中的项</li>
+                            <li>Panel.data 将是此元素 item array 中的项</li>
                         </ul>
                         <CodeMirror
                             value={code2}
@@ -484,7 +484,7 @@ export default class index extends Component {
                             <li>insertArrayItem</li>
                         </ul>
                         <h3>removeArrayItem(array,index)</h3>
-                        <p>index为item在数组中的序号</p>
+                        <p>index 为 item 在数组中的序号</p>
                         <CodeMirror
                             value={code4}
                             options={{
@@ -505,7 +505,7 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h3>insertArrayItem(array,index,value)</h3>
-                        <p>index为插入item后在数组中的序号</p>
+                        <p>index 为插入 item 后在数组中的序号</p>
                         <CodeMirror
                             value={code6}
                             options={{

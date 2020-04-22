@@ -566,7 +566,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS布局——第六节 环状布局(CircularLayout)</h1>
+                        <h1>GoJS 布局——第六节 环状布局(CircularLayout)</h1>
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
@@ -581,7 +581,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>spacing</h2>
                         <ul>
-                            <li>决定Node间的距离</li>
+                            <li>决定 Node 间的距离</li>
                             <li>默认值:6</li>
                             <li>可能的值:Number|NaN</li>
                         </ul>
@@ -612,11 +612,11 @@ export default class index extends Component {
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407213951.png")} alt="" />
                         </div>
-                        <p>radius:150,spacing:50(但实际的spacing更大,因为要适应更大的radius)</p>
+                        <p>radius:150,spacing:50(但实际的 spacing 更大,因为要适应更大的 radius)</p>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407214315.png")} alt="" />
                         </div>
-                        <p>radius:50(但实际的radius更大,因为要适应的spacing),spacing:50</p>
+                        <p>radius:50(但实际的 radius 更大,因为要适应的 spacing),spacing:50</p>
                         <h2>startAngle</h2>
                         <ul>
                             <li>决定第一个元素的角度</li>
@@ -634,7 +634,7 @@ export default class index extends Component {
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407215235.png")} alt="" />
                         </div>
-                        <p>如图所示,Zeta从0顺时针旋转90°到90的位置</p>
+                        <p>如图所示,Zeta 从 0 顺时针旋转 90° 到 90 的位置</p>
                         <h2>sweepAngle</h2>
                         <ul>
                             <li>决定布局中第一个/最后一个节点之间的绝对角度</li>
@@ -655,7 +655,7 @@ export default class index extends Component {
                         </div>
                         <h2>aspectRatio</h2>
                         <ul>
-                            <li>决定CircularLayout高度:宽度的比例</li>
+                            <li>决定 CircularLayout 高度:宽度的比例</li>
                             <li>默认值:1(正圆)</li>
                         </ul>
                         <CodeMirror
@@ -669,7 +669,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>direction</h2>
                         <ul>
-                            <li>决定Node是顺时针还是逆时针排列</li>
+                            <li>决定 Node 是顺时针还是逆时针排列</li>
                             <li>默认值:CircularLayout.Clockwise(顺时针)</li>
                         </ul>
                         <CodeMirror
@@ -683,7 +683,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>sorting</h2>
                         <ul>
-                            <li>确定如何对CircularLayout中的Node排序</li>
+                            <li>确定如何对 CircularLayout 中的 Node 排序</li>
                             <li>可能的值:</li>
                         </ul>
                         <ul data-lake-indent="1">
@@ -702,9 +702,9 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
-                        <p>设置为Forwards后,可以看到,Node按照Alpha、Beta、Gamma、Delta、Epsilon、Zeta(希腊字母顺序)的顺序排列</p>
-                        <p><br /></p>
-                        <p><br /></p>
+                        <p>设置为 Forwards 后,可以看到,Node 按照 Alpha、Beta、Gamma、Delta、Epsilon、Zeta(希腊字母顺序)的顺序排列</p>
+                        <br />
+                        <br />
                         <p>相关代码：</p>
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/12circularLayout.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/12circularLayout.html</a></p>
                     </div>

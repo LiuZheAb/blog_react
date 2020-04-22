@@ -496,7 +496,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS面板——第一节 表格面板(Table Panel)</h1>
+                        <h1>GoJS 面板——第一节 表格面板(Table Panel)</h1>
                     </div>
                     <div className="article-content">
                         <h2>Table Panels</h2>
@@ -519,7 +519,7 @@ export default class index extends Component {
                         <ul>
                             <li>defaultRowSeparatorStroke 设置表格行分隔线</li>
                             <li>defaultColumnSeparatorStroke 设置表格列分隔线</li>
-                            <li>defaultSeparatorPadding 设置单元格padding</li>
+                            <li>defaultSeparatorPadding 设置单元格 padding</li>
                         </ul>
                         <CodeMirror
                             value={code2}
@@ -558,7 +558,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h2>RowColumnDefinition</h2>
                         <ul>
-                            <li>用于为Table Panel的特定行/列设置属性</li>
+                            <li>用于为 Table Panel 的特定行/列设置属性</li>
                         </ul>
                         <CodeMirror
                             value={code5}
@@ -571,7 +571,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h2>TableRow / TableColumn</h2>
                         <ul>
-                            <li>特殊面板——只能在Table Panel中使用</li>
+                            <li>特殊面板——只能在 Table Panel 中使用</li>
                             <li>将特定行/列的所有对象放到其中一个面板中</li>
                         </ul>
                         <CodeMirror

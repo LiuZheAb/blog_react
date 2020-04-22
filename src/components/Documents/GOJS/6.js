@@ -543,7 +543,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>第五节 使用GoJS构建Parts(Templates)</h1>
+                        <h1>第五节 使用 GoJS 构建 Parts(Templates)</h1>
                     </div>
                     <div className="article-content">
                         <p>先看下面的代码：</p>
@@ -556,15 +556,15 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv1" className="diagram"></div>
-                        <h2>使用Templates</h2>
+                        <h2>使用 Templates</h2>
                         <ul>
-                            <li>每个Model数据对象中的“category”数据属性指定用于该对象的模板</li>
+                            <li>每个 Model 数据对象中的“category”数据属性指定用于该对象的模板</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>“category”数据属性的值对应于templateMap中某一项的键值(比如nodeTemplateMap)</li>
+                            <li>“category”数据属性的值对应于 templateMap 中某一项的键值(比如nodeTemplateMap)</li>
                         </ul>
                         <ul>
-                            <li>GoJS支持nodeTemplateMap、linkTemplateMap和groupTemplateMap</li>
+                            <li>GoJS 支持 nodeTemplateMap、linkTemplateMap 和 groupTemplateMap</li>
                         </ul>
                         <ul data-lake-indent="1">
                             <li>{`添加到映射:<supported part template map>.add(<key>,<Part>)`}</li>
@@ -582,10 +582,10 @@ export default class index extends Component {
                                 readOnly: true
                             }}
                         />
-                        <p>上面的代码中,"color"是一个客观属性,GoJS并不知道"color"是什么,须使用new go.Binding("fill","color"),将data中的color绑定到fill属性</p>
+                        <p>上面的代码中,"color"是一个客观属性,GoJS 并不知道"color"是什么,须使用 new go.Binding("fill","color"),将 data 中的 color 绑定到 fill 属性</p>
                         <ul>
-                            <li>将Part的样式/表现绑定到Model中的某些数据</li>
-                            <li>允许Part的数据和可视化之间的通信</li>
+                            <li>将 Part 的样式/表现绑定到 Model 中的某些数据</li>
+                            <li>允许 Part 的数据和可视化之间的通信</li>
                             <li>{`简单绑定:new go.Binding(target property>,<source data property>)`},例如</li>
                         </ul>
                         <CodeMirror
@@ -598,9 +598,9 @@ export default class index extends Component {
                         />
                         <h2>转换函数</h2>
                         <ul>
-                            <li>函数作为第三个参数传递给go.Binding</li>
-                            <li>接收作为参数绑定的Model数据属性的值</li>
-                            <li>返回值作为目标GraphObiect属性</li>
+                            <li>函数作为第三个参数传递给 go.Binding</li>
+                            <li>接收作为参数绑定的 Model 数据属性的值</li>
+                            <li>返回值作为目标 GraphObiect 属性</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
                         <CodeMirror
@@ -612,7 +612,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv2" className="diagram"></div>
-                        <h2>几个Part template的例子</h2>
+                        <h2>几个 Part template 的例子</h2>
                         <h3>初始效果</h3>
                         <CodeMirror
                             value={code3}
@@ -643,7 +643,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv5" className="diagram"></div>
-                        <h3>添加Group</h3>
+                        <h3>添加 Group</h3>
                         <CodeMirror
                             value={code6}
                             options={{
@@ -653,7 +653,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <h3>添加Link</h3>
+                        <h3>添加 Link</h3>
                         <CodeMirror
                             value={code7}
                             options={{
@@ -663,7 +663,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
-                        <h3>绑定key到text、color到fill</h3>
+                        <h3>绑定 key 到 text、color 到 fill</h3>
                         <CodeMirror
                             value={code8}
                             options={{

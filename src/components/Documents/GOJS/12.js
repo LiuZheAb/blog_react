@@ -421,7 +421,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS布局——第五节 层次布局(LayeredDigraphLayout)</h1>
+                        <h1>GoJS 布局——第五节 层次布局(LayeredDigraphLayout)</h1>
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
@@ -470,7 +470,7 @@ export default class index extends Component {
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>layingOption</h2>
                         <ul>
-                            <li>决定布局中的Node如何分配到不同的layer中</li>
+                            <li>决定布局中的 Node 如何分配到不同的 layer 中</li>
                             <li>可能的值:</li>
                         </ul>
                         <ul data-lake-indent="1">
@@ -479,7 +479,7 @@ export default class index extends Component {
                             <li>LayerOptimalLinkLength</li>
                         </ul>
                         <h3>LayerLongestPathSink</h3>
-                        <p>sink = 没有Link离开的Node</p>
+                        <p>sink = 没有 Link 离开的 Node</p>
                         <CodeMirror
                             value={code4}
                             options={{
@@ -489,9 +489,9 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
-                        <p>其中，Epsilon和Gamma为sink</p>
+                        <p>其中，Epsilon 和 Gamma 为 sink</p>
                         <h3>LaverLongestPathSource</h3>
-                        <p>source = 没有Link进入的Node</p>
+                        <p>source = 没有 Link 进入的 Node</p>
                         <CodeMirror
                             value={code5}
                             options={{
@@ -501,10 +501,10 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
-                        <p>其中，Alpha和Zeta为source</p>
+                        <p>其中，Alpha 和 Zeta 为 source</p>
                         <h3>LayerOptimalLinkLength</h3>
                         <ul>
-                            <li>Node以最小化总加权Link长度分层</li>
+                            <li>Node 以最小化总加权 Link 长度分层</li>
                             <li>linkLength = layer(fromNode) - layer(toNode)</li>
                         </ul>
                         <CodeMirror
@@ -516,10 +516,10 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
-                        <p>其中,由下向上,Episilon为第一层,Delta和Zeta为第二层,Beta和Gamma为第三层,Alpha为第四层</p>
-                        <p>共有5条Link,每条Link的linkLength均为1,共计5,是最小方案</p>
-                        <p><br /></p>
-                        <p><br /></p>
+                        <p>其中,由下向上,Episilon 为第一层, Delta 和 Zeta 为第二层, Beta 和 Gamma 为第三层, Alpha 为第四层</p>
+                        <p>共有 5 条 Link,每条 Link 的 linkLength 均为 1,共计 5,是最小方案</p>
+                        <br />
+                        <br />
                         <p>相关代码：</p>
                         <p><a href="https://github.com/LiuZheAb/GoJS_Demo/blob/master/11layeredDigraphLayout.html" target="_blank" rel="noopener noreferrer">https://github.com/LiuZheAb/GoJS_Demo/blob/master/11layeredDigraphLayout.html</a></p>
                     </div>

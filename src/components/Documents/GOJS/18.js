@@ -259,43 +259,43 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS工具——第二节 概述</h1>
+                        <h1>GoJS 工具——第二节 概述</h1>
                     </div>
                     <div className="article-content">
                         <h2>ToolManager</h2>
                         <ul>
                             <li>工具处理输入事件</li>
-                            <li>在Diagram.currentTool中使用(默认是ToolManager)</li>
-                            <li>ToolManager有每个工具类的一个实例</li>
+                            <li>在 Diagram.currentTool 中使用(默认是 ToolManager)</li>
+                            <li>ToolManager 有每个工具类的一个实例</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>ToolManager根据InputEvent(即MouseDown，MouseMove…)来决定使用哪个工具来创建currentTool</li>
+                            <li>ToolManager 根据 InputEvent(即 MouseDown，MouseMove…)来决定使用哪个工具来创建 currentTool</li>
                         </ul>
                         <p>鼠标事件类型如下所示:</p>
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 700, height: 400, border: "none" }}></div>
-                        <p>ToolManager处理InputEvent的流程如下所示:</p>
+                        <p>ToolManager 处理 InputEvent 的流程如下所示:</p>
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 700, height: 1000, border: "none" }}></div>
                         <ul>
-                            <li>isActive:Tool是启动还是已经在工作了</li>
-                            <li>isEnabled:判断是否可以通过鼠标事件启动Tool</li>
-                            <li>canStart():查看Tool是否可以通过鼠标或触摸事件启动</li>
-                            <li>doActivate():将isActive设置为true</li>
+                            <li>isActive:Tool 是启动还是已经在工作了</li>
+                            <li>isEnabled:判断是否可以通过鼠标事件启动 Tool</li>
+                            <li>canStart():查看 Tool 是否可以通过鼠标或触摸事件启动</li>
+                            <li>doActivate():将 isActive 设置为 true</li>
                         </ul>
                         <h2>CommandHandler</h2>
                         <ul>
-                            <li>实现诸如deleteselection()或redo()之类的命令</li>
-                            <li>包括键盘事件处理(如Ctrl-C用于复制，Ctrl-V用于粘贴…)</li>
+                            <li>实现诸如 deleteselection()或 redo()之类的命令</li>
+                            <li>包括键盘事件处理(如 Ctrl-C 用于复制，Ctrl-V 用于粘贴…)</li>
                             <li>可以子类化或扩展</li>
                         </ul>
-                        <h2>修改Tool</h2>
+                        <h2>修改 Tool</h2>
                         <ul>
-                            <li>Tool行为可以通过改变Diagram Part或单个GraphObject的属性来修改</li>
-                            <li>还可以覆盖Tool方法或子类化Tool</li>
+                            <li>Tool 行为可以通过改变 Diagram Part 或单个 GraphObject 的属性来修改</li>
+                            <li>还可以覆盖 Tool 方法或子类化 Tool</li>
                         </ul>
                         <h2>Adornment</h2>
                         <ul>
-                            <li>Tool经常使用Adornment</li>
-                            <li>这是一种与另一Part(Adornment.adornedPart)相关联的特殊Part</li>
+                            <li>Tool 经常使用 Adornment</li>
+                            <li>这是一种与另一 Part(Adornment.adornedPart)相关联的特殊 Part</li>
                         </ul>
                         <p>如图所示</p>
                         <div className="text-center">

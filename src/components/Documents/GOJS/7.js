@@ -283,15 +283,15 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>GoJS入门教程——第六节 GoJS GraphObject属性</h1>
+                        <h1>GoJS 入门教程——第六节 GoJS GraphObject 属性</h1>
                     </div>
                     <div className="article-content">
-                        <h2>GraphObject属性</h2>
+                        <h2>GraphObject 属性</h2>
                         <ul>
                             <li>GraphObject(例如 Shapes,TextBlocks,Pictures)支持多种属性来设置它们样式和表现</li>
-                            <li>有关这些属性的完整记录，请参阅<a href="https://gojs.net/latest/api/index.html" target="_blank" rel="noopener noreferrer">API文档</a></li>
+                            <li>有关这些属性的完整记录，请参阅 <a href="https://gojs.net/latest/api/index.html" target="_blank" rel="noopener noreferrer">API文档</a></li>
                         </ul>
-                        <h3>TextBlock的属性</h3>
+                        <h3>TextBlock 的属性</h3>
                         <p>代码及效果如下：</p>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200405211225.png")} alt="" />
@@ -299,10 +299,10 @@ export default class index extends Component {
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <ul>
                             <li>"font"属性值必须是正确格式的字符串,{`<font-style font-variant fong-weight font-size font-family>`}</li>
-                            <li>"stroke"属性值可以是任意css color字符串</li>
+                            <li>"stroke"属性值可以是任意 css color 字符串</li>
                         </ul>
                         <ul data-lake-indent="1">
-                            <li>指定名称的颜色，如red、blue</li>
+                            <li>指定名称的颜色，如 red、blue</li>
                             <li>十六进制</li>
                             <li>RGB</li>
                             <li>HSL</li>
@@ -310,7 +310,6 @@ export default class index extends Component {
                         <ul>
                             <li>"editable"布尔属性决定文本块的文本是否可以编辑</li>
                         </ul>
-                        <p></p>
                         <p>代码及效果如下：</p>
                         <CodeMirror
                             value={code1}
@@ -321,7 +320,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv2" className="diagram"></div>
-                        <h3>Shape的属性</h3>
+                        <h3>Shape 的属性</h3>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200405213635.png")} alt="" />
                         </div>
@@ -337,7 +336,7 @@ export default class index extends Component {
                         <ul>
                             <li>"figure"属性决定形状</li>
                             <li>"fill"属性决定颜色</li>
-                            <li>"stroke"属性值可以是任意css color字符串</li>
+                            <li>"stroke"属性值可以是任意 css color 字符串</li>
                             <li>"strokeWidth"属性值是数字，决定边框宽度</li>
                         </ul>
                         <CodeMirror
@@ -349,11 +348,11 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv4" className="diagram"></div>
-                        <h3>Picture的属性</h3>
+                        <h3>Picture 的属性</h3>
                         <ul>
                             <li>"Source"属性决定图片的路径,在选项对象中设置或作为可选字符串参数</li>
-                            <li>"desiredSize"属性通过new go.Size(width,height)决定图片大小</li>
-                            <li>"margin"属性通过new go.Margin(top,right,bottom,left)决定图片的margin</li>
+                            <li>"desiredSize"属性通过 new go.Size(width,height)决定图片大小</li>
+                            <li>"margin"属性通过 new go.Margin(top,right,bottom,left)决定图片的 margin</li>
                         </ul>
                         <CodeMirror
                             value={code4}
@@ -364,7 +363,7 @@ export default class index extends Component {
                             }}
                         />
                         <div id="myDiagramDiv5" className="diagram"></div>
-                        <h3>Node的属性</h3>
+                        <h3>Node 的属性</h3>
                         <ul>
                             <li>"selectable"属性决定节点是否可选</li>
                             <li>"deletable"属性决定节点是否可删除</li>
@@ -381,8 +380,8 @@ export default class index extends Component {
                         />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <ul>
-                            <li>resizeObjectName:要调整大小的GraphObject的名称</li>
-                            <li>rotateobjectName:要旋转的GraphObiect的名称</li>
+                            <li>resizeObjectName:要调整大小的 GraphObject 的名称</li>
+                            <li>rotateobjectName:要旋转的 GraphObiect 的名称</li>
                             <li>值必须与部件中的命名元素相对应</li>
                         </ul>
                         <CodeMirror
