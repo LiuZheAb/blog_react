@@ -14,6 +14,25 @@ let code2 = `<figure>
         Master Camper Cat demonstrates proper form of a roundhouse kick.
     </figcaption>
 </figure>`;
+let code3 = `<form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+</form>`;
+let code4 = `<form>
+    <fieldset>
+        <legend>Choose one of these three items:</legend>
+        <input id="one" type="radio" name="items" value="one">
+        <label for="one">Choice One</label><br>
+        <input id="two" type="radio" name="items" value="two">
+        <label for="two">Choice Two</label><br>
+        <input id="three" type="radio" name="items" value="three">
+        <label for="three">Choice Three</label>
+    </fieldset>
+</form>`;
+let code5 = `<label for="input1">Enter a date:</label>
+<input type="date" id="input1" name="input1">`;
+let code6 = `<p>Master Camper Cat officiated the cage match between Goro and Scorpion 
+<time datetime="2013-02-13">last Wednesday</time>, which ended in a draw.</p>`;
 
 export default class index extends Component {
     render() {
@@ -21,7 +40,7 @@ export default class index extends Component {
             <div className="page-content">
                 <div className="article">
                     <div className="article-title">
-                        <h1>html 的可访问性(一)</h1>
+                        <h1>html 的可访问性</h1>
                     </div>
                     <div className="article-content">
                         <h2>概述</h2>
@@ -63,7 +82,7 @@ export default class index extends Component {
                         <p className="indent-2">默认情况下，浏览器呈现这些元素的方式与 div 类似。但是，在适当的情况下使用它们会给标记带来额外的意义。仅标记名就可以指示它所包含的信息的类型，这为内容增加了语义含义。辅助技术可以访问这些信息，为用户提供更好的页面摘要或导航选项。</p>
                         <h3>{`<main>`}</h3>
                         <p className="indent-2">main 标签用于包装主要内容，每个页面应该只有一个 main，它用于包围与页面中心主题相关的信息。它并不意味着包含跨页面重复的项。比如导航链接或页脚。</p>
-                        <p className="indent-2">main 标签具有锚点功能，辅助技术可以用来快速导航到主要内容。如果你曾经在页面顶部看到过“跳转到主要内容”的链接，那么使用main标签就会自动为辅助设备提供该功能。</p>
+                        <p className="indent-2">main 标签具有锚点功能，辅助技术可以用来快速导航到主要内容。如果你曾经在页面顶部看到过“跳转到主要内容”的链接，那么使用 main 标签就会自动为辅助设备提供该功能。</p>
                         <h3>{`<article>和<section>`}</h3>
                         <p className="indent-2">article 是一个分段标签，用于包装独立的、自包含的内容。标签可以很好地与博客条目、论坛帖子或新闻文章配合使用。</p>
                         <p className="indent-2">section 标签的语义和 article 略有不同。article 用于独立的内容，而 section 用于按主题对相关内容进行分组。它们可以根据需要相互使用。例如，如果一本书是 article，那么每一章就是一个 section。当内容组之间没有关系时，使用 div。</p>
@@ -99,13 +118,55 @@ export default class index extends Component {
                                 readOnly: true,
                             }}
                         />
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
+                        <h2>{`form中的<label>`}</h2>
+                        <p className="indent-2">label 标签包装特定表单控件项的文本，通常是某个选项的名称或标签。这将意义与项联系起来，使表单更具可读性。label 标签上的 for 属性显式地将该标签与表单控件关联起来，供屏幕阅读器使用</p>
+                        <p className="indent-2">for 属性的值必须与"表单控件"的 id 属性的值相同。</p>
+                        <p className="indent-2">这里有一个例子:</p>
+                        <CodeMirror
+                            value={code3}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'HTML',
+                                readOnly: true,
+                            }}
+                        />
+                        <h2>{`<fieldset>`}</h2>
+                        <p className="indent-2">每个单选按钮都有一个 label 标签，其 for 属性的值为单选按钮的 id。由于单选按钮通常出现在用户必须选择其中一个的组中，所以有一种方法可以从语义上显示这些选择是集合的一部分。</p>
+                        <p className="indent-2">fieldset 标签将整个单选按钮分组包围起来以实现此目的。它通常使用一个{`<legend>`}标签来提供分组的描述，屏幕阅读器将为 fieldset 标签中的每个选项读取该描述。</p>
+                        <p className="indent-2">当选择是自解释的，比如性别选择时，fieldset 和 legend 标签是不必要的。为每个单选按钮使用带有 for 属性的标签就足够了。</p>
+                        <p className="indent-2">这里有一个例子:</p>
+                        <CodeMirror
+                            value={code4}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'HTML',
+                                readOnly: true,
+                            }}
+                        />
+                        <h2>{`date类型的input适配`}</h2>
+                        <p className="indent-2">表单通常包含 input 标签，可用于创建多个不同的表单控件。此元素上的 type 属性指示将创建何种类型。</p>
+                        <p className="indent-2">HTML5 引入了一个指定 date 字段的选项。根据浏览器的支持，日期选择器将在 input 区域中出现。这使得所有用户更容易地填写表单。:</p>
+                        <p className="indent-2">对于较老的浏览器，类型将默认为 text，因此为以防万一要在 label 或 placeholder 中为用户显示预期的日期格式。</p>
+                        <p className="indent-2">这里有一个例子:</p>
+                        <CodeMirror
+                            value={code5}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'HTML',
+                                readOnly: true,
+                            }}
+                        />
+                        <h2>{`<time>及其datetime属性`}</h2>
+                        <p className="indent-2">HTML5 还引入了 time 标签和 datetime 属性来标准化时间。这是一个可以在页面上包装日期或时间的内联元素。日期的有效格式由 datetime 属性保存。这是辅助设备访问的值。它通过陈述一个时间的标准版本来帮助避免混淆，即使它是以非正式或口语的方式在文本中编写的。</p>
+                        <p className="indent-2">这里有一个例子:</p>
+                        <CodeMirror
+                            value={code6}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'HTML',
+                                readOnly: true,
+                            }}
+                        />
                     </div>
                 </div>
                 <Directory />
