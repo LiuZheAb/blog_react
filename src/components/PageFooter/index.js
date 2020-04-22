@@ -56,8 +56,8 @@ class index extends Component {
         let pageNum = Number(pathSnippets[1]), baseHref = "/" + pathSnippets[0] + "/";
         let currentIndex = pageArray.indexOf(pageNum), prevIndex = currentIndex - 1, nextIndex = currentIndex + 1;
         //上一页/下一页路由
-        let prevHref = baseHref + pageArray[prevIndex];
-        let nextHref = baseHref + pageArray[nextIndex];
+        let prevHref = baseHref + pageArray[prevIndex], nextHref = baseHref + pageArray[nextIndex];
+        let pervNum = pageArray[prevIndex], nextNum = pageArray[nextIndex];
         return (
             <div className="page-footer" style={!isNaN(pageNum) ? { minHeight: "100vh" } : {}}>
                 <div>
@@ -80,7 +80,7 @@ class index extends Component {
                                 {nameMap[prevHref] ?
                                     <Link to={prevHref} className="pager">
                                         <div className="label">上一篇</div>
-                                        <span className="title">{this.check(prevIndex, dataSource.chapter)}{nameMap[prevHref]}</span>
+                                        <span className="title">{this.check(pervNum, dataSource.chapter)}{nameMap[prevHref]}</span>
                                     </Link>
                                     : null}
                             </div>
@@ -88,7 +88,7 @@ class index extends Component {
                                 {nameMap[nextHref] ?
                                     <Link to={nextHref} className="pager">
                                         <div className="label">下一篇</div>
-                                        <span className="title">{this.check(nextIndex, dataSource.chapter)}{nameMap[nextHref]}</span>
+                                        <span className="title">{this.check(nextNum, dataSource.chapter)}{nameMap[nextHref]}</span>
                                     </Link>
                                     : null}
                             </div>
