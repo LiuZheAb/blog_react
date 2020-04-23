@@ -31,7 +31,7 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                 Object.keys(dataSource.chapter).map((chapterName, chapterIndex) => {
                     let section = dataSource.chapter[chapterName];
                     return (
-                        section.length > 1 || chapterName !== dataSource.section[section[0]] ?
+                        section.length > 1 && chapterName !== dataSource.section[section[0]] ?
                             <SubMenu
                                 key={dataSource.title + chapterName}
                                 title={<span>{chapterName}</span>}
