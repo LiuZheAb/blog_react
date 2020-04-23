@@ -4,6 +4,11 @@ import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 import './11.less';
 
+let code1 = `grid-template-areas:
+    "header header header"
+    "advert content content"
+    "footer footer footer";`;
+
 export default class index extends Component {
     render() {
         return (
@@ -84,14 +89,65 @@ export default class index extends Component {
                             <div className="d4">4</div>
                             <div className="d5">5</div>
                         </div>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
-                        <p className="indent-2"></p>
+                        <h2>grid-template-areas</h2>
+                        <p className="indent-2">您可以将网格的单元格分组到一个区域中，并为该区域提供自定义名称。通过在容器上使用 rid-template-areas 属性来做到这一点。</p>
+                        <CodeMirror
+                            value={code1}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'CSS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">上面的代码将前三个单元合并到一个名为 header 的区域中。底部三个单元格组成一个 footer 区域，并在中间一行中创建两个区域:advert 和 content。注意:代码中的每个单词表示一个单元格，每一对引号表示一行。除了自定义标签之外，还可以使用句点(.)来指定网格中的空单元格。</p>
+                        <h2>grid-area</h2>
+                        <p className="indent-2">在为网格容器创建区域模板之后，可以通过引用指定的名称将项放置到自定义区域中。为此，要对这样的项使用 grid-area 属性</p>
+                        <CodeMirror
+                            value={`grid-area: footer;`}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'CSS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">这让网格知道希望该项位于名为 footer 的区域中。</p>
+                        <p className="indent-2">为 “5” 设置此属性</p>
+                        <p className="indent-2">结果如下:</p>
+                        <div className="grid-container grid-container-10">
+                            <div className="d1">1</div>
+                            <div className="d2">2</div>
+                            <div className="d3">3</div>
+                            <div className="d4">4</div>
+                            <div className="d5">5</div>
+                        </div>
+                        <p className="indent-2">如果网格没有一个区域模板来参考，你可以创建一个区域，让一个项目像这样放置:</p>
+                        <CodeMirror
+                            value={`grid-area: 3/1/4/4;`}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'CSS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">上面例子中的数字是 gird 布局(一)中提到的行号，其代表了下面的值：</p>
+                        <CodeMirror
+                            value={`grid-area: 水平起始行号 / 垂直起始列号 / 水平终止行号 / 垂直终止列号;`}
+                            options={{
+                                theme: 'monokai',
+                                mode: 'CSS',
+                                readOnly: true,
+                            }}
+                        />
+                        <p className="indent-2">因此，该项将使用第3和第4行之间的行，以及第1和第4列之间的列。</p>
+                        <p className="indent-2">为 “5” 设置此属性</p>
+                        <p className="indent-2">结果如下:</p>
+                        <div className="grid-container grid-container-11">
+                            <div className="d1">1</div>
+                            <div className="d2">2</div>
+                            <div className="d3">3</div>
+                            <div className="d4">4</div>
+                            <div className="d5">5</div>
+                        </div>
                     </div>
                 </div>
                 <Directory />
