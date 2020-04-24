@@ -5,6 +5,11 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let $ = go.GraphObject.make;
 let myDiagram = $(go.Diagram, "myDiagramDiv");
 
@@ -532,59 +537,24 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>wrappingColumn</h2>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>wrappingWidth</h2>
                         <p>确定 GridLayout 的宽度，若使适合 wrappingwidth 的最大列数小于 wrappingColumn, 则 wrappingWidth 优先</p>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>cellSize</h2>
                         <p>确定每个 Part 在网格中所占位置的最小 Part 大小</p>
                         <p>默认值::NaN x NaN(使用最大的部件作为 cellSize)</p>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>spacing</h2>
                         <p>确定 Node 之间的空间</p>
                         <p>默认值:10x10</p>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
                         <p>决定使用 Part.location 还是 Part.position 来安排每个 part</p>
@@ -593,14 +563,7 @@ export default class index extends Component {
                                 <em>默认的排列基准是 Node 的左上角,Node 的 locationSpot 决定此属性</em>
                             </div>
                         </div>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>sorting</h2>
                         <ul>
@@ -613,46 +576,18 @@ export default class index extends Component {
                             <li>Forward / Reverse 取决于元素数据被检索的顺序</li>
                             <li>Ascending / Descending 取决于"comparer"属性函数</li>
                         </ul>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p>改变 Node 数据的顺序</p>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <p>设置 layout 的 sorting 属性为: go.GridLayout.Ascending</p>
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p>设置 layout 的 comparer 属性为</p>
-                        <CodeMirror
-                            value={code9}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code9} options={codeMirrorOptions} />
                         <div id="myDiagramDiv9" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>arrangement</h2>
                         <p>决定 Node 排序的方式</p>
-                        <CodeMirror
-                            value={code10}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code10} options={codeMirrorOptions} />
                         <div id="myDiagramDiv10" className="diagram" style={{ maxWidth: 600 }}></div>
                         <br />
                         <br />

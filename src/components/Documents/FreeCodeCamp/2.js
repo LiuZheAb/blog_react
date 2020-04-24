@@ -3,6 +3,11 @@ import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'CSS',
+    readOnly: true,
+};
 let code1 = `/* 渐变轴为45度，从蓝色渐变到红色 */
 linear-gradient(45deg, blue, red);
 
@@ -72,72 +77,30 @@ export default class index extends Component {
                     <div className="article-content">
                         <h2>概述</h2>
                         <p className="indent-2">{`CSS linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片。其结果属于<gradient>数据类型，是一种特别的<image>数据类型。`}</p>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <h2>示例</h2>
                         <p className="indent-2">点击下面的代码块查看预览</p>
                         <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
                             <div className="code-box code-box-active">
                                 <div className="mask" onClick={this.selectCode.bind(this, 0)}></div>
-                                <CodeMirror
-                                    value={code2}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code2} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 1)}></div>
-                                <CodeMirror
-                                    value={code3}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code3} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 2)}></div>
-                                <CodeMirror
-                                    value={code4}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code4} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 3)}></div>
-                                <CodeMirror
-                                    value={code5}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code5} options={codeMirrorOptions} />
                             </div>
                         </div>
                         <div style={this.state.divStyle}></div>
                         <p className="indent-2">具有多个颜色停止的渐变</p>
-                        <CodeMirror
-                            value={`background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);`}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={`background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);`} options={codeMirrorOptions} />
                         <div style={{ margin: "10px 0", background: "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)", width: "100%", height: 20 }}></div>
                         <div className="tip">
                             <div className="tip-content">
@@ -155,42 +118,14 @@ export default class index extends Component {
                         <p className="indent-2">关于起点和终点的稍微有些复杂的定义导致了一个有趣的性质，有时候被叫做不可思议的顶点效应：起点附近的点具有跟起点相同的颜色值，终点附近的点具有跟终点相同的颜色值。</p>
                         <p className="indent-2">不仅仅只有起点和终点的颜色值可以指定。通过提供额外的颜色中间点，Web开发者可以构建在起始颜色值和终点颜色值之间的自定义更强的过渡效果，另外还可以提供多种颜色值的渐变线。</p>
                         <p className="indent-2">{`当颜色中间点的位置被隐式定义，它被放置在位于它之前的点和位于它之后的点之间的中间位置处。利用<length>或者<percentage>数据类型可以显示定义一个位置。`}</p>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <p className="indent-2">默认情况下，从一个颜色的终止点平滑的过渡到另一个颜色的终止点，颜色之间的中点是两个颜色颜色转换的中点。你可以将中点移动到这两个颜色之间的任意位置，方法是在两个颜色之间添加未标记的 %，以指示颜色的中转位置。下面的示例是从起始点到 10% 的位置标记红色，从90%到结束标记蓝色。在 10% 到 90% 之间，颜色从红色过渡到蓝色，然而过渡的中点是在 30% 的标记上，而不是在没有 30% 中转点的情况下会默认为 50%。</p>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <p className="indent-2">如果两个或多个颜色终止在同一位置，则在该位置声明的第一个颜色和最后一个颜色之间的过渡将是一条生硬线。</p>
                         <p className="indent-2">颜色终止列表中颜色的终止点应该是依次递增的。如果后面的颜色终止点小于前面颜色的终止点则后面的会被覆盖，从而创建一个硬转换。下面的变化是从红色到黄色在 40% 的位置，然后过渡从黄色到蓝色终止于 65% 的位置处。</p>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <p className="indent-2">允许颜色多个颜色终止位置。通过在 CSS 声明中包含两个位置，可以将一个颜色声明为两个相邻的颜色终止。以下三个梯度是相等的:</p>
-                        <CodeMirror
-                            value={code9}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code9} options={codeMirrorOptions} />
                         <p className="indent-2">默认情况下，如果不带 0% 终止的颜色，则在该点声明的第一个颜色。类似地，最后一种颜色将持续到 100% 标记，或者如果在最后一个没有声明长度，则在 100% 标记处。</p>
                         <h2>语法</h2>
                         <ul>
@@ -205,34 +140,13 @@ export default class index extends Component {
                             <p className="indent-2">颜色中转点是一个插值提示，它定义了在相邻颜色之间渐变如何进行。长度定义了在两种颜色之间的哪个点停止渐变颜色应该达到颜色过渡的中点。如果省略，颜色转换的中点是两个颜色停止之间的中点。 </p>
                         </ul>
                         <h3>正式语法</h3>
-                        <CodeMirror
-                            value={code10}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code10} options={codeMirrorOptions} />
                         <h2>使用透明度</h2>
-                        <CodeMirror
-                            value={`background: linear-gradient(to bottom right, red, rgba(0,0,0,0));`}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={`background: linear-gradient(to bottom right, red, rgba(0,0,0,0));`} options={codeMirrorOptions} />
                         <div style={{ margin: "10px 0", background: "linear-gradient(to bottom right, red, rgba(0,0,0,0))", width: "100%", height: 20 }}></div>
                         <h2>跨浏览器兼容性</h2>
                         <p className="indent-2"></p>
-                        <CodeMirror
-                            value={code11}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror alue={code11} options={codeMirrorOptions} />
                         <p className="indent-2">-moz-前缀的规则用于兼容 Fx 3.6 to Fx 15 的火狐浏览器。 -webkit-前缀的规则用于兼容在 Android 4.3 以前版本、iOS 6.1 以前版本、Safari 6。当使用带前缀的规则时，不要加“ to ”关键字。</p>
                     </div>
                 </div>

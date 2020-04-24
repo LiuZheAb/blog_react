@@ -29,15 +29,13 @@ export default class index extends Component {
                         <p className="indent-2">参考地址<a href="http://www.fed123.com/pwa/5501.html" target="_blank" rel="noopener noreferrer">http://www.fed123.com/pwa/5501.html</a></p>
                         <p className="indent-2">使用扩展运算符(...)</p>
                         <p className="indent-2">写法如下</p>
-                        <CodeMirror
-                            value={code1}
+                        <CodeMirror value={code1}
                             options={{
                                 theme: 'monokai',
                                 mode: 'JS',
                                 readOnly: true,
                                 lineNumbers: true,
-                            }}
-                        />
+                            }} />
                     </div>
                 </div>
                 <Directory />

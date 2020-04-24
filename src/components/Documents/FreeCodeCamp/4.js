@@ -3,6 +3,11 @@ import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'CSS',
+    readOnly: true,
+};
 let code1 = `transform: skew(0);`;
 let code2 = `transform: skew(15deg, 15deg);`;
 let code3 = `transform: skew(-0.06turn, 18deg);`;
@@ -69,47 +74,19 @@ export default class index extends Component {
                         <div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 0)}></div>
-                                <CodeMirror
-                                    value={code1}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code1} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box code-box-active">
                                 <div className="mask" onClick={this.selectCode.bind(this, 1)}></div>
-                                <CodeMirror
-                                    value={code2}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code2} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 2)}></div>
-                                <CodeMirror
-                                    value={code3}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code3} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 3)}></div>
-                                <CodeMirror
-                                    value={code4}
-                                    options={{
-                                        theme: 'monokai',
-                                        mode: 'CSS',
-                                        readOnly: true,
-                                    }}
-                                />
+                                <CodeMirror value={code4} options={codeMirrorOptions} />
                             </div>
                         </div>
                         <div className="text-center" style={{ margin: "50px 0" }}>
@@ -132,23 +109,14 @@ export default class index extends Component {
                         <h2>示例</h2>
                         <h3>使用单个参数</h3>
                         <p>HTML</p>
-                        <CodeMirror
-                            value={code5}
+                        <CodeMirror value={code5}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
-                            }}
-                        />
+                            }} />
                         <p>CSS</p>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <p>结果</p>
                         <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 300, margin: "0 auto" }}>
                             <div style={{ width: 80, height: 80, backgroundColor: "skyblue" }}>Normal</div>
@@ -156,23 +124,14 @@ export default class index extends Component {
                         </div>
                         <h3>使用两个参数</h3>
                         <p>HTML</p>
-                        <CodeMirror
-                            value={code7}
+                        <CodeMirror value={code7}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
-                            }}
-                        />
+                            }} />
                         <p>CSS</p>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <p>结果</p>
                         <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 300, margin: "0 auto" }}>
                             <div style={{ width: 80, height: 80, backgroundColor: "skyblue" }}>Normal</div>

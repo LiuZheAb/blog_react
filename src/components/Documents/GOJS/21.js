@@ -5,6 +5,11 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let $ = go.GraphObject.make;
 let myDiagram = $(go.Diagram, "myDiagramDiv");
 
@@ -442,14 +447,7 @@ export default class index extends Component {
                         <ul data-lake-indent="1">
                             <li>Panel 将包含与绑定 Array 中的值相同多的元素</li>
                         </ul>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>Item 模板</h2>
                         <ul>
@@ -459,23 +457,9 @@ export default class index extends Component {
                         <ul data-lake-indent="1">
                             <li>Panel.data 将是此元素 item array 中的项</li>
                         </ul>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <p>要动态更新项目数组，请使用特定的模型方法:</p>
                         <ul>
@@ -485,35 +469,14 @@ export default class index extends Component {
                         </ul>
                         <h3>removeArrayItem(array,index)</h3>
                         <p>index 为 item 在数组中的序号</p>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h3>addArrayItem(array,value)</h3>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h3>insertArrayItem(array,index,value)</h3>
                         <p>index 为插入 item 后在数组中的序号</p>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <p><br /></p>
                         <p><br /></p>

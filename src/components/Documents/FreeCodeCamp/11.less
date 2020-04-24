@@ -130,3 +130,25 @@
         grid-area: ~"3/1/4/4";
     }
 }
+
+.grid-container-12 {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.grid-container-13 {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 100px minmax(50px, 200px);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+}

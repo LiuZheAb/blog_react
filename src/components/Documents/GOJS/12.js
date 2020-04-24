@@ -5,8 +5,12 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let myDiagram = $(go.Diagram, "myDiagramDiv");
-
 myDiagram.nodeTemplate =
     $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle", {
@@ -425,14 +429,7 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>direction</h2>
                         <ul>
@@ -440,14 +437,7 @@ export default class index extends Component {
                             <li>默认值:0</li>
                             <li>允许值:0 | 90 | 180 | 270</li>
                         </ul>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>layerSpacing</h2>
                         <ul>
@@ -459,14 +449,7 @@ export default class index extends Component {
                             <li>决定列间距</li>
                             <li>默认值:25</li>
                         </ul>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>layingOption</h2>
                         <ul>
@@ -480,26 +463,12 @@ export default class index extends Component {
                         </ul>
                         <h3>LayerLongestPathSink</h3>
                         <p>sink = 没有 Link 离开的 Node</p>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>其中，Epsilon 和 Gamma 为 sink</p>
                         <h3>LaverLongestPathSource</h3>
                         <p>source = 没有 Link 进入的 Node</p>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>其中，Alpha 和 Zeta 为 source</p>
                         <h3>LayerOptimalLinkLength</h3>
@@ -507,14 +476,7 @@ export default class index extends Component {
                             <li>Node 以最小化总加权 Link 长度分层</li>
                             <li>linkLength = layer(fromNode) - layer(toNode)</li>
                         </ul>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>其中,由下向上,Episilon 为第一层, Delta 和 Zeta 为第二层, Beta 和 Gamma 为第三层, Alpha 为第四层</p>
                         <p>共有 5 条 Link,每条 Link 的 linkLength 均为 1,共计 5,是最小方案</p>

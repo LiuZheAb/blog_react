@@ -5,9 +5,13 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let $ = go.GraphObject.make;
 let myDiagram = $(go.Diagram, "myDiagramDiv");
-
 myDiagram.nodeTemplate =
     $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle", {
@@ -570,14 +574,7 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>spacing</h2>
                         <ul>
@@ -585,14 +582,7 @@ export default class index extends Component {
                             <li>默认值:6</li>
                             <li>可能的值:Number|NaN</li>
                         </ul>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>radius</h2>
                         <ul>
@@ -600,14 +590,7 @@ export default class index extends Component {
                             <li>默认值:NaN(半径由"spacing"决定)</li>
                         </ul>
                         <p>特殊:如果"spacing"和"radius"都有定义，则有效半径可以大于"radius"属性(以容纳"spacing")</p>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407213951.png")} alt="" />
@@ -622,14 +605,7 @@ export default class index extends Component {
                             <li>决定第一个元素的角度</li>
                             <li>默认值:0</li>
                         </ul>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407215235.png")} alt="" />
@@ -641,14 +617,7 @@ export default class index extends Component {
                             <li>默认值:360(满圆)</li>
                             <li>允许的值:{"0 < value <= 360"}</li>
                         </ul>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 500 }}></div>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200407220047.png")} alt="" />
@@ -658,28 +627,14 @@ export default class index extends Component {
                             <li>决定 CircularLayout 高度:宽度的比例</li>
                             <li>默认值:1(正圆)</li>
                         </ul>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>direction</h2>
                         <ul>
                             <li>决定 Node 是顺时针还是逆时针排列</li>
                             <li>默认值:CircularLayout.Clockwise(顺时针)</li>
                         </ul>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <h2>sorting</h2>
                         <ul>
@@ -693,14 +648,7 @@ export default class index extends Component {
                             <li>CircularLayout.Optimized 最优化</li>
                             <li>CircularLayout.Reverse 反向</li>
                         </ul>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600, height: 350 }}></div>
                         <p>设置为 Forwards 后,可以看到,Node 按照 Alpha、Beta、Gamma、Delta、Epsilon、Zeta(希腊字母顺序)的顺序排列</p>
                         <br />

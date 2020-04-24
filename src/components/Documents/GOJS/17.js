@@ -5,6 +5,11 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let $ = go.GraphObject.make;
 let myDiagram = $(go.Diagram, "myDiagramDiv", {
     "undoManager.isEnabled": true
@@ -457,118 +462,55 @@ export default class index extends Component {
                             <li>设置 Part 是否可调整大小</li>
                             <li>默认值:false</li>
                         </ul>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h3>resizeObjectName</h3>
                         <ul>
                             <li>将想要调整大小的 Part 设置 name,并在 Node 的 resizeObjectName 属性中指向该 Part 即可调整特定 Part 的大小</li>
                         </ul>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>maxSize、minSize</h3>
                         <ul>
                             <li>设置 Part 最大最小值</li>
                         </ul>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h3>resizeCellSize</h3>
                         <ul>
                             <li>设置每次调整大小的最小范围</li>
                         </ul>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h2>Adornment 装饰</h2>
                         <p>下面的例子是设置调整大小按钮的样式</p>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h3>selectionAdorned</h3>
                         <ul>
                             <li>决定 Part 被选中时是否有装饰</li>
                             <li>默认值:false</li>
                         </ul>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <h2>rotatable</h2>
                         <ul>
                             <li>设置 Part 是否可旋转</li>
                         </ul>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <h3>locationSpot</h3>
                         <ul>
                             <li>设置 Part 旋转中心</li>
                             <li>默认值:go.Spot.TopLeft</li>
                         </ul>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <div id="myDiagramDiv8" className="diagram"></div>
                         <h3>rotateObjectName</h3>
                         <ul>
                             <li>与 resize 类似,将想要选转的 Part 设置 name,并在 Node 的 rotateObjectName 属性中指向该 Part 即可旋转特定 Part</li>
                         </ul>
-                        <CodeMirror
-                            value={code9}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code9} options={codeMirrorOptions} />
                         <div id="myDiagramDiv9" className="diagram"></div>
                         <h3>snapAngleMultiple</h3>
                         <ul>
@@ -579,14 +521,7 @@ export default class index extends Component {
                         <ul>
                             <li>旋转物体的角度必须是"snapAngleEpsilon"的倍数</li>
                         </ul>
-                        <CodeMirror
-                            value={code10}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code10} options={codeMirrorOptions} />
                         <div id="myDiagramDiv10" className="diagram"></div>
                         <p><br /></p>
                         <p><br /></p>

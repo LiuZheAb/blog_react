@@ -24,14 +24,12 @@ export default class index extends Component {
                         <h2>只在屏幕阅读器显示</h2>
                         <p className="indent-2">当您想要在视觉上隐藏只对屏幕阅读器有意义的内容时,CSS 也可以提高页面的可访问性。当信息以可视格式(如图表)显示时，就会发生这种情况。但是，屏幕阅读器用户需要另一种表示(如表格)来访问数据。CSS用于将只在屏幕阅读器显示的元素置于浏览器窗口的可视区域之外。</p>
                         <p className="indent-2">下面是一个 CSS 规则的例子:</p>
-                        <CodeMirror
-                            value={code1}
+                        <CodeMirror value={code1}
                             options={{
                                 theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
-                            }}
-                        />
+                            }} />
                         <h2>对比度</h2>
                         <p className="indent-2">前景和背景颜色之间的低对比度会使文本难以阅读。足够的对比可以提高内容的可读性，但是“足够”到底是什么意思呢?</p>
                         <p className="indent-2">Web 内容可访问性指南(Web Content Accessibility Guidelines)建议正常文本的对比度至少为 4.5:1。这个比率是通过比较两种颜色的相对亮度值计算出来的。这个范围从相同颜色或没有对比的 1:1，到白色对黑色的 21:1，这是最强烈的对比。网上有很多对比检查工具可以帮你计算这个比率。</p>

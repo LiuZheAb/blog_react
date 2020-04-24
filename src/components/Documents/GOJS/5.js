@@ -5,6 +5,11 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let $ = go.GraphObject.make;
 let myDiagram = $(go.Diagram, "myDiagramDiv");
 let node1 = $(go.Node, "Auto",
@@ -396,14 +401,7 @@ export default class index extends Component {
                     <div className="article-content">
                         <h2>Diagram.add()</h2>
                         <p>先看下面的代码及效果：</p>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>为什么要用 Diagram Model？</h2>
                         <ul>
@@ -445,14 +443,7 @@ export default class index extends Component {
                             <li>nodeTemplateMap 值在 key 为""时(与 nodeTemplateMap 相同)</li>
                             <li>默认节点模板(使用 TextBlock 作为 key)</li>
                         </ol>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h2>GraphLinksModel</h2>
                         <ul>
@@ -460,14 +451,7 @@ export default class index extends Component {
                             <li>链接数据有预定义的属性。"to","from"和"category"</li>
                             <li>支持 Ports 使用 Links 连接 obiects</li>
                         </ul>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h2>TreeModel</h2>
                         <ul>
@@ -479,28 +463,14 @@ export default class index extends Component {
                             <li>parent 值必须设置为 Node 数据的 key</li>
                             <li>生成从指定 key 的父节点画出指向此节点的链接</li>
                         </ul>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h2>修改 Model</h2>
                         <ul>
                             <li>{`添加Node数据:Model.addNodeData(<node data object>)`}</li>
                             <li>{`删除Node数据:Model.removeNodeData(<node data object>)`}</li>
                         </ul>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <ul>
                             <li>{`查找 Node 数据对象:Model.findNodeDataForKey(<key>)`}</li>
@@ -509,28 +479,14 @@ export default class index extends Component {
                         <ul data-lake-indent="1">
                             <li>不能使用<span style={{ textDecoration: "line-through" }}>Node.data.color = "red"</span></li>
                         </ul>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <h2>保存/加载 Model</h2>
                         <ul>
                             <li>{`获取模型 JSON: model.toJson()`}</li>
                             <li>{`从 JSON 加载模型:Model.fromJson(<有效的 JSON Model 字符串>)`}</li>
                         </ul>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <div className="text-center"><button onClick={this.save} style={{ marginRight: 20 }}>Save</button><button onClick={this.load} style={{ marginRight: 20 }}>Load</button><button onClick={this.check}>下载查看 JSON 数据</button></div>
                         <div className="tip">

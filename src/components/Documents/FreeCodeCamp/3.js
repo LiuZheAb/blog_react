@@ -3,6 +3,11 @@ import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'CSS',
+    readOnly: true,
+};
 let code1 = `<p className="indent-2">foo</p>
 <p class="transformed">bar</p>`;
 let code2 = `p { 
@@ -39,23 +44,9 @@ export default class index extends Component {
                             </div>
                         </div>
                         <h2>语法</h2>
-                        <CodeMirror
-                            value={`scale(sx)`}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={`scale(sx)`} options={codeMirrorOptions} />
                         <p>或</p>
-                        <CodeMirror
-                            value={`scale(sx, sy)`}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={`scale(sx, sy)`} options={codeMirrorOptions} />
                         <h2>值</h2>
                         <ul>
                             <li>sx</li>
@@ -65,23 +56,14 @@ export default class index extends Component {
                         </ul>
                         <h2>示例</h2>
                         <p>HTML</p>
-                        <CodeMirror
-                            value={code1}
+                        <CodeMirror value={code1}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
-                            }}
-                        />
+                            }} />
                         <p>CSS</p>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'CSS',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <p>结果</p>
                         <div style={{ paddingLeft: 24 }}>
                             <p className="indent-0" style={{ width: 50, height: 50, backgroundColor: "#CCFFFF" }}>foo</p>

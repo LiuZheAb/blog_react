@@ -5,7 +5,11 @@ import 'codemirror/theme/monokai.css';
 import Directory from "../../Directory";
 
 let $ = go.GraphObject.make;
-
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -290,14 +294,12 @@ export default class index extends Component {
                             <li>定义 body onload 函数。</li>
                         </ol>
                         <p>代码如下所示：</p>
-                        <CodeMirror
-                            value={code1}
+                        <CodeMirror value={code1}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true
-                            }}
-                        />
+                            }} />
                         <h2>创建 Diagram、Model 和 Model Data</h2>
                         <ol>
                             <li>将 go.GraphObject.make 定义为简单变量(例如$)；</li>
@@ -307,14 +309,12 @@ export default class index extends Component {
                             <li>设置 Diagram.model。</li>
                         </ol>
                         <p>代码如下所示：</p>
-                        <CodeMirror
-                            value={code2}
+                        <CodeMirror value={code2}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
                                 readOnly: true,
-                            }}
-                        />
+                            }} />
                         <p>如果没有错误的话，你会在浏览器看到</p>
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>修改样式</h2>
@@ -337,14 +337,7 @@ export default class index extends Component {
                             </div>
                         </div>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>链接模板</h3>
                         <ul>
@@ -357,14 +350,7 @@ export default class index extends Component {
                             <li>为 linkTemplate 的第一个 Shape 元素设置 strokeWidth 属性</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h3>创建组</h3>
                         <ul>
@@ -373,14 +359,7 @@ export default class index extends Component {
                             <li>在 linkDataArray 中添加链接到组</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true,
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <br />
                         <br />

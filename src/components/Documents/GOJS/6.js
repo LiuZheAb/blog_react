@@ -5,6 +5,11 @@ import Directory from "../../Directory";
 import go from "gojs";
 
 let $ = go.GraphObject.make;
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JSX',
+    readOnly: true,
+};
 let code1 = `let $ = go.GraphObject.make;
 let myDiagram = $(go.Diagram, "myDiagramDiv");
 myDiagram.nodeTemplate =
@@ -547,14 +552,7 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <p>先看下面的代码：</p>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>使用 Templates</h2>
                         <ul>
@@ -574,28 +572,14 @@ export default class index extends Component {
                             <img src={require("../../../assets/images/20200405140043.png")} alt="" />
                         </div>
                         <h2>数据绑定</h2>
-                        <CodeMirror
-                            value={code9}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code9} options={codeMirrorOptions} />
                         <p>上面的代码中,"color"是一个客观属性,GoJS 并不知道"color"是什么,须使用 new go.Binding("fill","color"),将 data 中的 color 绑定到 fill 属性</p>
                         <ul>
                             <li>将 Part 的样式/表现绑定到 Model 中的某些数据</li>
                             <li>允许 Part 的数据和可视化之间的通信</li>
                             <li>{`简单绑定:new go.Binding(target property>,<source data property>)`},例如</li>
                         </ul>
-                        <CodeMirror
-                            value={code10}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code10} options={codeMirrorOptions} />
                         <h2>转换函数</h2>
                         <ul>
                             <li>函数作为第三个参数传递给 go.Binding</li>
@@ -603,75 +587,26 @@ export default class index extends Component {
                             <li>返回值作为目标 GraphObiect 属性</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h2>几个 Part template 的例子</h2>
                         <h3>初始效果</h3>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h3>右侧添加三角形</h3>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h3>左侧添加椭圆</h3>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h3>添加 Group</h3>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h3>添加 Link</h3>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h3>绑定 key 到 text、color 到 fill</h3>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JSX',
-                                readOnly: true
-                            }}
-                        />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
                         <br />
                         <br />
