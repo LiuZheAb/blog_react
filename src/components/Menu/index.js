@@ -1,6 +1,6 @@
 //菜单
 import React, { Component } from 'react'
-import { Menu, } from 'antd';
+import { Menu } from 'antd';
 import { Link, withRouter } from "react-router-dom";
 import { totalData } from "../../assets/data";
 import IconFont from "../IconFont";
@@ -31,16 +31,16 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                 Object.keys(dataSource.chapter).map((chapterName, chapterIndex) => {
                     let section = dataSource.chapter[chapterName];
                     return (
-                        section.length > 1 && chapterName !== dataSource.section[section[0]] ?
+                        section.length > 1 || chapterName !== dataSource.section[section[0]] ?
                             <SubMenu
                                 key={dataSource.title + chapterName}
                                 title={<span>{chapterName}</span>}
                             >
-                                {section.map((sectionIndex, index) => {
+                                {section.length > 0 ? section.map((sectionIndex, index) => {
                                     return (
                                         <Menu.Item key={dataSource.title + sectionIndex}><Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link></Menu.Item>
                                     )
-                                })}
+                                }) : <Menu.Item className="menu-item-nodata">暂无数据</Menu.Item>}
                             </SubMenu>
                             :
                             <Menu.Item key={dataSource.title + section[0]}><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></Menu.Item>
