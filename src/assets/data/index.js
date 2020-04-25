@@ -104,11 +104,13 @@ export let freeCodeCamp = {
         "使用 tabindex",
         "grid 布局(一)",
         "grid 布局(二)",
+        "reduce()",
     ],
     chapter: {
         "简介": [0],
         "CSS 篇": [1, 2, 3, 4, 5, 6, 11, 12],
-        // "HTML 篇": [],
+        "HTML 篇": [],
+        "JS篇":[13],
         "可访问性": [7, 8, 9, 10]
     }
 };
