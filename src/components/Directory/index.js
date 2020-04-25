@@ -34,10 +34,13 @@ class index extends Component {
         let title = [];
         for (let i = 0; i < totalData.length; i++) {
             if (pathSnippets[0] === totalData[i].name) {
-                title = totalData[i].section[pathSnippets[1]]
+                title = totalData[i].section.length > 0 ? totalData[i].section[pathSnippets[pathSnippets.length - 1]] : totalData[i].title;
             }
         }
-        if (document.getElementsByTagName("h1")[0]) document.getElementsByTagName("h1")[0].innerHTML = title;
+        console.log(pathSnippets)
+        if (document.getElementsByTagName("h1")[0]) {
+            document.getElementsByTagName("h1")[0].innerHTML = title;
+        }
     }
     componentDidMount() {
         //获取文档标题树
@@ -105,7 +108,6 @@ class index extends Component {
         }
     }
     render() {
-
         let { articleTree, scrollTop } = this.state;
         let length = articleTree.length;
         if (document.getElementById(`tree-num-0`) && length > 0) {
