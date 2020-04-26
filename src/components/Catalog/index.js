@@ -17,7 +17,7 @@ export default class index extends Component {
                             let section = dataSource.chapter[chapterName];
                             return (
                                 <ul key={chapterIndex}>
-                                    {section.length > 1 ?
+                                    { section.length > 1 || chapterName !== dataSource.section[section[0]] ?
                                         <>
                                             <li className="catalog-item-1">{chapterName}</li>
                                             {section.map((sectionIndex, index) => {
