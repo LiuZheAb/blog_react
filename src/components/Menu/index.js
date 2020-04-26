@@ -1,4 +1,4 @@
-//菜单
+/*//菜单V1
 import React, { Component } from 'react'
 import { Menu } from 'antd';
 import { Link, withRouter } from "react-router-dom";
@@ -78,6 +78,58 @@ class index extends Component {
                             <Menu.Item key={item.title}>
                                 <Link to={item.baseHref}>{item.title}</Link>
                             </Menu.Item>
+                    )
+                })}
+            </Menu>
+        )
+    }
+}
+
+export default withRouter(index);*/
+
+
+
+//菜单V2
+import React, { Component } from 'react'
+import { Menu } from 'antd';
+import { Link, withRouter } from "react-router-dom";
+import { totalData } from "../../assets/data";
+import IconFont from "../IconFont";
+import "./index.less";
+
+//将data文件中所有href:title映射到一个对象中,用于检索当前路由对应的title
+let keyMapObj = {}
+for (let i = 0; i < totalData.length; i++) {
+    keyMapObj[totalData[i].baseHref] = totalData[i].title;
+    for (let j = 0; j < totalData[i].section.length; j++) {
+        keyMapObj[totalData[i].baseHref + "/" + j] = totalData[i].title + totalData[i].section[j]
+    }
+}
+
+class index extends Component {
+    render() {
+        const path = this.props.location.pathname;
+        let { mode } = this.props;
+        return (
+            <Menu
+                className={this.props.className}
+                mode={mode}
+                theme="light"
+                id="menu"
+                selectedKeys={keyMapObj[path]}
+            >
+                {
+                    mode === "horizontal" ?
+                        <Menu.Item key="logo" className="logo-menu" title="首页" onClick={() => { window.location.href = "#/" }}>
+                            <IconFont type="iconpc-dongman" />
+                        </Menu.Item>
+                        : null
+                }
+                {totalData.map((item, index) => {
+                    return (
+                        <Menu.Item key={item.title}>
+                            <Link to={item.baseHref}>{item.title}</Link>
+                        </Menu.Item>
                     )
                 })}
             </Menu>
