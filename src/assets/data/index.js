@@ -105,12 +105,13 @@ export let freeCodeCamp = {
         "grid 布局(一)",
         "grid 布局(二)",
         "reduce()",
+        "apply()",
     ],
     chapter: {
         "简介": [0],
         "CSS 篇": [1, 2, 3, 4, 5, 6, 11, 12],
         "HTML 篇": [],
-        "JS篇":[13],
+        "JS篇": [13, 14],
         "可访问性": [7, 8, 9, 10]
     }
 };

@@ -29,7 +29,7 @@ export default class index extends Component {
                         <p>参考地址<a href="http://www.fed123.com/pwa/5501.html" target="_blank" rel="noopener noreferrer">http://www.fed123.com/pwa/5501.html</a></p>
                         <p>使用扩展运算符(...)</p>
                         <p>写法如下</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={code1}
                             options={{
                                 theme: 'monokai',

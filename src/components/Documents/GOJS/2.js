@@ -295,7 +295,7 @@ export default class index extends Component {
                         </ol>
                         <p>代码如下所示：</p>
                         <CodeMirror 
-                            value={code1}
+                        value={code1}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
@@ -311,7 +311,7 @@ export default class index extends Component {
                         </ol>
                         <p>代码如下所示：</p>
                         <CodeMirror 
-                            value={code2}
+                        value={code2}
                             options={{
                                 theme: 'monokai',
                                 mode: 'HTML',
@@ -339,8 +339,7 @@ export default class index extends Component {
                             </div>
                         </div>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>链接模板</h3>
                         <ul>
@@ -353,8 +352,7 @@ export default class index extends Component {
                             <li>为 linkTemplate 的第一个 Shape 元素设置 strokeWidth 属性</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h3>创建组</h3>
                         <ul>
@@ -363,8 +361,7 @@ export default class index extends Component {
                             <li>在 linkDataArray 中添加链接到组</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <br />
                         <br />

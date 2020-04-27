@@ -204,8 +204,7 @@ export default class index extends Component {
                         </div>
                         <h3>文本滑过浏览器窗口</h3>
                         <p>{`该例中<p> 元素由浏览器窗口右边滑至左边`}</p>
-                        <CodeMirror 
-                            value={code1} options={codeMirrorOptions} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <p>{`animation-duration属性指定 <p> 上的动画从开始到结束耗费3秒，@keyframes 指定使用名字为"slidein"的关键帧。`}</p>
                         <p>如果希望在不支持 CSS 动画的浏览器中使用自定义样式，应该将其写在这里;然而，在该例中，我们不需要除动画效果以外的任何自定义样式。</p>
                         <p>关键帧是用 @keyframes 定义的。该例中，我们只使用了两个关键帧。第一个出现在 0%(此例中使用了别名 from)处，此处元素的左边距为 100%(即位于容器的右边界)，宽为 300%(即容器宽度的 3 倍)，使得在动画的第一帧中标题位于浏览器窗口右边界之外。</p>
@@ -217,8 +216,7 @@ export default class index extends Component {
                         </div>
                         <h3>增加关键帧</h3>
                         <p>让我们给上面的示例中添加一个关键帧，比如标题的字号先变大然后恢复正常，添加这个关键帧十分简单：</p>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <p>在动画序列执行到 75% 的时候，标题元素的左边距为 25%，宽度为 150%。</p>
                         <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
                             <p className="indent-0" style={{ animationDuration: "3s", animationName: "slidein2" }}>
@@ -227,8 +225,7 @@ export default class index extends Component {
                         </div>
                         <h3>重复动画</h3>
                         <p>animation-iteration-count 用以指定动画重复的次数，仅仅使用该属性就能使动画重复播放。在该例中，设该属性为 infinite 以使动画无限重复</p>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
                             <p className="indent-0" style={{ animationDuration: "3s", animationName: "slidein1", animationIterationCount: "infinite" }}>
                                 The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
@@ -236,8 +233,7 @@ export default class index extends Component {
                         </div>
                         <h3>来回运动</h3>
                         <p>上面实现了动画的重复播放，但是每次动画开始时总跳回开始位置显得很怪异。我们真正想要的是标题来回滑动，这时只需要设置 animation-direction 属性为 alternate。</p>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div style={{ padding: 20, border: "1px solid #000", width: "100%", maxWidth: 800, minHeight: 300, margin: "0 auto", overflow: "auto" }}>
                             <p className="indent-0" style={{ animationDuration: "3s", animationName: "slidein1", animationIterationCount: "infinite", animationDirection: "alternate" }}>
                                 The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressedher in a languid, sleepy voice.
@@ -246,11 +242,10 @@ export default class index extends Component {
                         <h3>使用动画事件</h3>
                         <p>利用动画事件可以更好的控制动画和信息。这些事件由 AnimationEvent 对象表示，可探测动画何时开始结束和开始新的循环。每个事件包括动画发生的时间和触发事件的动画名称。</p>
                         <p>我们将修改滑动文本示例，输出每个动画事件出现时的信息。</p>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <p><b>添加动画事件监听器</b></p>
                         <p>我们使用 JavaScript 代码监听所有三种可能的动画事件，setup()方法设置事件监听器，当文档第一次加载完成时执行该方法。</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={code6}
                             options={{
                                 theme: 'monokai',
@@ -261,7 +256,7 @@ export default class index extends Component {
                         <p>为什么这样做?因为 animationstart 事件在动画一开始时就被触发，在我们的示例中，该事件在我们的代码执行前就被触发，所以我们自己通过设置元素的 class 来启动动画。</p>
                         <p><b>接收事件</b></p>
                         <p>事件传递给 listener()函数，代码如下所示</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={code7}
                             options={{
                                 theme: 'monokai',
@@ -272,7 +267,7 @@ export default class index extends Component {
                         <p>注意以上时间非常接近预期时间，但不是完全相等。也要注意在最后一个周期完成后，不会触发 animationiteration 事件，而触发 animationend 事件。</p>
                         <h3>HTML代码</h3>
                         <p>下面是示例中的用到的HTML代码:</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={code8}
                             options={{
                                 theme: 'monokai',

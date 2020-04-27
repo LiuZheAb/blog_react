@@ -19,7 +19,7 @@ export default class index extends Component {
                         <p>将文档入口文件的路由配置改为 map 遍历后,引入文档目录组件遇到此问题</p>
                         <h2>问题描述</h2>
                         <p>未解决前代码如下</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={`<Route exact path={gojsData.baseHref} component={<Catalog dataSource={gojsData} />} />`}
                             options={{
                                 theme: 'monokai',
@@ -32,7 +32,7 @@ export default class index extends Component {
                         <h2>解决方案</h2>
                         <p>就是需要通过函数返回而不是对象。所以要写成函数的形式。</p>
                         <p>写法如下</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={`<Route exact path={gojsData.baseHref} compontent={() => <Catalog dataSource={gojsData} />} />`}
                             options={{
                                 theme: 'monokai',

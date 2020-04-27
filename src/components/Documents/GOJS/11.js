@@ -330,8 +330,7 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
-                        <CodeMirror 
-                            value={code1} options={codeMirrorOptions} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>简介</h2>
                         <p>力导向布局算法是一类绘图算法，它仅仅基于图的结构本身来绘图，而不依赖于上下文信息。</p>
@@ -357,8 +356,7 @@ export default class index extends Component {
                             <li>决定 Node 间的距离，即 r</li>
                             <li>默认值：150</li>
                         </ul>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>引力</h2>
                         <h3>defaultGravitationalMass </h3>
@@ -372,23 +370,20 @@ export default class index extends Component {
                             <li>决定 Node 间弹簧的长度</li>
                             <li>默认值：50</li>
                         </ul>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h3>defaultSpringStiffness</h3>
                         <ul>
                             <li>决定 Node 间弹簧的刚度</li>
                             <li>默认值：0.05</li>
                         </ul>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <h2>isFixed</h2>
                         <ul>
                             <li>为 true 时 Node 不会被 Layout 影响，但仍然对附近和连接的 Node 有影响。即 Node 自身被固定</li>
                         </ul>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ height: 500, maxWidth: 600 }}></div>
                         <br />
                         <br />

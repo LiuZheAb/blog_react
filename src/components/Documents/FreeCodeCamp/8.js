@@ -24,7 +24,7 @@ export default class index extends Component {
                         <h2>只在屏幕阅读器显示</h2>
                         <p>当您想要在视觉上隐藏只对屏幕阅读器有意义的内容时,CSS 也可以提高页面的可访问性。当信息以可视格式(如图表)显示时，就会发生这种情况。但是，屏幕阅读器用户需要另一种表示(如表格)来访问数据。CSS用于将只在屏幕阅读器显示的元素置于浏览器窗口的可视区域之外。</p>
                         <p>下面是一个 CSS 规则的例子:</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={code1}
                             options={{
                                 theme: 'monokai',

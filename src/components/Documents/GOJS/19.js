@@ -537,12 +537,10 @@ export default class index extends Component {
                             <li>自动更新 Diagram 和 Model 中的关系</li>
                         </ul>
                         <p>代码及效果如下:</p>
-                        <CodeMirror 
-                            value={code1} options={codeMirrorOptions} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h3>自定义样式</h3>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <ul>
                             <li>segmentIndex 决定了定义内容在 Link 上的位置</li>
                             <li>默认值:-infinity,位于 Link 中间</li>
@@ -552,22 +550,19 @@ export default class index extends Component {
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>linkValidation</h3>
                         <p>自定义 Link 重新链接条件</p>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h2>LinkReshaping Tool</h2>
                         <ul>
                             <li>用来改变 Link 的路径</li>
                             <li>仅用于"reshapable"属性值为 true 的 Link</li>
                         </ul>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <p>上下移动 Node 后点击 Link,滑动方块查看效果</p>
                         <h3>resegmentable</h3>
                         <p>决定 Link 是否可重新分割</p>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <p>上下移动 Node 后点击 Link,滑动菱形块查看效果</p>
                         <h2>Tool Parts</h2>
@@ -578,15 +573,13 @@ export default class index extends Component {
                             <li>在 Diagram 长按并滑动鼠标可用来选中 Part</li>
                             <li>toolManager.dragSelectingTool.box 决定选择框的样式</li>
                         </ul>
-                        <CodeMirror 
-                            value={code6} options={codeMirrorOptions} />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <ul data-lake-indent="1">
                             <li>在 Node 边框长按并滑动鼠标可重新链接,此时会显示当前拖拽的 Link</li>
                             <li>toolManager.linkingTool.temporaryLink 决定此样式</li>
                         </ul>
-                        <CodeMirror 
-                            value={code7} options={codeMirrorOptions} />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <p><br /></p>
                         <p><br /></p>

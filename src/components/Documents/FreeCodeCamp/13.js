@@ -3,6 +3,11 @@ import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
 
+let codeMirrorOptions = {
+    theme: 'monokai',
+    mode: 'JS',
+    readOnly: true,
+};
 let code1 = `var maxCallback = ( acc, cur ) => Math.max( acc.x, cur.x );
 var maxCallback2 = ( max, cur ) => Math.max( max, cur );
 
@@ -246,22 +251,10 @@ export default class index extends Component {
                         <p>回调函数第一次执行时，accumulator 和 currentValue 的取值有两种情况：如果调用 reduce()时提供了 initialValue，accumulator 取值为 initialValue，currentValue 取数组中的第一个值；如果没有提供 initialValue，那么 accumulator 取数组中的第一个值，currentValue 取数组中的第二个值。</p>
                         <p>如果数组为空且没有提供 initialValue，会抛出 TypeError 。如果数组仅有一个元素（无论位置如何）并且没有提供 initialValue， 或者有提供 initialValue 但是数组为空，那么此唯一值将被返回并且 callback 不会被执行。</p>
                         <p>提供初始值通常更安全，正如下面的例子，如果没有提供initialValue，则可能有三种输出：</p>
-                        <CodeMirror
-                            value={code1}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <h2>reduce() 如何运行</h2>
                         <p>假如运行下段 reduce()代码：</p>
-                        <CodeMirror
-                            value={code2}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <h2>reduce() 如何运行</h2>
                         <p>callback 被调用四次，每次调用的参数和返回值如下表：</p>
                         <table>
@@ -312,21 +305,9 @@ export default class index extends Component {
                         </table>
                         <p>由 reduce 返回的值将是最后一次回调返回值（10）。</p>
                         <p>还可以使用箭头函数的形式，下面的代码会输出跟前面一样的结果</p>
-                        <CodeMirror
-                            value={`[0, 1, 2, 3, 4].reduce((prev, curr) => prev + curr );`}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={`[0, 1, 2, 3, 4].reduce((prev, curr) => prev + curr );`} options={codeMirrorOptions} />
                         <p>如果你打算提供一个初始值作为 reduce()方法的第二个参数，以下是运行过程及结果：</p>
-                        <CodeMirror
-                            value={`[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) => { return accumulator + currentValue; }, 10 );`}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={`[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) => { return accumulator + currentValue; }, 10 );`} options={codeMirrorOptions} />
                         <br />
                         <table>
                             <thead>
@@ -382,120 +363,36 @@ export default class index extends Component {
                                 </tr>
                             </tbody>
                         </table>
-                        <p>这种情况下 reduce()返回的值是20。</p>
+                        <p>这种情况下 reduce()返回的值是 20。</p>
                         <h2>例子</h2>
                         <h3>数组里所有值的和</h3>
-                        <CodeMirror
-                            value={code3}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <p>箭头函数的形式：</p>
-                        <CodeMirror
-                            value={code4}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <h3>累加对象数组里的值</h3>
                         <p>要累加对象数组中包含的值，必须提供初始值，以便各个item正确通过你的函数。</p>
-                        <CodeMirror
-                            value={code5}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <p>箭头函数的形式：</p>
-                        <CodeMirror
-                            value={code6}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <h3>将二维数组转化为一维</h3>
-                        <CodeMirror
-                            value={code7}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <p>箭头函数的形式：</p>
-                        <CodeMirror
-                            value={code8}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <h3>计算数组中每个元素出现的次数</h3>
-                        <CodeMirror
-                            value={code9}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
-                        <h3>按属性对object分类</h3>
-                        <CodeMirror
-                            value={code10}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
-                        <h3>使用扩展运算符和initialValue绑定包含在对象数组中的数组</h3>
-                        <CodeMirror
-                            value={code11}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code9} options={codeMirrorOptions} />
+                        <h3>按属性对 object 分类</h3>
+                        <CodeMirror value={code10} options={codeMirrorOptions} />
+                        <h3>使用扩展运算符和 initialValue 绑定包含在对象数组中的数组</h3>
+                        <CodeMirror value={code11} options={codeMirrorOptions} />
                         <h3>数组去重</h3>
-                        <CodeMirror
-                            value={code12}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
-                        <CodeMirror
-                            value={code13}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
-                        <h3>按顺序运行Promise</h3>
-                        <CodeMirror
-                            value={code14}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code12} options={codeMirrorOptions} />
+                        <CodeMirror value={code13} options={codeMirrorOptions} />
+                        <h3>按顺序运行 Promise</h3>
+                        <CodeMirror value={code14} options={codeMirrorOptions} />
                         <h3>功能型函数管道</h3>
-                        <CodeMirror
-                            value={code15}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
-                        <h3>使用 reduce实现map</h3>
-                        <CodeMirror
-                            value={code16}
-                            options={{
-                                theme: 'monokai',
-                                mode: 'JS',
-                                readOnly: true,
-                            }} />
+                        <CodeMirror value={code15} options={codeMirrorOptions} />
+                        <h3>使用 reduce 实现 map</h3>
+                        <CodeMirror value={code16} options={codeMirrorOptions} />
                     </div>
                 </div>
                 <Directory />

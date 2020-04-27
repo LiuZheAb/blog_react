@@ -510,8 +510,7 @@ export default class index extends Component {
                             <li>不是每个单元格都必须包含一个对象</li>
                         </ul>
                         <p>代码和效果如下所示:</p>
-                        <CodeMirror 
-                            value={code1} options={codeMirrorOptions} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>设置表格样式</h2>
                         <ul>
@@ -519,37 +518,32 @@ export default class index extends Component {
                             <li>defaultColumnSeparatorStroke 设置表格列分隔线</li>
                             <li>defaultSeparatorPadding 设置单元格 padding</li>
                         </ul>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h2>设置单元格所占列数</h2>
                         <ul>
                             <li>columnSpan:Number</li>
                         </ul>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <h2>设置单元格对齐方式</h2>
                         <ul>
                             <li>columnSpan:go.Spot.{`<position>`}</li>
                         </ul>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h2>RowColumnDefinition</h2>
                         <ul>
                             <li>用于为 Table Panel 的特定行/列设置属性</li>
                         </ul>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h2>TableRow / TableColumn</h2>
                         <ul>
                             <li>特殊面板——只能在 Table Panel 中使用</li>
                             <li>将特定行/列的所有对象放到其中一个面板中</li>
                         </ul>
-                        <CodeMirror 
-                            value={code6} options={codeMirrorOptions} />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <p><br /></p>
                         <p><br /></p>

@@ -316,15 +316,13 @@ export default class index extends Component {
                             <li>"editable"布尔属性决定文本块的文本是否可以编辑</li>
                         </ul>
                         <p>代码及效果如下：</p>
-                        <CodeMirror 
-                            value={code1} options={codeMirrorOptions} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <h3>Shape 的属性</h3>
                         <div className="text-center">
                             <img src={require("../../../assets/images/20200405213635.png")} alt="" />
                         </div>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <ul>
                             <li>"figure"属性决定形状</li>
@@ -332,8 +330,7 @@ export default class index extends Component {
                             <li>"stroke"属性值可以是任意 css color 字符串</li>
                             <li>"strokeWidth"属性值是数字，决定边框宽度</li>
                         </ul>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <h3>Picture 的属性</h3>
                         <ul>
@@ -341,8 +338,7 @@ export default class index extends Component {
                             <li>"desiredSize"属性通过 new go.Size(width,height)决定图片大小</li>
                             <li>"margin"属性通过 new go.Margin(top,right,bottom,left)决定图片的 margin</li>
                         </ul>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h3>Node 的属性</h3>
                         <ul>
@@ -351,16 +347,14 @@ export default class index extends Component {
                             <li>"resizable"属性决定节点是否可改变大小</li>
                             <li>"rotatable"属性决定节点是否可旋转</li>
                         </ul>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <ul>
                             <li>resizeObjectName:要调整大小的 GraphObject 的名称</li>
                             <li>rotateobjectName:要旋转的 GraphObiect 的名称</li>
                             <li>值必须与部件中的命名元素相对应</li>
                         </ul>
-                        <CodeMirror 
-                            value={code6} options={codeMirrorOptions} />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <br />
                         <br />

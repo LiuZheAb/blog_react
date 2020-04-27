@@ -44,11 +44,9 @@ export default class index extends Component {
                             </div>
                         </div>
                         <h2>语法</h2>
-                        <CodeMirror 
-                            value={`scale(sx)`} options={codeMirrorOptions} />
+                        <CodeMirror value={`scale(sx)`} options={codeMirrorOptions} />
                         <p style={{ marginBottom: 0 }}>或</p>
-                        <CodeMirror 
-                            value={`scale(sx, sy)`} options={codeMirrorOptions} />
+                        <CodeMirror value={`scale(sx, sy)`} options={codeMirrorOptions} />
                         <h2>值</h2>
                         <ul>
                             <li>sx</li>
@@ -58,7 +56,7 @@ export default class index extends Component {
                         </ul>
                         <h2>示例</h2>
                         <b><p>HTML</p></b>
-                        <CodeMirror 
+                        <CodeMirror
                             value={code1}
                             options={{
                                 theme: 'monokai',
@@ -66,8 +64,7 @@ export default class index extends Component {
                                 readOnly: true,
                             }} />
                         <b><p>CSS</p></b>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <b><p>结果</p></b>
                         <div style={{ paddingLeft: 24 }}>
                             <p className="indent-0" style={{ width: 50, height: 50, backgroundColor: "#CCFFFF" }}>foo</p>

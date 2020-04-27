@@ -17,7 +17,7 @@ export default class index extends Component {
                         <p>HTML 提供 accesskey 属性来指定一个快捷键来激活或将焦点转移到一个元素上。这可以使导航对于只有键盘的用户更有效。</p>
                         <p>HTML5 允许在任何元素上使用这个属性，但是当它与交互式元素一起使用时特别有用。这包括链接，按钮和表单控件。</p>
                         <p>这里有一个例子:</p>
-                        <CodeMirror 
+                        <CodeMirror
                             value={`<button accesskey="b">Important Button</button>`}
                             options={{
                                 theme: 'monokai',

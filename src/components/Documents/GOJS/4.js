@@ -395,8 +395,7 @@ export default class index extends Component {
                             <li>定位可能为负值-如(-20,50)</li>
                         </ul>
                         <p>代码及效果如下图所示：</p>
-                        <CodeMirror 
-                            value={code1} options={codeMirrorOptions} />
+                        <CodeMirror value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>Veitical Panels</h2>
                         <p>Vertical Panels 中的元素：</p>
@@ -406,20 +405,16 @@ export default class index extends Component {
                             <li>如果它们的宽度不等于 Panel 的宽度，则根据“alignment”属性对齐</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror 
-                            value={code2} options={codeMirrorOptions} />
+                        <CodeMirror value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram"></div>
                         <p>TextBlock 在 Shape 下方，且默认水平居中对齐。这一属性由 alignment 控制。</p>
-                        <CodeMirror 
-                            value={code3} options={codeMirrorOptions} />
+                        <CodeMirror value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram"></div>
                         <p>默认情况下，Vertical Panel 中的元素只占用它们需要的空间。这一属性由 stretch 控制。</p>
-                        <CodeMirror 
-                            value={code4} options={codeMirrorOptions} />
+                        <CodeMirror value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram"></div>
                         <p>元素的 alignment 属性只有在元素的宽度不等于 Panel 的宽度时才有效，对于 TextBlocks，可以通过设置 textAlign 属性来修复。</p>
-                        <CodeMirror 
-                            value={code5} options={codeMirrorOptions} />
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram"></div>
                         <h2>Horizontal Panels</h2>
                         <p>Horizontal Panels 中的元素:</p>
@@ -428,20 +423,16 @@ export default class index extends Component {
                             <li>垂直拉伸以适应 Panel 的高度与“stretch”属性</li>
                         </ul>
                         <p>代码及效果如图所示：</p>
-                        <CodeMirror 
-                            value={code6} options={codeMirrorOptions} />
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram"></div>
                         <p>同样的，alignment 属性控制对齐方式。</p>
-                        <CodeMirror 
-                            value={code7} options={codeMirrorOptions} />
+                        <CodeMirror value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram"></div>
                         <p>stretch 属性控制元素所占空间。</p>
-                        <CodeMirror 
-                            value={code8} options={codeMirrorOptions} />
+                        <CodeMirror value={code8} options={codeMirrorOptions} />
                         <div id="myDiagramDiv8" className="diagram"></div>
                         <p>为 Horizontal Panels 中的元素设置 stretch 属性会“覆盖”alignment，此时，修改 TextBlock 的对齐方式要用 verticalAlignment 属性。</p>
-                        <CodeMirror 
-                            value={code9} options={codeMirrorOptions} />
+                        <CodeMirror value={code9} options={codeMirrorOptions} />
                         <div id="myDiagramDiv9" className="diagram"></div>
                         <h2>Spot/Auto Panels</h2>
                         <ul>
@@ -461,20 +452,17 @@ export default class index extends Component {
                             <img src={require("../../../assets/images/1585187909595-5fb53263-9973-41c6-a159-703293b91af0.png")} alt="" />
                         </div>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror 
-                            value={code10} options={codeMirrorOptions} />
+                        <CodeMirror value={code10} options={codeMirrorOptions} />
                         <div id="myDiagramDiv10" className="diagram"></div>
                         <p>new go.Spot(x,y,xOffset,yOffset)</p>
                         <p>x,y 为 0~1 的小数，</p>
                         <p>xOffset，yOffset 为在(x,y)位置的基础上在横纵坐标的偏移量，例如：</p>
-                        <CodeMirror 
-                            value={code11} options={codeMirrorOptions} />
+                        <CodeMirror value={code11} options={codeMirrorOptions} />
                         <div id="myDiagramDiv11" className="diagram"></div>
                         <p>alignmentFocus 属性默认使用 go.Spot.Center 来定位元素。</p>
                         <p>例如，在上面的例子中，是以 TextBlock 的中心为基准来定位 TextBlock 的</p>
                         <p>设置 alignmentFocus 属性可修改定位基准</p>
-                        <CodeMirror 
-                            value={code12} options={codeMirrorOptions} />
+                        <CodeMirror value={code12} options={codeMirrorOptions} />
                         <div id="myDiagramDiv12" className="diagram"></div>
                         <h3>Auto Panels</h3>
                         <ul>
@@ -482,13 +470,11 @@ export default class index extends Component {
                             <li>从本质上讲，Auto Panels 是实现围绕某些对象的边框的方式</li>
                         </ul>
                         <p>代码及效果如下所示：</p>
-                        <CodeMirror 
-                            value={code13} options={codeMirrorOptions} />
+                        <CodeMirror value={code13} options={codeMirrorOptions} />
                         <div id="myDiagramDiv13" className="diagram"></div>
                         <p>主元素(Shape)的大小适应其他非主元素(TextBlock)。</p>
                         <p>desiredSize 属性控制主元素的默认大小。</p>
-                        <CodeMirror 
-                            value={code14} options={codeMirrorOptions} />
+                        <CodeMirror value={code14} options={codeMirrorOptions} />
                         <div id="myDiagramDiv14" className="diagram"></div>
                         <h2>任意复杂 Parts</h2>
                         <p>Panels 可以组合创建复杂 Parts</p>
