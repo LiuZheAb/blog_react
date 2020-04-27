@@ -37,7 +37,6 @@ class index extends Component {
                 title = totalData[i].section.length > 0 ? totalData[i].section[pathSnippets[pathSnippets.length - 1]] : totalData[i].title;
             }
         }
-        console.log(pathSnippets)
         if (document.getElementsByTagName("h1")[0]) {
             document.getElementsByTagName("h1")[0].innerHTML = title;
         }
@@ -130,11 +129,9 @@ class index extends Component {
         return (
             <div className="directory">
                 <ul className="directory-list">
-                    {articleTree.map((key, index) => {
-                        return (
-                            <li key={index} id={`tree-num-${index}`} className="tree-num" title={key.name} style={{ paddingLeft: key.tag === "H2" ? 10 : 22 }} onClick={() => { this.scrollToAnchor(`${key.name}`) }}>{key.name}</li>
-                        )
-                    })}
+                    {articleTree.map((key, index) =>
+                        <li key={index} id={`tree-num-${index}`} className="tree-num" title={key.name} style={{ paddingLeft: key.tag === "H2" ? 10 : 22 }} onClick={() => { this.scrollToAnchor(`${key.name}`) }}>{key.name}</li>
+                    )}
                 </ul>
             </div>
         )

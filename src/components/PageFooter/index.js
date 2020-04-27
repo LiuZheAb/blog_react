@@ -102,15 +102,13 @@ class index extends Component {
                             <div className="icon"><IconFont type="iconbook" style={{ fontSize: 40 }} /></div>
                             <div className="name"><h4><Link to={dataSource.baseHref}>{dataSource.title}</Link></h4></div>
                         </div>
-                        {this.getRandomArrayElements(recommandData, 2).map((item, index) => {
-                            return (
-                                <div className="book" key={index}>
-                                    <span className="from">精品推荐</span>
-                                    <div className="icon"><IconFont type="iconbook" style={{ fontSize: 40 }} /></div>
-                                    <div className="name"><h4><Link to={item.baseHref}>{item.title}</Link></h4></div>
-                                </div>
-                            )
-                        })}
+                        {this.getRandomArrayElements(recommandData, 2).map((item, index) =>
+                            <div className="book" key={index}>
+                                <span className="from">精品推荐</span>
+                                <div className="icon"><IconFont type="iconbook" style={{ fontSize: 40 }} /></div>
+                                <div className="name"><h4><Link to={item.baseHref}>{item.title}</Link></h4></div>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="connect">

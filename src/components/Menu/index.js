@@ -36,11 +36,9 @@ const SubMenuTemplate = (dataSource, path, mode) => {
                                 key={dataSource.title + chapterName}
                                 title={<span>{chapterName}</span>}
                             >
-                                {section.length > 0 ? section.map((sectionIndex, index) => {
-                                    return (
-                                        <Menu.Item key={dataSource.title + sectionIndex}><Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link></Menu.Item>
-                                    )
-                                }) : <Menu.Item className="menu-item-nodata"><IconFont type="iconno-data" style={{ fontSize: "40px" }} />暂无数据</Menu.Item>}
+                                {section.length > 0 ? section.map((sectionIndex, index) => 
+                                    <Menu.Item key={dataSource.title + sectionIndex}><Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link></Menu.Item>
+                                ) : <Menu.Item className="menu-item-nodata"><IconFont type="iconno-data" style={{ fontSize: "40px" }} />暂无数据</Menu.Item>}
                             </SubMenu>
                             :
                             <Menu.Item key={dataSource.title + section[0]}><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></Menu.Item>
@@ -70,16 +68,14 @@ class index extends Component {
                         </Menu.Item>
                         : null
                 }
-                {totalData.map((item, index) => {
-                    return (
-                        item.section.length > 0 ?
-                            SubMenuTemplate(item, path, mode)
-                            :
-                            <Menu.Item key={item.title}>
-                                <Link to={item.baseHref}>{item.title}</Link>
-                            </Menu.Item>
-                    )
-                })}
+                {totalData.map((item, index) => 
+                    item.section.length > 0 ?
+                        SubMenuTemplate(item, path, mode)
+                        :
+                        <Menu.Item key={item.title}>
+                            <Link to={item.baseHref}>{item.title}</Link>
+                        </Menu.Item>
+                )}
             </Menu>
         )
     }
@@ -125,13 +121,11 @@ class index extends Component {
                         </Menu.Item>
                         : null
                 }
-                {totalData.map((item, index) => {
-                    return (
-                        <Menu.Item key={item.title}>
-                            <Link to={item.baseHref}>{item.title}</Link>
-                        </Menu.Item>
-                    )
-                })}
+                {totalData.map((item, index) =>
+                    <Menu.Item key={item.title}>
+                        <Link to={item.baseHref}>{item.title}</Link>
+                    </Menu.Item>
+                )}
             </Menu>
         )
     }

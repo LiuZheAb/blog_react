@@ -36,11 +36,9 @@ class index extends Component {
                     }}
                 >
                     <Route exact path="/" render={() => { return <HomeList /> }} />
-                    {hrefArray.map((item, index) => {
-                        return (
-                            <Route key={index} path={item} component={() => <Documents dataSource={totalData[index]} />} />
-                        )
-                    })}
+                    {hrefArray.map((item, index) =>
+                        <Route key={index} path={item} component={() => <Documents dataSource={totalData[index]} />} />
+                    )}
                     <Route path={hrefArray} render={() => (<PageFooter />)} />
                 </Content>
             </Layout>

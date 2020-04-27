@@ -15,22 +15,18 @@ export default class index extends Component {
                     <div className="contents">
                         {Object.keys(dataSource.chapter).map((chapterName, chapterIndex) => {
                             let section = dataSource.chapter[chapterName];
-                            return (
-                                <ul key={chapterIndex}>
-                                    { section.length > 1 || chapterName !== dataSource.section[section[0]] ?
-                                        <>
-                                            <li className="catalog-item-1">{chapterName}</li>
-                                            {section.map((sectionIndex, index) => {
-                                                return (
-                                                    <li key={sectionIndex} className="catalog-item-2"><Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link></li>
-                                                )
-                                            })}
-                                        </>
-                                        :
-                                        <li className="catalog-item-1 catalog-item-nochild" ><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></li>
-                                    }
-                                </ul>
-                            )
+                            return <ul key={chapterIndex}>
+                                {section.length > 1 || chapterName !== dataSource.section[section[0]] ?
+                                    <>
+                                        <li className="catalog-item-1">{chapterName}</li>
+                                        {section.map((sectionIndex, index) =>
+                                            <li key={sectionIndex} className="catalog-item-2"><Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link></li>
+                                        )}
+                                    </>
+                                    :
+                                    <li className="catalog-item-1 catalog-item-nochild" ><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></li>
+                                }
+                            </ul>
                         })}
                     </div>
                 </div>
