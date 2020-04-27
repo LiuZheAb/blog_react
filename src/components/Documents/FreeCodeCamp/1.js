@@ -44,25 +44,27 @@ export default class index extends Component {
                             </div>
                         </div>
                         <h2>概述</h2>
-                        <p className="indent-2">var()函数可以代替元素中任何属性中的值的任何部分。var()函数不能作为属性名、选择器或者其他除了属性值之外的值。（这样做通常会产生无效的语法或者一个没有关联到变量的值。）</p>
+                        <p>var()函数可以代替元素中任何属性中的值的任何部分。var()函数不能作为属性名、选择器或者其他除了属性值之外的值。（这样做通常会产生无效的语法或者一个没有关联到变量的值。）</p>
                         <h2>语法</h2>
-                        <p className="indent-2">方法的第一个参数是要替换的自定义属性的名称。函数的可选第二个参数用作回退值。如果第一个参数引用的自定义属性无效，则该函数将使用第二个值。</p>
-                        <p className="indent-2"><code>{`var( <custom-property-name> , <declaration-value>? )`}</code></p>
+                        <p>方法的第一个参数是要替换的自定义属性的名称。函数的可选第二个参数用作回退值。如果第一个参数引用的自定义属性无效，则该函数将使用第二个值。</p>
+                        <p><code>{`var( <custom-property-name> , <declaration-value>? )`}</code></p>
                         <ul>
                             <li>{`<custom-property-name> 自定义属性名`}</li>
-                            <p className="indent-2">在实际应用中它被定义为以两个破折号开始的任何有效标识符。 自定义属性仅供作者和用户使用; CSS 将永远不会给他们超出这里表达的意义。</p>
+                            <p>在实际应用中它被定义为以两个破折号开始的任何有效标识符。 自定义属性仅供作者和用户使用; CSS 将永远不会给他们超出这里表达的意义。</p>
                             <li>{`<declaration-value> 声明值（后备值）`}</li>
-                            <p className="indent-2">回退值被用来在自定义属性值无效的情况下保证函数有值。回退值可以包含任何字符，但是部分有特殊含义的字符除外，例如换行符、不匹配的右括号（如)、]或}）、感叹号以及顶层分号（不被任何非 var()的括号包裹的分号，例如 var(--bg-color, --bs;color)是不合法的，而 var(--bg-color, --value(bs;color))是合法的）。</p>
+                            <p>回退值被用来在自定义属性值无效的情况下保证函数有值。回退值可以包含任何字符，但是部分有特殊含义的字符除外，例如换行符、不匹配的右括号（如)、]或}）、感叹号以及顶层分号（不被任何非 var()的括号包裹的分号，例如 var(--bg-color, --bs;color)是不合法的，而 var(--bg-color, --value(bs;color))是合法的）。</p>
                         </ul>
                         <h2>示例</h2>
-                        <CodeMirror value={code1}
+                        <CodeMirror 
+                            value={code1}
                             options={{
                                 theme: 'monokai',
                                 mode: 'CSS',
                                 readOnly: true,
                             }} />
                         <br />
-                        <CodeMirror value={code2}
+                        <CodeMirror 
+                            value={code2}
                             options={{
                                 theme: 'monokai',
                                 mode: 'CSS',

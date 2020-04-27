@@ -115,17 +115,20 @@ export default class index extends Component {
                             <li>设置没有定位的 Node 的位置</li>
                             <li>完全忽略 Link</li>
                         </ul>
-                        <CodeMirror value={code1} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram"></div>
                         <h2>Layout 初始化</h2>
                         <ul>
                             <li>简单的声明</li>
                         </ul>
-                        <CodeMirror value={code2} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code2} options={codeMirrorOptions} />
                         <ul>
                             <li>使用 go.GraphObject.make(<em>已定义为$</em>)初始化</li>
                         </ul>
-                        <CodeMirror value={code3} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code3} options={codeMirrorOptions} />
                         <p>更多 Layout 示例请参考 <a href="https://gojs.net/latest/samples/gLayout.html" target="_blank" rel="noopener noreferrer">GridLayout</a>、<a href="https://gojs.net/latest/samples/tLayout.html" target="_blank" rel="noopener noreferrer">Tree Layout</a>、<a href="https://gojs.net/latest/intro/extensions.html" target="_blank" rel="noopener noreferrer">Extending GoJS</a></p>
                         <h2>Layout 失效</h2>
                         <ul>
@@ -146,7 +149,8 @@ export default class index extends Component {
                         <ul>
                             <li>如果设置了 Part 的“layoutConditions”属性，则 Layout 失效可以更加具体</li>
                         </ul>
-                        <CodeMirror value={code4} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code4} options={codeMirrorOptions} />
                         <ul>
                             <li>临时 layer 中的 Part 不会使任何 Layout 失效</li>
                             <li>设置 Part.islayoutposition 为 false，Layout 将完全忽略这一 Part</li>

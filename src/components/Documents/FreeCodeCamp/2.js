@@ -76,78 +76,91 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>概述</h2>
-                        <p className="indent-2">{`CSS linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片。其结果属于<gradient>数据类型，是一种特别的<image>数据类型。`}</p>
-                        <CodeMirror value={code1} options={codeMirrorOptions} />
+                        <p>{`CSS linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片。其结果属于<gradient>数据类型，是一种特别的<image>数据类型。`}</p>
+                        <CodeMirror 
+                            value={code1} options={codeMirrorOptions} />
                         <h2>示例</h2>
-                        <p className="indent-2">点击下面的代码块查看预览</p>
+                        <p>点击下面的代码块查看预览</p>
                         <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
                             <div className="code-box code-box-active">
                                 <div className="mask" onClick={this.selectCode.bind(this, 0)}></div>
-                                <CodeMirror value={code2} options={codeMirrorOptions} />
+                                <CodeMirror 
+                            value={code2} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 1)}></div>
-                                <CodeMirror value={code3} options={codeMirrorOptions} />
+                                <CodeMirror 
+                            value={code3} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 2)}></div>
-                                <CodeMirror value={code4} options={codeMirrorOptions} />
+                                <CodeMirror 
+                            value={code4} options={codeMirrorOptions} />
                             </div>
                             <div className="code-box">
                                 <div className="mask" onClick={this.selectCode.bind(this, 3)}></div>
-                                <CodeMirror value={code5} options={codeMirrorOptions} />
+                                <CodeMirror 
+                            value={code5} options={codeMirrorOptions} />
                             </div>
                         </div>
                         <div style={this.state.divStyle}></div>
-                        <p className="indent-2">具有多个颜色停止的渐变</p>
-                        <CodeMirror value={`background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);`} options={codeMirrorOptions} />
+                        <p>具有多个颜色停止的渐变</p>
+                        <CodeMirror 
+                            value={`background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);`} options={codeMirrorOptions} />
                         <div style={{ margin: "10px 0", background: "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)", width: "100%", height: 20 }}></div>
                         <div className="tip">
                             <div className="tip-content">
-                                <p className="indent-2"><em>{`由于<gradient>数据类型系<image>的子数据类型，<gradient>只能被用于<image>可以使用的地方。因此，linear-gradient() 并不适用于background-color以及类似的使用 <color>数据类型的属性中。`}</em></p>
+                                <p><em>{`由于<gradient>数据类型系<image>的子数据类型，<gradient>只能被用于<image>可以使用的地方。因此，linear-gradient() 并不适用于background-color以及类似的使用 <color>数据类型的属性中。`}</em></p>
                             </div>
                         </div>
                         <h2>线形渐变的构成</h2>
                         <div className="text-center">
                             <img src={require("../../../assets/images/linear-gradient.png")} alt="" style={{ width: 300 }} />
                         </div>
-                        <p className="indent-2">线性渐变由一个轴 (梯度线) 定义，其上的每个点具有两种或多种的颜色，且轴上的每个点都具有独立的颜色。为了构建出平滑的渐变，linear-gradient() 函数构建一系列垂直于渐变线的着色线，每一条着色线的颜色则取决于与之垂直相交的渐变线上的色点</p>
-                        <p className="indent-2">渐变线由包含渐变图形的容器的中心点和一个角度来定义的。渐变线上的颜色值是由不同的点来定义，包括起始点，终点，以及两者之间的可选的中间点（中间点可以有多个）。</p>
-                        <p className="indent-2">起始点是渐变线上代表起始颜色值的点。起始点由渐变线和过容器顶点的垂直线之间的交叉点来定义。（垂直线跟渐变线在同一象限内）。</p>
-                        <p className="indent-2">同样的，终点是渐变线上代表最终颜色值的点。终点也是由渐变线和从最近的顶点发出的垂直线之间的交叉点定义的，然而从起始点的对称点来定义终点是更容易理解的一种方式，因为终点是起点关于容器的中心点的反射点。</p>
-                        <p className="indent-2">关于起点和终点的稍微有些复杂的定义导致了一个有趣的性质，有时候被叫做不可思议的顶点效应：起点附近的点具有跟起点相同的颜色值，终点附近的点具有跟终点相同的颜色值。</p>
-                        <p className="indent-2">不仅仅只有起点和终点的颜色值可以指定。通过提供额外的颜色中间点，Web开发者可以构建在起始颜色值和终点颜色值之间的自定义更强的过渡效果，另外还可以提供多种颜色值的渐变线。</p>
-                        <p className="indent-2">{`当颜色中间点的位置被隐式定义，它被放置在位于它之前的点和位于它之后的点之间的中间位置处。利用<length>或者<percentage>数据类型可以显示定义一个位置。`}</p>
-                        <CodeMirror value={code6} options={codeMirrorOptions} />
-                        <p className="indent-2">默认情况下，从一个颜色的终止点平滑的过渡到另一个颜色的终止点，颜色之间的中点是两个颜色颜色转换的中点。你可以将中点移动到这两个颜色之间的任意位置，方法是在两个颜色之间添加未标记的 %，以指示颜色的中转位置。下面的示例是从起始点到 10% 的位置标记红色，从90%到结束标记蓝色。在 10% 到 90% 之间，颜色从红色过渡到蓝色，然而过渡的中点是在 30% 的标记上，而不是在没有 30% 中转点的情况下会默认为 50%。</p>
-                        <CodeMirror value={code7} options={codeMirrorOptions} />
-                        <p className="indent-2">如果两个或多个颜色终止在同一位置，则在该位置声明的第一个颜色和最后一个颜色之间的过渡将是一条生硬线。</p>
-                        <p className="indent-2">颜色终止列表中颜色的终止点应该是依次递增的。如果后面的颜色终止点小于前面颜色的终止点则后面的会被覆盖，从而创建一个硬转换。下面的变化是从红色到黄色在 40% 的位置，然后过渡从黄色到蓝色终止于 65% 的位置处。</p>
-                        <CodeMirror value={code8} options={codeMirrorOptions} />
-                        <p className="indent-2">允许颜色多个颜色终止位置。通过在 CSS 声明中包含两个位置，可以将一个颜色声明为两个相邻的颜色终止。以下三个梯度是相等的:</p>
-                        <CodeMirror value={code9} options={codeMirrorOptions} />
-                        <p className="indent-2">默认情况下，如果不带 0% 终止的颜色，则在该点声明的第一个颜色。类似地，最后一种颜色将持续到 100% 标记，或者如果在最后一个没有声明长度，则在 100% 标记处。</p>
+                        <p>线性渐变由一个轴 (梯度线) 定义，其上的每个点具有两种或多种的颜色，且轴上的每个点都具有独立的颜色。为了构建出平滑的渐变，linear-gradient() 函数构建一系列垂直于渐变线的着色线，每一条着色线的颜色则取决于与之垂直相交的渐变线上的色点。</p>
+                        <p>渐变线由包含渐变图形的容器的中心点和一个角度来定义的。渐变线上的颜色值是由不同的点来定义，包括起始点，终点，以及两者之间的可选的中间点（中间点可以有多个）。</p>
+                        <p>起始点是渐变线上代表起始颜色值的点。起始点由渐变线和过容器顶点的垂直线之间的交叉点来定义。（垂直线跟渐变线在同一象限内）。</p>
+                        <p>同样的，终点是渐变线上代表最终颜色值的点。终点也是由渐变线和从最近的顶点发出的垂直线之间的交叉点定义的，然而从起始点的对称点来定义终点是更容易理解的一种方式，因为终点是起点关于容器的中心点的反射点。</p>
+                        <p>关于起点和终点的稍微有些复杂的定义导致了一个有趣的性质，有时候被叫做不可思议的顶点效应：起点附近的点具有跟起点相同的颜色值，终点附近的点具有跟终点相同的颜色值。</p>
+                        <p>不仅仅只有起点和终点的颜色值可以指定。通过提供额外的颜色中间点，Web开发者可以构建在起始颜色值和终点颜色值之间的自定义更强的过渡效果，另外还可以提供多种颜色值的渐变线。</p>
+                        <p>{`当颜色中间点的位置被隐式定义，它被放置在位于它之前的点和位于它之后的点之间的中间位置处。利用<length>或者<percentage>数据类型可以显示定义一个位置。`}</p>
+                        <CodeMirror 
+                            value={code6} options={codeMirrorOptions} />
+                        <p>默认情况下，从一个颜色的终止点平滑的过渡到另一个颜色的终止点，颜色之间的中点是两个颜色颜色转换的中点。你可以将中点移动到这两个颜色之间的任意位置，方法是在两个颜色之间添加未标记的 %，以指示颜色的中转位置。下面的示例是从起始点到 10% 的位置标记红色，从90%到结束标记蓝色。在 10% 到 90% 之间，颜色从红色过渡到蓝色，然而过渡的中点是在 30% 的标记上，而不是在没有 30% 中转点的情况下会默认为 50%。</p>
+                        <CodeMirror 
+                            value={code7} options={codeMirrorOptions} />
+                        <p>如果两个或多个颜色终止在同一位置，则在该位置声明的第一个颜色和最后一个颜色之间的过渡将是一条生硬线。</p>
+                        <p>颜色终止列表中颜色的终止点应该是依次递增的。如果后面的颜色终止点小于前面颜色的终止点则后面的会被覆盖，从而创建一个硬转换。下面的变化是从红色到黄色在 40% 的位置，然后过渡从黄色到蓝色终止于 65% 的位置处。</p>
+                        <CodeMirror 
+                            value={code8} options={codeMirrorOptions} />
+                        <p>允许颜色多个颜色终止位置。通过在 CSS 声明中包含两个位置，可以将一个颜色声明为两个相邻的颜色终止。以下三个梯度是相等的:</p>
+                        <CodeMirror 
+                            value={code9} options={codeMirrorOptions} />
+                        <p>默认情况下，如果不带 0% 终止的颜色，则在该点声明的第一个颜色。类似地，最后一种颜色将持续到 100% 标记，或者如果在最后一个没有声明长度，则在 100% 标记处。</p>
                         <h2>语法</h2>
                         <ul>
                             <li>{`<side-or-corner>`}</li>
-                            <p className="indent-2">描述渐变线的起始点位置。它包含 to 和两个关键词：第一个指出水平位置 left or right，第二个指出垂直位置 top or bottom。关键词的先后顺序无影响，且都是可选的。</p>
-                            <p className="indent-2">to top, to bottom, to left 和 to right 这些值会被转换成角度 0 度、180 度、270 度和 90 度。其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。渐变线的结束点与其起点中心对称。</p>
+                            <p>描述渐变线的起始点位置。它包含 to 和两个关键词：第一个指出水平位置 left or right，第二个指出垂直位置 top or bottom。关键词的先后顺序无影响，且都是可选的。</p>
+                            <p>to top, to bottom, to left 和 to right 这些值会被转换成角度 0 度、180 度、270 度和 90 度。其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。渐变线的结束点与其起点中心对称。</p>
                             <li>{`<angle>`}</li>
-                            <p className="indent-2">用角度值指定渐变的方向（或角度）。角度顺时针增加。 </p>
+                            <p>用角度值指定渐变的方向（或角度）。角度顺时针增加。 </p>
                             <li>{`<linear-color-stop>`}</li>
-                            <p className="indent-2">{`由一个<color>值组成，并且跟随着一个可选的终点位置（可以是一个百分比值或者是沿着渐变轴的<length>）。CSS 渐变的颜色渲染采取了与 SVG 相同的规则。`}</p>
+                            <p>{`由一个<color>值组成，并且跟随着一个可选的终点位置（可以是一个百分比值或者是沿着渐变轴的<length>）。CSS 渐变的颜色渲染采取了与 SVG 相同的规则。`}</p>
                             <li>{`<color-hint>`}</li>
-                            <p className="indent-2">颜色中转点是一个插值提示，它定义了在相邻颜色之间渐变如何进行。长度定义了在两种颜色之间的哪个点停止渐变颜色应该达到颜色过渡的中点。如果省略，颜色转换的中点是两个颜色停止之间的中点。 </p>
+                            <p>颜色中转点是一个插值提示，它定义了在相邻颜色之间渐变如何进行。长度定义了在两种颜色之间的哪个点停止渐变颜色应该达到颜色过渡的中点。如果省略，颜色转换的中点是两个颜色停止之间的中点。 </p>
                         </ul>
                         <h3>正式语法</h3>
-                        <CodeMirror value={code10} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code10} options={codeMirrorOptions} />
                         <h2>使用透明度</h2>
-                        <CodeMirror value={`background: linear-gradient(to bottom right, red, rgba(0,0,0,0));`} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={`background: linear-gradient(to bottom right, red, rgba(0,0,0,0));`} options={codeMirrorOptions} />
                         <div style={{ margin: "10px 0", background: "linear-gradient(to bottom right, red, rgba(0,0,0,0))", width: "100%", height: 20 }}></div>
                         <h2>跨浏览器兼容性</h2>
-                        <p className="indent-2"></p>
-                        <CodeMirror alue={code11} options={codeMirrorOptions} />
-                        <p className="indent-2">-moz-前缀的规则用于兼容 Fx 3.6 to Fx 15 的火狐浏览器。 -webkit-前缀的规则用于兼容在 Android 4.3 以前版本、iOS 6.1 以前版本、Safari 6。当使用带前缀的规则时，不要加“ to ”关键字。</p>
+                        <p></p>
+                        <CodeMirror 
+                            value={code11} options={codeMirrorOptions} />
+                        <p>-moz-前缀的规则用于兼容 Fx 3.6 to Fx 15 的火狐浏览器。 -webkit-前缀的规则用于兼容在 Android 4.3 以前版本、iOS 6.1 以前版本、Safari 6。当使用带前缀的规则时，不要加“ to ”关键字。</p>
                     </div>
                 </div>
                 <Directory />

@@ -292,10 +292,12 @@ export default class index extends Component {
                             <li>Grid Panel 中的元素必须是 Shape</li>
                         </ul>
                         <p>代码及效果如下:</p>
-                        <CodeMirror value={code1} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>设置网格样式</h2>
-                        <CodeMirror value={code2} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h2>Shape.Interval</h2>
                         <ul>
@@ -303,13 +305,16 @@ export default class index extends Component {
                             <li>默认值:1</li>
                             <li>允许值:正整数</li>
                         </ul>
-                        <CodeMirror value={code3} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h3>设置为条带状</h3>
-                        <CodeMirror value={code4} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <h3>支持透明度属性</h3>
-                        <CodeMirror value={code5} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600, height: 400 }}></div>
                         <p><br /></p>
                         <p><br /></p>

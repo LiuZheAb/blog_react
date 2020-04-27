@@ -570,7 +570,8 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>示例</h2>
-                        <CodeMirror value={code1} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>angle</h2>
                         <ul>
@@ -578,21 +579,24 @@ export default class index extends Component {
                             <li>默认值:0</li>
                             <li>允许值:0 | 90 | 180 | 270</li>
                         </ul>
-                        <CodeMirror value={code2} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ height: 400, maxWidth: 600 }}></div>
                         <h2>layerSpacing</h2>
                         <ul>
                             <li>决定父/子 Node 间的距离</li>
                             <li>默认值:50</li>
                         </ul>
-                        <CodeMirror value={code3} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>nodeSpacing</h2>
                         <ul>
                             <li>决定兄弟 Node 间的距离</li>
                             <li>默认值:20</li>
                         </ul>
-                        <CodeMirror value={code4} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alignment</h2>
                         <ul>
@@ -600,7 +604,8 @@ export default class index extends Component {
                             <li>默认值:TreeLayout.AlinmentCenterChildrer</li>
                             <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-alignment</a></li>
                         </ul>
-                        <CodeMirror value={code5} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 600 }}></div>
                         <p>TreeLayout.AlignmentStart 将父 Node 定位在第一个子 Node 附近</p>
                         <h2>sorting</h2>
@@ -609,7 +614,8 @@ export default class index extends Component {
                             <li>默认值:TreeLayout.SortingForwards</li>
                             <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-sorting</a></li>
                         </ul>
-                        <CodeMirror value={code6} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>treeStyle</h2>
                         <ul>
@@ -617,7 +623,8 @@ export default class index extends Component {
                             <li>默认值:TreeLayout.StyleLayered</li>
                             <li>更多可选值请参考 <a href="https://gojs.net/latest/api/symbols/TreeLayout.html" target="_blank" rel="noopener noreferrer">TreeLayout-treeStyle</a></li>
                         </ul>
-                        <CodeMirror value={code7} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code7} options={codeMirrorOptions} />
                         <div id="myDiagramDiv7" className="diagram" style={{ maxWidth: 600 }}></div>
                         <h2>alternateAngle</h2>
                         <ul>
@@ -631,7 +638,8 @@ export default class index extends Component {
                                 <em>上面的 treeStyle 设置为 TreeLayout.StyleRootOnly,则"alternate"子树为除 root 节点外的子树</em>
                             </div>
                         </div>
-                        <CodeMirror value={code8} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code8} options={codeMirrorOptions} />
                         <div id="myDiagramDiv8" className="diagram" style={{ maxWidth: 600 }}></div>
                         <br />
                         <br />

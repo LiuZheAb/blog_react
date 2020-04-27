@@ -284,7 +284,8 @@ export default class index extends Component {
                             <li>必须有 2 个意思元素</li>
                             <li>默认情况下，主 Shape 元素是第一个元素——可以更改</li>
                         </ul>
-                        <CodeMirror value={code1} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code1} options={codeMirrorOptions} />
                         <div id="myDiagramDiv1" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h2>Graduated Panel Properties</h2>
                         <h3>graduatedMin、graduatedMax</h3>
@@ -301,29 +302,34 @@ export default class index extends Component {
                         <ul data-lake-indent="1">
                             <li>默认值是 10——每 10 个单位，生成一个标记</li>
                         </ul>
-                        <CodeMirror value={code2} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code2} options={codeMirrorOptions} />
                         <div id="myDiagramDiv2" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>segmentOffset</h3>
                         <ul>
                             <li>segmentOffset 决定了刻度的偏移量</li>
                         </ul>
-                        <CodeMirror value={code3} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code3} options={codeMirrorOptions} />
                         <div id="myDiagramDiv3" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>graduatedTickBase</h3>
                         <ul>
                             <li>graduatedTickBase 决定了标记的起始值</li>
                         </ul>
-                        <CodeMirror value={code4} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code4} options={codeMirrorOptions} />
                         <div id="myDiagramDiv4" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>interval</h3>
                         <ul>
                             <li>interval 属性决定了刻度或标签出现的频率</li>
                         </ul>
-                        <CodeMirror value={code5} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code5} options={codeMirrorOptions} />
                         <div id="myDiagramDiv5" className="diagram" style={{ maxWidth: 400 }}></div>
                         <h3>两组标签</h3>
                         <p>添加第二组标签</p>
-                        <CodeMirror value={code6} options={codeMirrorOptions} />
+                        <CodeMirror 
+                            value={code6} options={codeMirrorOptions} />
                         <div id="myDiagramDiv6" className="diagram" style={{ maxWidth: 400 }}></div>
                         <p><br /></p>
                         <p><br /></p>
