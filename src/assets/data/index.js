@@ -1,6 +1,6 @@
 //网站数据统一配置
 //本站介绍
-export let myblogData = {
+const MYBLOG_DATA = {
     name: "myblog",
     title: "关于本站",
     baseHref: "/myblog",
@@ -12,7 +12,7 @@ export let myblogData = {
     chapter: {}
 };
 //GoJS 教程
-export let gojsData = {
+const GOJS_DATA = {
     name: "gojs",
     title: "GoJS 教程",
     baseHref: "/gojs",
@@ -56,7 +56,7 @@ export let gojsData = {
     }
 };
 //Code Review
-export let codeReview = {
+const CODEREVIEW_DATA = {
     name: "codereview",
     title: "Code Review",
     baseHref: "/codereview",
@@ -82,7 +82,7 @@ export let codeReview = {
     }
 };
 //FreeCodeCamp
-export let freeCodeCamp = {
+const FREECODECAMP_DATA = {
     name: "freecodecamp",
     title: "FreeCodeCamp",
     baseHref: "/freecodecamp",
@@ -106,17 +106,18 @@ export let freeCodeCamp = {
         "grid 布局(二)",
         "reduce()",
         "apply()",
+        "解构赋值",
     ],
     chapter: {
         "简介": [0],
         "CSS 篇": [1, 2, 3, 4, 5, 6, 11, 12],
         "HTML 篇": [],
-        "JS篇": [13, 14],
+        "JS篇": [13, 14, 15],
         "可访问性": [7, 8, 9, 10]
     }
 };
 //问题汇总
-export let proplemData = {
+const PROBLEM_DATA = {
     name: "proplem",
     title: "问题汇总",
     baseHref: "/problem",
@@ -134,4 +135,4 @@ export let proplemData = {
     }
 };
 
-export let totalData = [myblogData, gojsData, codeReview, freeCodeCamp, proplemData];
+export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA];

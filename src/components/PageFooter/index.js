@@ -5,7 +5,7 @@ import IconFont from "../IconFont";
 import { WeiboShareButton } from "react-share";
 import QRCode from "qrcode.react";
 import setKeyMap from "../../utils/keymap";
-import { totalData } from "../../assets/data";
+import { TOTAL_DATA } from "../../assets/data";
 import "./index.less";
 
 class index extends Component {
@@ -34,24 +34,24 @@ class index extends Component {
         const pathSnippets = path.split('/').filter(i => i);
         //获取当前文档及推荐文档数据
         let dataSource = [], recommandData = [];
-        for (let i = 0; i < totalData.length; i++) {
-            if (pathSnippets[0] === totalData[i].baseHref.substr(1)) {
-                dataSource = totalData[i];
-                for (let j = 0; j < totalData.length; j++) {
+        for (let i = 0; i < TOTAL_DATA.length; i++) {
+            if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
+                dataSource = TOTAL_DATA[i];
+                for (let j = 0; j < TOTAL_DATA.length; j++) {
                     if (j !== i) {
                         recommandData.push({
-                            title: totalData[j].title,
-                            baseHref: totalData[j].baseHref,
+                            title: TOTAL_DATA[j].title,
+                            baseHref: TOTAL_DATA[j].baseHref,
                         })
                     }
                 }
             }
         }
         const nameMap = setKeyMap([dataSource]);
-        //查找当前文档所处section
+        //pageArray，按chapter顺序返回当前文档所有文章
         let pageArray = [];
         for (let key in dataSource.chapter) {
-            pageArray = pageArray.concat(dataSource.chapter[key])
+            pageArray = [...pageArray, ...dataSource.chapter[key]]
         }
         let pageNum = Number(pathSnippets[1]), baseHref = "/" + pathSnippets[0] + "/";
         let currentIndex = pageArray.indexOf(pageNum), prevIndex = currentIndex - 1, nextIndex = currentIndex + 1;

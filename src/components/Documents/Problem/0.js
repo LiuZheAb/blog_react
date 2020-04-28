@@ -20,7 +20,7 @@ export default class index extends Component {
                         <h2>问题描述</h2>
                         <p>未解决前代码如下</p>
                         <CodeMirror
-                            value={`<Route exact path={gojsData.baseHref} component={<Catalog dataSource={gojsData} />} />`}
+                            value={`<Route exact path={GOJS_DATA.baseHref} component={<Catalog dataSource={GOJS_DATA} />} />`}
                             options={{
                                 theme: 'monokai',
                                 mode: 'JSX',
@@ -33,7 +33,7 @@ export default class index extends Component {
                         <p>就是需要通过函数返回而不是对象。所以要写成函数的形式。</p>
                         <p>写法如下</p>
                         <CodeMirror
-                            value={`<Route exact path={gojsData.baseHref} compontent={() => <Catalog dataSource={gojsData} />} />`}
+                            value={`<Route exact path={GOJS_DATA.baseHref} compontent={() => <Catalog dataSource={GOJS_DATA} />} />`}
                             options={{
                                 theme: 'monokai',
                                 mode: 'JSX',

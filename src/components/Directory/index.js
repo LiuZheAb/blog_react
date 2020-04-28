@@ -1,7 +1,7 @@
 //文档右侧标题导航
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
-import { totalData } from "../../assets/data";
+import { TOTAL_DATA } from "../../assets/data";
 import "./index.less";
 
 class index extends Component {
@@ -32,9 +32,9 @@ class index extends Component {
         let path = this.props.location.pathname;
         const pathSnippets = path.split('/').filter(i => i);
         let title = [];
-        for (let i = 0; i < totalData.length; i++) {
-            if (pathSnippets[0] === totalData[i].name) {
-                title = totalData[i].section.length > 0 ? totalData[i].section[pathSnippets[pathSnippets.length - 1]] : totalData[i].title;
+        for (let i = 0; i < TOTAL_DATA.length; i++) {
+            if (pathSnippets[0] === TOTAL_DATA[i].name) {
+                title = TOTAL_DATA[i].section.length > 0 ? TOTAL_DATA[i].section[pathSnippets[pathSnippets.length - 1]] : TOTAL_DATA[i].title;
             }
         }
         if (document.getElementsByTagName("h1")[0]) {

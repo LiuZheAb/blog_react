@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Menu } from 'antd';
 import { Link, withRouter } from "react-router-dom";
-import { totalData } from "../../assets/data";
+import { TOTAL_DATA } from "../../assets/data";
 import IconFont from "../IconFont";
 import "./index.less";
 
@@ -10,10 +10,10 @@ const { SubMenu } = Menu;
 
 //将data文件中所有href:title映射到一个对象中,用于检索当前路由对应的title
 let keyMapObj = {}
-for (let i = 0; i < totalData.length; i++) {
-    keyMapObj[totalData[i].baseHref] = totalData[i].title;
-    for (let j = 0; j < totalData[i].section.length; j++) {
-        keyMapObj[totalData[i].baseHref + "/" + j] = totalData[i].title + totalData[i].section[j]
+for (let i = 0; i < TOTAL_DATA.length; i++) {
+    keyMapObj[TOTAL_DATA[i].baseHref] = TOTAL_DATA[i].title;
+    for (let j = 0; j < TOTAL_DATA[i].section.length; j++) {
+        keyMapObj[TOTAL_DATA[i].baseHref + "/" + j] = TOTAL_DATA[i].title + TOTAL_DATA[i].section[j]
     }
 }
 //封装分级菜单
@@ -68,7 +68,7 @@ class index extends Component {
                         </Menu.Item>
                         : null
                 }
-                {totalData.map((item, index) => 
+                {TOTAL_DATA.map((item, index) => 
                     item.section.length > 0 ?
                         SubMenuTemplate(item, path, mode)
                         :
@@ -89,16 +89,16 @@ export default withRouter(index);*/
 import React, { Component } from 'react'
 import { Menu } from 'antd';
 import { Link, withRouter } from "react-router-dom";
-import { totalData } from "../../assets/data";
+import { TOTAL_DATA } from "../../assets/data";
 import IconFont from "../IconFont";
 import "./index.less";
 
 //将data文件中所有href:title映射到一个对象中,用于检索当前路由对应的title
 let keyMapObj = {}
-for (let i = 0; i < totalData.length; i++) {
-    keyMapObj[totalData[i].baseHref] = totalData[i].title;
-    for (let j = 0; j < totalData[i].section.length; j++) {
-        keyMapObj[totalData[i].baseHref + "/" + j] = totalData[i].title + totalData[i].section[j]
+for (let i = 0; i < TOTAL_DATA.length; i++) {
+    keyMapObj[TOTAL_DATA[i].baseHref] = TOTAL_DATA[i].title;
+    for (let j = 0; j < TOTAL_DATA[i].section.length; j++) {
+        keyMapObj[TOTAL_DATA[i].baseHref + "/" + j] = TOTAL_DATA[i].title + TOTAL_DATA[i].section[j]
     }
 }
 
@@ -121,7 +121,7 @@ class index extends Component {
                         </Menu.Item>
                         : null
                 }
-                {totalData.map((item, index) =>
+                {TOTAL_DATA.map((item, index) =>
                     <Menu.Item key={item.title}>
                         <Link to={item.baseHref}>{item.title}</Link>
                     </Menu.Item>
