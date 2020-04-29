@@ -223,7 +223,6 @@ const {self, prot} = obj;
 // prot "456"（访问到了原型链）`;
 export default class index extends Component {
     render() {
-        console.log(typeof(""+1))
         return (
             <div className="page-content">
                 <div className="article">
