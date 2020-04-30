@@ -13,7 +13,7 @@ export default class index extends Component {
                         <h2>写在前面</h2>
                         <p>FreeCodeCamp 是 Github 上 star 最多的项目,免费编码学习社区。官方地址: <a href="https://www.freecodecamp.org" target="_blank" rel="noopener noreferrer">https://www.freecodecamp.org</a></p>
                         <p>本文档主要是记录学到的内容。</p>
-                        <h2>案例</h2>
+                        <h2>CSS案例</h2>
                         <ul>
                             <li><a href="https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/create-a-graphic-using-css" target="_blank" rel="noopener noreferrer">月牙形状</a></li>
                             <li><a href="https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/create-a-more-complex-shape-using-css-and-html" target="_blank" rel="noopener noreferrer">心形</a></li>
