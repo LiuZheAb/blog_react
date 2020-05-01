@@ -15,7 +15,7 @@ class index extends Component {
         const pathSnippets = this.props.location.pathname.split('/').filter(i => i);
 
         //pathSnippets中每一项都是一个面包屑
-        const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+        let extraBreadcrumbItems = pathSnippets.map((_, index) => {
             const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
             return (
                 <Breadcrumb.Item key={url}>
@@ -25,10 +25,12 @@ class index extends Component {
         });
         return (
             <Breadcrumb>
-                <Breadcrumb.Item key="home">
-                    <Link to="/">首页</Link>
-                </Breadcrumb.Item>
-                {extraBreadcrumbItems}
+                {[
+                    <Breadcrumb.Item key="home">
+                        <Link to="/">首页</Link>
+                    </Breadcrumb.Item>,
+                    ...extraBreadcrumbItems
+                ]}
             </Breadcrumb>
         )
     }

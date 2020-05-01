@@ -10,13 +10,13 @@ export default class index extends Component {
     render() {
         let dataSource = [];
         for (let i = 0; i < TOTAL_DATA.length; i++) {
+            let { baseHref, title, description, img, content } = TOTAL_DATA[i]
             dataSource.push({
-                href: TOTAL_DATA[i].baseHref,
-                className: TOTAL_DATA[i].name,
-                title: TOTAL_DATA[i].title,
-                description: TOTAL_DATA[i].description,
-                img: TOTAL_DATA[i].img,
-                content: TOTAL_DATA[i].content,
+                href: baseHref,
+                title,
+                description,
+                img,
+                content,
             })
         }
         return (
@@ -37,7 +37,6 @@ export default class index extends Component {
                                             <span className="title">点击进入</span>
                                         </div>
                                     </div >
-
                                 }
                             >
                                 <List.Item.Meta

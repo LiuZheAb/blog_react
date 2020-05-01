@@ -114,14 +114,12 @@ class index extends Component {
                 id="menu"
                 selectedKeys={keyMapObj[path]}
             >
-                {
-                    mode === "horizontal" ?
-                        <Menu.Item key="logo" className="logo-menu" title="首页" onClick={() => { window.location.href = "#/" }}>
-                            <IconFont type="iconpc-dongman" />
-                        </Menu.Item>
-                        : null
-                }
-                {TOTAL_DATA.map((item, index) =>
+                {mode === "horizontal" ?
+                    <Menu.Item key="logo" className="logo-menu" title="首页" onClick={() => { window.location.href = "#/" }}>
+                        <IconFont type="iconpc-dongman" />
+                    </Menu.Item>
+                    : null}
+                {TOTAL_DATA.map(item =>
                     <Menu.Item key={item.title}>
                         <Link to={item.baseHref}>{item.title}</Link>
                     </Menu.Item>

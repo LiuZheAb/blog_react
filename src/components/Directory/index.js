@@ -31,14 +31,10 @@ class index extends Component {
     setTitle() {
         let path = this.props.location.pathname;
         const pathSnippets = path.split('/').filter(i => i);
-        let title = [];
         for (let i = 0; i < TOTAL_DATA.length; i++) {
             if (pathSnippets[0] === TOTAL_DATA[i].name) {
-                title = TOTAL_DATA[i].section.length > 0 ? TOTAL_DATA[i].section[pathSnippets[pathSnippets.length - 1]] : TOTAL_DATA[i].title;
+                document.getElementsByTagName("h1")[0].innerHTML = TOTAL_DATA[i].section.length > 0 ? TOTAL_DATA[i].section[pathSnippets[pathSnippets.length - 1]] : TOTAL_DATA[i].title;
             }
-        }
-        if (document.getElementsByTagName("h1")[0]) {
-            document.getElementsByTagName("h1")[0].innerHTML = title;
         }
     }
     componentDidMount() {
@@ -117,7 +113,7 @@ class index extends Component {
                 array.push(targetObj.offsetTop);
             }
             //targetIndex为array中第一个大于当前滚动距离的值的index,通过offsetTop判断当前滚动到哪个锚点,并改变对应的标题导航样式。
-            let targetIndex = array.findIndex((n) => n > scrollTop) - 1;
+            let targetIndex = array.findIndex(n => n > scrollTop) - 1;
             for (let i = 0; i < length; i++) {
                 i === targetIndex ? document.getElementById(`tree-num-${i}`).className = "tree-num directory-item-active" : document.getElementById(`tree-num-${i}`).className = "tree-num";
             }
