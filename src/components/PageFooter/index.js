@@ -37,17 +37,11 @@ class index extends Component {
         for (let i = 0; i < TOTAL_DATA.length; i++) {
             if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
                 dataSource = TOTAL_DATA[i];
-                TOTAL_DATA.splice(i,1);
-                recommandData=TOTAL_DATA;
-                break;
-                // for (let j = 0; j < TOTAL_DATA.length; j++) {
-                //     if (j !== i) {
-                //         recommandData.push({
-                //             title: TOTAL_DATA[j].title,
-                //             baseHref: TOTAL_DATA[j].baseHref,
-                //         })
-                //     }
-                // }
+            }else{
+                recommandData.push({
+                    title: TOTAL_DATA[i].title,
+                    baseHref: TOTAL_DATA[i].baseHref,
+                })
             }
         }
         const nameMap = setKeyMap([dataSource]);
