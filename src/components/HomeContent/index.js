@@ -26,6 +26,8 @@ class index extends Component {
         } else {
             document.title = "Liuzhe's Blog";
         }
+        let dataSource = null, dataIndex = null;
+
         return (
             <Layout className="content-layout">
                 <Content
@@ -36,10 +38,13 @@ class index extends Component {
                     }}
                 >
                     <Route exact path="/" render={() => { return <HomeList /> }} />
-                    {hrefArray.map((item, index) =>
-                        <Route key={index} path={item} component={() => <Documents dataSource={TOTAL_DATA[index]} />} />
-                    )}
-                    <Route path={hrefArray} render={() => (<PageFooter />)} />
+                    {hrefArray.map((item, index) => {
+                        dataSource = TOTAL_DATA[index]; dataIndex = index;
+                        return (
+                            <Route key={index} path={item} component={() => <Documents dataSource={dataSource} />} />
+                        )
+                    })}
+                    <Route path={hrefArray} render={() => (<PageFooter dataSource={dataSource} index={dataIndex} />)} />
                 </Content>
             </Layout>
         )

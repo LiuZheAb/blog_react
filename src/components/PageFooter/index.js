@@ -33,25 +33,38 @@ class index extends Component {
         //将path以"/"分割,并保存到数组中
         const pathSnippets = path.split('/').filter(i => i);
         //获取当前文档及推荐文档数据
-        let dataSource = [], recommandData = [];
-        for (let i = 0; i < TOTAL_DATA.length; i++) {
-            if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
-                dataSource = TOTAL_DATA[i];
-                for (let j = 0; j < TOTAL_DATA.length; j++) {
-                    if (j !== i) {
-                        recommandData.push({
-                            title: TOTAL_DATA[j].title,
-                            baseHref: TOTAL_DATA[j].baseHref,
-                        })
+        // let dataSource = [], recommandData = [];
+        // for (let i = 0; i < TOTAL_DATA.length; i++) {
+        //     if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
+        //         dataSource = TOTAL_DATA[i];
+        //         for (let j = 0; j < TOTAL_DATA.length; j++) {
+        //             if (j !== i) {
+        //                 recommandData.push({
+        //                     title: TOTAL_DATA[j].title,
+        //                     baseHref: TOTAL_DATA[j].baseHref,
+        //                 })
+        //             }
+        //         }
+        //     }
+        // }
+
+        let { dataSource, dataIndex } = this.props, recommandData = [];
+        // recommandData.splice(dataIndex, 1);
+        for (let j = 0; j < TOTAL_DATA.length; j++) {
+                        if (j !== dataIndex) {
+                            recommandData.push({
+                                title: TOTAL_DATA[j].title,
+                                baseHref: TOTAL_DATA[j].baseHref,
+                            })
+                        }
                     }
-                }
-            }
-        }
+console.log(recommandData)
+        
         const nameMap = setKeyMap([dataSource]);
         //pageArray，按chapter顺序返回当前文档所有文章
         let pageArray = [];
         for (let key in dataSource.chapter) {
-            pageArray = [...pageArray, ...dataSource.chapter[key]]
+            pageArray.push(...dataSource.chapter[key]);
         }
         let pageNum = Number(pathSnippets[1]), baseHref = "/" + pathSnippets[0] + "/";
         let currentIndex = pageArray.indexOf(pageNum), prevIndex = currentIndex - 1, nextIndex = currentIndex + 1;
