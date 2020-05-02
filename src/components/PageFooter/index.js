@@ -33,33 +33,23 @@ class index extends Component {
         //将path以"/"分割,并保存到数组中
         const pathSnippets = path.split('/').filter(i => i);
         //获取当前文档及推荐文档数据
-        // let dataSource = [], recommandData = [];
-        // for (let i = 0; i < TOTAL_DATA.length; i++) {
-        //     if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
-        //         dataSource = TOTAL_DATA[i];
-        //         for (let j = 0; j < TOTAL_DATA.length; j++) {
-        //             if (j !== i) {
-        //                 recommandData.push({
-        //                     title: TOTAL_DATA[j].title,
-        //                     baseHref: TOTAL_DATA[j].baseHref,
-        //                 })
-        //             }
-        //         }
-        //     }
-        // }
-
-        let { dataSource, dataIndex } = this.props, recommandData = [];
-        // recommandData.splice(dataIndex, 1);
-        for (let j = 0; j < TOTAL_DATA.length; j++) {
-                        if (j !== dataIndex) {
-                            recommandData.push({
-                                title: TOTAL_DATA[j].title,
-                                baseHref: TOTAL_DATA[j].baseHref,
-                            })
-                        }
-                    }
-console.log(recommandData)
-        
+        let dataSource = [], recommandData = [];
+        for (let i = 0; i < TOTAL_DATA.length; i++) {
+            if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
+                dataSource = TOTAL_DATA[i];
+                TOTAL_DATA.splice(i,1);
+                recommandData=TOTAL_DATA;
+                break;
+                // for (let j = 0; j < TOTAL_DATA.length; j++) {
+                //     if (j !== i) {
+                //         recommandData.push({
+                //             title: TOTAL_DATA[j].title,
+                //             baseHref: TOTAL_DATA[j].baseHref,
+                //         })
+                //     }
+                // }
+            }
+        }
         const nameMap = setKeyMap([dataSource]);
         //pageArray，按chapter顺序返回当前文档所有文章
         let pageArray = [];
