@@ -98,7 +98,7 @@ let keyMapObj = {}
 for (let i = 0; i < TOTAL_DATA.length; i++) {
     keyMapObj[TOTAL_DATA[i].baseHref] = TOTAL_DATA[i].title;
     for (let j = 0; j < TOTAL_DATA[i].section.length; j++) {
-        keyMapObj[TOTAL_DATA[i].baseHref + "/" + j] = TOTAL_DATA[i].title + TOTAL_DATA[i].section[j]
+        keyMapObj[TOTAL_DATA[i].baseHref + "/" + j] = TOTAL_DATA[i].title + TOTAL_DATA[i].section[j];
     }
 }
 
