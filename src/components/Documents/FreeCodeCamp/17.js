@@ -5,7 +5,7 @@ import 'codemirror/theme/monokai.css';
 
 let codeMirrorOptions = {
     theme: 'monokai',
-    mode: 'CSS',
+    mode: 'JS',
     readOnly: true,
 };
 let code1 = `let mySet = new Set();
@@ -74,7 +74,7 @@ mySet.forEach(function(value) {
 // 2
 // 3
 // 4`;
-let code3=`function isSuperset(set, subset) {
+let code3 = `function isSuperset(set, subset) {
     for (let elem of subset) {
         if (!set.has(elem)) {
             return false;
@@ -131,7 +131,7 @@ union(setA, setC); // => Set [1, 2, 3, 4, 5, 6]
 intersection(setA, setC); // => Set [3, 4]
 symmetricDifference(setA, setC); // => Set [1, 2, 5, 6]
 difference(setA, setC); // => Set [1, 2]`;
-let code4=`let myArray = ["value1", "value2", "value3"];
+let code4 = `let myArray = ["value1", "value2", "value3"];
 
 // 用Set构造器将Array转换为Set
 let mySet = new Set(myArray);
@@ -140,7 +140,14 @@ mySet.has("value1"); // returns true
 
 // 用...(展开操作符)操作符将Set转换为Array
 console.log([...mySet]); // 与myArray完全一致`;
+let code5 = `// Use to remove duplicate elements from the array 
+const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
+console.log([...new Set(numbers)]) 
+// [2, 3, 4, 5, 6, 7, 32]`;
+let code6 = `let text = 'India';
 
+let mySet = new Set(text);  // Set {'I', 'n', 'd', 'i', 'a'}
+mySet.size;  // 5`;
 
 export default class index extends Component {
     render() {
@@ -167,39 +174,39 @@ export default class index extends Component {
                         <p>另外，NaN 和 undefined 都可以被存储在 Set 中， NaN 之间被视为相同的值（NaN 被认为是相同的，尽管 NaN !== NaN）。</p>
                         <h2>属性</h2>
                         <p><b>Set.size</b></p>
-                        <p>size 属性的默认值为0。</p>
+                        <p>size 属性的默认值为 0。</p>
                         <p><b>get Set[@@species]</b></p>
                         <p>构造函数用来创建派生对象.</p>
                         <p><b>Set.prototype</b></p>
-                        <p>表示Set构造器的原型，允许向所有Set对象添加新的属性。</p>
+                        <p>表示 Set 构造器的原型，允许向所有 Set 对象添加新的属性。</p>
                         <h2>Set实例</h2>
-                        <p>所有Set实例继承自 Set.prototype。</p>
+                        <p>所有 Set 实例继承自 Set.prototype。</p>
                         <h3>属性</h3>
                         <p><b>Set.prototype.constructor</b></p>
-                        <p>返回实例的构造函数。默认情况下是Set。</p>
+                        <p>返回实例的构造函数。默认情况下是 Set。</p>
                         <p><b>Set.prototype.size</b></p>
-                        <p>返回Set对象的值的个数。</p>
+                        <p>返回 Set 对象的值的个数。</p>
                         <h3>方法</h3>
                         <p><b>Set.prototype.add(value)</b></p>
-                        <p>在Set对象尾部添加一个元素。返回该Set对象。</p>
+                        <p>在 Set 对象尾部添加一个元素。返回该 Set 对象。</p>
                         <p><b>Set.prototype.clear()</b></p>
-                        <p>移除Set对象内的所有元素。</p>
+                        <p>移除 Set 对象内的所有元素。</p>
                         <p><b>Set.prototype.delete(value)</b></p>
-                        <p>移除Set的中与这个值相等的元素，返回Set.prototype.has(value)在这个操作前会返回的值（即如果该元素存在，返回true，否则返回false）。Set.prototype.has(value)在此后会返回false。</p>
+                        <p>移除 Set 的中与这个值相等的元素，返回 Set.prototype.has(value)在这个操作前会返回的值（即如果该元素存在，返回 true，否则返回 false）。Set.prototype.has(value)在此后会返回 false。</p>
                         <p><b>Set.prototype.entries()</b></p>
-                        <p>返回一个新的迭代器对象，该对象包含Set对象中的按插入顺序排列的所有元素的值的[value, value]数组。为了使这个方法和Map对象保持相似， 每个值的键和值相等。</p>
+                        <p>返回一个新的迭代器对象，该对象包含Set对象中的按插入顺序排列的所有元素的值的[value, value]数组。为了使这个方法和 Map 对象保持相似， 每个值的键和值相等。</p>
                         <p><b>Set.prototype.forEach(callbackFn[, thisArg])</b></p>
-                        <p>按照插入顺序，为Set对象中的每一个值调用一次callBackFn。如果提供了thisArg参数，回调中的this会是这个参数。</p>
+                        <p>按照插入顺序，为 Set 对象中的每一个值调用一次 callBackFn。如果提供了 thisArg 参数，回调中的 this 会是这个参数。</p>
                         <p><b>Set.prototype.has(value)</b></p>
-                        <p>返回一个布尔值，表示该值在Set中存在与否。</p>
+                        <p>返回一个布尔值，表示该值在 Set 中存在与否。</p>
                         <p><b>Set.prototype.keys()</b></p>
-                        <p>与values()方法相同，返回一个新的迭代器对象，该对象包含Set对象中的按插入顺序排列的所有元素的值。</p>
+                        <p>与 values()方法相同，返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</p>
                         <p><b>Set.prototype.values()</b></p>
-                        <p>返回一个新的迭代器对象，该对象包含Set对象中的按插入顺序排列的所有元素的值。</p>
+                        <p>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</p>
                         <p><b>Set.prototype[@@iterator]()</b></p>
-                        <p>返回一个新的迭代器对象，该对象包含Set对象中的按插入顺序排列的所有元素的值。</p>
+                        <p>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</p>
                         <h2>示例</h2>
-                        <h3>使用 Set对象</h3>
+                        <h3>使用 Set 对象</h3>
                         <CodeMirror value={code1} options={codeMirrorOptions} />
                         <h3>迭代 Set</h3>
                         <CodeMirror value={code2} options={codeMirrorOptions} />
@@ -207,9 +214,10 @@ export default class index extends Component {
                         <CodeMirror value={code3} options={codeMirrorOptions} />
                         <h3>Array 相关</h3>
                         <CodeMirror value={code4} options={codeMirrorOptions} />
-                        <p></p>
-                        <p></p>
-                        <p></p>
+                        <h3>数组去重</h3>
+                        <CodeMirror value={code5} options={codeMirrorOptions} />
+                        <h3>String 相关</h3>
+                        <CodeMirror value={code6} options={codeMirrorOptions} />
                     </div>
                 </div>
                 <Directory />
