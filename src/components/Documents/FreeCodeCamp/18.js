@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Directory from "../../Directory";
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
-import { ResizableBox } from 'react-resizable';
-import './11.less';
 
 let codeMirrorOptions = {
     theme: 'monokai',
@@ -108,8 +106,6 @@ let code8 = `<svg height="0" xmlns="http://www.w3.org/2000/svg">
         </feMerge>
     </filter>
 </svg>`;
-let code9 = ``;
-let code10 = ``;
 
 export default class index extends Component {
     state = {
