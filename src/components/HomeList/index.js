@@ -9,7 +9,7 @@ import "./index.less";
 export default class index extends Component {
     render() {
         let dataSource = [];
-        for (let i = 0; i < TOTAL_DATA.length; i++) {
+        for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
             let { baseHref, title, description, img, content } = TOTAL_DATA[i]
             dataSource.push({
                 href: baseHref,

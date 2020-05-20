@@ -59,7 +59,7 @@ export default class index extends Component {
             divStyle
         });
         let codeBox = document.getElementsByClassName("code-box");
-        for (let i = 0; i < codeBox.length; i++) {
+        for (let i = 0, len = codeBox.length; i < len; i++) {
             if (index === i) {
                 codeBox[index].className = "code-box code-box-active";
             } else {

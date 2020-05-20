@@ -10,7 +10,7 @@ const { SubMenu } = Menu;
 
 //将data文件中所有href:title映射到一个对象中,用于检索当前路由对应的title
 let keyMapObj = {}
-for (let i = 0; i < TOTAL_DATA.length; i++) {
+for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
     keyMapObj[TOTAL_DATA[i].baseHref] = TOTAL_DATA[i].title;
     for (let j = 0; j < TOTAL_DATA[i].section.length; j++) {
         keyMapObj[TOTAL_DATA[i].baseHref + "/" + j] = TOTAL_DATA[i].title + TOTAL_DATA[i].section[j]
@@ -95,7 +95,7 @@ import "./index.less";
 
 //将data文件中所有href:title映射到一个对象中,用于检索当前路由对应的title
 let keyMapObj = {}
-for (let i = 0; i < TOTAL_DATA.length; i++) {
+for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
     keyMapObj[TOTAL_DATA[i].baseHref] = TOTAL_DATA[i].title;
     for (let j = 0; j < TOTAL_DATA[i].section.length; j++) {
         keyMapObj[TOTAL_DATA[i].baseHref + "/" + j] = TOTAL_DATA[i].title + TOTAL_DATA[i].section[j];

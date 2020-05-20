@@ -16,7 +16,7 @@ class index extends Component {
     getArticleTree() {
         let childrens = document.getElementsByClassName("article-content")[0].children;
         let articleTree = [];
-        for (let i = 0; i < childrens.length - 1; i++) {
+        for (let i = 0, len = childrens.length; i < len - 1; i++) {
             let nodeName = childrens[i].nodeName;
             if (nodeName === "H2" || nodeName === "H3") {
                 childrens[i].id = childrens[i].innerText;
@@ -31,7 +31,7 @@ class index extends Component {
     setTitle() {
         let path = this.props.location.pathname;
         const pathSnippets = path.split('/').filter(i => i);
-        for (let i = 0; i < TOTAL_DATA.length; i++) {
+        for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
             if (pathSnippets[0] === TOTAL_DATA[i].name) {
                 document.getElementsByTagName("h1")[0].innerHTML = TOTAL_DATA[i].section.length > 0 ? TOTAL_DATA[i].section[pathSnippets[pathSnippets.length - 1]] : TOTAL_DATA[i].title;
             }

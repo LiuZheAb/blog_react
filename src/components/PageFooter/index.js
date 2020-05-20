@@ -34,10 +34,10 @@ class index extends Component {
         const pathSnippets = path.split('/').filter(i => i);
         //获取当前文档及推荐文档数据
         let dataSource = [], recommandData = [];
-        for (let i = 0; i < TOTAL_DATA.length; i++) {
+        for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
             if (pathSnippets[0] === TOTAL_DATA[i].baseHref.substr(1)) {
                 dataSource = TOTAL_DATA[i];
-            }else{
+            } else {
                 recommandData.push({
                     title: TOTAL_DATA[i].title,
                     baseHref: TOTAL_DATA[i].baseHref,

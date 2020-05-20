@@ -12,7 +12,7 @@ const PageFooter = lazy(() => import('../PageFooter'));
 const Documents = lazy(() => import('../Documents'));
 let nameMap = setKeyMap(TOTAL_DATA);
 let hrefArray = [];
-for (let i = 0; i < TOTAL_DATA.length; i++) {
+for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
     hrefArray.push(TOTAL_DATA[i].baseHref)
 }
 
