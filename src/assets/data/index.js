@@ -145,7 +145,7 @@ const DEMO_DATA = {
     baseHref: "/demo",
     component: "Demo",
     description: "",
-    img: "myblog.png",
+    img: "demo.png",
     content: "我自己开发的一些Demo。",
     section: [
         "自定义表单",
