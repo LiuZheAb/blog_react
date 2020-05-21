@@ -127,7 +127,7 @@ const PROBLEM_DATA = {
     title: "问题汇总",
     baseHref: "/problem",
     component: "Problem",
-    description: "开发中遇到的问题",
+    description: "",
     img: "problem.jpg",
     content: "用来记录开发中遇到的各种问题。",
     section: [
@@ -139,5 +139,21 @@ const PROBLEM_DATA = {
         "JS 篇": [1],
     }
 };
-
-export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA];
+const DEMO_DATA = {
+    name: "demo",
+    title: "我的DEMO",
+    baseHref: "/demo",
+    component: "Demo",
+    description: "",
+    img: "myblog.png",
+    content: "我自己开发的一些Demo。",
+    section: [
+        "自定义表单",
+        "WebIDE"
+    ],
+    chapter: {
+        "自定义表单": [0],
+        "WebIDE": [1]
+    }
+}
+export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA, DEMO_DATA];
