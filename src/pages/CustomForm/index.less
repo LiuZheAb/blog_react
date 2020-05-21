@@ -1,0 +1,42 @@
+.customform-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    .block {
+        width: 50%;
+        height: 100%;
+        padding: 24px;
+        overflow: auto;
+    }
+
+    .create {
+        border-right: 2px solid #c9c9c9;
+
+        .ant-form-item-label {
+            width: 96px;
+        }
+
+        .anticon-close-circle {
+            transition: color .3s;
+            cursor: pointer;
+        }
+
+        .anticon-close-circle:hover {
+            color: #ff4d4f;
+        }
+    }
+
+    .show {
+        border-left: 2px solid #c9c9c9;
+
+        .ant-form {
+            max-width: 600px;
+            margin: 0 auto;
+
+            .ant-form-item-label {
+                width: 100px;
+            }
+        }
+    }
+}
