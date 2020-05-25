@@ -5,7 +5,7 @@ import Loder from '../components/Loder';
 
 const Home = lazy(() => import('../pages/Home'));
 const CustomForm = lazy(() => import('../pages/CustomForm'));
-
+const WebIDE = lazy(() => import('../pages/WebIDE'));
 export default class EarthRouter extends React.Component {
     render() {
         return (
@@ -13,7 +13,7 @@ export default class EarthRouter extends React.Component {
                 <Suspense fallback={<Loder />}>
                     <Switch>
                         <Route path="/customform" render={() => <CustomForm />} />
-                        <Route path="/webide" render={() => <Home />} />
+                        <Route path="/webide" render={() => <WebIDE />} />
                         <Route path="/" render={() => <Home />} />
                     </Switch>
                 </Suspense>
