@@ -26,7 +26,6 @@ export default class index extends Component {
         value = value ? parseInt(value) : 0;
         //获取当前itemNum与前一个itemNum的差值
         let disValue = value - itemNum;
-        console.log(value, itemNum)
         if (value < 0 || isNaN(value)) {
             itemList = [];
             value = 0;
@@ -256,14 +255,14 @@ export default class index extends Component {
                             let ifThreeColumns = type === "radio" || type === "checkbox" || type === "select";
                             let props = type ? { initialValue: type } : {};
                             return (
-                                <Row gutter={10} key={index}>
-                                    <Col xs={ifThreeColumns ? 8 : 12}>
+                                <Row gutter={10} key={index} className="item-line">
+                                    <Col span={24} lg={ifThreeColumns ? 10 : 12}>
                                         <Form.Item name={`itemName${index}`} label={`控件  ${index + 1}：`} key={`${index}Name`} rules={[{ validator: this.itemNameValidator.bind(this, index) }]} initialValue={itemName}>
                                             <Input placeholder={`控件 ${index + 1}的名称`} onChange={this.changeItemName.bind(this, index)} />
                                         </Form.Item>
                                     </Col>
-                                    <Col xs={ifThreeColumns ? 7 : 11}>
-                                        <Form.Item name={`itemType${index}`} key={`${index}Type`} rules={[{ validator: this.itemTypeValidator.bind(this, index) }]} {...props}>
+                                    <Col span={24} lg={ifThreeColumns ? 7 : 12}>
+                                        <Form.Item className="col-nolabel" name={`itemType${index}`} key={`${index}Type`} rules={[{ validator: this.itemTypeValidator.bind(this, index) }]} {...props}>
                                             <Select onChange={this.changeItemType.bind(this, index)} placeholder="--控件类型--">
                                                 {inputType.map((type, index) => {
                                                     return (
@@ -276,14 +275,14 @@ export default class index extends Component {
                                         </Form.Item>
                                     </Col>
                                     {ifThreeColumns ?
-                                        <Col xs={8}>
-                                            <Form.Item name={`itemValue${index}`} key={`${index}Value`} rules={[{ validator: this.itemValueValidator.bind(this, index) }]} getValueFromEvent={e => e.target.value.replace(/\uff0c/g, ",")} initialValue={defaultValue}>
+                                        <Col span={24} lg={7}>
+                                            <Form.Item className="col-nolabel" name={`itemValue${index}`} key={`${index}Value`} rules={[{ validator: this.itemValueValidator.bind(this, index) }]} getValueFromEvent={e => e.target.value.replace(/\uff0c/g, ",")} initialValue={defaultValue}>
                                                 <Input placeholder={`请输入控件的默认值,以“,”隔开`} onChange={this.changeItemValue.bind(this, index)} />
                                             </Form.Item>
                                         </Col>
                                         : null}
-                                    <Col xs={1} style={{ lineHeight: "30px" }}>
-                                        <CloseCircleFilled onClick={this.handleDelete.bind(this, index)} title="删除控件"/>
+                                    <Col style={{ lineHeight: "30px" }} className="delete-btn">
+                                        <CloseCircleFilled onClick={this.handleDelete.bind(this, index)} title="删除控件" />
                                     </Col>
                                 </Row>
                             )
