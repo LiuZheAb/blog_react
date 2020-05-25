@@ -146,7 +146,7 @@ const DEMO_DATA = {
     component: "Demo",
     description: "",
     img: "demo.png",
-    content: "我自己开发的一些Demo。",
+    content: "我在学习、开发过程中归纳的一些Demo。",
     section: [
         "自定义表单",
         "WebIDE"
