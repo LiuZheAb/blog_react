@@ -1,7 +1,7 @@
 //路由
 import React, { Suspense, lazy } from 'react';
 import { Switch, HashRouter as Router, Route } from "react-router-dom";
-import Loder from '../components/Loder';
+import Loader from '../components/Loader';
 
 const Home = lazy(() => import('../pages/Home'));
 const CustomForm = lazy(() => import('../pages/CustomForm'));
@@ -10,7 +10,7 @@ export default class EarthRouter extends React.Component {
     render() {
         return (
             <Router>
-                <Suspense fallback={<Loder />}>
+                <Suspense fallback={<Loader />}>
                     <Switch>
                         <Route path="/customform" render={() => <CustomForm />} />
                         <Route path="/webide" render={() => <WebIDE />} />
