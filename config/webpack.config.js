@@ -375,12 +375,22 @@ module.exports = function (webpackEnv) {
                   'babel-preset-react-app/webpack-overrides'
                 ),
 
-                plugins: [
-                  ["import", {
-                    "libraryName": "antd",
-                    "libraryDirectory": "es",
-                    "style": "css" // `style: true` 会加载 less 文件
-                  }]
+                plugins: [["import", {
+                  "libraryName": "antd",
+                  "libraryDirectory": "es",
+                  "style": "css" // `style: true` 会加载 less 文件
+                }],
+                [
+                  require.resolve('babel-plugin-named-asset-import'),
+                  {
+                    loaderMap: {
+                      svg: {
+                        ReactComponent:
+                          '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+                      },
+                    },
+                  },
+                ],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
