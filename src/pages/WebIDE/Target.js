@@ -1,68 +1,67 @@
-import React,{useState} from 'react';
-import { useDrop } from 'react-dnd';
+import React from 'react';
+import { useDrop, useDrag } from 'react-dnd';
 import { Input, Select, Radio, Checkbox, Upload, DatePicker, Button } from "antd";
-import update from 'immutability-helper'
+// import { DraggableContainer, DraggableChild } from 'react-dragline';
 
-const Target = ({ accept, droppedItem, onDrop, }) => {
-  const [boxes, setBoxes] = useState(droppedItem)
-  const [status, drop] = useDrop({
+const Target = ({ accept, droppedItem, onDrop, moveItem, clickToChange }) => {
+  const [, drop] = useDrop({
     accept,
     drop: (item, monitor) => {
       onDrop(item);
       item.position = monitor.getClientOffset();
-      moveBox(item.id, left, top)
+      if (item.index !== undefined) {
+        moveItem(item.index, item);
+      }
     },
     collect: monitor => ({
-      isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
   });
-  const moveBox = (id, left, top) => {
-    setBoxes(
-      update(boxes, {
-        [id]: {
-          $merge: { left, top },
-        },
-      }),
-    )
-  }
-  const isActive = status.isOver;
-  let backgroundColor = isActive ? '#555' : '#fff';
   return (
-    <div className="target-box" ref={drop} style={{ backgroundColor }}>
-      <div className="dragbar"></div>
-      {isActive
-        ? <div style={{ width: "100%", height: "100%", position: "absolute" }}>Release to drop</div>
-        : null}
-      {droppedItem.map((item, index) =>
-        <Item key={index} item={item}></Item>
-      )}
-    </div >
+    <div className="target-box" ref={drop} >
+      {droppedItem.length === 0 && <div style={{ width: "100%", position: "absolute", textAlign: "center", fontSize: 16 }}>将组件拖拽至此区域</div>}
+      {droppedItem.map((item, index) => <Item key={index} index={index} item={item} clickToChange={clickToChange}></Item>)}
+    </div>
   )
 }
 
-const Item = ({ item }) => {
-  const { name, position, pointer } = item;
-  const style = { position: "absolute", left: position.x - 280, top: position.y };//280是左侧source-panel的宽度
-  switch (name) {
-    case "input":
-      return <Input style={style}></Input>;
-    case "select":
-      return <Select style={style}>"select"</Select>;
-    case "radio":
-      return <Radio style={style}>"radio"</Radio>;
-    case "checkbox":
-      return <Checkbox style={style}>"checkbox"</Checkbox>;
-    case "upload":
-      return <Upload style={style}><Button>"upload"</Button></Upload>;
-    case "date":
-      return <DatePicker style={style}>"date"</DatePicker>;
-    case "button":
-      return <Button style={style}>"button"</Button>;
-    case "label":
-      return <label style={style}>"label"</label>;
-    default:
-      return null;
+const Item = ({ item, index, clickToChange }) => {
+  const { name, type, position, pointer, location, placeholder } = item;
+  const style = { position: "absolute", left: position.x - (pointer.x - location.x) - 280, top: position.y - (pointer.y - location.y) };//280是左侧source-panel的宽度
+  const [, drag] = useDrag({
+    item: { type },
+    begin: monitor => ({
+      index,
+      name,
+      type,
+      position: monitor.getClientOffset(),  //鼠标松开时的位置
+      pointer: monitor.getInitialClientOffset(),  //鼠标点击时的位置
+      location: monitor.getInitialSourceClientOffset(),  //拖动源位置 
+      placeholder
+    }),
+  })
+  const getItem = (name) => {
+    switch (name) {
+      case "input":
+        return <Input placeholder={placeholder}></Input>;
+      case "select":
+        return <Select>"select"</Select>;
+      case "radio":
+        return <Radio>"radio"</Radio>;
+      case "checkbox":
+        return <Checkbox>"checkbox"</Checkbox>;
+      case "upload":
+        return <Upload><Button>"upload"</Button></Upload>;
+      case "date":
+        return <DatePicker>"date"</DatePicker>;
+      case "button":
+        return <Button>"button"</Button>;
+      case "label":
+        return <label>"label"</label>;
+      default:
+        return null;
+    }
   }
+  return <div ref={drag} style={style} onClick={() => clickToChange(index)}>{getItem(name)}</div>
 }
 export default Target;
