@@ -1,0 +1,244 @@
+ul,
+li {
+  list-style: none;
+}
+
+.dragpage {
+  width: 100%;
+  height: 100%;
+}
+
+.drag-content {
+  height: 100vh;
+  display: flex;
+  display: -webkit-flex;
+  align-items: flex-start;
+}
+
+.item-panel {
+  background: #fff;
+  height: 50%;
+  width: 360px;
+  overflow: auto;
+  /* border-right: 1px solid #ddd; */
+}
+
+.item-panel .ant-tabs-bar {
+  margin: 0;
+}
+
+.item-panel .ant-tabs-nav {
+  width: 100%;
+  background-color: #ddd;
+  border-bottom: 2px #ddd solid;
+}
+
+.item-panel .ant-tabs-tab {
+  width: 25%;
+  height: 32px;
+  line-height: 32px;
+  padding: 0;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+  color: #337ab7;
+}
+
+.item-panel .ant-tabs-tab-active {
+  background-color: #fff;
+  color: #000;
+}
+
+.item-panel .ant-tabs-nav .ant-tabs-ink-bar {
+  height: 0;
+}
+
+.item-panel .ant-tabs-tabpane {
+  padding: 10px 20px;
+}
+
+.item-panel .drag-searcher {
+  text-align: center;
+  margin: 4px 0 10px 0;
+}
+
+.item-panel .ant-collapse {
+  border: 0;
+}
+
+.item-panel .ant-collapse-item {
+  border-bottom: 1px #e1e8ed solid;
+  background-color: #fff;
+}
+
+.item-panel .ant-collapse-item-active .ant-collapse-header {
+  border: none;
+}
+
+.item-panel .ant-collapse .ant-collapse-item:last-child {
+  border: none;
+}
+
+.item-panel .ant-collapse-item .ant-collapse-header {
+  padding: 5px 0 5px 20px;
+  font-size: 16px;
+}
+
+.item-panel .ant-collapse-item .ant-collapse-content {
+  border-top: 0;
+}
+
+.item-panel .ant-collapse-item .ant-collapse-content .ant-collapse-content-box {
+  padding: 20px 12.8px;
+}
+
+.item-panel .ant-collapse-item .ant-collapse-content .gutter-box {
+  height: 70px;
+  padding: 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.item-panel .ant-collapse-item .ant-collapse-content .gutter-box .item-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 2px;
+  border: 1px #04b0e9 solid;
+  margin: 0 12.8px 8px;
+}
+
+.item-panel .ant-collapse-item .ant-collapse-header .ant-collapse-arrow {
+  font-size: 16px;
+  left: 0;
+}
+
+.item-panel .component-base .ant-collapse-content .ant-collapse-content-box {
+  padding: 10px 0;
+  /* width: 360px; */
+}
+
+.component-box {
+  width: 33.33%;
+  display: inline-block;
+  text-align: center;
+}
+
+.component-box img {
+  cursor: pointer;
+}
+
+.item .ant-select {
+  width: 100%;
+}
+
+.content-panel {
+  height: 100%;
+  width: calc(100% - 560px);
+}
+
+.target-panel {
+  height: calc(100% - 9px);
+  padding-top: 9px;
+  
+}
+
+.target-title {
+  height: 28px;
+  margin-bottom: 0;
+}
+
+.target-area {
+  height: calc(100% - 20px);
+  background: #f5f6f7;
+  overflow: auto;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  overflow: hidden;
+}
+
+.target-area .ant-radio-wrapper {
+  z-index: 10;
+  margin-right: 0;
+}
+
+.target-area .ant-checkbox-wrapper .ant-checkbox {
+  z-index: 10;
+}
+
+.target-area .ant-select-selection--single {
+  height: 100%;
+}
+
+.target-area .ant-select-selection--single .ant-select-selection__rendered {
+  height: 100%;
+  /* line-height: 100%; */
+}
+
+.target-area .ant-select-selection--single .ant-select-selection-selected-value {
+  height: 100%;
+  display: flex !important;
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.run-panel {
+  height: 35%;
+  padding-top: 10px;
+}
+
+.run-box {
+  width: calc(50% - 5px);
+  height: 100%;
+  display: inline-block;
+}
+
+.run-box div {
+  width: 100%;
+  height: calc(100% - 30px);
+  background: #f5f6f7;
+}
+
+.left-run-box {
+  margin-right: 10px;
+}
+
+.props-panel {
+  height: 100%;
+  width: 200px;
+}
+
+.props-box {
+  height: calc(100% - 20px);
+  background: #fff;
+  padding: 13px 10px;
+}
+
+.props-box .ant-input-number {
+  width: 100%;
+}
+
+.props-label {
+  text-align: right;
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+
+.props-box .css-192das5-InputColor {
+  height: 32px;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+}
+
+
+.dmsparam {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.dmsparam label {
+  margin-right: 20px;
+}

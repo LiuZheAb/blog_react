@@ -1,0 +1,10 @@
+{
+  "INPUT": "输入框",
+  "RADIO": "单选框",
+  "SELECT": "选择器",
+  "BUTTON": "按钮",
+  "CHECKBOX": "多选框",
+  "UPLOAD": "上传",
+  "LABEL": "标注",
+  "DATE": "日期选择器"
+}
