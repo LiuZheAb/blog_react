@@ -22,7 +22,7 @@ export default class index extends Component {
                             <li>……其他</li>
                         </ul>
                         <p>详情请点击下方demo地址查看。</p>
-                        <Link to="/webide" target="_blank">demo预览</Link>
+                        <Link to="/webide2" target="_blank">demo预览</Link>
                         <p>PC端浏览体验最佳，移动端建议横屏浏览。</p>
                     </div>
                 </div>
