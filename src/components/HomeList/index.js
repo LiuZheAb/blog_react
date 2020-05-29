@@ -8,44 +8,34 @@ import "./index.less";
 
 export default class index extends Component {
     render() {
-        let dataSource = [];
-        for (let i = 0, len = TOTAL_DATA.length; i < len; i++) {
-            let { baseHref, title, description, img, content } = TOTAL_DATA[i]
-            dataSource.push({
-                href: baseHref,
-                title,
-                description,
-                img,
-                content,
-            })
-        }
         return (
             <div className="home-list">
                 <List
                     itemLayout="vertical"
                     size="large"
-                    dataSource={dataSource}
+                    dataSource={TOTAL_DATA}
                     renderItem={item => (
-                        <Link to={item.href}>
-                            <List.Item
-                                className="list-item"
-                                key={item.title}
-                                extra={
+                        <List.Item
+                            className="list-item"
+                            extra={
+                                <Link to={item.baseHref}>
                                     <div className="box">
                                         <img src={require("../../assets/images/" + item.img)} alt={item.title} />
                                         <div className="box-content">
                                             <span className="title">点击进入</span>
                                         </div>
                                     </div >
-                                }
-                            >
+                                </Link>
+                            }
+                        >
+                            <Link to={item.baseHref}>
                                 <List.Item.Meta
                                     title={item.title}
                                     description={item.description}
                                 />
                                 <p style={{ textIndent: "2em", color: "rgba(0, 0, 0, 0.65)" }}>{item.content}</p>
-                            </List.Item>
-                        </ Link>
+                            </Link>
+                        </List.Item>
                     )}
                 />
                 <div className="footer">
