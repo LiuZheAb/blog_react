@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Input, Select, Radio, Button, Checkbox, Upload, Icon, DatePicker } from "antd";
 import moment from 'moment';
-import "./index.css";
 
 const { Option } = Select;
 const dateFormat = 'YYYY/MM/DD';

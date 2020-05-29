@@ -8,7 +8,7 @@ import { Layout, Button, Input, Row, Col, InputNumber, Tooltip, Card } from "ant
 // eslint-disable-next-line
 import _ from "lodash";
 import InputColor from "react-input-color";
-import "./index.css";
+import "./index.less";
 
 const { Content } = Layout;
 const colLayout1 = {
@@ -24,8 +24,6 @@ class DragPage extends Component {
       components: [],
       currentitem: null,
       itemindex: null,
-      dmsKey: "",
-      dmsParameter: null,
       htmlString: ""
     };
     this.onDrop = this.onDrop.bind(this);
@@ -162,13 +160,8 @@ class DragPage extends Component {
     document.getElementById('file').click()
   }
 
-  handleKeyChange = (e) => {
-    this.setState({
-      dmsKey: e.target.value
-    })
-  }
   render() {
-    const { components, currentitem, itemindex, dmsParameter } = this.state;
+    const { components, currentitem, itemindex } = this.state;
     let proplist = null; //组件属性列表
     //判断当前是否选中了组件
     if (currentitem) {
