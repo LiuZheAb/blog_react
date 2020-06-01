@@ -11,48 +11,34 @@ import ItemTypes from './ItemTypes';
 const WebIDE = () => {
     const [droppedItem, setDroppedItem] = useState([]);
     const [currentIndex, setCurrentIndex] = useState();
-    const itemList = ["input", "select", "radio", "checkbox", "upload", "date", "button", "label"];
-    const isDropped = item => {
-        return droppedItem.indexOf(item) > -1;
-    };
     const handleDrop = useCallback(item => {
         setDroppedItem(update(droppedItem, { $push: [item] }));
-        if (item.index === undefined) {
-            setCurrentIndex(droppedItem.length);
-        }
+        setCurrentIndex(item.index);
     }, [droppedItem]);
-    const moveItem = ((index, item) => {
+    const moveItem = useCallback((index, item) => {
         droppedItem.splice(index, 1, item);
         setDroppedItem(droppedItem);
         setCurrentIndex(index);
-    });
+    }, [droppedItem]);
     const clickToChange = index => {
         setCurrentIndex(index);
-    }
-    const handleChangeProp = (propName, e) => {
+    };
+    const handleChangeProp = useCallback((propName, e) => {
         droppedItem[currentIndex][propName] = e.target.value;
         setDroppedItem(droppedItem);
-    }
-    const propList = item => {
-        let { name, placeholder } = droppedItem[currentIndex];
-        console.log(placeholder);
-        return <ul>
-            <li>{name}</li>
-            <Input defaultValue={placeholder} onChange={(e) => { handleChangeProp("placeholder", e) }}></Input>
-        </ul>
-    }
+    }, [droppedItem, currentIndex]);
     return (
         <Row className="webide-container">
             <DndProvider backend={Backend}>
                 <Col flex="280px" className="source-panel">
                     <Card title="控件库" bordered={false}>
-                        {itemList.map(item => <SourceItem key={item} name={item} type={ItemTypes.ITEM} isDropped={isDropped(item)}></SourceItem>)}
+                        {ItemTypes.map(type => <SourceItem key={type} type={type}></SourceItem>)}
                     </Card>
                 </Col>
                 <Col flex="auto" className="target-panel">
                     <Card title="拖放区" bordered={false}>
                         <Target
-                            accept={ItemTypes.ITEM}
+                            accept={ItemTypes}
                             droppedItem={droppedItem}
                             onDrop={item => handleDrop(item)}
                             moveItem={moveItem}
@@ -65,10 +51,11 @@ const WebIDE = () => {
                 <Card title="控件属性" bordered={false}>
                     {typeof (currentIndex) === "undefined" ?
                         <p>还没有任何控件</p>
-                        : propList()
-                        // Object.keys(droppedItem[currentIndex]).map((prop, index) =>
-                        //     <p key={index}>{prop}：{JSON.stringify(droppedItem[currentIndex][prop])}</p>
-                        // )
+                        : <ul>
+                            <li>name：{droppedItem[currentIndex].type}</li>
+                            <li>placeholder：{droppedItem[currentIndex].placeholder}</li>
+                            <Input defaultValue={droppedItem[currentIndex].placeholder} onChange={e => handleChangeProp("placeholder", e)}></Input>
+                        </ul>
                     }
                 </Card>
             </Col>
