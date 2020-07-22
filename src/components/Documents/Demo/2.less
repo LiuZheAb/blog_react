@@ -1,0 +1,333 @@
+@imgUrl: "../../../assets/images";
+
+
+.animate-content {
+    width: 100%;
+    max-width: 600px;
+    padding: 100px 0;
+    margin: 0 auto;
+    background: #333;
+
+    .animate-box {
+        width: 231px;
+        height: 266px;
+        margin: 0 auto;
+        background: url("@{imgUrl}/block1.png") no-repeat center;
+        background-size: contain;
+        position: relative;
+
+        img {
+            position: absolute;
+            animation: 9s infinite ease-out paused;
+
+            &:nth-child(1) {
+                left: -50px;
+                top: 10px;
+                animation-name: linego1;
+            }
+
+            &:nth-child(2) {
+                left: 179px;
+                top: 10px;
+                animation-name: linego2;
+            }
+
+            &:nth-child(3) {
+                left: 65px;
+                top: 207px;
+                animation-name: linego3;
+            }
+
+            @keyframes linego1 {
+                0% {
+                    left: -50px;
+                    top: 10px;
+                }
+
+                16.7% {
+                    left: 65px;
+                    top: -56px;
+                }
+
+                33.3% {
+                    left: 179px;
+                    top: 10px;
+                }
+
+                50% {
+                    left: 179px;
+                    top: 142px;
+                }
+
+                66.7% {
+                    left: 65px;
+                    top: 207px;
+                }
+
+                83.3% {
+                    left: -50px;
+                    top: 141px;
+                }
+
+                100% {
+                    left: -50px;
+                    top: 10px;
+                }
+            }
+
+            @keyframes linego2 {
+                0% {
+                    left: 179px;
+                    top: 10px;
+                }
+
+                16.7% {
+                    left: 179px;
+                    top: 142px;
+                }
+
+                33.3% {
+                    left: 65px;
+                    top: 207px;
+                }
+
+                50% {
+                    left: -50px;
+                    top: 141px;
+                }
+
+                66.7% {
+                    left: -50px;
+                    top: 10px;
+                }
+
+                83.3% {
+                    left: 65px;
+                    top: -56px;
+                }
+
+                100% {
+                    left: 179px;
+                    top: 10px;
+                }
+            }
+
+            @keyframes linego3 {
+                0% {
+                    left: 65px;
+                    top: 207px;
+                }
+
+                16.7% {
+                    left: -50px;
+                    top: 141px;
+                }
+
+                33.3% {
+                    left: -50px;
+                    top: 10px;
+                }
+
+                50% {
+                    left: 65px;
+                    top: -56px;
+                }
+
+                66.7% {
+                    left: 179px;
+                    top: 10px;
+                }
+
+                83.3% {
+                    left: 179px;
+                    top: 142px;
+                }
+
+                100% {
+                    left: 65px;
+                    top: 207px;
+                }
+            }
+        }
+    }
+
+    .animate-box2 {
+        width: 231px;
+        height: 266px;
+        margin: 0 auto;
+        background: url("@{imgUrl}/block.png") no-repeat center;
+        background-size: contain;
+        position: relative;
+
+        .animate-block {
+            width: 101px;
+            height: 116px;
+            position: absolute;
+            animation: 4.5s infinite ease paused;
+
+            &:nth-child(1) {
+                left: -50px;
+                top: 9px;
+                background-image: url("@{imgUrl}/block2.png");
+            }
+
+            &:nth-child(2) {
+                left: 64px;
+                top: 75px;
+                background-image: url("@{imgUrl}/block5.png");
+            }
+
+            &:nth-child(3) {
+                left: 64px;
+                top: 207px;
+                background-image: url("@{imgUrl}/block4.png");
+            }
+
+            &:nth-child(4) {
+                left: 179px;
+                top: 9px;
+                background-image: url("@{imgUrl}/block3.png");
+            }
+
+            @keyframes plat_linego1 {
+                0% {
+                    opacity: 0;
+                }
+
+                33.3% {
+                    opacity: 1;
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes plat_linego2 {
+                0% {
+                    left: -50px;
+                    top: 9px;
+                    background-image: url("@{imgUrl}/block2.png");
+                    opacity: 0;
+                }
+
+                33.3% {
+                    left: 64px;
+                    top: 75px;
+                    background-image: url("@{imgUrl}/block5.png");
+                    opacity: 1;
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                100% {
+                    left: 64px;
+                    top: 75px;
+                    background-image: url("@{imgUrl}/block5.png");
+                    opacity: 0;
+                }
+            }
+
+            @keyframes plat_linego3 {
+                0% {
+                    opacity: 0;
+                }
+
+                33.3% {
+                    left: 64px;
+                    top: 75px;
+                    opacity: 0;
+                    background-image: url("@{imgUrl}/block5.png");
+                }
+
+                40% {
+                    opacity: 0.2;
+                }
+
+                66.6% {
+                    left: 64px;
+                    top: 207px;
+                    opacity: 1;
+                    background-image: url("@{imgUrl}/block4.png");
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                100% {
+                    left: 64px;
+                    top: 207px;
+                    opacity: 0;
+                }
+            }
+
+            @keyframes plat_linego4 {
+                0% {
+                    opacity: 0;
+                }
+
+                33.3% {
+                    left: 64px;
+                    top: 75px;
+                    opacity: 0;
+                    background-image: url("@{imgUrl}/block5.png");
+                }
+
+                40% {
+                    opacity: 0.2;
+                }
+
+                66.6% {
+                    left: 179px;
+                    top: 9px;
+                    opacity: 1;
+                    background-image: url("@{imgUrl}/block3.png");
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                100% {
+                    left: 179px;
+                    top: 9px;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+
+    &:hover {
+        .animate-box img {
+            animation-play-state: running;
+        }
+
+        .animate-box2 .animate-block {
+            animation-play-state: running;
+
+            &:nth-child(1) {
+                animation-name: plat_linego1;
+            }
+
+            &:nth-child(2) {
+                animation-name: plat_linego2;
+            }
+
+            &:nth-child(3) {
+                animation-name: plat_linego3;
+            }
+
+            &:nth-child(4) {
+                animation-name: plat_linego4;
+            }
+        }
+    }
+}

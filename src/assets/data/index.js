@@ -149,11 +149,13 @@ const DEMO_DATA = {
     content: "我在学习、开发过程中归纳的一些Demo。",
     section: [
         "自定义表单",
-        "WebIDE"
+        "WebIDE",
+        "帧动画Demo"
     ],
     chapter: {
         "自定义表单": [0],
-        "WebIDE": [1]
+        "WebIDE": [1],
+        "帧动画Demo": [2]
     }
 }
 export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA, DEMO_DATA];
