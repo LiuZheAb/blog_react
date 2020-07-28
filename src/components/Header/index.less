@@ -16,7 +16,7 @@
     font-size: 14px;
     background-color: #fff;
 
-    .header-content {
+    &-content {
         max-width: 1440px;
         margin: 0 auto;
         height: 100%;
@@ -32,10 +32,11 @@
                 color: #EA7575;
                 transition: all .3s;
                 display: block;
-            }
-            a:hover{
-                color: #94db9a;
-                transform: scale(1.2) rotate(0.5turn);
+
+                &:hover {
+                    color: #94db9a;
+                    transform: scale(1.2) rotate(0.5turn);
+                }
             }
         }
 
@@ -52,14 +53,14 @@
         }*/
 
     }
-}
 
-.header-visible {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-}
+    &-visible {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 
-.header-affixed {
-    -webkit-transform: translateY(-64px);
-    transform: translateY(-64px);
+    &-affixed {
+        -webkit-transform: translateY(-64px);
+        transform: translateY(-64px);
+    }
 }

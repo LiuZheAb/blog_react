@@ -256,12 +256,12 @@ export default class index extends Component {
                             let props = type ? { initialValue: type } : {};
                             return (
                                 <Row gutter={10} key={index} className="item-line">
-                                    <Col span={24} lg={ifThreeColumns ? 10 : 12}>
+                                    <Col span={24} xl={ifThreeColumns ? 10 : 12}>
                                         <Form.Item name={`itemName${index}`} label={`控件  ${index + 1}：`} key={`${index}Name`} rules={[{ validator: this.itemNameValidator.bind(this, index) }]} initialValue={itemName}>
                                             <Input placeholder={`控件 ${index + 1}的名称`} onChange={this.changeItemName.bind(this, index)} />
                                         </Form.Item>
                                     </Col>
-                                    <Col span={24} lg={ifThreeColumns ? 7 : 12}>
+                                    <Col span={24} xl={ifThreeColumns ? 7 : 12}>
                                         <Form.Item className="col-nolabel" name={`itemType${index}`} key={`${index}Type`} rules={[{ validator: this.itemTypeValidator.bind(this, index) }]} {...props}>
                                             <Select onChange={this.changeItemType.bind(this, index)} placeholder="--控件类型--">
                                                 {inputType.map((type, index) => {
@@ -275,7 +275,7 @@ export default class index extends Component {
                                         </Form.Item>
                                     </Col>
                                     {ifThreeColumns ?
-                                        <Col span={24} lg={7}>
+                                        <Col span={24} xl={7}>
                                             <Form.Item className="col-nolabel" name={`itemValue${index}`} key={`${index}Value`} rules={[{ validator: this.itemValueValidator.bind(this, index) }]} getValueFromEvent={e => e.target.value.replace(/\uff0c/g, ",")} initialValue={defaultValue}>
                                                 <Input placeholder={`请输入控件的默认值,以“,”隔开`} onChange={this.changeItemValue.bind(this, index)} />
                                             </Form.Item>

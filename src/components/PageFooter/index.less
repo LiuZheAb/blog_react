@@ -12,26 +12,26 @@
         .wx-icon {
             font-size: 40px;
             display: inline-block;
-        }
 
-        .wx-icon:hover .qrcode {
-            display: block;
-
-            .arrow::before {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
-                transform: translateY(-6.53553391px) rotate(45deg);
+            &:hover .qrcode {
                 display: block;
-                width: 5px;
-                height: 5px;
-                margin: auto;
-                background-color: rgba(0, 0, 0, 0.75);
-                content: '';
-                pointer-events: auto;
+
+                .arrow::before {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
+                    transform: translateY(-6.53553391px) rotate(45deg);
+                    display: block;
+                    width: 5px;
+                    height: 5px;
+                    margin: auto;
+                    background-color: rgba(0, 0, 0, 0.75);
+                    content: '';
+                    pointer-events: auto;
+                }
             }
         }
 
@@ -169,15 +169,12 @@
             display: flex;
             align-items: flex-end;
 
-            .author-content {
+            &-content {
                 width: calc(100% + 48px);
                 text-align: center;
                 padding: 24px 0;
                 margin: 0 -24px;
                 background: #94db9a;
-                /*background: linear-gradient(217deg, #FFFFCC, rgba(255, 255, 0, 0) 70.71%),
-                linear-gradient(127deg, #CCFFFF, rgba(0, 0, 255, 0) 70.71%),
-                linear-gradient(336deg, #FFCCCC, rgba(255, 0, 0, 0) 70.71%);*/
                 color: #fff;
 
                 a {

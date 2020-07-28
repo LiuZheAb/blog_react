@@ -7,9 +7,7 @@
     .article {
         width: calc(100% - 200px);
 
-
-
-        .article-title {
+        &-title {
             margin-bottom: 32px;
             text-align: center;
 
@@ -23,7 +21,7 @@
             }
         }
 
-        .article-content {
+        &-content {
             line-height: 1.74;
             font-size: 16px;
             color: #404040;
@@ -186,21 +184,18 @@
                 width: 100%;
                 border-left: 5px solid #94db9a;
                 background-color: rgb(220, 248, 220), ;
-                /*background: linear-gradient(217deg, #FFFFCC, rgba(255, 255, 0, 0) 70.71%),
-                    linear-gradient(127deg, #CCFFFF, rgba(0, 0, 255, 0) 70.71%),
-                    linear-gradient(336deg, #FFCCCC, rgba(255, 0, 0, 0) 70.71%);*/
                 padding: 10px 0;
 
-                .tip-icon {
+                &-icon {
                     margin: 0 15px 0 5px;
                 }
 
-                .tip-title {
+                &-title {
                     font-weight: 600;
                     color: #000;
                 }
 
-                .tip-content {
+                &-content {
                     padding-left: 20px;
 
                     em {
@@ -242,18 +237,18 @@
                     background: transparent;
                     z-index: 9;
                 }
-            }
 
-            .code-box:hover {
-                border-color: #999;
-            }
+                &:hover {
+                    border-color: #999;
+                }
 
-            .code-box-active {
-                border-color: #94db9a;
-            }
+                &-active {
+                    border-color: #94db9a;
 
-            .code-box-active:hover {
-                border-color: #94db9a;
+                    &:hover {
+                        border-color: #94db9a;
+                    }
+                }
             }
 
             .anticon {
@@ -269,7 +264,7 @@
             .ant-list {
                 .ant-card {
 
-                    .ant-card-cover {
+                    &-cover {
                         padding: 1px;
                     }
 
@@ -277,17 +272,17 @@
                         margin: 0;
                     }
 
-                    .ant-card-body {
+                    &-body {
                         padding: 10px;
                     }
-                }
 
-                .ant-card:hover {
-                    transform: scale(1.08);
-                }
+                    &:hover {
+                        transform: scale(1.08);
+                    }
 
-                .ant-card-hoverable:hover .ant-card-meta-title {
-                    color: #1890ff;
+                    &-hoverable:hover .ant-card-meta-title {
+                        color: #1890ff;
+                    }
                 }
             }
 
