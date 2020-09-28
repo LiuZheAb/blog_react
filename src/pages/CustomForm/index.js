@@ -6,13 +6,18 @@ import "./index.less";
 const { Option } = Select;
 const { TextArea } = Input;
 export default class index extends Component {
-    state = {
-        formName: '',
-        itemList: [],
-        itemNum: 0,
-        inputType: ["text", "radio", "checkbox", "select", "textarea", "upload"],
-        initCreateValues: {}
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            formName: '',
+            itemList: [],
+            itemNum: 0,
+            inputType: ["text", "radio", "checkbox", "select", "textarea", "upload"],
+            initCreateValues: {}
+        }
+        this.Form = React.createRef();
+        this.showForm = React.createRef();
+    }
     componentDidMount() {
         document.title = "自定义表单";
     }
@@ -45,7 +50,7 @@ export default class index extends Component {
             itemNum: value,
             itemList
         }, () => {
-            if (disValue < 0) { this.refs.Form.resetFields() };
+            if (disValue < 0) { this.Form.current.resetFields() };
         });
     };
     //控件名称
@@ -88,7 +93,7 @@ export default class index extends Component {
         let { itemList } = this.state;
         itemList.splice(index, 1)
         this.setState({ itemList, itemNum: itemList.length }, () => {
-            this.refs.Form.resetFields();
+            this.Form.current.resetFields();
         });
     }
     //表单验证
@@ -180,8 +185,6 @@ export default class index extends Component {
             message.error(`${info.file.name} 上传失败`);
         };
     };
-
-
     saveItems = () => {
         let { formName, itemList } = this.state;
         const saveFile = (name, itemList) => {
@@ -199,11 +202,11 @@ export default class index extends Component {
             elementA.click();
             document.body.removeChild(elementA);
         }
-        this.refs.Form.validateFields()
+        this.Form.current.validateFields()
             .then(() => saveFile(formName, itemList))
             .catch(() => { console.error("表单验证未通过") })
     }
-    importItems = (e) => {
+    importItems = e => {
         if (e.target.value) {
             let reader = new FileReader();
             //读取json
@@ -211,7 +214,7 @@ export default class index extends Component {
             //外层作用域的重新定义
             let _this = this;
             reader.onload = function () {
-                var importJson = JSON.parse(this.result);
+                let importJson = JSON.parse(this.result);
                 let { formName, itemList } = importJson;
                 _this.setState({
                     formName,
@@ -219,7 +222,7 @@ export default class index extends Component {
                     itemNum: itemList.length,
                 }, () => {
                     //表单的initialValues属性只在初始化或重置时生效
-                    _this.refs.Form.resetFields();
+                    _this.Form.current.resetFields();
                 });
             };
             reader.readAsText(file);
@@ -243,7 +246,7 @@ export default class index extends Component {
                 <div className="create block">
                     <div style={{ fontSize: 20, fontWeight: "600" }}>在此处填写要生成的表单内容</div>
                     <br />
-                    <Form className="create-form" ref="Form" initialValues={initCreateValues}>
+                    <Form className="create-form" ref={this.Form} initialValues={initCreateValues}>
                         <Form.Item name="formName" label="表单名称" rules={[{ validator: this.formNameValidator }]} style={{ maxWidth: "300px" }}>
                             <Input placeholder="表单名称" onChange={this.changeFormName} />
                         </Form.Item>
@@ -300,7 +303,7 @@ export default class index extends Component {
                     <div style={{ fontSize: 20, fontWeight: "600" }}>预览表单</div>
                     <div style={{ textAlign: "center", fontSize: 20 }}>{formName}</div>
                     <br />
-                    <Form ref="showForm">
+                    <Form ref={this.showForm}>
                         {itemList.map(({ itemName, type, defaultValue, currentValue }, index) => {
                             switch (type) {
                                 case "text":
