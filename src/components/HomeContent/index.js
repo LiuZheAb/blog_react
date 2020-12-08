@@ -35,11 +35,11 @@ class index extends Component {
                         background: "#fff"
                     }}
                 >
-                    <Route exact path="/" render={() => { return <HomeList /> }} />
+                    <Route exact path="/" render={() => <HomeList />} />
                     {hrefArray.map((item, index) =>
                         <Route key={index} path={item} component={() => <Documents dataSource={TOTAL_DATA[index]} />} />
                     )}
-                    <Route path={hrefArray} render={() => (<PageFooter />)} />
+                    <Route path={hrefArray} render={() => <PageFooter />} />
                 </Content>
             </Layout>
         )

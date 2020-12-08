@@ -171,9 +171,7 @@ export default class index extends Component {
     handleChange(index, type, e) {
         let { itemList } = this.state;
         itemList[index].currentValue = type === "checkbox" || type === "select" ? e : e.target.value;
-        this.setState({
-            itemList
-        });
+        this.setState({ itemList });
     }
     changeUpload(index, info) {
         if (info.file.status === "done") {
@@ -237,10 +235,7 @@ export default class index extends Component {
                 authorization: 'authorization-text',
             },
         };
-        let initCreateValues = {
-            formName: formName,
-            itemNum: itemNum,
-        };
+        let initCreateValues = { formName, itemNum };
         return (
             <div className="customform-container">
                 <div className="create block">
@@ -267,23 +262,21 @@ export default class index extends Component {
                                     <Col span={24} xl={ifThreeColumns ? 7 : 12}>
                                         <Form.Item className="col-nolabel" name={`itemType${index}`} key={`${index}Type`} rules={[{ validator: this.itemTypeValidator.bind(this, index) }]} {...props}>
                                             <Select onChange={this.changeItemType.bind(this, index)} placeholder="--控件类型--">
-                                                {inputType.map((type, index) => {
-                                                    return (
-                                                        <Option value={type} key={index}>
-                                                            {type === "text" ? "输入框" : (type === "radio" ? "单选框" : (type === "checkbox" ? "复选框" : (type === "select" ? "选择器" : (type === "textarea" ? "文本域" : (type === "upload" ? "上传文件" : null)))))}
-                                                        </Option>
-                                                    );
-                                                })}
+                                                {inputType.map((type, index) =>
+                                                    <Option value={type} key={index}>
+                                                        {type === "text" ? "输入框" : (type === "radio" ? "单选框" : (type === "checkbox" ? "复选框" : (type === "select" ? "选择器" : (type === "textarea" ? "文本域" : (type === "upload" ? "上传文件" : null)))))}
+                                                    </Option>
+                                                )}
                                             </Select>
                                         </Form.Item>
                                     </Col>
-                                    {ifThreeColumns ?
+                                    {ifThreeColumns &&
                                         <Col span={24} xl={7}>
                                             <Form.Item className="col-nolabel" name={`itemValue${index}`} key={`${index}Value`} rules={[{ validator: this.itemValueValidator.bind(this, index) }]} getValueFromEvent={e => e.target.value.replace(/\uff0c/g, ",")} initialValue={defaultValue}>
                                                 <Input placeholder={`请输入控件的默认值,以“,”隔开`} onChange={this.changeItemValue.bind(this, index)} />
                                             </Form.Item>
                                         </Col>
-                                        : null}
+                                    }
                                     <Col style={{ lineHeight: "30px" }} className="delete-btn">
                                         <CloseCircleFilled onClick={this.handleDelete.bind(this, index)} title="删除控件" />
                                     </Col>

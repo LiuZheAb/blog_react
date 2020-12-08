@@ -70,26 +70,25 @@ class index extends Component {
                         </div>
                     如果觉得这篇文章有帮助的话,就分享一下吧,谢谢~
                 </div>
-                    {!isNaN(pageNum) ?
+                    {!isNaN(pageNum) &&
                         <div className="content">
                             <div className="prev">
-                                {nameMap[prevHref] ?
+                                {nameMap[prevHref] &&
                                     <Link to={prevHref} className="pager">
                                         <div className="label">上一篇</div>
                                         <span className="title">{this.check(pervNum, dataSource.chapter)}{nameMap[prevHref]}</span>
                                     </Link>
-                                    : null}
+                                }
                             </div>
                             <div className="next">
-                                {nameMap[nextHref] ?
+                                {nameMap[nextHref] &&
                                     <Link to={nextHref} className="pager">
                                         <div className="label">下一篇</div>
                                         <span className="title">{this.check(nextNum, dataSource.chapter)}{nameMap[nextHref]}</span>
                                     </Link>
-                                    : null}
+                                }
                             </div>
                         </div>
-                        : null
                     }
                     <div className="books">
                         <div className="book">
