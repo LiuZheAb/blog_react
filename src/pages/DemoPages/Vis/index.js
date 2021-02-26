@@ -171,54 +171,10 @@ export default class index extends Component {
                 }
                 let white_data = white_DataSource.map((arr, i) => [i * xUnit + getMin(heatmap_xData), getMaxIndex(arr) * yUnit + getMin(heatmap_yData)]);
                 this.setState({ pink_data, white_data, resultF, black_data, black_xData, black_yData });
-                this.chart1_line.setOption({
-                    series: [{
-                        id: "a",
-                        type: "line",
-                        data: white_data
-                    }, {
-                        id: "b",
-                        type: "line",
-                        data: pink_data
-                    }]
-                });
-                this.chart2_line.setOption({
-                    series: [{
-                        id: "a",
-                        type: "line",
-                        data: white_data
-                    }, {
-                        id: "b",
-                        type: "line",
-                        data: pink_data
-                    }]
-                });
-                this.chart3_line.setOption({
-                    series: [{
-                        id: "a",
-                        type: "line",
-                        data: white_data
-                    }, {
-                        id: "b",
-                        type: "line",
-                        data: pink_data
-                    }]
-                });
-                this.chart4.setOption({
-                    xAxis: {
-                        max: formatDecimal(Math.max(...black_xData), 1) + 0.1,
-                        min: formatDecimal(Math.min(...black_xData), 1)
-                    },
-                    yAxis: {
-                        max: formatDecimal(Math.max(...black_yData), 1) + 0.1,
-                        min: formatDecimal(Math.min(...black_yData), 1)
-                    },
-                    series: [{
-                        id: "a",
-                        type: "line",
-                        data: black_data
-                    }]
-                });
+                this.updateHMLineData(this.chart1_line, white_data, pink_data);
+                this.updateHMLineData(this.chart2_line, white_data, pink_data);
+                this.updateHMLineData(this.chart3_line, white_data, pink_data);
+                this.updateLineData(this.chart4, black_xData, black_yData, black_data);
             }
         });
     }
@@ -428,40 +384,9 @@ export default class index extends Component {
                             resultF.push(NaN)
                         }
                     }
-                    this.chart1_line.setOption({
-                        series: [{
-                            id: "a",
-                            type: "line",
-                            data: white_data,
-                        }, {
-                            id: "b",
-                            type: "line",
-                            data: pink_data
-                        }]
-                    });
-                    this.chart2_line.setOption({
-                        series: [{
-                            id: "a",
-                            type: "line",
-                            data: white_data,
-                        }, {
-                            id: "b",
-                            type: "line",
-                            data: pink_data
-                        }]
-                    });
-                    this.chart3_line.setOption({
-                        series: [{
-                            id: "a",
-                            type: "line",
-                            data: white_data,
-                        }, {
-                            id: "b",
-                            type: "line",
-                            data: pink_data
-                        }]
-                    });
-
+                    this.updateHMLineData(this.chart1_line, white_data, pink_data);
+                    this.updateHMLineData(this.chart2_line, white_data, pink_data);
+                    this.updateHMLineData(this.chart3_line, white_data, pink_data);
                     let black_data = [], black_xData = [], black_yData = [];
                     for (let i = 0, len = pink_data.length; i < len; i++) {
                         if (Array.isArray(pink_data[i])) {
@@ -470,19 +395,7 @@ export default class index extends Component {
                             black_yData.push(disp.v[i] / disp.f[i] / 2);
                         }
                     }
-                    this.chart4.setOption({
-                        xAxis: {
-                            max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
-                            min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
-                        },
-                        yAxis: {
-                            max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
-                            min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
-                        },
-                        series: {
-                            data: black_data
-                        }
-                    })
+                    this.updateLineData(this.chart4, black_xData, black_yData, black_data);
                     this.setState({
                         white_data, disp, pink_data, black_data, black_xData, black_yData, resultF, prevPosition: position
                     });
@@ -490,6 +403,9 @@ export default class index extends Component {
             }
         )
         line.getZr().on("mouseup", () => {
+            this.setState({ prevPosition: undefined });
+        })
+        line.getZr().on("mouseout", () => {
             this.setState({ prevPosition: undefined });
         })
         line.getZr().on(
@@ -544,58 +460,28 @@ export default class index extends Component {
                                 black_yData.push(disp.v[i] / disp.f[i] / 2);
                             }
                         }
-                        this.chart1_line.setOption({
-                            series: [
-                                {
-                                    id: "a",
-                                    data: white_data
-                                },
-                                {
-                                    id: 'b',
-                                    data: pink_data
-                                }]
-                        })
-                        this.chart2_line.setOption({
-                            series: [
-                                {
-                                    id: "a",
-                                    data: white_data
-                                },
-                                {
-                                    id: 'b',
-                                    data: pink_data
-                                }]
-                        })
-                        this.chart3_line.setOption({
-                            series: [
-                                {
-                                    id: "a",
-                                    data: white_data
-                                },
-                                {
-                                    id: 'b',
-                                    data: pink_data
-                                }]
-                        })
-                        this.chart4.setOption({
-                            xAxis: {
-                                max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
-                                min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
-                            },
-                            yAxis: {
-                                max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
-                                min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
-                            },
-                            series: [{
-                                id: 'a',
-                                data: black_data
-                            }]
-                        });
+                        this.updateHMLineData(this.chart1_line, white_data, pink_data);
+                        this.updateHMLineData(this.chart2_line, white_data, pink_data);
+                        this.updateHMLineData(this.chart3_line, white_data, pink_data);
+                        this.updateLineData(this.chart4, black_xData, black_yData, black_data);
                         this.setState({ pink_data, black_data, white_data, resultF, disp, white_data_copy });
                     }
                 }
             }
         )
+    }
+    updateHMLineData = (line, white_data, pinkData) => {
+        line.setOption({
+            series: [
+                {
+                    id: "a",
+                    data: white_data
+                },
+                {
+                    id: 'b',
+                    data: pinkData
+                }]
+        })
     }
     lineRender = () => {
         let { pink_data, disp } = this.state;
@@ -657,20 +543,35 @@ export default class index extends Component {
         };
         this.chart4.setOption(black_option);
     }
+    updateLineData = (line, black_xData, black_yData, black_data) => {
+        line.setOption({
+            xAxis: {
+                max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
+                min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
+            },
+            yAxis: {
+                max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
+                min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
+            },
+            series: {
+                data: black_data
+            }
+        })
+    }
     handleSelect = (selectedKeys, info) => {
         this.handleClear();
         this.getData(info.node.title);
+        this.setState({ fileName: info.node.title });
     }
     handleChangeInput = (key, e) => {
         this.setState({ [key]: Number(e.target.value) });
     }
     handleChangeData = e => {
-        let { loaded } = this.state;
         this.setState({
             dataType: e.target.value,
             white_data_copy: undefined
         }, () => {
-            if (loaded) {
+            if (this.state.loaded) {
                 this.getDisp(1);
             }
         });
@@ -679,7 +580,7 @@ export default class index extends Component {
         if (this.state.loaded) {
             this.getDisp(1);
         } else {
-            message.info("请先读取文件")
+            message.info("请选择数据文件");
         }
     }
     handleClear = () => {
@@ -757,17 +658,21 @@ export default class index extends Component {
         });
     }
     handleSave = () => {
-        let { resultV, resultF, treeData } = this.state
-        resultF = resultF.map(item => item.toFixed(4))
-        var elementA = document.createElement('a');
-        elementA.download = treeData[0].title + ".disper";//文件名
-        //隐藏dom点不显示
-        elementA.style.display = 'none';
-        var blob = new Blob([`${resultV} \r\n${resultF} `]);//二进制
-        elementA.href = URL.createObjectURL(blob);
-        document.body.appendChild(elementA);
-        elementA.click();
-        document.body.removeChild(elementA);
+        let { resultV, resultF, loaded, fileName } = this.state
+        if (loaded) {
+            resultF = resultF.map(item => item.toFixed(4))
+            var elementA = document.createElement('a');
+            elementA.download = fileName + ".disper";//文件名
+            //隐藏dom点不显示
+            elementA.style.display = 'none';
+            var blob = new Blob([`${resultV} \r\n${resultF} `]);//二进制
+            elementA.href = URL.createObjectURL(blob);
+            document.body.appendChild(elementA);
+            elementA.click();
+            document.body.removeChild(elementA);
+        } else {
+            message.info("请选择数据文件");
+        }
     }
     componentWillUnmount() {
         this.chart1_heatmap.dispose();
