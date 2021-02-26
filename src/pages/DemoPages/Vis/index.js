@@ -36,12 +36,14 @@ export default class index extends Component {
         vout: undefined,
         fval: undefined,
         white_data: [],
+        white_data_copy: undefined,
         pink_data: [],
         black_data: [],
         black_xData: [],
         black_yData: [],
         resultV: [],
-        resultF: []
+        resultF: [],
+        prevPosition: undefined
     }
     componentDidMount() {
         this.chart1_heatmap = echarts.init(document.getElementById('chart1_heatmap'));
@@ -371,11 +373,12 @@ export default class index extends Component {
                         x: (offsetX - grid.left) / (offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData),
                         y: (offsetHeight - grid.bottom - offsetY) / (offsetHeight - grid.top - grid.bottom) * (getMax(heatmap_yData) - getMin(heatmap_yData)) + getMin(heatmap_yData),
                     }
-                    let { white_data, white_data_copy } = this.state;
+                    let { white_data, white_data_copy, prevPosition } = this.state;
                     let distenceArr = white_data.map((position, i) => Math.abs(currentPosition.x - position[0]));
                     if (!white_data_copy) {
                         white_data_copy = JSON.parse(JSON.stringify(white_data));
                     }
+                    let position = [];
                     if (event.shiftKey || event.ctrlKey) {
                         let dataIndex = getMinIndex(distenceArr);
                         if (event.shiftKey) {
@@ -401,6 +404,15 @@ export default class index extends Component {
                         if (Array.isArray(white_data[getMinIndex(distenceArr)])) {
                             white_data[getMinIndex(distenceArr)][1] = currentPosition.y;
                             white_data_copy[getMinIndex(distenceArr)][1] = currentPosition.y;
+                            position = [getMinIndex(distenceArr), currentPosition.y];
+                            if (prevPosition) {
+                                for (let i = 1; i < Math.abs(prevPosition[0] - getMinIndex(distenceArr)); i++) {
+                                    let index = prevPosition[0] > getMinIndex(distenceArr) ? prevPosition[0] - i : prevPosition[0] + i;
+                                    let y = prevPosition[1] + (currentPosition.y - prevPosition[1]) / Math.abs(getMinIndex(distenceArr) - prevPosition[0]) * i;
+                                    white_data[index][1] = y;
+                                    white_data_copy[index][1] = y;
+                                }
+                            }
                         }
                     }
                     let { proc_F, vout, disp, } = this.state;
@@ -471,10 +483,15 @@ export default class index extends Component {
                             data: black_data
                         }
                     })
-                    this.setState({ white_data, disp, pink_data, black_data, black_xData, black_yData, resultF });
+                    this.setState({
+                        white_data, disp, pink_data, black_data, black_xData, black_yData, resultF, prevPosition: position
+                    });
                 }
             }
         )
+        line.getZr().on("mouseup", () => {
+            this.setState({ prevPosition: undefined });
+        })
         line.getZr().on(
             'click', params => {
                 let { event, offsetX } = params;
@@ -574,7 +591,6 @@ export default class index extends Component {
                                 data: black_data
                             }]
                         });
-
                         this.setState({ pink_data, black_data, white_data, resultF, disp, white_data_copy });
                     }
                 }
@@ -725,6 +741,7 @@ export default class index extends Component {
         this.setState({
             loaded: false,
             white_data: [],
+            white_data_copy: undefined,
             pink_data: [],
             black_data: [],
             black_xData: [],
