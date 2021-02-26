@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Tree, Input, Radio, Button, message } from "antd";
+import { Tree, Input, Radio, Button, message, Spin } from "antd";
 import * as echarts from 'echarts';
-import { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } from "./utils"
+import * as utils from "./utils"
 import "./index.css";
 
+const { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } = utils;
 let dataSource = [];
 for (let i = 1; i < 52; i++) {
     dataSource.push({
@@ -45,10 +46,13 @@ export default class index extends Component {
     componentDidMount() {
         this.chart1_heatmap = echarts.init(document.getElementById('chart1_heatmap'));
         this.chart1_line = echarts.init(document.getElementById('chart1_line'));
+        this.chart1_loading_mask = document.getElementById('chart1_loading_mask');
         this.chart2_heatmap = echarts.init(document.getElementById('chart2_heatmap'));
         this.chart2_line = echarts.init(document.getElementById('chart2_line'));
+        this.chart2_loading_mask = document.getElementById('chart2_loading_mask');
         this.chart3_heatmap = echarts.init(document.getElementById('chart3_heatmap'));
         this.chart3_line = echarts.init(document.getElementById('chart3_line'));
+        this.chart3_loading_mask = document.getElementById('chart3_loading_mask');
         this.chart4 = echarts.init(document.getElementById('chart4'));
         this.handleClear();
         window.addEventListener("resize", () => {
@@ -62,7 +66,13 @@ export default class index extends Component {
         });
     }
     getData = fileName => {
+        this.chart1_loading_mask.style.display = "flex";
+        this.chart2_loading_mask.style.display = "flex";
+        this.chart3_loading_mask.style.display = "flex";
         import(`./disper_json/${fileName}.json`).then(res => {
+            this.chart1_loading_mask.style.display = "none";
+            this.chart2_loading_mask.style.display = "none";
+            this.chart3_loading_mask.style.display = "none";
             let { disper_map_stack_A2B, disper_map_stack_B2A, disper_map_stack_SYM, pshift } = res;
             this.setState({
                 loaded: true,
@@ -262,7 +272,7 @@ export default class index extends Component {
                 data: heatmap_data,
                 progressive: 5000,
                 animation: false
-            }]
+            }],
         };
         heatmap.setOption(headtmap_option, true);
         if (heatmap_expandOption) {
@@ -809,17 +819,20 @@ export default class index extends Component {
                         </div>
                     </div>
                     <div style={{ position: "relative", height: "100%", width: "calc((100% - 310px) / 3 * 2)" }}>
-                        <div className="chart-container" style={{ top: 0 }}>
+                        <div className="chart-container">
                             <div id="chart1_heatmap" className="chart" />
                             <div id="chart1_line" className="chart" />
+                            <div id="chart1_loading_mask" className="loading_mask"><Spin tip="Loading..." /></div>
                         </div>
                         <div className="chart-container">
                             <div id="chart2_heatmap" className="chart" />
                             <div id="chart2_line" className="chart" />
+                            <div id="chart2_loading_mask" className="loading_mask"><Spin tip="Loading..." /></div>
                         </div>
                         <div className="chart-container">
                             <div id="chart3_heatmap" className="chart" />
                             <div id="chart3_line" className="chart" />
+                            <div id="chart3_loading_mask" className="loading_mask"><Spin tip="Loading..." /></div>
                         </div>
                     </div>
                     <div id="chart4" style={{ width: "calc((100% - 310px) / 3)", height: "100%" }} />
