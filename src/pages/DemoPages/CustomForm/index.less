@@ -1,0 +1,93 @@
+.customform-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    .block {
+        width: 50%;
+        height: 100%;
+        padding: 24px;
+        overflow: auto;
+    }
+
+    .create {
+        border-right: 2px solid #c9c9c9;
+
+        &-form {
+            margin-right: 20px;
+        }
+
+        .item-line {
+            position: relative;
+        }
+
+        .ant-form-item-label {
+            width: 96px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            right: -30px;
+        }
+
+        .anticon-close-circle {
+            transition: color .3s;
+            cursor: pointer;
+
+            &:hover {
+                color: #ff4d4f;
+            }
+        }
+    }
+
+    .show {
+        border-left: 2px solid #c9c9c9;
+
+        .ant-form {
+            max-width: 600px;
+            margin: 0 auto;
+
+            &-item-label {
+                width: 100px;
+            }
+        }
+    }
+}
+
+@media(max-width:1200px) {
+    .customform-container .create .col-nolabel {
+        width: calc(100% - 96px);
+        float: right;
+    }
+}
+
+@media(max-width:575px) {
+    .customform-container {
+        .block {
+            padding: 5px;
+        }
+
+        .create {
+            .ant-form-item {
+                margin-bottom: 10px;
+            }
+
+            .delete-btn {
+                right: 0;
+            }
+
+            .col-nolabel {
+                width: 100%;
+                float: none;
+            }
+
+            .ant-space {
+                display: initial;
+
+                &-item {
+                    margin: 0 0 12px !important;
+                }
+            }
+        }
+    }
+}

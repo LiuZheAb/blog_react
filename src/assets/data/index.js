@@ -150,12 +150,14 @@ const DEMO_DATA = {
     section: [
         "自定义表单",
         "WebIDE",
-        "帧动画Demo"
+        "帧动画Demo",
+        "可视化数据操作Demo",
     ],
     chapter: {
         "自定义表单": [0],
         "WebIDE": [1],
-        "帧动画Demo": [2]
+        "帧动画Demo": [2],
+        "可视化数据操作Demo": [3],
     }
 }
 export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA, DEMO_DATA];
