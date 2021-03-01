@@ -745,7 +745,7 @@ export default class index extends Component {
                     <div style={{ width: 300, height: "100%" }} >
                         <div className="box" style={{ padding: 0 }}>
                             <div className="box-title">Select a Data</div>
-                            <div className="box-content" style={{ display: "flex", justifyContent: "center" }}>
+                            <div className="box-content" style={{ display: "flex", justifyContent: "center", padding: 0 }}>
                                 <Tree treeData={treeData} onSelect={this.handleSelect} blockNode={true} checkable={false} />
                             </div>
                         </div>
