@@ -18,13 +18,12 @@ function interp_onePoint(x, y, n, t, fval) {
 
 
 function spl(x, y, n, k, t, s) {
-    let kk, m, lc;
-    let u = [], p, q;
-    s[4] = 0.0;
+    let kk, m, lc, u = [], p, q;
     s[0] = 0.0;
     s[1] = 0.0;
     s[2] = 0.0;
     s[3] = 0.0;
+    s[4] = 0.0;
     if (n < 1) {
         return;
     }
@@ -58,7 +57,7 @@ function spl(x, y, n, k, t, s) {
         } else {
             kk = 1;
             m = n;
-            while (((kk - m) !== 1) && ((kk - m) !== -1)) {
+            while (kk - m !== 1 && kk - m !== -1) {
                 lc = Math.floor((kk + m) / 2);
                 if (t < x[lc - 1]) {
                     m = lc;

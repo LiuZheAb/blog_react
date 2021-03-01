@@ -1,0 +1,129 @@
+#main {
+    width: 100vw;
+    height: 100vh;
+    padding: 16px 8px 16px 16px;
+    font-size: 14px;
+
+    .ant-tree {
+        width: 100%;
+        height: 200px;
+        overflow-y: auto;
+        padding-top: 8px;
+
+        .ant-tree-switcher {
+            width: 0;
+            display: none;
+        }
+
+        .ant-tree-node-content-wrapper {
+            width: 100%;
+        }
+    }
+
+    .box {
+        height: auto;
+        border: 1px solid #666;
+        margin: 16px 0;
+        position: relative;
+        padding: 16px 0;
+
+        .box-title {
+            position: absolute;
+            top: -14px;
+            left: 20px;
+            background-color: #fff;
+            padding: 0 5px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .box-content {
+            display: flex;
+            font-size: 14px;
+            padding: 0 8px;
+
+            .column {
+                width: 50%;
+
+                &:first-child {
+                    padding-right: 8px;
+                }
+
+                &:last-child {
+                    padding-left: 8px;
+                }
+
+                label {
+                    width: 70px;
+                    text-align: right;
+                    line-height: 32px;
+                    padding-right: 5px;
+
+                    &::after {
+                        content: ":"
+                    }
+                }
+
+                .ant-input {
+                    width: calc(100% - 70px);
+                }
+
+                .row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 8px;
+                }
+            }
+
+            .ant-radio-group {
+                width: 100%;
+            }
+        }
+    }
+
+    .chart-container {
+        width: 100%;
+        height: 33.33333333%;
+        position: relative;
+
+        .chart,
+        .loading_mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .loading_mask {
+            background: rgba(255, 255, 255, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:before {
+            position: absolute;
+            top: -10px;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            z-index: 999;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        &:first-child:before {
+            content: "A->B";
+        }
+
+        &:nth-child(2):before {
+            content: "B->A";
+        }
+
+        &:last-child:before {
+            content: "SYM";
+        }
+    }
+}

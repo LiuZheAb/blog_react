@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Tree, Input, Radio, Button, message, Spin } from "antd";
 import * as echarts from 'echarts';
-import * as utils from "./utils"
-import "./index.css";
+import { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } from "./utils";
+import "./index.less";
 
-const { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } = utils;
 let dataSource = [];
 for (let i = 1; i < 52; i++) {
     dataSource.push({
@@ -31,18 +30,15 @@ export default class index extends Component {
         fminIndex: undefined,
         fmaxIndex: undefined,
         disp: undefined,
-        proc_F: undefined,
-        proc_V: undefined,
         vout: undefined,
         fval: undefined,
         white_data: [],
-        white_data_copy: undefined,
         pink_data: [],
         black_data: [],
         black_xData: [],
         black_yData: [],
-        resultV: [],
-        resultF: [],
+        resultX: [],
+        resultY: [],
         prevPosition: undefined
     }
     componentDidMount() {
@@ -66,6 +62,11 @@ export default class index extends Component {
             this.chart3_line.resize();
             this.chart4.resize();
         });
+        window.addEventListener("keypress", (e) => {
+            if (e.key === "Enter" && e.target.localName === "input" && e.target.type === "text") {
+                this.handleCalculate();
+            }
+        })
     }
     getData = fileName => {
         this.chart1_loading_mask.style.display = "flex";
@@ -83,7 +84,7 @@ export default class index extends Component {
                 disper_map_stack_SYM,
                 pshift,
             });
-            this.getDisp(0);
+            this.getDisp();
             this.chartRender(this.chart1_heatmap, this.chart1_line, disper_map_stack_A2B);
             this.chartRender(this.chart2_heatmap, this.chart2_line, disper_map_stack_B2A);
             this.chartRender(this.chart3_heatmap, this.chart3_line, disper_map_stack_SYM,
@@ -97,29 +98,27 @@ export default class index extends Component {
             this.lineRender();
         });
     }
-    getDisp = status => {
+    getDisp = () => {
         let { dataType, disper_map_stack_A2B, disper_map_stack_B2A, disper_map_stack_SYM, pshift, fmin, fmax, Tout_min, dTout, Tout_max } = this.state;
+        let { f0, nf0, v, nv } = pshift;
         let fminArr = [], fmaxArr = [];
-        for (let i = 0, len = pshift.f0.length; i < len; i++) {
-            fminArr.push(Math.abs(fmin - pshift.f0[i]));
-            fmaxArr.push(Math.abs(fmax - pshift.f0[i]));
+        for (let i = 0, len = f0.length; i < len; i++) {
+            fminArr.push(Math.abs(fmin - f0[i]));
+            fmaxArr.push(Math.abs(fmax - f0[i]));
         }
-        let vout = [], resultV = [];
+        let fminIndex = getMinIndex(fminArr), fmaxIndex = getMinIndex(fmaxArr);
+        let vout = [], resultX = [];
         for (let i = Tout_min; i <= Tout_max; i = Number((i + dTout).toFixed(2))) {
             vout.push(1 / i);
-            resultV.push(i)
+            resultX.push(i);
         }
-        let proc_F = [], proc_V = []
-        for (let i = 0, len = pshift.f0.length; i < len; i++) {
-            proc_F.push(pshift.f0[i]);
-            if (i < getMinIndex(fminArr)) {
-                proc_F[i] = NaN;
-            } else if (i > getMinIndex(fmaxArr)) {
-                proc_F[i] = NaN;
+        let proc_F = [], proc_V = [];
+        for (let i = 0, len = f0.length; i < len; i++) {
+            if (i >= fminIndex && i <= fmaxIndex) {
+                proc_F.push(f0[i]);
             }
         }
-
-        let white_DataSource = [];
+        let white_DataSource = [], white_data = [];
         switch (dataType) {
             case "A2B":
                 white_DataSource = disper_map_stack_A2B[0].map((col, i) => disper_map_stack_A2B.map(row => row[i]));
@@ -133,64 +132,87 @@ export default class index extends Component {
             default:
                 break;
         }
-        proc_V = white_DataSource.map(arr => getMaxIndex(arr) / arr.length);
-        let range_v = getMax(pshift.v) - getMin(pshift.v);
-        proc_V = proc_V.map(item => item * range_v + getMin(pshift.v))
+        let range_v = getMax(v) - getMin(v);
+        for (let i = 0, len = white_DataSource.length; i < len; i++) {
+            if (i >= fminIndex && i <= fmaxIndex) {
+                proc_V.push((getMaxIndex(white_DataSource[i]) + 1) / nv * range_v + getMin(v));
+                white_data.push([f0[i], (getMaxIndex(white_DataSource[i]) + 1) / nv * range_v + getMin(v)]);
+            } else {
+                white_data.push([f0[i], NaN]);
+            }
+        }
         let fval = new Array(vout.length);
         let disp = {
             f: vout,
             v: interp_multiPoint(proc_F, proc_V, proc_F.length, vout, fval, vout.length)
         }
+        for (let i = 0, len = disp.f.length; i < len; i++) {
+            if (disp.f[i] < fmin) {
+                disp.v[i] = NaN;
+            } else if (disp.f[i] > fmax) {
+                disp.v[i] = NaN;
+            }
+        }
 
-        this.setState({
-            disp,
-            fminIndex: getMinIndex(fminArr),
-            fmaxIndex: getMinIndex(fmaxArr),
-            proc_F,
-            proc_V,
-            vout,
-            fval,
-            resultV
-        }, () => {
-            if (status) {
-                let { xUnit, yUnit, heatmap_xData, heatmap_yData } = this.state;
-                let pink_data = [], resultF = [];
-                for (let i = 0, len = disp.f.length; i < len; i++) {
-                    if (disp.f[i] && disp.v[i]) {
-                        pink_data.push([disp.f[i], disp.v[i]]);
-                        resultF.push(disp.v[i])
-                    }
-                }
-                let black_data = [], black_xData = [], black_yData = [];
-                for (let i = 0, len = pink_data.length; i < len; i++) {
-                    if (Array.isArray(pink_data[i])) {
-                        black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
-                        black_xData.push(disp.v[i]);
-                        black_yData.push(disp.v[i] / disp.f[i] / 2);
-                    }
-                }
-                let white_data = white_DataSource.map((arr, i) => [i * xUnit + getMin(heatmap_xData), getMaxIndex(arr) * yUnit + getMin(heatmap_yData)]);
-                this.setState({ pink_data, white_data, resultF, black_data, black_xData, black_yData });
-                this.updateHMLineData(this.chart1_line, white_data, pink_data);
-                this.updateHMLineData(this.chart2_line, white_data, pink_data);
-                this.updateHMLineData(this.chart3_line, white_data, pink_data);
-                this.updateLineData(this.chart4, black_xData, black_yData, black_data);
-            }
-        });
-    }
-    chartRender = (heatmap, line, dataSource, heatmap_expandOption) => {
-        let { dataType, disper_map_stack_A2B, disper_map_stack_B2A, disper_map_stack_SYM, pshift, fminIndex, fmaxIndex, disp } = this.state;
-        let { f0, nf0, v, nv } = pshift;
         /**绘制热力图背景 */
-        let heatmap_data = [], heatmap_xData = [], heatmap_yData = [];
+        let heatmap_xData = [], heatmap_yData = [];
         for (let i = 0; i < nf0; i++) {
-            for (let j = 0; j < nv; j++) {
-                heatmap_data.push([i, j, dataSource[j][i]]);
-            }
             heatmap_xData.push(formatDecimal(f0[i], 2));
         }
         for (let j = 0; j < nv; j++) {
             heatmap_yData.push(formatDecimal(v[j], 2));
+        }
+
+        /**绘制线 */
+        let pink_data = [], resultY = [];
+        for (let i = 0, len = disp.f.length; i < len; i++) {
+            if (disp.f[i] && disp.v[i]) {
+                pink_data.push([disp.f[i], disp.v[i]]);
+                resultY.push(disp.v[i]);
+            } else {
+                pink_data.push(NaN);
+                resultY.push(NaN);
+            }
+        }
+
+        let black_data = [], black_xData = [], black_yData = [];
+        for (let i = 0, len = pink_data.length; i < len; i++) {
+            if (Array.isArray(pink_data[i])) {
+                black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
+                black_xData.push(disp.v[i]);
+                black_yData.push(disp.v[i] / disp.f[i] / 2);
+            }
+        }
+        this.setState({
+            disp,
+            vout,
+            fval,
+            resultX,
+            resultY,
+            fminIndex,
+            fmaxIndex,
+            heatmap_xData,
+            heatmap_yData,
+            white_data,
+            pink_data,
+            black_data,
+            black_xData,
+            black_yData
+        });
+        this.updateHMLineData(this.chart1_line, white_data, pink_data, true);
+        this.updateHMLineData(this.chart2_line, white_data, pink_data, true);
+        this.updateHMLineData(this.chart3_line, white_data, pink_data, true);
+        this.updateLineData(this.chart4, black_xData, black_yData, black_data, true);
+    }
+    chartRender = (heatmap, line, dataSource, heatmap_expandOption) => {
+        let { pshift, heatmap_xData, heatmap_yData } = this.state;
+        let { nf0, nv } = pshift;
+        /**绘制热力图背景 */
+        let heatmap_data = [];
+        for (let i = 0; i < nf0; i++) {
+            for (let j = 0; j < nv; j++) {
+                heatmap_data.push([i, j, dataSource[j][i]]);
+            }
         }
         let grid = {
             right: 20,
@@ -199,7 +221,12 @@ export default class index extends Component {
             bottom: 40
         }
         let headtmap_option = {
-            grid,
+            grid: {
+                right: 20,
+                left: 60,
+                top: 20,
+                bottom: 40
+            },
             xAxis: {
                 type: 'category',
                 data: heatmap_xData
@@ -236,48 +263,167 @@ export default class index extends Component {
         if (heatmap_expandOption) {
             heatmap.setOption(heatmap_expandOption);
         }
-
-        /**绘制线 */
-        let white_DataSource = [];
-        //转换数组行列，方便找列的最大值
-        switch (dataType) {
-            case "A2B":
-                white_DataSource = disper_map_stack_A2B[0].map((col, i) => disper_map_stack_A2B.map(row => row[i]));
-                break;
-            case "B2A":
-                white_DataSource = disper_map_stack_B2A[0].map((col, i) => disper_map_stack_B2A.map(row => row[i]));
-                break;
-            case "SYM":
-                white_DataSource = disper_map_stack_SYM[0].map((col, i) => disper_map_stack_SYM.map(row => row[i]));
-                break;
-            default:
-                break;
-        }
-        let xUnit = (getMax(heatmap_xData) - getMin(heatmap_xData)) / (nf0 - 1);
-        let yUnit = (getMax(heatmap_yData) - getMin(heatmap_yData)) / (nv - 1);
-        let white_data = white_DataSource.map((arr, i) => [i * xUnit + getMin(heatmap_xData), getMaxIndex(arr) * yUnit + getMin(heatmap_yData)]);
-        for (let i = 0, len = white_data.length; i < len; i++) {
-            if (i < fminIndex) {
-                white_data[i] = NaN;
-            } else if (i > fmaxIndex) {
-                white_data[i] = NaN;
+        line.getZr().on(
+            'mousemove', params => {
+                let { event, offsetX, offsetY } = params;
+                if (event.button === 0 && event.buttons === 1) {
+                    let { offsetWidth, offsetHeight } = params.event.target;
+                    let currentPosition = {
+                        x: (offsetX - grid.left) / (offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData),
+                        y: (offsetHeight - grid.bottom - offsetY) / (offsetHeight - grid.top - grid.bottom) * (getMax(heatmap_yData) - getMin(heatmap_yData)) + getMin(heatmap_yData),
+                    }
+                    let { white_data, prevPosition, fminIndex, fmaxIndex, vout, disp, pshift } = this.state;
+                    let distenceArr = white_data.map((position, i) => isNaN(position[1]) ? NaN : Math.abs(currentPosition.x - position[0]));
+                    let position = [];
+                    if (event.shiftKey || event.ctrlKey) {
+                        let dataIndex = getMinIndex(distenceArr);
+                        if (event.shiftKey) {
+                            fmaxIndex = dataIndex;
+                            for (let i = 0, len = white_data.length; i < len; i++) {
+                                if (i > dataIndex) {
+                                    white_data[i] = NaN;
+                                }
+                            }
+                        } else if (event.ctrlKey) {
+                            fminIndex = dataIndex;
+                            for (let i = 0, len = white_data.length; i < len; i++) {
+                                if (i < dataIndex) {
+                                    white_data[i] = NaN;
+                                }
+                            }
+                        }
+                    } else {
+                        if (Array.isArray(white_data[getMinIndex(distenceArr)])) {
+                            white_data[getMinIndex(distenceArr)][1] = currentPosition.y;
+                            position = [getMinIndex(distenceArr), currentPosition.y];
+                            if (prevPosition) {
+                                for (let i = 1; i < Math.abs(prevPosition[0] - getMinIndex(distenceArr)); i++) {
+                                    let index = prevPosition[0] > getMinIndex(distenceArr) ? prevPosition[0] - i : prevPosition[0] + i;
+                                    let y = prevPosition[1] + (currentPosition.y - prevPosition[1]) / Math.abs(getMinIndex(distenceArr) - prevPosition[0]) * i;
+                                    white_data[index][1] = y;
+                                }
+                            }
+                        }
+                    }
+                    let proc_F = [], proc_V = [];
+                    for (let i = 0, len = white_data.length; i < len; i++) {
+                        if (Array.isArray(white_data[i])) {
+                            proc_F.push(pshift.f0[i])
+                            proc_V.push(white_data[i][1]);
+                        }
+                    }
+                    disp.v = interp_multiPoint(proc_F, proc_V, proc_F.length, vout, new Array(vout.length), vout.length)
+                    let pink_data = [], resultY = [];
+                    for (let i = 0, len = disp.f.length; i < len; i++) {
+                        if (disp.f[i] >= pshift.f0[fminIndex] && disp.f[i] <= pshift.f0[fmaxIndex]) {
+                            pink_data.push([disp.f[i], disp.v[i]]);
+                            resultY.push(disp.v[i]);
+                        } else {
+                            disp.v[i] = NaN;
+                            pink_data.push(NaN);
+                            resultY.push(NaN);
+                        }
+                    }
+                    this.updateHMLineData(this.chart1_line, white_data, pink_data, false);
+                    this.updateHMLineData(this.chart2_line, white_data, pink_data, false);
+                    this.updateHMLineData(this.chart3_line, white_data, pink_data, false);
+                    let black_data = [], black_xData = [], black_yData = [];
+                    for (let i = 0, len = pink_data.length; i < len; i++) {
+                        if (Array.isArray(pink_data[i])) {
+                            black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
+                            black_xData.push(disp.v[i]);
+                            black_yData.push(disp.v[i] / disp.f[i] / 2);
+                        }
+                    }
+                    this.updateLineData(this.chart4, black_xData, black_yData, black_data, false);
+                    this.setState({
+                        white_data, disp, pink_data, black_data, black_xData, black_yData, resultY, prevPosition: position
+                    });
+                }
             }
-        }
-        let pink_data = [], resultF = [];
-        for (let i = 0, len = disp.f.length; i < len; i++) {
-            if (disp.f[i] && disp.v[i]) {
-                pink_data.push([disp.f[i], disp.v[i]]);
-                resultF.push(disp.v[i]);
+        )
+        line.getZr().on("mouseup", () => {
+            this.setState({ prevPosition: undefined });
+        })
+        line.getZr().on("mouseout", () => {
+            this.setState({ prevPosition: undefined });
+        })
+        line.getZr().on(
+            'click', params => {
+                let { event, offsetX } = params;
+                let currentPositionX = (offsetX - grid.left) / (event.target.offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData);
+                let { white_data, fminIndex, fmaxIndex } = this.state;
+                let distenceArr = white_data.map((position, i) => Math.abs(currentPositionX - position[0]));
+                let dataIndex = getMinIndex(distenceArr);
+                if (event.button === 0) {
+                    if (event.shiftKey || event.ctrlKey) {
+                        if (event.shiftKey) {
+                            fmaxIndex = dataIndex;
+                            for (let i = 0, len = white_data.length; i < len; i++) {
+                                if (i > dataIndex) {
+                                    white_data[i] = NaN;
+                                }
+                            }
+                        } else if (event.ctrlKey) {
+                            fminIndex = dataIndex;
+                            for (let i = 0, len = white_data.length; i < len; i++) {
+                                if (i < dataIndex) {
+                                    white_data[i] = NaN;
+                                }
+                            }
+                        }
+                        let { vout, disp, pshift } = this.state;
+                        let proc_F = [], proc_V = [];
+                        for (let i = 0, len = white_data.length; i < len; i++) {
+                            if (Array.isArray(white_data[i])) {
+                                proc_F.push(pshift.f0[i])
+                                proc_V.push(white_data[i][1]);
+                            }
+                        }
+                        disp.v = interp_multiPoint(proc_F, proc_V, proc_F.length, vout, new Array(vout.length), vout.length)
+                        let pink_data = [], resultY = [];
+                        for (let i = 0, len = disp.f.length; i < len; i++) {
+                            if (disp.f[i] >= pshift.f0[fminIndex] && disp.f[i] <= pshift.f0[fmaxIndex]) {
+                                pink_data.push([disp.f[i], disp.v[i]]);
+                                resultY.push(disp.v[i]);
+                            } else {
+                                disp.v[i] = NaN;
+                                pink_data.push(NaN);
+                                resultY.push(NaN);
+                            }
+                        }
+                        let black_data = [], black_xData = [], black_yData = [];
+                        for (let i = 0, len = pink_data.length; i < len; i++) {
+                            if (Array.isArray(pink_data[i])) {
+                                black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
+                                black_xData.push(disp.v[i]);
+                                black_yData.push(disp.v[i] / disp.f[i] / 2);
+                            }
+                        }
+                        this.updateHMLineData(this.chart1_line, white_data, pink_data, false);
+                        this.updateHMLineData(this.chart2_line, white_data, pink_data, false);
+                        this.updateHMLineData(this.chart3_line, white_data, pink_data, false);
+                        this.updateLineData(this.chart4, black_xData, black_yData, black_data, false);
+                        this.setState({ pink_data, black_data, white_data, resultY, disp, fminIndex, fmaxIndex });
+                    }
+                }
             }
-        }
-        this.setState({ white_data, pink_data, xUnit, yUnit, heatmap_xData, heatmap_yData, resultF });
-        let line_option = {
+        )
+    }
+    updateHMLineData = (line, white_data, pink_data, reload) => {
+        let { heatmap_xData, heatmap_yData } = this.state;
+        line.setOption({
             tooltip: {
                 formatter: function (params) {
                     return 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4);
                 }
             },
-            grid,
+            grid: {
+                right: 20,
+                left: 60,
+                top: 20,
+                bottom: 40
+            },
             xAxis: {
                 type: 'value',
                 show: false,
@@ -318,170 +464,7 @@ export default class index extends Component {
                     hoverAnimation: false,
                 }
             ]
-        };
-        line.setOption(line_option, true);
-        line.getZr().on(
-            'mousemove', params => {
-                let { event, offsetX, offsetY } = params;
-                if (event.button === 0 && event.buttons === 1) {
-                    let { offsetWidth, offsetHeight } = params.event.target;
-                    let currentPosition = {
-                        x: (offsetX - grid.left) / (offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData),
-                        y: (offsetHeight - grid.bottom - offsetY) / (offsetHeight - grid.top - grid.bottom) * (getMax(heatmap_yData) - getMin(heatmap_yData)) + getMin(heatmap_yData),
-                    }
-                    let { white_data, white_data_copy, prevPosition } = this.state;
-                    let distenceArr = white_data.map((position, i) => Math.abs(currentPosition.x - position[0]));
-                    if (!white_data_copy) {
-                        white_data_copy = JSON.parse(JSON.stringify(white_data));
-                    }
-                    let position = [];
-                    if (event.shiftKey || event.ctrlKey) {
-                        let dataIndex = getMinIndex(distenceArr);
-                        if (event.shiftKey) {
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i > dataIndex) {
-                                    white_data[i] = NaN;
-                                }
-                                if (i > dataIndex + 3) {
-                                    white_data_copy[i] = NaN;
-                                }
-                            }
-                        } else if (event.ctrlKey) {
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i < dataIndex) {
-                                    white_data[i] = NaN;
-                                }
-                                if (i < dataIndex - 2) {
-                                    white_data_copy[i] = NaN;
-                                }
-                            }
-                        }
-                    } else {
-                        if (Array.isArray(white_data[getMinIndex(distenceArr)])) {
-                            white_data[getMinIndex(distenceArr)][1] = currentPosition.y;
-                            white_data_copy[getMinIndex(distenceArr)][1] = currentPosition.y;
-                            position = [getMinIndex(distenceArr), currentPosition.y];
-                            if (prevPosition) {
-                                for (let i = 1; i < Math.abs(prevPosition[0] - getMinIndex(distenceArr)); i++) {
-                                    let index = prevPosition[0] > getMinIndex(distenceArr) ? prevPosition[0] - i : prevPosition[0] + i;
-                                    let y = prevPosition[1] + (currentPosition.y - prevPosition[1]) / Math.abs(getMinIndex(distenceArr) - prevPosition[0]) * i;
-                                    white_data[index][1] = y;
-                                    white_data_copy[index][1] = y;
-                                }
-                            }
-                        }
-                    }
-                    let { proc_F, vout, disp, } = this.state;
-                    let proc_V = white_data_copy.map(arr => Array.isArray(arr) ? arr[1] : NaN);
-                    disp.v = interp_multiPoint(proc_F, proc_V, proc_F.length, vout, new Array(vout.length), vout.length)
-                    let pink_data = [], resultF = [];
-                    for (let i = 0, len = disp.f.length; i < len; i++) {
-                        if (disp.f[i] && disp.v[i]) {
-                            pink_data.push([disp.f[i], disp.v[i]]);
-                            resultF.push(disp.v[i])
-                        } else {
-                            pink_data.push(NaN);
-                            resultF.push(NaN)
-                        }
-                    }
-                    this.updateHMLineData(this.chart1_line, white_data, pink_data);
-                    this.updateHMLineData(this.chart2_line, white_data, pink_data);
-                    this.updateHMLineData(this.chart3_line, white_data, pink_data);
-                    let black_data = [], black_xData = [], black_yData = [];
-                    for (let i = 0, len = pink_data.length; i < len; i++) {
-                        if (Array.isArray(pink_data[i])) {
-                            black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
-                            black_xData.push(disp.v[i]);
-                            black_yData.push(disp.v[i] / disp.f[i] / 2);
-                        }
-                    }
-                    this.updateLineData(this.chart4, black_xData, black_yData, black_data);
-                    this.setState({
-                        white_data, disp, pink_data, black_data, black_xData, black_yData, resultF, prevPosition: position
-                    });
-                }
-            }
-        )
-        line.getZr().on("mouseup", () => {
-            this.setState({ prevPosition: undefined });
-        })
-        line.getZr().on("mouseout", () => {
-            this.setState({ prevPosition: undefined });
-        })
-        line.getZr().on(
-            'click', params => {
-                let { event, offsetX } = params;
-                let currentPositionX = (offsetX - grid.left) / (event.target.offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData);
-                let { white_data, white_data_copy } = this.state;
-                if (!white_data_copy) {
-                    white_data_copy = JSON.parse(JSON.stringify(white_data));
-                }
-                let distenceArr = white_data.map((position, i) => Math.abs(currentPositionX - position[0]));
-                let dataIndex = getMinIndex(distenceArr);
-                if (event.button === 0) {
-                    if (event.shiftKey || event.ctrlKey) {
-                        if (event.shiftKey) {
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i > dataIndex) {
-                                    white_data[i] = NaN;
-                                }
-                                if (i > dataIndex + 3) {
-                                    white_data_copy[i] = NaN;
-                                }
-                            }
-                        } else if (event.ctrlKey) {
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i < dataIndex) {
-                                    white_data[i] = NaN;
-                                }
-                                if (i < dataIndex - 2) {
-                                    white_data_copy[i] = NaN;
-                                }
-                            }
-                        }
-                        let { proc_F, vout, disp } = this.state;
-                        let proc_V = white_data_copy.map(arr => Array.isArray(arr) ? arr[1] : NaN);
-                        disp.v = interp_multiPoint(proc_F, proc_V, proc_F.length, vout, new Array(vout.length), vout.length)
-                        let pink_data = [], resultF = [];
-                        for (let i = 0, len = disp.f.length; i < len; i++) {
-                            if (disp.f[i] && disp.v[i]) {
-                                pink_data.push([disp.f[i], disp.v[i]]);
-                                resultF.push(disp.v[i])
-                            } else {
-                                pink_data.push(NaN);
-                                resultF.push(NaN)
-                            }
-                        }
-                        let black_data = [], black_xData = [], black_yData = [];
-                        for (let i = 0, len = pink_data.length; i < len; i++) {
-                            if (Array.isArray(pink_data[i])) {
-                                black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
-                                black_xData.push(disp.v[i]);
-                                black_yData.push(disp.v[i] / disp.f[i] / 2);
-                            }
-                        }
-                        this.updateHMLineData(this.chart1_line, white_data, pink_data);
-                        this.updateHMLineData(this.chart2_line, white_data, pink_data);
-                        this.updateHMLineData(this.chart3_line, white_data, pink_data);
-                        this.updateLineData(this.chart4, black_xData, black_yData, black_data);
-                        this.setState({ pink_data, black_data, white_data, resultF, disp, white_data_copy });
-                    }
-                }
-            }
-        )
-    }
-    updateHMLineData = (line, white_data, pinkData) => {
-        line.setOption({
-            series: [
-                {
-                    id: "a",
-                    data: white_data
-                },
-                {
-                    id: 'b',
-                    data: pinkData
-                }]
-        })
+        }, reload);
     }
     lineRender = () => {
         let { pink_data, disp } = this.state;
@@ -501,31 +484,29 @@ export default class index extends Component {
                 }
             },
             grid: {
-                right: 20,
-                left: 60,
+                right: 8,
+                left: 50,
                 top: 20,
-                bottom: 40
+                bottom: 40,
             },
             xAxis: {
                 type: 'value',
                 name: "Phase velocity (km/s)",
                 nameLocation: "middle",
                 nameGap: 25,
-                data: black_xData,
                 show: true,
-                max: formatDecimal(Math.max(...black_xData), 1) + 0.1,
-                min: formatDecimal(Math.min(...black_xData), 1)
+                max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
+                min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
             },
             yAxis: {
                 type: 'value',
                 name: "wavelength/2 (km)",
                 nameLocation: "middle",
                 nameGap: 25,
-                data: black_yData,
                 inverse: true,
                 show: true,
-                max: formatDecimal(Math.max(...black_yData), 1) + 0.1,
-                min: formatDecimal(Math.min(...black_yData), 1)
+                max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
+                min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
             },
             series: [
                 {
@@ -543,20 +524,64 @@ export default class index extends Component {
         };
         this.chart4.setOption(black_option);
     }
-    updateLineData = (line, black_xData, black_yData, black_data) => {
+    updateLineData = (line, black_xData, black_yData, black_data, reload) => {
+        for (let i = 0; i < black_xData.length; i++) {
+            if (isNaN(black_xData[i])) {
+                black_xData.splice(i, 1);
+                i -= 1;
+            }
+        }
+        for (let i = 0; i < black_yData.length; i++) {
+            if (isNaN(black_yData[i])) {
+                black_yData.splice(i, 1);
+                i -= 1;
+            }
+        }
         line.setOption({
+            tooltip: {
+                formatter: function (params) {
+                    return 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4);
+                }
+            },
+            grid: {
+                right: 8,
+                left: 50,
+                top: 20,
+                bottom: 40,
+            },
             xAxis: {
+                type: 'value',
+                name: "Phase velocity (km/s)",
+                nameLocation: "middle",
+                nameGap: 25,
+                show: true,
                 max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
                 min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
             },
             yAxis: {
+                type: 'value',
+                name: "wavelength/2 (km)",
+                nameLocation: "middle",
+                nameGap: 25,
+                inverse: true,
+                show: true,
                 max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
                 min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
             },
-            series: {
-                data: black_data
-            }
-        })
+            series: [
+                {
+                    id: "a",
+                    type: 'line',
+                    symbol: 'circle',
+                    smooth: true,
+                    symbolSize: 2,
+                    data: black_data,
+                    itemStyle: {
+                        color: "#000"
+                    }
+                }
+            ]
+        }, reload)
     }
     handleSelect = (selectedKeys, info) => {
         this.handleClear();
@@ -569,22 +594,21 @@ export default class index extends Component {
     handleChangeData = e => {
         this.setState({
             dataType: e.target.value,
-            white_data_copy: undefined
         }, () => {
             if (this.state.loaded) {
-                this.getDisp(1);
+                this.getDisp();
             }
         });
     }
     handleCalculate = () => {
         if (this.state.loaded) {
-            this.getDisp(1);
+            this.getDisp();
         } else {
             message.info("请选择数据文件");
         }
     }
     handleClear = () => {
-        let clearHeatmap = (chart) => {
+        let clearHeatmap = chart => {
             chart.clear();
             chart.setOption({
                 grid: {
@@ -615,7 +639,7 @@ export default class index extends Component {
                 }
             }, true)
         }
-        let clearLine = (chart) => {
+        let clearLine = chart => {
             chart.clear();
             chart.setOption({
                 grid: {
@@ -639,10 +663,40 @@ export default class index extends Component {
                 }
             }, true)
         }
+        let clearLine2 = chart => {
+            chart.clear();
+            chart.setOption({
+                grid: {
+                    right: 8,
+                    left: 50,
+                    top: 20,
+                    bottom: 40,
+                },
+                xAxis: {
+                    type: 'value',
+                    name: "",
+                    splitNumber: 10,
+                    min: 0,
+                    max: 1
+                },
+                yAxis: {
+                    type: 'value',
+                    name: "",
+                    splitNumber: 10,
+                    min: 0,
+                    max: 1,
+                    inverse: false
+                },
+                series: {
+                    id: "a",
+                    type: 'line',
+                    data: []
+                }
+            }, true)
+        }
         this.setState({
             loaded: false,
             white_data: [],
-            white_data_copy: undefined,
             pink_data: [],
             black_data: [],
             black_xData: [],
@@ -654,18 +708,18 @@ export default class index extends Component {
             clearLine(this.chart2_line);
             clearHeatmap(this.chart3_heatmap);
             clearLine(this.chart3_line);
-            clearHeatmap(this.chart4);
+            clearLine2(this.chart4);
         });
     }
     handleSave = () => {
-        let { resultV, resultF, loaded, fileName } = this.state
+        let { resultX, resultY, loaded, fileName } = this.state
         if (loaded) {
-            resultF = resultF.map(item => item.toFixed(4))
+            resultY = resultY.map(item => item.toFixed(4))
             var elementA = document.createElement('a');
             elementA.download = fileName + ".disper";//文件名
             //隐藏dom点不显示
             elementA.style.display = 'none';
-            var blob = new Blob([`${resultV} \r\n${resultF} `]);//二进制
+            var blob = new Blob([`${resultX} \r\n${resultY} `]);//二进制
             elementA.href = URL.createObjectURL(blob);
             document.body.appendChild(elementA);
             elementA.click();
@@ -686,9 +740,9 @@ export default class index extends Component {
     render() {
         const { treeData, fmin, fmax, Tout_min, dTout, Tout_max, dataType } = this.state;
         return (
-            <div id="main" style={{ width: "100vw", height: "100vh", padding: 16, fontSize: 14 }}>
+            <div id="main">
                 <div style={{ height: "100%", display: "flex", alignItems: "flex-start" }}>
-                    <div className="param-panel" style={{ width: 310, height: "100%" }} >
+                    <div style={{ width: 300, height: "100%" }} >
                         <div className="box" style={{ padding: 0 }}>
                             <div className="box-title">Select a Data</div>
                             <div className="box-content" style={{ display: "flex", justifyContent: "center" }}>
@@ -718,8 +772,8 @@ export default class index extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ textAlign: "center", padding: "8px 8px 0" }}>
-                                <Button type="primary" onClick={this.handleCalculate}>Calculate</Button>
+                            <div style={{ textAlign: "center" }}>
+                                <Button type="primary" style={{ width: 120 }} onClick={this.handleCalculate}>Calculate</Button>
                             </div>
                         </div>
                         <div className="box">
@@ -734,13 +788,13 @@ export default class index extends Component {
                         </div>
                         <div className="box">
                             <div className="box-title">Dispersion</div>
-                            <div className="box-content" style={{ display: "flex", justifyContent: "space-around" }}>
-                                <Button type="primary" style={{ width: "33%", height: 42 }} onClick={this.handleClear}>Clear</Button>
-                                <Button type="primary" style={{ width: "33%", height: 42 }} onClick={this.handleSave}>Save</Button>
+                            <div className="box-content" style={{ display: "flex", justifyContent: "space-between" }}>
+                                <Button type="primary" style={{ width: 120 }} onClick={this.handleClear}>Clear</Button>
+                                <Button type="primary" style={{ width: 120 }} onClick={this.handleSave}>Save</Button>
                             </div>
                         </div>
                     </div>
-                    <div style={{ position: "relative", height: "100%", width: "calc((100% - 310px) / 3 * 2)" }}>
+                    <div style={{ position: "relative", height: "100%", width: "calc((100% - 300px) / 3 * 2)" }}>
                         <div className="chart-container">
                             <div id="chart1_heatmap" className="chart" />
                             <div id="chart1_line" className="chart" />
@@ -757,7 +811,7 @@ export default class index extends Component {
                             <div id="chart3_loading_mask" className="loading_mask"><Spin tip="Loading..." /></div>
                         </div>
                     </div>
-                    <div id="chart4" style={{ width: "calc((100% - 310px) / 3)", height: "100%" }} />
+                    <div id="chart4" style={{ width: "calc((100% - 300px) / 3)", height: "100%" }} />
                 </div>
             </div>
         )
