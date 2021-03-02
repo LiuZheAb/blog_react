@@ -4,9 +4,9 @@ import * as echarts from 'echarts';
 import { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } from "./utils";
 import "./index.less";
 
-let dataSource = [];
+let treeData = [];
 for (let i = 1; i < 52; i++) {
-    dataSource.push({
+    treeData.push({
         title: 'pshift_group_' + i,
         key: i,
     })
@@ -15,7 +15,7 @@ for (let i = 1; i < 52; i++) {
 export default class index extends Component {
     state = {
         loaded: false,
-        treeData: dataSource,
+        treeData,
         fileName: "",
         fmin: 0.1,
         fmax: 5,
@@ -84,7 +84,6 @@ export default class index extends Component {
                 disper_map_stack_SYM,
                 pshift,
             });
-            this.getDisp();
             this.chartRender(this.chart1_heatmap, this.chart1_line, disper_map_stack_A2B);
             this.chartRender(this.chart2_heatmap, this.chart2_line, disper_map_stack_B2A);
             this.chartRender(this.chart3_heatmap, this.chart3_line, disper_map_stack_SYM,
@@ -95,12 +94,13 @@ export default class index extends Component {
                         nameGap: 25
                     },
                 });
-            this.lineRender();
+            this.lineRender(this.chart4);
+            this.getDisp();
         });
     }
     getDisp = () => {
         let { dataType, disper_map_stack_A2B, disper_map_stack_B2A, disper_map_stack_SYM, pshift, fmin, fmax, Tout_min, dTout, Tout_max } = this.state;
-        let { f0, nf0, v, nv } = pshift;
+        let { f0, v, nv } = pshift;
         let fminArr = [], fmaxArr = [];
         for (let i = 0, len = f0.length; i < len; i++) {
             fminArr.push(Math.abs(fmin - f0[i]));
@@ -154,16 +154,6 @@ export default class index extends Component {
             }
         }
 
-        /**绘制热力图背景 */
-        let heatmap_xData = [], heatmap_yData = [];
-        for (let i = 0; i < nf0; i++) {
-            heatmap_xData.push(formatDecimal(f0[i], 2));
-        }
-        for (let j = 0; j < nv; j++) {
-            heatmap_yData.push(formatDecimal(v[j], 2));
-        }
-
-        /**绘制线 */
         let pink_data = [], resultY = [];
         for (let i = 0, len = disp.f.length; i < len; i++) {
             if (disp.f[i] && disp.v[i]) {
@@ -174,7 +164,6 @@ export default class index extends Component {
                 resultY.push(NaN);
             }
         }
-
         let black_data = [], black_xData = [], black_yData = [];
         for (let i = 0, len = pink_data.length; i < len; i++) {
             if (Array.isArray(pink_data[i])) {
@@ -191,36 +180,32 @@ export default class index extends Component {
             resultY,
             fminIndex,
             fmaxIndex,
-            heatmap_xData,
-            heatmap_yData,
             white_data,
             pink_data,
             black_data,
             black_xData,
             black_yData
         });
-        this.updateHMLineData(this.chart1_line, white_data, pink_data, true);
-        this.updateHMLineData(this.chart2_line, white_data, pink_data, true);
-        this.updateHMLineData(this.chart3_line, white_data, pink_data, true);
-        this.updateLineData(this.chart4, black_xData, black_yData, black_data, true);
+        this.updateHMLineData(this.chart1_line, white_data, pink_data);
+        this.updateHMLineData(this.chart2_line, white_data, pink_data);
+        this.updateHMLineData(this.chart3_line, white_data, pink_data);
+        this.updateLineData(this.chart4, black_xData, black_yData, black_data);
     }
     chartRender = (heatmap, line, dataSource, heatmap_expandOption) => {
-        let { pshift, heatmap_xData, heatmap_yData } = this.state;
-        let { nf0, nv } = pshift;
+        let { pshift } = this.state;
+        let { f0, v, nf0, nv } = pshift;
         /**绘制热力图背景 */
-        let heatmap_data = [];
+        let heatmap_data = [], heatmap_xData = [], heatmap_yData = [];
         for (let i = 0; i < nf0; i++) {
+            heatmap_xData.push(formatDecimal(f0[i], 2));
             for (let j = 0; j < nv; j++) {
                 heatmap_data.push([i, j, dataSource[j][i]]);
             }
         }
-        let grid = {
-            right: 20,
-            left: 60,
-            top: 20,
-            bottom: 40
+        for (let j = 0; j < nv; j++) {
+            heatmap_yData.push(formatDecimal(v[j], 2));
         }
-        let headtmap_option = {
+        heatmap.setOption({
             grid: {
                 right: 20,
                 left: 60,
@@ -258,15 +243,67 @@ export default class index extends Component {
                 progressive: 5000,
                 animation: false
             }],
-        };
-        heatmap.setOption(headtmap_option, true);
+        }, true);
+        this.setState({ heatmap_xData, heatmap_yData });
         if (heatmap_expandOption) {
             heatmap.setOption(heatmap_expandOption);
         }
+        line.setOption({
+            tooltip: {
+                formatter: function (params) {
+                    return 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4);
+                }
+            },
+            grid: {
+                right: 20,
+                left: 60,
+                top: 20,
+                bottom: 40
+            },
+            xAxis: {
+                type: 'value',
+                show: false,
+                max: getMax(heatmap_xData),
+                min: getMin(heatmap_xData)
+            },
+            yAxis: {
+                type: 'value',
+                show: false,
+                max: getMax(heatmap_yData),
+                min: getMin(heatmap_yData)
+            },
+            series: [
+                {
+                    id: "a",
+                    type: 'line',
+                    symbol: 'circle',
+                    smooth: true,
+                    symbolSize: 5,
+                    itemStyle: {
+                        color: "#fff"
+                    },
+                    hoverAnimation: false,
+                    cursor: "default",
+                    legendHoverLink: false
+                },
+                {
+                    id: "b",
+                    type: 'line',
+                    symbol: 'circle',
+                    smooth: true,
+                    symbolSize: 8,
+                    itemStyle: {
+                        color: "#ff00ff"
+                    },
+                    hoverAnimation: false,
+                }
+            ]
+        }, true);
         line.getZr().on(
             'mousemove', params => {
                 let { event, offsetX, offsetY } = params;
                 if (event.button === 0 && event.buttons === 1) {
+                    let { grid } = line.getOption();
                     let { offsetWidth, offsetHeight } = params.event.target;
                     let currentPosition = {
                         x: (offsetX - grid.left) / (offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData),
@@ -324,9 +361,6 @@ export default class index extends Component {
                             resultY.push(NaN);
                         }
                     }
-                    this.updateHMLineData(this.chart1_line, white_data, pink_data, false);
-                    this.updateHMLineData(this.chart2_line, white_data, pink_data, false);
-                    this.updateHMLineData(this.chart3_line, white_data, pink_data, false);
                     let black_data = [], black_xData = [], black_yData = [];
                     for (let i = 0, len = pink_data.length; i < len; i++) {
                         if (Array.isArray(pink_data[i])) {
@@ -335,10 +369,11 @@ export default class index extends Component {
                             black_yData.push(disp.v[i] / disp.f[i] / 2);
                         }
                     }
-                    this.updateLineData(this.chart4, black_xData, black_yData, black_data, false);
-                    this.setState({
-                        white_data, disp, pink_data, black_data, black_xData, black_yData, resultY, prevPosition: position
-                    });
+                    this.updateHMLineData(this.chart1_line, white_data, pink_data);
+                    this.updateHMLineData(this.chart2_line, white_data, pink_data);
+                    this.updateHMLineData(this.chart3_line, white_data, pink_data);
+                    this.updateLineData(this.chart4, black_xData, black_yData, black_data);
+                    this.setState({ white_data, disp, pink_data, black_data, black_xData, black_yData, resultY, prevPosition: position, fminIndex, fmaxIndex });
                 }
             }
         )
@@ -351,6 +386,7 @@ export default class index extends Component {
         line.getZr().on(
             'click', params => {
                 let { event, offsetX } = params;
+                let { grid } = line.getOption();
                 let currentPositionX = (offsetX - grid.left) / (event.target.offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData);
                 let { white_data, fminIndex, fmaxIndex } = this.state;
                 let distenceArr = white_data.map((position, i) => Math.abs(currentPositionX - position[0]));
@@ -400,89 +436,35 @@ export default class index extends Component {
                                 black_yData.push(disp.v[i] / disp.f[i] / 2);
                             }
                         }
-                        this.updateHMLineData(this.chart1_line, white_data, pink_data, false);
-                        this.updateHMLineData(this.chart2_line, white_data, pink_data, false);
-                        this.updateHMLineData(this.chart3_line, white_data, pink_data, false);
-                        this.updateLineData(this.chart4, black_xData, black_yData, black_data, false);
+                        this.updateHMLineData(this.chart1_line, white_data, pink_data);
+                        this.updateHMLineData(this.chart2_line, white_data, pink_data);
+                        this.updateHMLineData(this.chart3_line, white_data, pink_data);
+                        this.updateLineData(this.chart4, black_xData, black_yData, black_data);
                         this.setState({ pink_data, black_data, white_data, resultY, disp, fminIndex, fmaxIndex });
                     }
                 }
             }
         )
     }
-    updateHMLineData = (line, white_data, pink_data, reload) => {
-        let { heatmap_xData, heatmap_yData } = this.state;
+    updateHMLineData = (line, white_data, pink_data) => {
         line.setOption({
-            tooltip: {
-                formatter: function (params) {
-                    return 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4);
-                }
-            },
-            grid: {
-                right: 20,
-                left: 60,
-                top: 20,
-                bottom: 40
-            },
-            xAxis: {
-                type: 'value',
-                show: false,
-                max: getMax(heatmap_xData),
-                min: getMin(heatmap_xData)
-            },
-            yAxis: {
-                type: 'value',
-                show: false,
-                max: getMax(heatmap_yData),
-                min: getMin(heatmap_yData)
-            },
             series: [
                 {
                     id: "a",
                     type: 'line',
-                    symbol: 'circle',
-                    smooth: true,
-                    symbolSize: 5,
                     data: white_data,
-                    itemStyle: {
-                        color: "#fff"
-                    },
-                    hoverAnimation: false,
-                    cursor: "default",
-                    legendHoverLink: false
                 },
                 {
                     id: "b",
                     type: 'line',
-                    symbol: 'circle',
-                    smooth: true,
-                    symbolSize: 8,
                     data: pink_data,
-                    itemStyle: {
-                        color: "#ff00ff"
-                    },
-                    hoverAnimation: false,
                 }
             ]
-        }, reload);
+        });
     }
-    lineRender = () => {
-        let { pink_data, disp } = this.state;
-        let black_data = [], black_xData = [], black_yData = [];
-        for (let i = 0, len = pink_data.length; i < len; i++) {
-            if (Array.isArray(pink_data[i])) {
-                black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
-                black_xData.push(disp.v[i]);
-                black_yData.push(disp.v[i] / disp.f[i] / 2);
-            }
-        }
-        this.setState({ black_data, black_xData, black_yData });
-        let black_option = {
-            tooltip: {
-                formatter: function (params) {
-                    return 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4);
-                }
-            },
+    lineRender = line => {
+        line.setOption({
+            tooltip: { formatter: params => 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4) },
             grid: {
                 right: 8,
                 left: 50,
@@ -495,8 +477,6 @@ export default class index extends Component {
                 nameLocation: "middle",
                 nameGap: 25,
                 show: true,
-                max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
-                min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
             },
             yAxis: {
                 type: 'value',
@@ -505,26 +485,20 @@ export default class index extends Component {
                 nameGap: 25,
                 inverse: true,
                 show: true,
-                max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
-                min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
             },
-            series: [
-                {
-                    id: "a",
-                    type: 'line',
-                    symbol: 'circle',
-                    smooth: true,
-                    symbolSize: 2,
-                    data: black_data,
-                    itemStyle: {
-                        color: "#000"
-                    }
+            series: {
+                type: 'line',
+                symbol: 'circle',
+                smooth: true,
+                symbolSize: 2,
+                itemStyle: {
+                    color: "#000"
                 }
-            ]
-        };
-        this.chart4.setOption(black_option);
+            }
+
+        }, true);
     }
-    updateLineData = (line, black_xData, black_yData, black_data, reload) => {
+    updateLineData = (line, black_xData, black_yData, black_data) => {
         for (let i = 0; i < black_xData.length; i++) {
             if (isNaN(black_xData[i])) {
                 black_xData.splice(i, 1);
@@ -538,50 +512,19 @@ export default class index extends Component {
             }
         }
         line.setOption({
-            tooltip: {
-                formatter: function (params) {
-                    return 'f: ' + params.data[0].toFixed(4) + '<br>v: ' + params.data[1].toFixed(4);
-                }
-            },
-            grid: {
-                right: 8,
-                left: 50,
-                top: 20,
-                bottom: 40,
-            },
             xAxis: {
-                type: 'value',
-                name: "Phase velocity (km/s)",
-                nameLocation: "middle",
-                nameGap: 25,
-                show: true,
                 max: black_xData.length > 0 ? formatDecimal(Math.max(...black_xData), 1) + 0.1 : 1,
                 min: black_xData.length > 0 ? formatDecimal(Math.min(...black_xData), 1) : 0
             },
             yAxis: {
-                type: 'value',
-                name: "wavelength/2 (km)",
-                nameLocation: "middle",
-                nameGap: 25,
-                inverse: true,
-                show: true,
                 max: black_yData.length > 0 ? formatDecimal(Math.max(...black_yData), 1) + 0.1 : 1,
                 min: black_yData.length > 0 ? formatDecimal(Math.min(...black_yData), 1) : 0
             },
-            series: [
-                {
-                    id: "a",
-                    type: 'line',
-                    symbol: 'circle',
-                    smooth: true,
-                    symbolSize: 2,
-                    data: black_data,
-                    itemStyle: {
-                        color: "#000"
-                    }
-                }
-            ]
-        }, reload)
+            series: {
+                type: 'line',
+                data: black_data,
+            }
+        })
     }
     handleSelect = (selectedKeys, info) => {
         this.handleClear();
@@ -721,9 +664,7 @@ export default class index extends Component {
             elementA.style.display = 'none';
             var blob = new Blob([`${resultX} \r\n${resultY} `]);//二进制
             elementA.href = URL.createObjectURL(blob);
-            document.body.appendChild(elementA);
             elementA.click();
-            document.body.removeChild(elementA);
         } else {
             message.info("请选择数据文件");
         }
