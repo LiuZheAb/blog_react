@@ -282,6 +282,7 @@ export default class index extends Component {
                     itemStyle: {
                         color: "#fff"
                     },
+                    data: [],
                     hoverAnimation: false,
                     cursor: "default",
                     legendHoverLink: false
@@ -303,7 +304,7 @@ export default class index extends Component {
             'mousemove', params => {
                 let { event, offsetX, offsetY } = params;
                 if (event.button === 0 && event.buttons === 1) {
-                    let { grid } = line.getOption();
+                    let grid = line.getOption().grid[0];
                     let { offsetWidth, offsetHeight } = params.event.target;
                     let currentPosition = {
                         x: (offsetX - grid.left) / (offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData),
