@@ -54,20 +54,22 @@ export default class index extends Component {
         this.chart3_loading_mask = document.getElementById('chart3_loading_mask');
         this.chart4 = echarts.init(document.getElementById('chart4'));
         this.handleClear();
-        window.addEventListener("resize", () => {
-            this.chart1_heatmap.resize();
-            this.chart1_line.resize();
-            this.chart2_heatmap.resize();
-            this.chart2_line.resize();
-            this.chart3_heatmap.resize();
-            this.chart3_line.resize();
-            this.chart4.resize();
-        });
-        window.addEventListener("keypress", (e) => {
-            if (e.key === "Enter" && e.target.localName === "input" && e.target.type === "text") {
-                this.handleCalculate();
-            }
-        })
+        window.addEventListener("resize", this.handleResize);
+        window.addEventListener("keypress", this.handleKeyPress);
+    }
+    handleResize = () => {
+        this.chart1_heatmap.resize();
+        this.chart1_line.resize();
+        this.chart2_heatmap.resize();
+        this.chart2_line.resize();
+        this.chart3_heatmap.resize();
+        this.chart3_line.resize();
+        this.chart4.resize();
+    }
+    handleKeyPress = e => {
+        if (e.key === "Enter" && e.target.localName === "input" && e.target.type === "text") {
+            this.handleCalculate();
+        }
     }
     getData = fileName => {
         this.chart1_loading_mask.style.display = "flex";
@@ -309,14 +311,9 @@ export default class index extends Component {
             'mousemove', params => {
                 let { event, offsetX, offsetY } = params;
                 if (event.button === 0 && event.buttons === 1) {
-                    let grid = line.getOption().grid[0];
-                    let { offsetWidth, offsetHeight } = params.event.target;
-                    let currentPosition = {
-                        x: (offsetX - grid.left) / (offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData),
-                        y: (offsetHeight - grid.bottom - offsetY) / (offsetHeight - grid.top - grid.bottom) * (getMax(heatmap_yData) - getMin(heatmap_yData)) + getMin(heatmap_yData),
-                    }
+                    let currentPosition = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX, offsetY]);
                     let { white_data, prevPosition, fminIndex, fmaxIndex, vout, disp, pshift } = this.state;
-                    let distenceArr = white_data.map((position, i) => isNaN(position[1]) ? NaN : Math.abs(currentPosition.x - position[0]));
+                    let distenceArr = white_data.map((position, i) => isNaN(position[1]) ? NaN : Math.abs(currentPosition[0] - position[0]));
                     let position = [];
                     if (event.shiftKey || event.ctrlKey) {
                         let dataIndex = getMinIndex(distenceArr);
@@ -337,12 +334,12 @@ export default class index extends Component {
                         }
                     } else {
                         if (Array.isArray(white_data[getMinIndex(distenceArr)])) {
-                            white_data[getMinIndex(distenceArr)][1] = currentPosition.y;
-                            position = [getMinIndex(distenceArr), currentPosition.y];
+                            white_data[getMinIndex(distenceArr)][1] = currentPosition[1];
+                            position = [getMinIndex(distenceArr), currentPosition[1]];
                             if (prevPosition) {
                                 for (let i = 1; i < Math.abs(prevPosition[0] - getMinIndex(distenceArr)); i++) {
                                     let index = prevPosition[0] > getMinIndex(distenceArr) ? prevPosition[0] - i : prevPosition[0] + i;
-                                    let y = prevPosition[1] + (currentPosition.y - prevPosition[1]) / Math.abs(getMinIndex(distenceArr) - prevPosition[0]) * i;
+                                    let y = prevPosition[1] + (currentPosition[1] - prevPosition[1]) / Math.abs(getMinIndex(distenceArr) - prevPosition[0]) * i;
                                     white_data[index][1] = y;
                                 }
                             }
@@ -392,8 +389,7 @@ export default class index extends Component {
         line.getZr().on(
             'click', params => {
                 let { event, offsetX } = params;
-                let { grid } = line.getOption();
-                let currentPositionX = (offsetX - grid.left) / (event.target.offsetWidth - grid.left - grid.right) * (getMax(heatmap_xData) - getMin(heatmap_xData)) + getMin(heatmap_xData);
+                let currentPositionX = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX, 0])[0];
                 let { white_data, fminIndex, fmaxIndex } = this.state;
                 let distenceArr = white_data.map((position, i) => Math.abs(currentPositionX - position[0]));
                 let dataIndex = getMinIndex(distenceArr);
@@ -683,6 +679,8 @@ export default class index extends Component {
         this.chart3_heatmap.dispose();
         this.chart3_line.dispose();
         this.chart4.dispose();
+        window.removeEventListener("resize", this.handleResize);
+        window.removeEventListener("keypress", this.handleKeyPress);
     }
     render() {
         const { treeData, fmin, fmax, Tout_min, dTout, Tout_max, dataType } = this.state;
