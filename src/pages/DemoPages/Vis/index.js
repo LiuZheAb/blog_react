@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Tree, Input, Radio, Button, message, Spin } from "antd";
 import * as echarts from 'echarts';
+import axios from "axios";
 import { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } from "./utils";
 import "./index.less";
 
@@ -72,11 +73,15 @@ export default class index extends Component {
         this.chart1_loading_mask.style.display = "flex";
         this.chart2_loading_mask.style.display = "flex";
         this.chart3_loading_mask.style.display = "flex";
-        import(`./disper_json/${fileName}.json`).then(res => {
+        axios.get(`./disper_json/${fileName}.json`, {
+            headers: {
+                "Cache-Control": "no-cache",
+            },
+        }).then(res => {
             this.chart1_loading_mask.style.display = "none";
             this.chart2_loading_mask.style.display = "none";
             this.chart3_loading_mask.style.display = "none";
-            let { disper_map_stack_A2B, disper_map_stack_B2A, disper_map_stack_SYM, pshift } = res;
+            let { disper_map_stack_A2B, disper_map_stack_B2A, disper_map_stack_SYM, pshift } = res.data;
             this.setState({
                 loaded: true,
                 disper_map_stack_A2B,
