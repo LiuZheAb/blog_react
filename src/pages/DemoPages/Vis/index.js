@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tree, Input, Radio, Button, message, Spin } from "antd";
+import { Tree, Input, Radio, Button, message, Spin, Drawer } from "antd";
 import * as echarts from 'echarts';
 import axios from "axios";
 import { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } from "./utils";
@@ -40,7 +40,8 @@ export default class index extends Component {
         black_yData: [],
         resultX: [],
         resultY: [],
-        prevPosition: undefined
+        prevPosition: undefined,
+        helpMaskVisible: false
     }
     componentDidMount() {
         this.chart1_heatmap = echarts.init(document.getElementById('chart1_heatmap'));
@@ -315,31 +316,36 @@ export default class index extends Component {
                     let { white_data, prevPosition, fminIndex, fmaxIndex, vout, disp, pshift } = this.state;
                     let distenceArr = white_data.map((position, i) => isNaN(position[1]) ? NaN : Math.abs(currentPosition[0] - position[0]));
                     let position = [];
+                    let currentIndex = getMinIndex(distenceArr);
                     if (event.shiftKey || event.ctrlKey) {
-                        let dataIndex = getMinIndex(distenceArr);
                         if (event.shiftKey) {
-                            fmaxIndex = dataIndex;
+                            fmaxIndex = currentIndex;
                             for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i > dataIndex) {
+                                if (i > currentIndex) {
                                     white_data[i] = NaN;
                                 }
                             }
                         } else if (event.ctrlKey) {
-                            fminIndex = dataIndex;
+                            fminIndex = currentIndex;
                             for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i < dataIndex) {
+                                if (i < currentIndex) {
                                     white_data[i] = NaN;
                                 }
                             }
                         }
                     } else {
-                        if (Array.isArray(white_data[getMinIndex(distenceArr)])) {
-                            white_data[getMinIndex(distenceArr)][1] = currentPosition[1];
-                            position = [getMinIndex(distenceArr), currentPosition[1]];
+                        if (Array.isArray(white_data[currentIndex])) {
+                            white_data[currentIndex][1] = currentPosition[1];
+                            position = [currentIndex, currentPosition[1]];
+                            line.dispatchAction({
+                                type: 'showTip',
+                                seriesIndex: 0,
+                                dataIndex: currentIndex
+                            });
                             if (prevPosition) {
-                                for (let i = 1; i < Math.abs(prevPosition[0] - getMinIndex(distenceArr)); i++) {
-                                    let index = prevPosition[0] > getMinIndex(distenceArr) ? prevPosition[0] - i : prevPosition[0] + i;
-                                    let y = prevPosition[1] + (currentPosition[1] - prevPosition[1]) / Math.abs(getMinIndex(distenceArr) - prevPosition[0]) * i;
+                                for (let i = 1; i < Math.abs(prevPosition[0] - currentIndex); i++) {
+                                    let index = prevPosition[0] > currentIndex ? prevPosition[0] - i : prevPosition[0] + i;
+                                    let y = prevPosition[1] + (currentPosition[1] - prevPosition[1]) / Math.abs(currentIndex - prevPosition[0]) * i;
                                     white_data[index][1] = y;
                                 }
                             }
@@ -392,20 +398,20 @@ export default class index extends Component {
                 let currentPositionX = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX, 0])[0];
                 let { white_data, fminIndex, fmaxIndex } = this.state;
                 let distenceArr = white_data.map((position, i) => Math.abs(currentPositionX - position[0]));
-                let dataIndex = getMinIndex(distenceArr);
+                let currentIndex = getMinIndex(distenceArr);
                 if (event.button === 0) {
                     if (event.shiftKey || event.ctrlKey) {
                         if (event.shiftKey) {
-                            fmaxIndex = dataIndex;
+                            fmaxIndex = currentIndex;
                             for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i > dataIndex) {
+                                if (i > currentIndex) {
                                     white_data[i] = NaN;
                                 }
                             }
                         } else if (event.ctrlKey) {
-                            fminIndex = dataIndex;
+                            fminIndex = currentIndex;
                             for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i < dataIndex) {
+                                if (i < currentIndex) {
                                     white_data[i] = NaN;
                                 }
                             }
@@ -671,6 +677,12 @@ export default class index extends Component {
             message.info("请选择数据文件");
         }
     }
+    openHelpMask = () => {
+        this.setState({ helpMaskVisible: true })
+    }
+    closeHelpMask = () => {
+        this.setState({ helpMaskVisible: false })
+    }
     componentWillUnmount() {
         this.chart1_heatmap.dispose();
         this.chart1_line.dispose();
@@ -683,9 +695,9 @@ export default class index extends Component {
         window.removeEventListener("keypress", this.handleKeyPress);
     }
     render() {
-        const { treeData, fmin, fmax, Tout_min, dTout, Tout_max, dataType } = this.state;
+        const { treeData, fmin, fmax, Tout_min, dTout, Tout_max, dataType, helpMaskVisible } = this.state;
         return (
-            <div id="main">
+            <div id="vis-main">
                 <div style={{ height: "100%", display: "flex", alignItems: "flex-start" }}>
                     <div style={{ width: 300, height: "100%" }} >
                         <div className="box" style={{ padding: 0 }}>
@@ -736,6 +748,29 @@ export default class index extends Component {
                             <div className="box-content" style={{ display: "flex", justifyContent: "space-between" }}>
                                 <Button type="primary" style={{ width: 120 }} onClick={this.handleClear}>Clear</Button>
                                 <Button type="primary" style={{ width: 120 }} onClick={this.handleSave}>Save</Button>
+                            </div>
+                        </div>
+                        <div style={{ marginTop: 20, textAlign: "center" }}>
+                            <Button style={{ width: 120 }} onClick={this.openHelpMask}>帮助</Button>
+                        </div>
+                        <div className="help-mask" style={{ display: !helpMaskVisible && "none" }} onClick={this.closeHelpMask}>
+                            <div className="column">
+                                <div className="dot-box">在此选择数据源</div>
+                                <div className="dot-box">在此修改计算参数<br />修改完成后点击Calculate即可计算</div>
+                                <div className="dot-box">选择线图数据源</div>
+                                <div className="dot-box">Clear:清空画布<br />Save:下载数据</div>
+                            </div>
+                            <div className="column">
+                                <div className="dot-box">
+                                    A-&gt;B数据可视化区域<br />
+                                    按住鼠标左键在图表上拖动，可修改白线<br />
+                                    在图表上Ctrl+左键单击可截断鼠标对应横坐标左侧的白线，Shift+左键单击截断右侧<br />
+                                    修改白线后实时插值生成紫线数据并绘制</div>
+                                <div className="dot-box">B-&gt;A数据可视化区域<br />操作方式同上</div>
+                                <div className="dot-box">SYM数据可视化区域<br />操作方式同上</div>
+                            </div>
+                            <div className="column">
+                                <div className="dot-box">频散曲线<br />由紫线计算生成</div>
                             </div>
                         </div>
                     </div>
