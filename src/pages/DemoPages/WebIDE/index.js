@@ -9,6 +9,7 @@ import Target from "./Target";
 import ItemTypes from './ItemTypes';
 
 const WebIDE = () => {
+    document.title = "WebIDE";
     const [droppedItem, setDroppedItem] = useState([]);
     const [currentIndex, setCurrentIndex] = useState();
     const handleDrop = useCallback(item => {

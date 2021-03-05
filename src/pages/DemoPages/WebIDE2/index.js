@@ -31,7 +31,9 @@ class DragPage extends Component {
     this.changeProps = this.changeProps.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
-
+  componentDidMount() {
+    document.title = "WebIDE";
+  }
   /**
    * 有组件落到target区时调用
    * @param {*} component 拖动的组件
@@ -78,9 +80,7 @@ class DragPage extends Component {
     });
   }
   onRef = (ref) => {
-
     this.child = ref
-
   }
   /**
    * 有组件落到target区时调用
@@ -107,7 +107,6 @@ class DragPage extends Component {
       components: obj
     })
   }
-
   //删除组件时调用
   handleDelete() {
     const { components, itemindex } = this.state;
@@ -159,7 +158,6 @@ class DragPage extends Component {
   target() {
     document.getElementById('file').click()
   }
-
   render() {
     const { components, currentitem, itemindex } = this.state;
     let proplist = null; //组件属性列表

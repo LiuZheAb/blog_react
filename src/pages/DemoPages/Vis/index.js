@@ -45,6 +45,7 @@ export default class index extends Component {
         opacity: 0
     }
     componentDidMount() {
+        document.title = "可视化数据操作";
         this.chart1_heatmap = echarts.init(document.getElementById('chart1_heatmap'));
         this.chart1_line = echarts.init(document.getElementById('chart1_line'));
         this.chart1_loading_mask = document.getElementById('chart1_loading_mask');

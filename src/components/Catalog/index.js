@@ -16,15 +16,20 @@ export default class index extends Component {
                         <ul>
                             {Object.keys(dataSource.chapter).map(chapterName => {
                                 let section = dataSource.chapter[chapterName];
-                                return section.length > 1 || chapterName !== dataSource.section[section[0]] ?
-                                    [<li className="catalog-item-1" key={chapterName}>{chapterName}</li>,
-                                    ...section.map((sectionIndex, index) =>
-                                        <li key={sectionIndex} className="catalog-item-2">
-                                            <Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link>
-                                        </li>)
-                                    ]
-                                    :
-                                    <li className="catalog-item-1 catalog-item-nochild" key={chapterName}><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></li>
+                                switch (true) {
+                                    case section.length === 1 && chapterName === dataSource.section[section[0]]:
+                                        return <li className="catalog-item-1 catalog-item-nochild" key={chapterName}><Link to={dataSource.baseHref + "/" + section[0]}>{dataSource.section[section[0]]}</Link></li>
+                                    case section.length === 1 && chapterName !== dataSource.section[section[0]]:
+                                    case section.length > 1:
+                                        return [<li className="catalog-item-1" key={chapterName}>{chapterName}</li>,
+                                        ...section.map((sectionIndex, index) =>
+                                            <li key={sectionIndex} className="catalog-item-2">
+                                                <Link to={dataSource.baseHref + "/" + (section[index])}>{dataSource.section[sectionIndex]}</Link>
+                                            </li>)
+                                        ]
+                                    default:
+                                        return null;
+                                }
                             })}
                         </ul>
                     </div>
