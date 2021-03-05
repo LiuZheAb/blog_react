@@ -54,12 +54,11 @@ class DragPage extends Component {
    */
   moveItem(itemindex) {
     const components = _.concat([], this.state.components);
-    const _this = this;
-    _.remove(components, function (n, index) {
+    _.remove(components, (n, index) => {
       //判断是新组件还是再次移动
       if (index === itemindex) {
-        _this.setState({
-          itemindex: _this.state.itemindex - 1
+        this.setState({
+          itemindex: this.state.itemindex - 1
         });
         return true;
       }
@@ -141,14 +140,13 @@ class DragPage extends Component {
       let file = document.getElementById('file').files[0];
       const reader = new FileReader();
       reader.readAsText(file);
-      var _this = this
-      reader.onload = function () {
+      reader.onload = () => {
         var importJson1 = JSON.parse(reader.result);
         for (let i = 0; i < importJson1.length; i++) {
           importJson1[i].position.x = Number(importJson1[i].position.x)
           importJson1[i].position.y = Number(importJson1[i].position.y)
         }
-        _this.setState({
+        this.setState({
           components: importJson1,
         });
       };

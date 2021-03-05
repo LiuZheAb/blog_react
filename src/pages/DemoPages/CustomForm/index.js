@@ -210,17 +210,16 @@ export default class index extends Component {
             //读取json
             let file = document.getElementById('file').files[0];
             //外层作用域的重新定义
-            let _this = this;
-            reader.onload = function () {
-                let importJson = JSON.parse(this.result);
+            reader.onload = () => {
+                let importJson = JSON.parse(reader.result);
                 let { formName, itemList } = importJson;
-                _this.setState({
+                this.setState({
                     formName,
                     itemList,
                     itemNum: itemList.length,
                 }, () => {
                     //表单的initialValues属性只在初始化或重置时生效
-                    _this.Form.current.resetFields();
+                    this.Form.current.resetFields();
                 });
             };
             reader.readAsText(file);

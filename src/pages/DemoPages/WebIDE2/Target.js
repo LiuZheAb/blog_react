@@ -32,7 +32,7 @@ class Target extends Component {
         })
     }
     //快捷键
-    onKeyDown = (e) => {
+    onKeyDown = e => {
         var evt = e || window.e;
         // evt.preventDefault();
         let { components, dragChange } = this.props;
