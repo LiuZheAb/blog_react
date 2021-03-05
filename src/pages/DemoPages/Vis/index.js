@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tree, Input, Radio, Button, message, Spin, Drawer } from "antd";
+import { Tree, Input, Radio, Button, message, Spin } from "antd";
 import * as echarts from 'echarts';
 import axios from "axios";
 import { interp_multiPoint, getMax, getMin, getMaxIndex, getMinIndex, formatDecimal } from "./utils";
@@ -9,7 +9,7 @@ let treeData = [];
 for (let i = 1; i < 52; i++) {
     treeData.push({
         title: 'pshift_group_' + i,
-        key: i,
+        key: 'pshift_group_' + i,
     })
 }
 
@@ -41,7 +41,8 @@ export default class index extends Component {
         resultX: [],
         resultY: [],
         prevPosition: undefined,
-        helpMaskVisible: false
+        helpMaskVisible: false,
+        opacity: 0
     }
     componentDidMount() {
         this.chart1_heatmap = echarts.init(document.getElementById('chart1_heatmap'));
@@ -308,49 +309,112 @@ export default class index extends Component {
                 }
             ]
         }, true);
-        line.getZr().on(
-            'mousemove', params => {
-                let { event, offsetX, offsetY } = params;
-                if (event.button === 0 && event.buttons === 1) {
-                    let currentPosition = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX, offsetY]);
-                    let { white_data, prevPosition, fminIndex, fmaxIndex, vout, disp, pshift } = this.state;
-                    let distenceArr = white_data.map((position, i) => isNaN(position[1]) ? NaN : Math.abs(currentPosition[0] - position[0]));
-                    let position = [];
-                    let currentIndex = getMinIndex(distenceArr);
-                    if (event.shiftKey || event.ctrlKey) {
-                        if (event.shiftKey) {
-                            fmaxIndex = currentIndex;
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i > currentIndex) {
-                                    white_data[i] = NaN;
-                                }
-                            }
-                        } else if (event.ctrlKey) {
-                            fminIndex = currentIndex;
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i < currentIndex) {
-                                    white_data[i] = NaN;
-                                }
+        line.getZr().on('mousemove', params => {
+            let { event, offsetX, offsetY } = params;
+            if (event.button === 0 && event.buttons === 1) {
+                let currentPosition = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX, offsetY]);
+                let { white_data, prevPosition, fminIndex, fmaxIndex, vout, disp, pshift } = this.state;
+                let distenceArr = white_data.map(position => isNaN(position[1]) ? NaN : Math.abs(currentPosition[0] - position[0]));
+                let position = [];
+                let currentIndex = getMinIndex(distenceArr);
+                if (event.shiftKey || event.ctrlKey) {
+                    if (event.shiftKey) {
+                        fmaxIndex = currentIndex;
+                        for (let i = 0, len = white_data.length; i < len; i++) {
+                            if (i > currentIndex) {
+                                white_data[i] = NaN;
                             }
                         }
-                    } else {
-                        if (Array.isArray(white_data[currentIndex])) {
-                            white_data[currentIndex][1] = currentPosition[1];
-                            position = [currentIndex, currentPosition[1]];
-                            line.dispatchAction({
-                                type: 'showTip',
-                                seriesIndex: 0,
-                                dataIndex: currentIndex
-                            });
-                            if (prevPosition) {
-                                for (let i = 1; i < Math.abs(prevPosition[0] - currentIndex); i++) {
-                                    let index = prevPosition[0] > currentIndex ? prevPosition[0] - i : prevPosition[0] + i;
-                                    let y = prevPosition[1] + (currentPosition[1] - prevPosition[1]) / Math.abs(currentIndex - prevPosition[0]) * i;
-                                    white_data[index][1] = y;
-                                }
+                    } else if (event.ctrlKey) {
+                        fminIndex = currentIndex;
+                        for (let i = 0, len = white_data.length; i < len; i++) {
+                            if (i < currentIndex) {
+                                white_data[i] = NaN;
                             }
                         }
                     }
+                } else {
+                    if (Array.isArray(white_data[currentIndex])) {
+                        white_data[currentIndex][1] = currentPosition[1];
+                        position = [currentIndex, currentPosition[1]];
+                        line.dispatchAction({
+                            type: 'showTip',
+                            seriesIndex: 0,
+                            dataIndex: currentIndex
+                        });
+                        if (prevPosition) {
+                            for (let i = 1; i < Math.abs(prevPosition[0] - currentIndex); i++) {
+                                let index = prevPosition[0] > currentIndex ? prevPosition[0] - i : prevPosition[0] + i;
+                                let y = prevPosition[1] + (currentPosition[1] - prevPosition[1]) / Math.abs(currentIndex - prevPosition[0]) * i;
+                                white_data[index][1] = y;
+                            }
+                        }
+                    }
+                }
+                let proc_F = [], proc_V = [];
+                for (let i = 0, len = white_data.length; i < len; i++) {
+                    if (Array.isArray(white_data[i])) {
+                        proc_F.push(pshift.f0[i])
+                        proc_V.push(white_data[i][1]);
+                    }
+                }
+                disp.v = interp_multiPoint(proc_F, proc_V, proc_F.length, vout, new Array(vout.length), vout.length)
+                let pink_data = [], resultY = [];
+                for (let i = 0, len = disp.f.length; i < len; i++) {
+                    if (disp.f[i] >= pshift.f0[fminIndex] && disp.f[i] <= pshift.f0[fmaxIndex]) {
+                        pink_data.push([disp.f[i], disp.v[i]]);
+                        resultY.push(disp.v[i]);
+                    } else {
+                        disp.v[i] = NaN;
+                        pink_data.push(NaN);
+                        resultY.push(NaN);
+                    }
+                }
+                let black_data = [], black_xData = [], black_yData = [];
+                for (let i = 0, len = pink_data.length; i < len; i++) {
+                    if (Array.isArray(pink_data[i])) {
+                        black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
+                        black_xData.push(disp.v[i]);
+                        black_yData.push(disp.v[i] / disp.f[i] / 2);
+                    }
+                }
+                this.updateHMLineData(this.chart1_line, white_data, pink_data);
+                this.updateHMLineData(this.chart2_line, white_data, pink_data);
+                this.updateHMLineData(this.chart3_line, white_data, pink_data);
+                this.updateLineData(this.chart4, black_xData, black_yData, black_data);
+                this.setState({ white_data, disp, pink_data, black_data, black_xData, black_yData, resultY, prevPosition: position, fminIndex, fmaxIndex });
+            }
+        })
+        line.getZr().on("mouseup", () => {
+            this.setState({ prevPosition: undefined });
+        })
+        line.getZr().on("mouseout", () => {
+            this.setState({ prevPosition: undefined });
+        })
+        line.getZr().on('click', params => {
+            let { event, offsetX } = params;
+            let currentPositionX = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX])[0];
+            let { white_data, fminIndex, fmaxIndex } = this.state;
+            let distenceArr = white_data.map(position => Math.abs(currentPositionX - position[0]));
+            let currentIndex = getMinIndex(distenceArr);
+            if (event.button === 0) {
+                if (event.shiftKey || event.ctrlKey) {
+                    if (event.shiftKey) {
+                        fmaxIndex = currentIndex;
+                        for (let i = 0, len = white_data.length; i < len; i++) {
+                            if (i > currentIndex) {
+                                white_data[i] = NaN;
+                            }
+                        }
+                    } else if (event.ctrlKey) {
+                        fminIndex = currentIndex;
+                        for (let i = 0, len = white_data.length; i < len; i++) {
+                            if (i < currentIndex) {
+                                white_data[i] = NaN;
+                            }
+                        }
+                    }
+                    let { vout, disp, pshift } = this.state;
                     let proc_F = [], proc_V = [];
                     for (let i = 0, len = white_data.length; i < len; i++) {
                         if (Array.isArray(white_data[i])) {
@@ -382,77 +446,10 @@ export default class index extends Component {
                     this.updateHMLineData(this.chart2_line, white_data, pink_data);
                     this.updateHMLineData(this.chart3_line, white_data, pink_data);
                     this.updateLineData(this.chart4, black_xData, black_yData, black_data);
-                    this.setState({ white_data, disp, pink_data, black_data, black_xData, black_yData, resultY, prevPosition: position, fminIndex, fmaxIndex });
+                    this.setState({ pink_data, black_data, white_data, resultY, disp, fminIndex, fmaxIndex });
                 }
             }
-        )
-        line.getZr().on("mouseup", () => {
-            this.setState({ prevPosition: undefined });
         })
-        line.getZr().on("mouseout", () => {
-            this.setState({ prevPosition: undefined });
-        })
-        line.getZr().on(
-            'click', params => {
-                let { event, offsetX } = params;
-                let currentPositionX = line.convertFromPixel({ seriesIndex: 0, xAxisIndex: 0 }, [offsetX, 0])[0];
-                let { white_data, fminIndex, fmaxIndex } = this.state;
-                let distenceArr = white_data.map((position, i) => Math.abs(currentPositionX - position[0]));
-                let currentIndex = getMinIndex(distenceArr);
-                if (event.button === 0) {
-                    if (event.shiftKey || event.ctrlKey) {
-                        if (event.shiftKey) {
-                            fmaxIndex = currentIndex;
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i > currentIndex) {
-                                    white_data[i] = NaN;
-                                }
-                            }
-                        } else if (event.ctrlKey) {
-                            fminIndex = currentIndex;
-                            for (let i = 0, len = white_data.length; i < len; i++) {
-                                if (i < currentIndex) {
-                                    white_data[i] = NaN;
-                                }
-                            }
-                        }
-                        let { vout, disp, pshift } = this.state;
-                        let proc_F = [], proc_V = [];
-                        for (let i = 0, len = white_data.length; i < len; i++) {
-                            if (Array.isArray(white_data[i])) {
-                                proc_F.push(pshift.f0[i])
-                                proc_V.push(white_data[i][1]);
-                            }
-                        }
-                        disp.v = interp_multiPoint(proc_F, proc_V, proc_F.length, vout, new Array(vout.length), vout.length)
-                        let pink_data = [], resultY = [];
-                        for (let i = 0, len = disp.f.length; i < len; i++) {
-                            if (disp.f[i] >= pshift.f0[fminIndex] && disp.f[i] <= pshift.f0[fmaxIndex]) {
-                                pink_data.push([disp.f[i], disp.v[i]]);
-                                resultY.push(disp.v[i]);
-                            } else {
-                                disp.v[i] = NaN;
-                                pink_data.push(NaN);
-                                resultY.push(NaN);
-                            }
-                        }
-                        let black_data = [], black_xData = [], black_yData = [];
-                        for (let i = 0, len = pink_data.length; i < len; i++) {
-                            if (Array.isArray(pink_data[i])) {
-                                black_data.push([disp.v[i], disp.v[i] / disp.f[i] / 2]);
-                                black_xData.push(disp.v[i]);
-                                black_yData.push(disp.v[i] / disp.f[i] / 2);
-                            }
-                        }
-                        this.updateHMLineData(this.chart1_line, white_data, pink_data);
-                        this.updateHMLineData(this.chart2_line, white_data, pink_data);
-                        this.updateHMLineData(this.chart3_line, white_data, pink_data);
-                        this.updateLineData(this.chart4, black_xData, black_yData, black_data);
-                        this.setState({ pink_data, black_data, white_data, resultY, disp, fminIndex, fmaxIndex });
-                    }
-                }
-            }
-        )
     }
     updateHMLineData = (line, white_data, pink_data) => {
         line.setOption({
@@ -534,10 +531,10 @@ export default class index extends Component {
             }
         })
     }
-    handleSelect = (selectedKeys, info) => {
+    handleSelect = selectedKeys => {
         this.handleClear();
-        this.getData(info.node.title);
-        this.setState({ fileName: info.node.title });
+        this.getData(selectedKeys);
+        this.setState({ fileName: selectedKeys });
     }
     handleChangeInput = (key, e) => {
         this.setState({ [key]: Number(e.target.value) });
@@ -678,10 +675,16 @@ export default class index extends Component {
         }
     }
     openHelpMask = () => {
-        this.setState({ helpMaskVisible: true })
+        let { opacity } = this.state;
+        this.setState({ helpMaskVisible: true });
+        let timer = setInterval(() => {
+            opacity += 0.04;
+            this.setState({ opacity });
+            if (opacity > 1) clearInterval(timer);
+        }, 10)
     }
     closeHelpMask = () => {
-        this.setState({ helpMaskVisible: false })
+        this.setState({ helpMaskVisible: false, opacity: 0 });
     }
     componentWillUnmount() {
         this.chart1_heatmap.dispose();
@@ -695,7 +698,7 @@ export default class index extends Component {
         window.removeEventListener("keypress", this.handleKeyPress);
     }
     render() {
-        const { treeData, fmin, fmax, Tout_min, dTout, Tout_max, dataType, helpMaskVisible } = this.state;
+        const { treeData, fmin, fmax, Tout_min, dTout, Tout_max, dataType, helpMaskVisible, opacity } = this.state;
         return (
             <div id="vis-main">
                 <div style={{ height: "100%", display: "flex", alignItems: "flex-start" }}>
@@ -751,9 +754,9 @@ export default class index extends Component {
                             </div>
                         </div>
                         <div style={{ marginTop: 20, textAlign: "center" }}>
-                            <Button style={{ width: 120 }} onClick={this.openHelpMask}>帮助</Button>
+                            <Button style={{ width: 120 }} onClick={this.openHelpMask}>查看帮助</Button>
                         </div>
-                        <div className="help-mask" style={{ display: !helpMaskVisible && "none" }} onClick={this.closeHelpMask}>
+                        <div className="help-mask" style={{ display: !helpMaskVisible && "none", opacity }} onClick={this.closeHelpMask}>
                             <div className="column">
                                 <div className="dot-box">在此选择数据源</div>
                                 <div className="dot-box">在此修改计算参数<br />修改完成后点击Calculate即可计算</div>
