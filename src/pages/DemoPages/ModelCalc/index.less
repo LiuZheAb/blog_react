@@ -1,0 +1,546 @@
+/*
+ *文件名 : index.less
+ *作者 : 刘哲
+ *创建时间 : 2020/11/2
+ *文件描述 : 样式文件
+ */
+
+/*头部高度*/
+@header_height: 120px;
+/*页面padding距离*/
+@padding: 16px;
+/*参数部分宽度*/
+@paramcontent_width: 340px;
+/*按钮颜色*/
+@btn_color: #1a6bb7;
+/*鼠标悬停在按钮上时的颜色*/
+@btn_hover_color: #029ce9;
+/*表单控件宽度*/
+@input_compnent_width: 180px;
+/*参数表单高度*/
+@param_form_height: 536px;
+
+.main {
+  background-color: #f4f4f4;
+  padding-bottom: @padding;
+  font-family: "Microsoft YaHei";
+  overflow: auto;
+
+  .header {
+    height: @header_height;
+    background: url("./assets/images/headbg.jpg") center bottom no-repeat;
+    background-color: #fff;
+
+    &-content {
+      width: 100%;
+      max-width: 1200px;
+      height: @header_height;
+      margin: 0 auto;
+      display: flex;
+
+      .title {
+        color: #000;
+        font-size: 28px;
+        font-weight: bold;
+        width: 100%;
+        line-height: @header_height;
+        text-align: center;
+      }
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: @param_form_height;
+    min-height: calc(100vh - @header_height - @padding - @padding - 2px);
+    max-width: 1200px;
+    margin: @padding auto 0;
+    display: flex;
+    justify-content: space-between;
+
+    .params-container {
+      width: @paramcontent_width;
+      height: 100%;
+      padding: @padding;
+      position: relative;
+      box-shadow: #ddd 0 0 10px;
+      background-color: #fff;
+
+      .param {
+        margin: 0 0 @padding;
+
+        &-label,
+        .map-param-label {
+          display: inline-block;
+          width: 100px;
+          text-align: right;
+        }
+
+        &-label::before {
+          content: "*";
+          color: red;
+          position: relative;
+          right: 5px;
+        }
+      }
+
+      .ant-input-affix-wrapper,
+      .ant-input-number,
+      .ant-picker,
+      .ant-select,
+      .ant-radio-group {
+        width: @input_compnent_width;
+      }
+
+      .triple-input {
+        display: inline-flex;
+        width: @input_compnent_width;
+        justify-content: space-between;
+
+        .ant-input-number {
+          width: calc((100% - 6px) / 3);
+        }
+
+        .ant-input-number-input {
+          padding: 0 2px;
+        }
+      }
+
+      .ant-radio-wrapper {
+        margin-right: 30px;
+      }
+
+      .calculate-btn {
+        min-width: 100px;
+        height: 44px;
+      }
+
+      /*.icon-info {
+        color: #777;
+        font-size: 16px;
+        transition: color .3s;
+        margin-left: 4px;
+
+        &:hover {
+          color: @btn_hover_color;
+        }
+      }
+      */
+    }
+
+    .map-container {
+      width: calc(100% - @paramcontent_width - @padding);
+      height: 100%;
+      box-shadow: #ddd 0 0 10px;
+      background-color: #fff;
+
+      .amap-container {
+
+        .amap-logo,
+        .amap-copyright,
+        .amap-maptype-list {
+          display: none !important;
+        }
+
+        .amap-maptype-title {
+          width: 100%;
+        }
+
+        .amap-scale-text {
+          color: #fff;
+          font-size: 12px;
+        }
+      }
+
+      .marker {
+        width: 16px;
+        height: 16px;
+        position: relative;
+
+        .circle {
+          height: 16px;
+          border-radius: 50%;
+          background-color: red;
+
+          &:before {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: relative;
+            top: 5px;
+            left: 5px;
+          }
+        }
+
+        .tran {
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          border-right: 8px solid transparent;
+          border-left: 8px solid transparent;
+          border-top: 10px solid red;
+          position: relative;
+          top: -5px;
+        }
+      }
+
+      .marker-name {
+        position: absolute;
+        width: 100px;
+        color: #fff;
+      }
+    }
+
+    .data-container {
+      width: 400px;
+      border: 1px solid #f0f0f0;
+
+      .controller-area {
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        text-align: right;
+        background-color: #dde8f1;
+        border-bottom: 1px solid #f0f0f0;
+
+        .anticon {
+          cursor: pointer;
+          transition: color .3s;
+          font-size: 16px;
+          margin-right: @padding;
+
+          &:hover {
+            color: @btn_hover_color;
+          }
+        }
+      }
+
+      .ant-input {
+        height: calc(100% - 36px);
+      }
+
+      .react-monaco-editor-container {
+        height: calc(100% - 36px) !important;
+
+        .monaco-editor {
+          width: 100% !important;
+          height: 100% !important;
+        }
+
+        .overflow-guard {
+          width: 100% !important;
+        }
+      }
+    }
+
+    .chart-container {
+      height: 100%;
+      min-height: 500px;
+      padding: @padding;
+      background: #fff;
+      width: calc(100% - 400px);
+      border: 1px solid #f0f0f0;
+      border-left: none;
+      position: relative;
+
+      .chart-title {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+        position: absolute;
+      }
+
+      #container {
+        width: 100%;
+        height: 100%;
+
+        canvas {
+          height: 100% !important;
+        }
+      }
+    }
+  }
+
+  .storage-btn,
+  .model-btn,
+  .back-btn {
+    position: fixed;
+    left: 0;
+    width: 40px;
+    white-space: unset;
+    padding: 4px 10px;
+    border-radius: 0 2px 2px 0;
+    z-index: 999;
+  }
+
+  .storage-btn {
+    top: @header_height + @padding;
+    height: 160px;
+  }
+
+  .model-btn {
+    top: @header_height + @padding + 176px;
+    height: 120px;
+  }
+
+  .back-btn {
+    top: @header_height + @padding;
+    height: 120px;
+  }
+}
+
+.custom-btn {
+  background-color: @btn_color;
+  border-color: @btn_color;
+
+  &:hover {
+    background-color: @btn_hover_color;
+    border-color: @btn_hover_color;
+  }
+
+}
+
+.ant-result {
+  padding: @padding;
+}
+
+.calc-storage-table {
+  thead .ant-table-cell {
+    padding: @padding 0;
+  }
+
+  tbody .ant-table-cell {
+    padding: 10px 0;
+  }
+
+  .icon {
+
+    &-delete,
+    &-view {
+      transition: all .3s;
+      cursor: pointer;
+    }
+
+    &-delete:hover {
+      color: red;
+    }
+
+    &-view:hover {
+      color: @btn_hover_color;
+    }
+  }
+}
+
+.ant-table-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.ant-table-thead .ant-table-cell {
+  text-align: center;
+}
+
+.calcdrawer .ant-drawer-content-wrapper {
+  width: 100% !important;
+  max-width: 800px;
+}
+
+.modeldrawer .ant-drawer-content-wrapper {
+  width: 100% !important;
+  max-width: 500px;
+}
+
+.ant-picker-now {
+  display: none !important;
+}
+
+.stg-details-table-container {
+  display: flex;
+  justify-content: space-between;
+
+  .stg-details-table {
+    margin-bottom: @padding;
+  }
+}
+
+.ant-modal-wrap {
+  display: flex;
+  align-items: center;
+
+  .ant-modal {
+    position: unset;
+    top: unset;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:768px) {
+  .main {
+
+    .header-content .title {
+      font-size: 24px;
+    }
+
+    .calculate-content {
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      height: auto;
+      min-height: 676px;
+      background-color: #fff;
+
+      .params-container {
+        width: @paramcontent_width + 80px;
+        margin: 0 auto;
+        box-shadow: unset;
+
+        .ant-input-affix-wrapper,
+        .ant-input-number,
+        .ant-picker,
+        .ant-select,
+        .ant-radio-group {
+          width: @input_compnent_width + 80px;
+        }
+
+        .triple-input {
+          width: @input_compnent_width + 80px;
+        }
+      }
+
+      .map-container {
+        width: 100%;
+        height: 200px;
+        box-shadow: unset;
+      }
+    }
+
+    .datavis-content {
+      flex-direction: column-reverse;
+      height: 1200px;
+
+      .data-container,
+      .chart-container {
+        width: 100%;
+        height: 50%;
+      }
+    }
+
+    .storage-btn,
+    .model-btn,
+    .back-btn {
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .anticon {
+        height: 18px;
+        line-height: 18px;
+        vertical-align: unset;
+      }
+    }
+
+    .model-btn {
+      top: 192px;
+    }
+
+  }
+}
+
+@media (max-width:576px) {
+  .main {
+
+    .header {
+      height: 60px;
+
+      .header-content {
+        height: 60px;
+
+        .logo {
+          height: 50px;
+          margin-top: 5px;
+        }
+
+        .title {
+          line-height: 60px;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .content {
+      margin-top: 0;
+
+      .params-container {
+        width: 100%;
+        max-width: @paramcontent_width + 80px;
+        padding-top: 6px;
+
+        .param {
+          margin-bottom: 6px;
+        }
+
+        .triple-input {
+          max-width: calc(100% - 130px);
+
+          .ant-input-number {
+            max-width: unset;
+          }
+        }
+
+        .ant-input-affix-wrapper,
+        .ant-input-number,
+        .ant-picker,
+        .ant-select,
+        .ant-radio-group {
+          max-width: calc(100% - 130px);
+        }
+
+        .ant-radio-wrapper {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .storage-btn,
+    .back-btn {
+      top: 60px;
+    }
+
+    .model-btn {
+      top: 108px;
+    }
+  }
+
+  .stg-details-table-container {
+    display: unset;
+
+    .stg-details-table {
+      width: 100% !important;
+    }
+  }
+
+  .amap-controlbar {
+    top: unset !important;
+    bottom: -40px !important;
+    right: 0;
+    left: unset !important;
+  }
+
+  .ant-result {
+    padding: 0 0 8px !important;
+  }
+}
+
+.ant-result-subtitle {
+  font-size: 16px !important;
+  text-align: left !important;
+}
+
+.ant-result-subtitle p {
+  margin-bottom: 0;
+}

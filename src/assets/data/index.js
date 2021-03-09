@@ -152,12 +152,16 @@ const DEMO_DATA = {
         "WebIDE",
         "帧动画",
         "可视化数据操作",
+        "垂直行业搜索系统",
+        "地磁模型计算器"
     ],
     chapter: {
         "自定义表单": [0],
         "WebIDE": [1],
         "帧动画": [2],
         "可视化数据操作": [3],
+        "垂直行业搜索系统": [4],
+        "地磁模型计算器": [5],
     }
 }
 export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA, DEMO_DATA];

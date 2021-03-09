@@ -13,7 +13,7 @@ export default class index extends Component {
                     </div>
                     <div className="article-content">
                         <h2>简介</h2>
-                        <p>基于echarts实现了下列功能，</p>
+                        <p>基于echarts实现了下列功能：</p>
                         <ul>
                             <li>读取json文件并处理数据；</li>
                             <li>根据数据绘制热力图、线图（紫线为白线插值结果）；</li>
