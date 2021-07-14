@@ -75,7 +75,7 @@ export default class index extends Component {
             if (value.indexOf(",") === -1) {
                 defaultValue.push(value);
             } //如果有“,”，则将输入的内容按“,”分隔开
-            else if (value.indexOf(",") > -1) {
+            else {
                 defaultValue = value.split(",");
             };
             //删除空值或逗号
@@ -86,6 +86,7 @@ export default class index extends Component {
                 }
             };
         }
+        console.log(defaultValue);
         itemList[index].defaultValue = defaultValue;
         this.setState({ itemList: itemList });
     };
@@ -268,7 +269,7 @@ export default class index extends Component {
                                     </Col>
                                     {ifThreeColumns &&
                                         <Col span={24} xl={7}>
-                                            <Form.Item className="col-nolabel" name={`itemValue${index}`} key={`${index}Value`} rules={[{ validator: this.itemValueValidator.bind(this, index) }]} getValueFromEvent={e => e.target.value.replace(/\uff0c/g, ",")} initialValue={defaultValue}>
+                                            <Form.Item className="col-nolabel" name={`itemValue${index}`} key={`${index}Value`} rules={[{ validator: this.itemValueValidator.bind(this, index) }]} initialValue={defaultValue}>
                                                 <Input placeholder={`请输入控件的默认值,以“,”隔开`} onChange={this.changeItemValue.bind(this, index)} />
                                             </Form.Item>
                                         </Col>
