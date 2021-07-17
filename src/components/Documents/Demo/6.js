@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Directory from "../../Directory";
 import { Pagination } from 'antd';
 import { pdfjs, Document, Page } from 'react-pdf';
-import { Link } from "react-router-dom";
 import "./6.less";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `./pdf.worker.js`;
