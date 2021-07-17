@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Directory from "../../Directory";
 import { Link } from "react-router-dom";
-import "./2.less";
 
 export default class index extends Component {
     render() {

@@ -153,7 +153,8 @@ const DEMO_DATA = {
         "帧动画",
         "可视化数据操作",
         "垂直行业搜索系统",
-        "地磁模型计算器"
+        "地磁模型计算器",
+        "华为开发者大赛pdf"
     ],
     chapter: {
         "自定义表单": [0],
@@ -162,6 +163,7 @@ const DEMO_DATA = {
         "可视化数据操作": [3],
         "垂直行业搜索系统": [4],
         "地磁模型计算器": [5],
+        "华为开发者大赛pdf": [6],
     }
 }
 export const TOTAL_DATA = [MYBLOG_DATA, GOJS_DATA, CODEREVIEW_DATA, FREECODECAMP_DATA, PROBLEM_DATA, DEMO_DATA];

@@ -86,7 +86,6 @@ export default class index extends Component {
                 }
             };
         }
-        console.log(defaultValue);
         itemList[index].defaultValue = defaultValue;
         this.setState({ itemList: itemList });
     };

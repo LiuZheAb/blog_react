@@ -15,7 +15,7 @@ class index extends Component {
     constructor() {
         super();
         this.state = {
-            seconds: 1000,
+            seconds: 10,
             timer: () => { }
         };
     };
